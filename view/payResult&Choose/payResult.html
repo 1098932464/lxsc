@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>支付结果</title>
+    <link rel="stylesheet" type="text/css" href="../new/css/aui.css" />
+    <script src="https://kit.fontawesome.com/6b7cf02c0a.js" crossorigin="anonymous"></script>
+    <style>
+        #success,#fail{
+            text-align: center;
+        }
+    #success i,#fail i{
+        margin: 2rem auto;
+        font-size: 6rem;
+    }
+    #success i{
+        color: #3bdc3b;
+    }
+    #fail i{
+        color: #796868;
+    }
+    #info{
+        text-align: center;
+        color: #3bdc3b;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+    .fail{
+        color: #796868!important;
+    }
+    </style>
+</head>
+<body>
+<header class="aui-bar aui-bar-nav theme-bg-color">
+        <a href="javascript:history.back();" class="aui-pull-left aui-btn">
+            <span class="aui-iconfont aui-icon-left"></span>
+        </a>
+        <div class="aui-title">支付结果</div>
+    </header>
+    <div id="success">
+        <i  class="far fa-check-circle"></i>
+    </div>
+     <div id="info">支付成功</div>
+    <!-- <div id="fail">
+            <i class="far fa-times-circle"></i>
+        </div>
+    <div id="info" class="fail">支付失败,利享币不足</div> -->
+    <!-- <div id="info" class="fail">支付失败,金额不足</div> -->
+    <a href="${base}/wechat/index">
+        <div class="aui-btn aui-btn-success aui-btn-block" style="margin-top: 10px;">返回首页</div>
+    </a>
+</body>
+</html>

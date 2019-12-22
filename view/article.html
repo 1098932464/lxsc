@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>${article.title}</title>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+
+    <link href="${base}/templates/${config.theme}/view/static/css/commonStyle.css" rel="stylesheet" type="text/css" />
+    <link href="${base}/templates/${config.theme}/view/static/css/normalcenter.css" rel="stylesheet" type="text/css" />
+    <link href="${base}/templates/${config.theme}/view/static/css/footer.css" rel="stylesheet" type="text/css" />
+    <style>
+        #title {
+            margin: 10px 0;
+            text-align: center;
+            color: #000;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        #content {
+            text-indent: 2rem;
+            font-size: 1rem;
+            margin: 0 10px;
+            padding: 10px;
+            background-color: rgb(0, 0, 0, .1);
+            line-height: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="aui-flexView">
+        <section class="aui-scrollView">
+            <div id="title" class="aui-list-item">${article.title}</div>
+            <div class="aui-list-item">
+                <p id="content">
+                    ${article.content}
+                </p>
+            </div>
+        </section>
+
+
+        <footer class="aui-footer">
+            <a href="${base}/wechat/index" class="aui-tabBar-item aui-tabBar-item-active">
+                <span class="aui-tabBar-item-icon">
+                    <i class="icon icon-loan"></i>
+                </span>
+                <span class="aui-tabBar-item-text">首页</span>
+            </a>
+            <a href="${base}/shop/index" class="aui-tabBar-item ">
+                <span class="aui-tabBar-item-icon">
+                    <i class="icon icon-credit"></i>
+                </span>
+                <span class="aui-tabBar-item-text">店铺</span>
+            </a>
+
+
+
+            <a href="${base}/cartshow/list" class="aui-tabBar-item ">
+                <span class="aui-tabBar-item-icon">
+                    <i class="icon icon-car"></i>
+                </span>
+                <span class="aui-tabBar-item-text">购物车</span>
+            </a>
+            <a href="${base}/center/user" class="aui-tabBar-item ">
+                <span class="aui-tabBar-item-icon">
+                    <i class="icon icon-mine"></i>
+                </span>
+                <span class="aui-tabBar-item-text">我的</span>
+            </a>
+
+        </footer>
+    </section>
+
+</body>
+
+</html>

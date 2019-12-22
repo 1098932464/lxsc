@@ -1,0 +1,142 @@
+.po-cb {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.po-sc-bottom {
+  padding: 2.66667vw;
+  background-color: #fff;
+  line-height: 1.5;
+}
+
+.po-sc-bottom .sc-b-2 {
+  font-size: 3.73333vw;
+  color: #6cd437;
+}
+
+.po-sc-2 {
+  display: -ms-grid;
+  display: grid;
+  padding: 2.66667vw;
+  -ms-grid-columns: [s] 70% [m] 30% [e];
+      grid-template-columns: [s] 70% [m] 30% [e];
+  -ms-grid-rows: [s] max-content [m] max-content [e];
+      grid-template-rows: [s] -webkit-max-content [m] -webkit-max-content [e];
+      grid-template-rows: [s] max-content [m] max-content [e];
+  row-gap: 1.33333vw;
+  background-color: #fff;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.po-sc-2 .sc-21 {
+  grid-column: s/m;
+  grid-row: s/e;
+}
+
+.po-sc-2 .sc-22 {
+  grid-column: m/e;
+  grid-row: s/m;
+}
+
+.po-sc-2 .sc-22 > span {
+  float: right;
+}
+
+.po-sc-2 .sc-23 {
+  justify-self: flex-end;
+  grid-column: m/e;
+  grid-row: m/e;
+  color: #777;
+  font-size: 3.2vw;
+}
+
+.sp-lf-rt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 2.66667vw;
+  padding: 2.66667vw;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.sp-jian {
+  display: inline-block;
+  font-size: 4.26667vw;
+  padding: 1.33333vw;
+  border-radius: 10%;
+  margin-right: 2.66667vw;
+  color: #fff;
+  background-color: #c73dc7;
+}
+
+.sp-bao {
+  display: inline-block;
+  font-size: 4.26667vw;
+  padding: 1.33333vw;
+  border-radius: 10%;
+  margin-right: 2.66667vw;
+  color: #fff;
+  background-color: #e6ba5e;
+}
+
+.po-top {
+  display: -ms-grid;
+  display: grid;
+  background-color: #fff;
+  -ms-grid-columns: [s] 70% [m] 30% [e];
+      grid-template-columns: [s] 70% [m] 30% [e];
+  -ms-grid-rows: [s] max-content [m] max-content [e];
+      grid-template-rows: [s] -webkit-max-content [m] -webkit-max-content [e];
+      grid-template-rows: [s] max-content [m] max-content [e];
+  padding: 2.66667vw;
+  margin-bottom: 2.66667vw;
+  border-bottom: 1px solid #ddd;
+}
+
+.po-top > div {
+  margin-bottom: 1.33333vw;
+}
+
+.po-top .pot-1 {
+  line-height: 1.5;
+  font-size: 4.26667vw;
+  font-weight: bold;
+  grid-column: s/m;
+}
+
+.po-top .pot-2 {
+  justify-self: flex-end;
+  font-size: 3.73333vw;
+  grid-column: m/e;
+}
+
+.po-top .pot-3 {
+  color: #777;
+  font-size: 3.73333vw;
+  grid-column: s/e;
+}
+
+.po-top .pot-4 {
+  font-size: 4.26667vw;
+  grid-column: s/m;
+  color: #777;
+}
+
+.po-top .pot-5 {
+  justify-self: flex-end;
+  grid-column: m/e;
+}
+/*# sourceMappingURL=projectOrder.css.map */

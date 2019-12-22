@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>康师傅旗舰店</title>
+	<link rel="stylesheet" type="text/css" href="${base}/templates/${config.theme}/view/static/css/aui/aui.css?shareshopversion=1.1.1.191112" />
+	<link rel="stylesheet" type="text/css" href="${base}/templates/${config.theme}/view/static/css/aui/aui-slide.css?shareshopversion=1.1.1.191112" />
+	<link rel="stylesheet" type="text/css" href="${base}/templates/${config.theme}/view/static/css/commonStyle.css?shareshopversion=1.1.1.191112" />
+    <link rel="stylesheet" type="text/css" href="${base}/templates/${config.theme}/view/static/css/footer.css?shareshopversion=1.1.1.191112" />
+    <link rel="stylesheet" type="text/css" href="${base}/templates/${config.theme}/view/static/css/swiper.min.css" />
+
+    <style>
+            .swiper-slide {
+                padding: 10px;
+            }
+    
+            .swiper-slide img {
+                border-radius: 10px;
+            }
+    
+            .aui-collapse-item {
+                background-image: linear-gradient(45deg, #fff, transparent);
+            }
+    
+            .shop-detail-list {
+                padding-left: 10px;
+            }
+    
+            .shop-detail-item {
+                margin-bottom: 10px;
+                display: flex;
+                background-color: #fff;
+            }
+    
+            .shop-detail-item img {
+                width: 120px;
+                height: 120px;
+            }
+    
+            .shop-detail-item>div {
+                padding: 5px;
+            }
+    
+            .shop-detail-item>div>div {
+                padding: 2.5px;
+            }
+    
+            /* 付款软键盘 */
+            .shop-pay {
+                width: 100vw;
+                height: 100vh;
+                z-index: 1000;
+                position: fixed;
+                right: -100vw;
+                transition: right .2s linear;
+                top: 0;
+                background-color: #ddd;
+    
+            }
+    
+            .shop-pay-input {
+                height: 100px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                background: #fff;
+                margin-top: 60px;
+                margin-left: 10px;
+                margin-right: 10px;
+                padding: 5px;
+            }
+    
+            .shop-pay-input input {
+    
+                display: block;
+                height: 70px;
+                line-height: 70px;
+                font-size: 50px;
+            }
+    
+            .shop-pay-keyboard {
+                position: absolute;
+                bottom: 0;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+    
+            }
+    
+            .shop-pay-keyboard>li {
+                width: 33vw;
+                height: 25vw;
+                box-sizing: border-box;
+                border-right: 2px solid #ddd;
+                border-bottom: 2px solid #ddd;
+                line-height: 25vw;
+                background-color: #fff;
+                text-align: center;
+                font-size: 50px;
+                transition: background-color .2s linear;
+            }
+    
+            .shop-pay-keyboard>li:active {
+                background-color: #ccc;
+            }
+    
+            .shop-pay-keyboard>li:nth-child(3n) {
+                border-right: 0;
+            }
+    
+            .shop-pay-keyboard>li:nth-child(10),
+            .shop-pay-keyboard>li:nth-child(12) {
+                background-color: #ddd;
+            }
+    
+            .aui-toast {
+                z-index: 2000;
+            }
+        </style>
+</head>
+
+<body class="theme-bg-color">
+<button id="map-show-btn" onclick="hideMap(false)">查看地理位置</button>
+<div id="map">
+    <button onclick="hideMap()">隐藏地图</button>
+    <iframe src="${base}/userorder/map" frameborder="0"></iframe>
+</div>
+<div class="aui-content">
+    <!-- 顶部导航栏 -->
+    <header class="aui-bar aui-bar-nav theme-bg-color">
+        <a href="javascript:history.back();" class="aui-pull-left aui-btn">
+            <span class="aui-iconfont aui-icon-left"></span>
+        </a>
+        <div class="aui-title" style="left:2rem; right: 0.5rem;">${shop.shopName}</div>
+    </header>
+    <div class="shop-scrollView">
+        <h1 style="font-weight: bold;padding-left: 10px;">姐妹美甲</h1>
+        <!-- 评分 -->
+        <div style="padding: 5px 10px;">
+            <div style="cursor: pointer;width: 100px;display: flex;align-items: center;">
+                <img src="${base}/templates/${config.theme}/view/static/img/raty/star-on.png" alt="1" title="bad" style="width: .8rem;height: .8rem;">&nbsp;
+                <img src="${base}/templates/${config.theme}/view/static/img/raty/star-on.png" alt="2" title="poor" style="width: .8rem;height: .8rem;">&nbsp;
+                <img src="${base}/templates/${config.theme}/view/static/img/raty/star-on.png" alt="3" title="regular" style="width: .8rem;height: .8rem;">&nbsp;
+                <img src="${base}/templates/${config.theme}/view/static/img/raty/star-on.png" alt="4" title="good" style="width: .8rem;height: .8rem;">&nbsp;
+                <img src="${base}/templates/${config.theme}/view/static/img/raty/star-off.png" alt="5" title="gorgeous" style="width: .8rem;height: .8rem;">
+            </div>
+        </div>
+        <div style="padding-left: 10px;">
+            <span> 新华城市广场</span> <span>美甲</span>
+        </div>
+        <!-- 滑动图片 -->
+        <div id="slide" class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="http://manage.yihuoshidai.com//files/b8c98996-bf50-407a-8287-522f9a796edc.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="http://manage.yihuoshidai.com//files/b8c98996-bf50-407a-8287-522f9a796edc.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="http://manage.yihuoshidai.com//files/b8c98996-bf50-407a-8287-522f9a796edc.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="http://manage.yihuoshidai.com//files/b8c98996-bf50-407a-8287-522f9a796edc.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="http://manage.yihuoshidai.com//files/b8c98996-bf50-407a-8287-522f9a796edc.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="http://manage.yihuoshidai.com//files/b8c98996-bf50-407a-8287-522f9a796edc.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="http://manage.yihuoshidai.com//files/b8c98996-bf50-407a-8287-522f9a796edc.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="http://manage.yihuoshidai.com//files/b8c98996-bf50-407a-8287-522f9a796edc.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="http://manage.yihuoshidai.com//files/b8c98996-bf50-407a-8287-522f9a796edc.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="http://manage.yihuoshidai.com//files/b8c98996-bf50-407a-8287-522f9a796edc.jpg" alt="">
+                </div>
+
+            </div>
+        </div>
+        <!-- 休息中 -->
+        <div style="padding:5px 10px;">
+            休息中, <span>9:30</span> 营业 <span>6</span>个座位
+        </div>
+        <div style="padding:5px 10px;">
+            <div style="display: flex;">
+                <span style="padding-right: 5px;"> <i class="aui-iconfont aui-icon-location"></i></span>
+                <span> 卧龙区新华西路新华城市广场丹尼斯百货一楼珠宝区(周六福珠宝旁边)
+                    <div style="color: #666;">
+                        据您步行580m,需要6分钟
+                    </div>
+                </span>
+                <a href="tel:1555555555555"><span style="padding: 0 10px;"><i class="aui-iconfont aui-icon-phone"
+                            style="font-size: 1.5rem;"></i></span></a>
+            </div>
+
+        </div>
+
+        <!-- 满送 -->
+
+        <ul class="aui-list aui-collapse aui-border">
+            <div class="aui-collapse-item">
+                <li class="aui-list-item aui-collapse-header" tapmode>
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-title">现金消费送利享币</div>
+                        <div class="aui-list-item-right">
+                            <i class="aui-iconfont aui-icon-down aui-collapse-arrow"></i>
+                        </div>
+                    </div>
+                </li>
+                <div class="aui-collapse-content">
+                    <li class="aui-list-item">
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-title">现金消费满100送10利享币</div>
+                            <div class="aui-btn aui-btn-danger" data-minprice="100" data-giftgiving="10">付款</div>
+                        </div>
+                    </li>
+                    <li class="aui-list-item">
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-title">现金消费满500送200利享币</div>
+                            <div class="aui-btn aui-btn-danger" data-minprice="500" data-giftgiving="200">付款</div>
+                        </div>
+                    </li>
+                    <li class="aui-list-item">
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-title">现金消费满1000送500利享币</div>
+                            <div class="aui-btn aui-btn-danger" data-minprice="1000" data-giftgiving="500">付款</div>
+                        </div>
+                    </li>
+                </div>
+            </div>
+            <!-- 领取优惠券 -->
+            <div class="aui-collapse-item">
+                <li class="aui-list-item aui-collapse-header">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-title">免费领取购物券</div>
+                        <div class="aui-list-item-right">
+                            <i class="aui-iconfont aui-icon-down aui-collapse-arrow"></i>
+                        </div>
+                    </div>
+                </li>
+                <div class="aui-collapse-content">
+                    <li class="aui-list-item">
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-title">免费领取购物券 50元</div>
+                            <div class="aui-btn aui-btn-danger" data-shoppingvoucher="50">立即领取</div>
+                        </div>
+                    </li>
+                    <li class="aui-list-item">
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-title" >免费领取购物券 88元</div>
+                            <div class="aui-btn aui-btn-danger" data-shoppingvoucher="88">立即领取</div>
+                        </div>
+                    </li>
+                </div>
+            </div>
+        </ul>
+
+
+
+
+
+        <div class="shop-title" style="margin-top: 10px;margin-bottom: 10px;">
+            全额兑换
+        </div>
+        <ul class="shop-detail-list">
+
+
+
+                [#list productList as data]
+                <li class="shop-detail-item">
+                    <a href="${base}/product/detail?pid=${data.id}">
+                        <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=175204889,2812320725&fm=26&gp=0.jpg"
+                        alt="">
+                    </a>
+                       
+                        <div>
+                            <div style="font-size: 1rem;font-weight: bold;">${data.name} &nbsp;&nbsp;&nbsp;${data.specifications}
+        
+                            </div>
+                            <div class="shop-price"><span class="shop-money-icon"></span> ${data.price}</div>
+                            <div><span>已售429</span></div>
+                        </div>
+                    </li>
+				[/#list]
+
+
+          
+
+            <li class="shop-detail-item">
+                <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=175204889,2812320725&fm=26&gp=0.jpg"
+                    alt="">
+                <div>
+                    <div style="font-size: 1rem;font-weight: bold;">[美甲] 单人美甲套餐A一次
+
+                    </div>
+                    <div class="shop-price"><span class="shop-money-icon"></span> 29.9</div>
+                    <div><span>已售429</span></div>
+                </div>
+            </li>
+        </ul>
+
+        <!-- 付款 -->
+        <div class="shop-pay">
+            <div class="shop-pay-input">
+                <div class="pay-text" style="color: red;">
+
+                </div>
+                <!-- 输入金额 -->
+                <div style="display: flex;">
+                    <div style="font-size: 50px;">￥</div>
+                    <input type="text" name="" id="">
+                </div>
+
+            </div>
+            <div style="display: flex;margin: 15px;">
+                <div class="aui-btn aui-btn-success aui-btn-block aui-btn-lg" id="payBtn">确认支付</div>
+                <div class="aui-btn aui-btn-danger aui-btn-block aui-btn-lg" id="cancelPayBtn">取消支付</div>
+            </div>
+            <ul class="shop-pay-keyboard">
+
+                <li data-num="1">1</li>
+                <li data-num="2">2</li>
+                <li data-num="3">3</li>
+                <li data-num="4">4</li>
+                <li data-num="5">5</li>
+                <li data-num="6">6</li>
+                <li data-num="7">7</li>
+                <li data-num="8">8</li>
+                <li data-num="9">9</li>
+                <li data-num=".">.</li>
+                <li data-num="0">0</li>
+                <li data-num="x">x</li>
+            </ul>
+        </div>
+    </div>
+    <!-- 底部导航栏 -->
+    <footer class="aui-footer aui-footer-fixed">
+        <a href="${base}/wechat/index" class="aui-tabBar-item aui-tabBar-item-active">
+            <span class="aui-tabBar-item-icon">
+                <i class="icon icon-loan"></i>
+            </span>
+            <span class="aui-tabBar-item-text">首页</span>
+        </a>
+        <a href="${base}/shop/index" class="aui-tabBar-item ">
+            <span class="aui-tabBar-item-icon">
+                <i class="icon icon-credit"></i>
+            </span>
+            <span class="aui-tabBar-item-text">店铺</span>
+        </a>
+
+
+
+        <a href="${base}/cartshow/list" class="aui-tabBar-item ">
+            <span class="aui-tabBar-item-icon">
+                <i class="icon icon-car"></i><i class="shop-badge">22</i>
+            </span>
+            <span class="aui-tabBar-item-text">购物车</span>
+        </a>
+        <a href="${base}/center/user" class="aui-tabBar-item ">
+            <span class="aui-tabBar-item-icon">
+                <i class="icon icon-mine"></i>
+            </span>
+            <span class="aui-tabBar-item-text">我的</span>
+        </a>
+    </footer>
+</div>
+
+<script type="text/javascript" src="${base}/templates/${config.theme}/view/static/aui/js/aui-slide.js"></script>
+<script type="text/javascript" src="${base}/templates/${config.theme}/view/static/js/zepto.min.js"></script>
+<script type="text/javascript" src="${base}/templates/${config.theme}/view/static/js/touch.js"></script>
+<script type="text/javascript" src="${base}/templates/${config.theme}/view/static/js/swiper.min.js"></script>
+<script type="text/javascript" src="${base}/templates/${config.theme}/view/aui/js/aui-collapse.js"></script>
+<script type="text/javascript" src="${base}/templates/${config.theme}/view/aui/js/aui-toast.js"></script>
+<script>
+    $(function () {
+        // 软键盘
+        var keyboard = {
+            shopPay: 0,
+            giftGiving: 0,
+            str: "",
+            pay() {
+                var toast = new auiToast();
+                        toast.success({
+                            title: this.shopPay+"元支付成功",
+                            duration: 2000
+                        });
+                        this.hide()
+            },
+            show(shopPay, giftGiving) {
+                this.giftGiving = giftGiving
+                this.shopPay = shopPay
+                $(".pay-text").html(`满${shopPay}元送${giftGiving}利享币`)
+            },
+            hide(){
+                $(".shop-pay").css({
+                        right: "-100vw"
+                    })
+                    this.clear()
+            },
+            lessThan() {
+                return parseFloat(this.str) < this.shopPay
+            },
+            clear() {
+                this.str = ""
+                $(".shop-pay-input input").val("")
+            },
+            init() {
+
+                var obj = this
+                $(".shop-pay-keyboard>li[data-num='x']").longTap(function () {
+                    obj.clear()
+                })
+                $(".shop-pay-keyboard>li").on("tap", function (ev) {
+                    var num = $(this).data("num")
+
+                    if (num == "x") {
+                        if (obj.str != "") {
+                            obj.str = obj.str.substring(0, obj.str.length - 1)
+                        }
+                    } else {
+                        obj.str += num
+                    }
+                    $(".shop-pay-input input").val(obj.str)
+                })
+
+                $("#payBtn").on("tap", function () {
+                    var reg = /^\d+\.+\d{1,2}$|^\d+$/
+                    if (reg.test(obj.str)) {
+                        // 支付
+                        if (obj.lessThan()) {
+                            var toast = new auiToast();
+                            toast.fail({
+                                title: "当前活动为满" + obj.shopPay + "元送" + obj.giftGiving + "利享币,请选择正确的活动",
+                                duration: 2000
+                            });
+                        } else {
+                            obj.pay()
+                        }
+
+                    } else {
+                        // 格式错误
+                        var toast = new auiToast();
+                        toast.fail({
+                            title: "请输入正确的金额",
+                            duration: 2000
+                        });
+                    }
+                })
+                $("#cancelPayBtn").on("tap", function () {
+                   obj.hide()
+                })
+            }
+        }
+        keyboard.init()
+
+        $(".aui-btn-danger[data-shoppingvoucher]").on("tap",function(ev){
+            ev.stopPropagation()
+            var toast = new auiToast();
+                        toast.success({
+                            title: "成功领取购物券"+$(this).data("shoppingvoucher")+"元",
+                            duration: 2000
+                        });
+                        $(this).removeClass("aui-btn-danger")
+                        $(this).html("已领取")
+                        $(this).off()
+        })
+
+        $("[data-minprice]").on("tap", function (ev) {
+            keyboard.show($(this).data("minprice"), $(this).data("giftgiving"))
+            // 弹出框
+            $(".shop-pay").css({
+                right: 0
+            })
+        })
+
+
+        var collapse = new auiCollapse({
+            autoHide: false //是否自动隐藏已经展开的容器
+        });
+        var swiper = new Swiper('#slide', {
+            initialSlide: 1,
+            slidesPerView: 3,
+            centeredSlides: true,
+            spaceBetween: 0,
+        })
+    })
+
+
+    // var slide = new auiSlide({
+    // 	container: document.getElementById("aui-slide"),
+    // 	// "width":300,
+    // 	"height": 160,
+    // 	"speed": 300,
+    // 	"pageShow": true,
+    // 	"pageStyle": 'dot',
+    // 	"loop": true,
+    // 	'dotPosition': 'center'
+    // 	// currentPage:currentFun
+    // })
+    function hideMap(hide = true) {
+        if (hide)
+            document.getElementById("map").style.display = "none";
+        else
+            document.getElementById("map").style.display = "block";
+    }
+</script>
+</body>
+</html>

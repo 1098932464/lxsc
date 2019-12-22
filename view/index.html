@@ -1,0 +1,505 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>利享商城首页</title>
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<link rel="stylesheet" href="${base}/templates/${config.theme}/view/static/css/footer.css" type="text/css">
+	<link href="${base}/templates/${config.theme}/view/static/css/index.css" rel="stylesheet" type="text/css" />
+	<link href="${base}/templates/${config.theme}/view/static/css/commonStyle.css" rel="stylesheet" type="text/css" />
+
+	<style type="text/css">
+	
+		html{color:#000;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}
+		html *{outline:0;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+		body {background:#FFF;color:#4a4f5a;font: 400 14px/1.5 "微软雅黑",Helvetica,STHeiti,Droid Sans Fallback;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}
+		input,select,textarea{font-size:100%}
+		article,aside,footer,header,nav,section,audio,canvas,video,img {display: block;}
+		table{border-collapse:collapse;border-spacing:0}
+		fieldset,img{border:0}
+		abbr,acronym{border:0;font-variant:normal}
+		del{text-decoration:line-through}
+		address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:normal}
+		ol,ul{list-style:none}
+		caption,th{text-align:left}
+		h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}
+		q:before,q:after{content:''}
+		button{outline:0;border:none;}
+		a:hover{text-decoration:none}
+		ins,a{text-decoration:none}
+		textarea {resize: none;}
+		iframe,img {border:0;}
+		img{display:block;width:100%;}
+		ul,ol {list-style:none;}
+		input,select,textarea {outline: 0;-webkit-user-modify: read-write-plaintext-only;}
+		input {-webkit-appearance: none;}
+		.pr{position:relative;}
+		.abs{position: absolute}
+		.fl{float:left;display:inline-block;}
+		.fr{float:right;display:inline-block;}
+		.clearfix:after{content:".";display:block;height:0;clear: both;visibility:hidden;}
+		.clearfix{*zoom:1;}
+		.wrap{min-width: 320px;max-width:768px;margin:0 auto;overflow:hidden;position:relative;}
+
+		.htit{line-height:1rem;padding:0 .3rem;color:#ff8e2e;font-size: .4rem;margin:1rem 0 .4rem 0}
+		.wrapper01 {position:relative;height: 1rem;width: 100%;overflow: hidden;margin:0 auto;border-bottom:1px solid #ccc}
+		.wrapper01 .scroller {position:absolute}
+		.wrapper01 .scroller li {height: 1rem;color:#333;float: left;line-height: 1rem;font-size: .4rem;text-align: center}
+		.wrapper01 .scroller li a{color:#333;display:block;margin:0 .3rem}
+		.wrapper01 .scroller li.cur a{color:#1cbb9b;}
+
+		.wrapper02 {position:relative;height: 1rem;width: 100%;overflow: hidden;margin:0 auto;background:#ddd}
+		.wrapper02 .scroller {position:absolute}
+		.wrapper02 .scroller li {height: 1rem;color:#333;float: left;line-height: 1rem;font-size: 0.8rem;text-align: center}
+		.wrapper02 .scroller li a{color:#333;display:block;margin:0 .3rem}
+		.wrapper02 .scroller li.cur{background:#1cbb9b}
+		.wrapper02 .scroller li.cur a{color:#fff;}
+
+		.wrapper03 {position:relative;height: 1rem;width: 100%;overflow: hidden;margin:0 auto;border-bottom:1px solid #ccc}
+		.wrapper03 .scroller {position:absolute}
+		.wrapper03 .scroller li {height: 1rem;color:#333;float: left;line-height: 1rem;font-size: .4rem;text-align: center}
+		.wrapper03 .scroller li a{color:#333;display:block;margin:0 .3rem;padding:0 .1rem}
+		.wrapper03 .scroller li.cur a{color:#1cbb9b;height:.9rem;border-bottom:.1rem solid #1cbb9b}
+
+		.wrapper04 {position:relative;height: 1rem;width: 80%;overflow: hidden;margin:0 auto;background:#ddd}
+		.wrapper04 .scroller {position:absolute}
+		.wrapper04 .scroller li {height: 1rem;color:#333;float: left;line-height: 1rem;font-size: .4rem;text-align: center}
+		.wrapper04 .scroller li a{color:#333;display:block;margin:0 .3rem}
+		.wrapper04 .scroller li.cur{background:#1cbb9b}
+		.wrapper04 .scroller li.cur a{color:#fff;}
+
+		.msg{
+			position: fixed;
+			height: 30px;
+			background-color: rgb(0,0,0,.2);
+			display: flex;
+			z-index: 1000;
+			border-radius: 15px;
+			align-items: center;
+			color: #000;
+			font-size: .8rem;
+			top:150px;
+			left: 5%;
+			transition: opacity linear .6s;
+		}
+		.msg.out{
+			display: none;
+			opacity: 0;
+		}
+		.msg .portrait img{
+			width: 28px;
+			height: 28px;
+			margin: 1px;
+			border-radius: 14px;
+		}
+		.msg .msg-content{
+			white-space: nowrap;
+			padding: 1px;
+		}
+		.good-classify{
+			height: 50px;
+			overflow: hidden;
+			background-color: rgb(0,0,0,.1);
+			display: flex;
+			align-items: center;
+		}
+		.good-classify ul{
+			display: flex;
+	
+		
+			flex-wrap: nowrap;
+			overflow-y: hidden;
+			overflow-x: scroll;
+		}
+		.good-classify li{
+			white-space: nowrap;
+			padding:  5px 10px;
+			text-align: center;
+			display: flex;
+			flex-direction: column-reverse;
+			align-items: baseline;
+			font-size: 1rem;
+			font-weight: bold;
+			transition: font-size .6s linear;
+			
+		}
+		.good-classify li a{
+			color: #000;
+		}
+		.good-classify li.active>a{
+			font-size: 1.1rem;
+			color: red;
+		}
+		.aui-list-theme-message span.sold-out{
+			font-size: .8rem!important;
+			color: #666!important;
+			float: right;
+		} 
+		.aui-list-theme-message span.brand{
+			display: unset;
+			border: 1px solid #888;
+			border-radius: 10%;
+			color: #555;
+			font-size: .7rem;
+		}
+		.m-slider{
+			height: 200px;
+		}
+	</style>
+	
+	
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+	<script type="text/javascript">
+
+    </script>
+</head>
+<body>
+
+<div id="msg" class="msg out">
+	<span class="portrait"><img src="${base}/templates/${config.theme}/view/demo1.jpg" alt=""></span>
+	<span class="msg-content" id="msg-content"></span>
+</div>
+
+<section class="aui-flexView">
+	<header class="aui-navBar aui-navBar-fixed">
+
+		<div class="aui-center">
+			<div class="aui-search-box">
+				<i class="icon icon-search"></i>
+				<input type="text" placeholder="输入商品名称" id="search_input">
+			</div>
+		</div>
+
+	</header>
+
+<!-- 商品分类导航 -->
+<div class="good-classify">
+
+		<!-- Nav tabs -->
+		<ul class="hide-scroll">
+				<!-- <li class="active"><a href="">粮油</a></li> -->
+
+				[@product_category_root_list type=1  count=30]
+				[#list productCategories as pca]
+				   [#if pca.id==pcateId]
+                    <li class="active"><a href="javascript:reducehref(${pca.id});">${pca.name}</a></li>
+                  [#else]
+                     <li><a href="javascript:reducehref(${pca.id});">${pca.name}</a></li>
+                  [/#if]
+				[/#list]
+			[/@product_category_root_list]
+
+		</ul>
+	  
+</div>
+
+
+
+
+
+
+	
+	<section class="aui-scrollView">
+	
+		
+		
+		<!-- <div class="aui-flex aui-flex-one">
+			<div class="aui-flex-box"><i class="icon icon-in"></i>最快20分钟送达</div>
+			<div class="aui-flex-box"><i class="icon icon-im"></i>0元起送0元配送</div>
+			<div class="aui-flex-box"><i class="icon icon-il"></i>七天无理由退货</div>
+		</div> -->
+		
+		
+		<div class="aui-img-ad">
+		  [@ad_position id = 4]
+			      [#list adPosition.ads as ad]
+			<img src="${config.imgurl}/${ad.image}" alt="">
+			  [/#list]
+		 [/@ad_position]
+		</div>
+		
+		<!-- 商品分类 -->
+		
+		
+		<div class="aui-palace aui-palace-one ">
+	         [@product_category_children_list productCategoryId=pcateId recursive=false count=9]
+	               [#list productCategories as pc]
+	         
+	         <a href="javascript:;" class="aui-palace-grid">
+				<div class="aui-palace-grid-icon">
+					<img src="${config.imgurl}/${pc.img}" alt="">
+				</div>
+				<div class="aui-palace-grid-text">
+					<h2>${pc.name}</h2>
+				</div>
+			</a> 
+	               [/#list] 
+	         [/@product_category_children_list]
+	                    
+			 
+		
+		
+  <a href="${base}/productCategory/list" class="aui-palace-grid">
+	 <div class="aui-palace-grid-icon">
+		 <img src="http://m.yihuoshidai.com//assets/frontend/images/tb10.png" alt="">
+	 </div>
+	 <div class="aui-palace-grid-text">
+		 <h2>全部分类</h2>
+	 </div>
+ </a> 
+	         
+		</div>
+		
+		<div class="m-slider" data-ydui-slider>
+				<div class="slider-wrapper">
+				   [@ad_position id = 3]
+					  [#list adPosition.ads as ad]
+					<div class="slider-item">
+						<a href="javascript:;">
+							<img src="${config.imgurl}/${ad.image}" alt="">
+						</a>
+					</div>
+					  [/#list]
+					[/@ad_position]
+				</div>
+				<div class="slider-pagination"></div>
+			</div>
+		
+        <div class="divHeight"></div>
+		<div class="aui-ad-img">
+			<img src="https://www.17sucai.com/preview/1527619/2019-08-13/a-greens/images/ad-002.png" alt="">
+		</div>
+		
+		
+		<div class="aui-list-theme-box aui-list-theme-one">
+				[@pro_positionList id=1 count=3]
+				[#list proPosition as sit]
+				  [#if sit.count==0]
+				  <a href="javascript:;" class="aui-list-item">
+				[#else]
+				  <a href="${base}/product/detail?pid=${sit.id}" class="aui-list-item">
+				[/#if]
+				[#if sit.count==0] <div class="aui-list-theme-img sold-out-img">
+						[#else]
+						<div class="aui-list-theme-img">
+					[/#if]
+				  <img src="${config.imgurl}/${sit.img}" alt="">
+			  </div>
+			  <div class="aui-list-theme-message">
+				  <h3 class="aui-list-theme-title">${sit.name}</h3>
+				  [#if sit.membernum??]
+				   <span class="brand">${sit.member.username}</span>
+				  [/#if]   
+				  <span><em></em><i class="shop-money-icon"></i><i>${sit.price}</i> [#if sit.count==0]<span class="sold-out">已售空</span>[/#if]</span>
+			  <!-- <div class="aui-car-icon">
+						<img src="https://www.17sucai.com/preview/1527619/2019-08-13/a-greens/images/car.png" alt="">
+					</div> -->
+				</div>
+			</a>
+	               [/#list] 
+		    [/@pro_positionList]
+		</div>
+		
+		
+		<div class="divHeight"></div>
+		<div class="aui-ad-img">
+			<img src="https://www.17sucai.com/preview/1527619/2019-08-13/a-greens/images/ad-004.png" alt="">
+		</div>
+		<div class="aui-list-theme-box aui-list-theme-one">
+				[@pro_positionList id=2 count=3]
+				[#list proPosition as sit]
+				   [#if sit.count==0]
+				  <a href="javascript:;" class="aui-list-item">
+				[#else]
+				  <a href="${base}/product/detail?pid=${sit.id}" class="aui-list-item">
+				[/#if]
+				[#if sit.count==0] <div class="aui-list-theme-img sold-out-img">
+						[#else]
+						<div class="aui-list-theme-img">
+					[/#if]
+			 
+				  <img src="${config.imgurl}/${sit.img}" alt="">
+			  </div>
+			  <div class="aui-list-theme-message">
+				  <h3 class="aui-list-theme-title">${sit.name}</h3>
+				  [#if sit.membernum??]
+				   <span class="brand">${sit.member.username}</span>
+				  [/#if]
+				  
+				  <span><em></em><i>${sit.price}</i>[#if sit.count==0]<span class="sold-out">已售空</span>[/#if]</span>
+				  
+				  <!-- <div class="aui-car-icon">
+						<img src="https://www.17sucai.com/preview/1527619/2019-08-13/a-greens/images/car.png" alt="">
+					</div> -->
+				</div>
+			</a>
+	               [/#list] 
+		    [/@pro_positionList]
+
+		</div>
+		
+		
+			
+
+		<div class="aui-sol-list">
+			<div class="aui-flex">
+				<div class="aui-flex-box">
+					<span>猜你喜欢</span>
+				</div>
+			</div>
+			<div class="aui-list-theme-box aui-list-theme-two">
+			   
+					[@pro_positionList id=3 count=30]
+					[#list proPosition as sit]
+					[#if sit.count==0]
+					  <a href="javascript:;" class="aui-list-item">
+					[#else]
+					   <a href="${base}/product/detail?pid=${sit.id}" class="aui-list-item">
+					[/#if]
+  
+					[#if sit.count==0] <div class="aui-list-theme-img sold-out-img">
+							[#else]
+							<div class="aui-list-theme-img">
+						[/#if]
+						  <img class="h-40" src="${config.imgurl}/${sit.img}" alt="">
+					  </div>
+					  <div class="aui-list-theme-message">
+						  <h3 class="aui-list-theme-title">${sit.name}</h3>
+					  [#if sit.membernum??]
+					   <span class="brand">${sit.member.username}</span>
+					  [/#if]
+					  <span><em></em><i>${sit.price}</i>[#if sit.count==0]<span class="sold-out">已售空</span>[/#if]</span>
+							  
+					</div>
+				</a>
+	               [/#list] 
+		    [/@pro_positionList]
+			</div>
+		</div>
+		
+	</section>	
+	
+	
+		<footer class="aui-footer aui-footer-fixed">
+		<a href="${base}/wechat/index" class="aui-tabBar-item aui-tabBar-item-active">
+                <span class="aui-tabBar-item-icon">
+                    <i class="icon icon-loan"></i>
+                </span>
+			<span class="aui-tabBar-item-text">首页</span>
+		</a>
+		<a href="${base}/shop/index" class="aui-tabBar-item ">
+                <span class="aui-tabBar-item-icon">
+                    <i class="icon icon-credit"></i>
+                </span>
+			<span class="aui-tabBar-item-text">店铺</span>
+		</a>
+
+
+
+		<a href="${base}/cartshow/list" class="aui-tabBar-item ">
+                <span class="aui-tabBar-item-icon">
+                    <i class="icon icon-car"></i><i class="shop-badge">22</i>
+                </span>
+			<span class="aui-tabBar-item-text">购物车</span>
+		</a>
+		<a href="${base}/center/user" class="aui-tabBar-item ">
+                <span class="aui-tabBar-item-icon">
+                    <i class="icon icon-mine"></i>
+                </span>
+			<span class="aui-tabBar-item-text">我的</span>
+		</a>
+	</footer>	
+         
+
+</section>
+</body>
+<script type="text/javascript" src="${base}/templates/${config.theme}/view/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="${base}/templates/${config.theme}/view/static/js/slider.js"></script>
+
+
+<script type="text/javascript" src="${base}/templates/${config.theme}/view/static/js/flexible.js"></script>
+<script type="text/javascript" src="${base}/templates/${config.theme}/view/static/js/iscroll.js"></script>
+<script type="text/javascript" src="${base}/templates/${config.theme}/view/static/js/navbarscroll.js"></script>
+
+<script type="text/javascript">
+	function initMsg(){
+		var msg=document.getElementById("msg")
+		window.setInterval(()=>{
+			if(msg.className=="msg"){
+				msg.className="msg out"
+			}else{
+				msg.className="msg"
+			}
+		},5000)
+	}
+
+	var intDiff = parseInt(12000);
+	//倒计时总秒数量
+
+	   function reducehref(pcateId){
+            
+		   window.location.href="${base}/index/index?pcateId="+pcateId;
+        } 
+	
+	
+	
+	
+	function timer(intDiff) {
+		window.setInterval(function() {
+			var day = 00
+				, hour = 00
+				, minute = 00
+				, second = 00;
+			//时间默认值
+			if (intDiff > 0) {
+				day = Math.floor(intDiff / (60 * 60 * 24));
+				hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+				minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+				second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+			}
+			if (minute <= 9)
+				minute = '0' + minute;
+			if (second <= 9)
+				second = '0' + second;
+			$('.hour_show').html('0<s id="h"></s>' + hour + ' ');
+			$('.minute_show').html('<s></s>' + minute + ' ');
+			$('.second_show').html('<s></s>' + second + ' ');
+			intDiff--;
+			$.get("${base}/message/getmessage", function(data){
+	                  var content=data.message;
+	                  document.getElementById("msg-content").innerHTML =content;
+	                });
+		}, 1000);
+	}
+
+	$(function() {
+		initMsg();
+		timer(intDiff);
+		
+		$('.wrapper').navbarscroll();
+		
+	});
+	
+	
+	 $('#search_input').bind('keypress', function(event) {   //回车事件绑定 
+		        if (event.keyCode == "13") {  //js监测到为为回车事件时 触发            
+		            event.preventDefault();   //阻止页面自动刷新，重复加载
+	                var keyword=$('#search_input').val();	
+		   window.location.href="${base}/product/search?keyword="+keyword;
+
+		        } 
+	})
+
+	
+</script>
+<script type="text/javascript">
+
+
+</script>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选择账户</title>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="../new/css/aui.css" />
+    <link href="${base}/templates/${config.theme}/view/static/css/commonStyle.css?shareshopversion=1.1.1.191114" rel="stylesheet" type="text/css" />
+    <script src="https://kit.fontawesome.com/6b7cf02c0a.js" crossorigin="anonymous"></script>
+    <style>
+    .aui-list-item-inner label{
+        width: calc(100% - 1.5rem);
+    float: left;
+    height: 5rem;
+    line-height: 5rem;
+    font-size: 1.5rem;
+    }
+    .aui-list-item-inner input{
+    float: right;
+        transform: translateY(1.9rem);
+    }
+    .aui-list.aui-select-list li.active{
+        transition:  background-color .2s linear;
+        background-color: rgb(0,0,0,.5);
+        color: #fff;
+    }
+    </style>
+</head>
+<body>
+<header class="aui-bar aui-bar-nav theme-bg-color">
+        <a href="javascript:history.back();" class="aui-pull-left aui-btn">
+            <span class="aui-iconfont aui-icon-left"></span>
+        </a>
+        <div class="aui-title">选择账户</div>
+    </header>
+        <ul class="aui-list aui-select-list">
+                <li class="aui-list-header">选择账户</li>
+            
+                <li class="aui-list-item active">
+                    <div class="aui-list-item-inner">
+                        <label for="shop"><i class="fas fa-store-alt"></i>&nbsp; 商家账户</label><input id="shop" class="aui-radio" type="radio" value="shop" name="account" checked=""> 
+                    </div>
+                </li>
+          
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <label for="user"><i class="fas fa-user"></i> &nbsp;返佣账户</label><input id="user" class="aui-radio" type="radio" value="user" name="account">
+                    </div>
+                </li>
+            </ul>
+            <div class="aui-btn aui-btn-success aui-btn-block" style="margin-top: 10px;">确认</div>
+            <script src="./zepto.js"></script>
+            <script src="./touch.js"></script>
+            <!-- <script src="${base}/templates/${config.theme}/view/static/js/zepto.min.js"></script>
+<script src="${base}/templates/${config.theme}/view/static/js/touch.js"></script> -->
+            <script>
+            
+           $("input[name='account']").change(function(ev){
+            //    console.log(  $(this).parent("li.aui-list-item"));
+               
+                $(this).parent().parent().addClass("active")
+                $(this).parent().parent().siblings("li").removeClass("active")
+           })
+            </script>
+</body>
+</html>

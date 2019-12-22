@@ -1,0 +1,83 @@
+body {
+  overflow: hidden;
+}
+
+.sp-money-icon {
+  font-size: 4vw;
+}
+
+.so-scroll {
+  height: 100vh;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow: scroll;
+  padding-bottom: 13.33333vw;
+}
+
+.gw-img {
+  border-radius: 2.66667vw !important;
+}
+
+.cf-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 2.66667vw 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 2.66667vw;
+  border-bottom: 1px solid #ddd;
+}
+
+.cf-item > img {
+  width: 20vw;
+  height: 20vw;
+  padding: 0 2.66667vw;
+  border-radius: 50%;
+}
+
+.cf-item .text-content {
+  width: 74.66667vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-right: 2.66667vw;
+  line-height: 1.5;
+}
+
+.cf-item .text-content > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  font-size: 4vw;
+}
+
+.cf-item .text-content > div span:last-child {
+  max-width: 48vw;
+}
+
+.cf-item .text-content > div .name {
+  color: #777;
+}
+
+.cf-item .text-content > div .price {
+  font-weight: bold;
+  color: #b55a19;
+}
+
+.cf-item .text-content > div .time {
+  font-size: 3.2vw;
+  color: #bbb;
+}
+
+.titles .item {
+  height: 13.33333vw;
+  line-height: 13.33333vw;
+}
+/*# sourceMappingURL=shopOrder.css.map */

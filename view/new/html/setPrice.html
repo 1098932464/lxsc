@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>设置金额</title>
+    <link rel="stylesheet" href="../../static/css/commonStyle.css" type="text/css">
+    <style>
+        body {
+            background-color: #00695C;
+        }
+
+        .container {
+            height: 45vh;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+        }
+
+        #title {
+            padding-top: 1rem;
+            align-self: flex-start;
+        }
+
+        #price {
+            width: 100%;
+            font-size: 2rem;
+            margin: 1rem 0;
+            padding: 10px 0;
+            display: flex;
+            border-bottom: 1px solid #666;
+
+        }
+
+        input {
+            outline: none;
+            border: none;
+
+            width: 100%;
+        }
+
+        #price input {
+            font-size: 2rem;
+
+        }
+
+        #tips {
+            align-self: flex-start;
+        }
+
+        #btn {
+            outline: none;
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+            margin-top: 10px;
+            width: 100%;
+            height: 3rem;
+            font-size: 1.5rem;
+            background-color: var(--btn-color);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <span id="title">收款金额</span>
+        <div id="price">
+            <span>￥</span>
+            <input type="text">
+        </div>
+
+
+        <input id="tips" type="text" placeholder="添加收钱备注">
+        <button id="btn">确定</button>
+    </div>
+
+
+
+
+    <script>
+
+
+    </script>
+</body>
+
+</html>

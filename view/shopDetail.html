@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>利享商城店铺详情页面</title>
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<link href="${base}/templates/${config.theme}/view/static/css/fonts/productList.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<section class="aui-flexView">
+	<header class="aui-navBar aui-navBar-fixed">
+		<a href="javascript:;" class="aui-navBar-item">
+			<i class="icon icon-return"></i>
+		</a>
+		<div class="aui-center">
+			<span class="aui-center-title">利享商城</span>
+		</div>
+		<a href="javascript:;" class="aui-navBar-item" >
+			<i class="icon icon-search"></i>
+		</a>
+	</header>
+	<section class="aui-scrollView">
+		<div class="aui-tab" data-ydui-tab>
+			<ul class="tab-nav b-line">
+				<li class="tab-nav-item">
+					<a href="javascript:;">
+						<span>全部</span>
+					</a>
+				</li>
+			</ul>
+			[#list productList as data]
+			<div class="tab-panel">
+				<div class="tab-panel-item tab-active">
+					<a href="${base}/product/detail?pid=${data.id}" class="aui-flex b-line">
+						<div class="aui-sure-img">
+							<img src="${data.image} alt="" width="112" height="84">
+						</div>
+						<div class="aui-flex-box">
+							<h2>${data.name}</h2>
+							<p>${data.specifications}</p>
+							<h3><i>￥</i><em>${data.price}</em></h3>
+						</div>
+					</a>
+				</div>
+	           [/#list]
+
+
+			</div>
+		</div>
+
+	</section>
+	<footer class="aui-footer aui-footer-fixed">
+		<a href="javascript:;" class="aui-tabBar-item ">
+                <span class="aui-tabBar-item-icon">
+                    <i class="icon icon-loan"></i>
+                </span>
+			<span class="aui-tabBar-item-text">首页</span>
+		</a>
+		<a href="javascript:;" class="aui-tabBar-item aui-tabBar-item-active">
+                <span class="aui-tabBar-item-icon">
+                    <i class="icon icon-job"></i>
+                </span>
+			<span class="aui-tabBar-item-text">保障</span>
+		</a>
+		<a href="javascript:;" class="aui-tabBar-item ">
+                <span class="aui-tabBar-item-icon">
+                    <i class="icon icon-credit"></i>
+                </span>
+			<span class="aui-tabBar-item-text">服务</span>
+		</a>
+		<a href="javascript:;" class="aui-tabBar-item ">
+                <span class="aui-tabBar-item-icon">
+                    <i class="icon icon-ions"></i>
+                </span>
+			<span class="aui-tabBar-item-text">发现</span>
+		</a>
+		<a href="javascript:;" class="aui-tabBar-item ">
+                <span class="aui-tabBar-item-icon">
+                    <i class="icon icon-info"></i>
+                </span>
+			<span class="aui-tabBar-item-text">我的</span>
+		</a>
+	</footer>
+</section>
+</body>
+<script type="text/javascript" src="${base}/templates/${config.theme}/view/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="${base}/templates/${config.theme}/view/static/js/tab.js"></script>
+</html>

@@ -1,0 +1,68 @@
+/* 付款软键盘 */
+.shop-pay {
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    position: fixed;
+    right: -100vw;
+    transition: right .2s linear;
+    top: 0;
+    background-color: #ddd;
+
+}
+
+.shop-pay-input {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background: #fff;
+    margin-top: 60px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.shop-pay-input input {
+
+    display: block;
+    height: 70px;
+    line-height: 70px;
+    font-size: 50px;
+}
+
+.shop-pay-keyboard {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.shop-pay-keyboard>li {
+    width: 33vw;
+    height: 25vw;
+    box-sizing: border-box;
+    border-right: 2px solid #ddd;
+    border-bottom: 2px solid #ddd;
+    line-height: 25vw;
+    background-color: #fff;
+    text-align: center;
+    font-size: 50px;
+    transition: background-color .2s linear;
+}
+
+.shop-pay-keyboard>li:active {
+    background-color: #ccc;
+}
+
+.shop-pay-keyboard>li:nth-child(3n) {
+    border-right: 0;
+}
+
+.shop-pay-keyboard>li:nth-child(10),
+.shop-pay-keyboard>li:nth-child(12) {
+    background-color: #ddd;
+}

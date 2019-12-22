@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商家订单</title>
+    <link rel="stylesheet" href="../css/screen.css">
+    <link rel="stylesheet" href="../css/spcommon.css">
+    <link rel="stylesheet" href="../css/shopOrder.css">
+</head>
+
+<body>
+    <header class="sp-header">
+        <a href="javascript:history.back();" class="lf"><i class="fas fa-chevron-left"></i></a>
+        <div class="title">商家订单</div>
+    </header>
+    <section id="sec" class="sm-sec active so-scroll">
+        <ul class="titles">
+            <li class="item active" data-target="#cf">充返活动</li>
+            <li class="item" data-target="#gw">店铺购物</li>
+        </ul>
+        <div id="cf" class="f-wrapper active">
+            <ul>
+            
+                <li>
+                    <div class="cf-item">
+                        <img src="http://img3.imgtn.bdimg.com/it/u=1924326002,2418590099&fm=26&gp=0.jpg" alt="">
+                        <div class="text-content">
+                                <div>
+                                        <span class="name">订单号:</span>
+                                        <span>1001234012412</span>
+                                    </div>
+                            <div>
+                                <span class="name">会员号:</span>
+                                <span>10001242432342342</span>
+                            </div>
+                            <div>
+                                <span class="name">昵称:</span>
+                                <span>风清扬</span>
+                            </div>
+                            <div>
+                                <span class="name">充值时间:</span>
+                                <span class="time">2019年12月11日15:37:58</span>
+                            </div>
+                            <div>
+                                <span class="name">充值金额:</span>
+                                <span class="price">￥200</span>
+                            </div>
+                           
+                        </div>
+                    </div>
+
+                </li>
+           
+            </ul>
+
+        </div>
+        <div id="gw" class="f-wrapper">
+            <ul>
+                    <li>
+                            <div class="cf-item">
+                                    <img class="gw-img" src="http://img1.imgtn.bdimg.com/it/u=2053221582,3410806415&fm=26&gp=0.jpg" alt="">
+                                <div class="text-content">
+                                        <div>
+                                                <span class="name">订单号:</span>
+                                                <span>1001234012412</span>
+                                            </div>
+                                    <div>
+                                        <span class="name">商品名称:</span>
+                                        <span>禅悦瑜伽</span>
+                                    </div>
+                                    <div>
+                                        <span class="name">昵称:</span>
+                                        <span>风清扬</span>
+                                    </div>
+                                    <div>
+                                        <span class="name">交易时间:</span>
+                                        <span class="time">2019年12月11日15:40:22</span>
+                                    </div>
+                                    <div>
+                                        <span class="name">金额:</span>
+                                        <div class="price">￥200 + <span class="sp-money-icon">1000</span></div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+        
+                        </li>
+
+            </ul>
+
+
+        </div>
+    </section>
+    <script src="../static/js/zepto.min.js"></script>
+    <script src="../static/js/touch.js"></script>
+    <script>
+        $(".titles .item").tap(function () {
+            $(".titles .item.active").removeClass("active")
+            $(this).addClass("active")
+            var t = $(this).data("target")
+            $("#sec .f-wrapper.active").removeClass("active")
+            $(t).addClass("active")
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/aui-slide.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/commonStyle.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/footer.css" />
+    <style>
+       
+        .aui-searchbar {
+            background: transparent;
+        }
+
+        
+        .aui-list{
+            background-color: transparent;
+        }
+        .aui-list .aui-list-item{
+            padding-left: 0;
+        }
+        .aui-list .aui-list-item:active {
+    background-color: transparent;
+}
+
+.aui-list .aui-list-item-media {
+    padding-left: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.aui-list,.aui-list .aui-list-item {
+    background: none;
+}
+.header-left{
+    display: flex;
+    padding-left: 10px;
+}
+.header-left-media img{
+    width: 25px;height: 25px;border-radius: 50%;margin-right: 5px;
+}
+.header-right-text{
+    line-height: 16px;
+    font-size: 13px;
+}
+    </style>
+</head>
+
+<body class="theme-bg-color">
+    <div class="aui-content">
+        <header class="aui-bar aui-bar-nav theme-bg-color" style="display: flex;align-items: center;">
+            <!-- <a href="javascript:history.back();" class="aui-pull-left aui-btn">
+                <span class="aui-iconfont aui-icon-left"></span>
+            </a> -->
+            <div class="header-left">
+                    <div class="header-left-media">
+                        <img src="http://aui.dianm.cc/aui2.0/image/l1.png" alt="">
+                    </div>
+                    <div class="header-right-text">
+                        <div>南阳</div>
+                        <div>
+                            多云 12°C
+                        </div>
+                    </div>
+                </div>
+            <div class="aui-title" style="left:7rem; right: 0.5rem;">
+                <div class="aui-searchbar" id="search">
+                    <div class="aui-searchbar-input aui-border-radius">
+                        <i class="aui-iconfont aui-icon-search"></i>
+                        <input type="search" placeholder="请输入搜索内容" id="search-input">
+                        <div class="aui-searchbar-clear-btn">
+                            <i class="aui-iconfont aui-icon-close"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- 商品分类导航 -->
+        <div class="good-classify">
+
+            <!-- Nav tabs -->
+            <ul class="hide-scroll">
+
+                <li class="active"><a href="javascript:reducehref(${pca.id});">美容美发</a></li>
+
+                <li><a href="javascript:reducehref(${pca.id});">粮油</a></li>
+                <li><a href="javascript:reducehref(${pca.id});">粮油</a></li>
+                <li><a href="javascript:reducehref(${pca.id});">粮油</a></li>
+                <li><a href="javascript:reducehref(${pca.id});">粮油</a></li>
+                <li><a href="javascript:reducehref(${pca.id});">粮油</a></li>
+
+
+            </ul>
+
+        </div>
+
+        <div class="shop-scrollView">
+            <!-- 商品分类 -->
+    <div class="shop-card">
+            <div class="aui-grid">
+                <div class="aui-row">
+                    <div class="aui-col-5  shop-center">            
+                            <img src="https://gw.alicdn.com/tfs/TB1taq7mGagSKJjy0FhXXcrbFXa-150-150.png">
+                        <div class="aui-grid-label">手机</div>
+                    </div>
+                    <div class="aui-col-5  shop-center">            
+                            <img src="https://gw.alicdn.com/tfs/TB1taq7mGagSKJjy0FhXXcrbFXa-150-150.png">
+                        <div class="aui-grid-label">手机</div>
+                    </div>
+                    <div class="aui-col-5  shop-center">            
+                            <img src="https://gw.alicdn.com/tfs/TB1taq7mGagSKJjy0FhXXcrbFXa-150-150.png">
+                        <div class="aui-grid-label">手机</div>
+                    </div>
+                    <div class="aui-col-5  shop-center">            
+                            <img src="https://gw.alicdn.com/tfs/TB1taq7mGagSKJjy0FhXXcrbFXa-150-150.png">
+                        <div class="aui-grid-label">手机</div>
+                    </div>
+                    <div class="aui-col-5  shop-center">            
+                            <img src="https://gw.alicdn.com/tfs/TB1taq7mGagSKJjy0FhXXcrbFXa-150-150.png">
+                        <div class="aui-grid-label">手机</div>
+                    </div>
+                    <div class="aui-col-5  shop-center">
+                            <img src="https://gw.alicdn.com/tfs/TB1taq7mGagSKJjy0FhXXcrbFXa-150-150.png">
+                        <div class="aui-grid-label">全部</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   <!-- 轮播图 -->
+   <div class="shop-card">
+        <div id="aui-slide">
+            <div class="aui-slide-wrap" >
+     
+           
+                <div class="aui-slide-node bg-dark">
+                    <img src="../image/l1.png" />
+                </div>
+                <div class="aui-slide-node bg-dark">
+                    <img src="../image/l2.png" />
+                </div>
+                <div class="aui-slide-node bg-dark">
+                    <img src="../image/l3.png" />
+                </div>
+            </div>
+            <div class="aui-slide-page-wrap"><!--分页容器--></div>
+        </div>
+    </div>
+
+   
+
+<!-- 商铺列表 -->
+<ul class="aui-list aui-media-list">
+    <li class="aui-list-header">
+        附近的商铺
+    </li>
+ 
+    <li class="aui-list-item">
+        <div class="shop-card">
+                <div class="aui-media-list-item-inner">
+                        <div class="aui-list-item-media">
+                                <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1968125376,2165089056&amp;fm=26&amp;gp=0.jpg">
+                        </div>
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-text">
+                                <div class="aui-list-item-title">康师傅旗舰店</div>
+                                <!-- <div class="aui-list-item-right">08:00</div> -->
+                            </div>
+                            <div class="aui-list-item-text">
+                                    康师傅,康师傅饼干,康师傅饮品,康师傅方便面,方便面,拉面,康师傅集团,康师傅食城,康师傅控股,康师傅牛肉面,康师傅冰红茶,绿茶,茉莉清茶,3+2,ksf,拉面,百事可乐
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-info" style="padding-top:0">
+                        <div class="aui-info-item">
+                            <span class="aui-margin-l-5">距离当前位置</span>
+                            </div>
+                        <div class="aui-info-item"><span class="shop-red">1000</span>&nbsp;米</div>
+                    </div>
+        </div>
+    </li>
+    <li class="aui-list-item">
+        <div class="shop-card">
+                <div class="aui-media-list-item-inner">
+                        <div class="aui-list-item-media">
+                                <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1968125376,2165089056&amp;fm=26&amp;gp=0.jpg">
+                        </div>
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-text">
+                                <div class="aui-list-item-title">康师傅旗舰店</div>
+                                <!-- <div class="aui-list-item-right">08:00</div> -->
+                            </div>
+                            <div class="aui-list-item-text">
+                                    康师傅,康师傅饼干,康师傅饮品,康师傅方便面,方便面,拉面,康师傅集团,康师傅食城,康师傅控股,康师傅牛肉面,康师傅冰红茶,绿茶,茉莉清茶,3+2,ksf,拉面,百事可乐
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-info" style="padding-top:0">
+                        <div class="aui-info-item">
+                            <span class="aui-margin-l-5">距离当前位置</span>
+                            </div>
+                        <div class="aui-info-item"><span class="shop-red">1000</span>&nbsp;米</div>
+                    </div>
+        </div>
+    </li>
+    <li class="aui-list-item">
+        <div class="shop-card">
+                <div class="aui-media-list-item-inner">
+                        <div class="aui-list-item-media">
+                                <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1968125376,2165089056&amp;fm=26&amp;gp=0.jpg">
+                        </div>
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-text">
+                                <div class="aui-list-item-title">康师傅旗舰店</div>
+                                <!-- <div class="aui-list-item-right">08:00</div> -->
+                            </div>
+                            <div class="aui-list-item-text">
+                                    康师傅,康师傅饼干,康师傅饮品,康师傅方便面,方便面,拉面,康师傅集团,康师傅食城,康师傅控股,康师傅牛肉面,康师傅冰红茶,绿茶,茉莉清茶,3+2,ksf,拉面,百事可乐
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aui-info" style="padding-top:0">
+                        <div class="aui-info-item">
+                            <span class="aui-margin-l-5">距离当前位置</span>
+                            </div>
+                        <div class="aui-info-item"><span class="shop-red">1000</span>&nbsp;米</div>
+                    </div>
+        </div>
+    </li>
+
+    </ul>
+
+        </div>
+     <!-- 底部导航栏 -->
+        <footer class="aui-footer aui-footer-fixed">
+                <a href="${base}/wechat/index" class="aui-tabBar-item aui-tabBar-item-active">
+                        <span class="aui-tabBar-item-icon">
+                            <i class="icon icon-loan"></i>
+                        </span>
+                    <span class="aui-tabBar-item-text">首页</span>
+                </a>
+                <a href="${base}/shop/index" class="aui-tabBar-item ">
+                        <span class="aui-tabBar-item-icon">
+                            <i class="icon icon-credit"></i>
+                        </span>
+                    <span class="aui-tabBar-item-text">店铺</span>
+                </a>
+        
+        
+        
+                <a href="${base}/cartshow/list" class="aui-tabBar-item ">
+                        <span class="aui-tabBar-item-icon">
+                            <i class="icon icon-car"></i><i class="shop-badge">22</i>
+                        </span>
+                    <span class="aui-tabBar-item-text">购物车</span>
+                </a>
+                <a href="${base}/center/user" class="aui-tabBar-item ">
+                        <span class="aui-tabBar-item-icon">
+                            <i class="icon icon-mine"></i>
+                        </span>
+                    <span class="aui-tabBar-item-text">我的</span>
+                </a>
+            </footer>	
+    </div>
+    <script type="text/javascript" src="../script/aui-slide.js"></script>
+    <script>
+     var slide = new auiSlide({
+        container:document.getElementById("aui-slide"),
+        // "width":300,
+        "height":160,
+        "speed":300,
+        "pageShow":true,
+        "pageStyle":'dot',
+        "loop":true,
+        'dotPosition':'center'
+        // currentPage:currentFun
+    })
+    </script>
+</body>
+
+</html>

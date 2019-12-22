@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>确认订单</title>
+        <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+        <meta content="yes" name="apple-mobile-web-app-capable"/>
+        <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+        <meta content="telephone=no" name="format-detection"/>
+        <link href="${base}/templates/${config.theme}/view/static/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="${base}/templates/${config.theme}/view/static/css/order.css" rel="stylesheet" type="text/css"/>
+        <link href="${base}/templates/${config.theme}/view/static/css/commonStyle.css" rel="stylesheet" type="text/css"/>
+
+        <style>
+            .aui-btn-button{
+
+                background-color: var(--btn-color);
+            }
+            
+            #choose{
+                font-size: .8rem;
+                color: var(--font-gray);
+            }
+        </style>
+        <script src="${base}/templates/${config.theme}/view/static/js/jquery.min.js" type="text/javascript"></script>
+         <script type="text/javascript"> 
+          function address(id){  
+        	  window.location.href="${base}/userorder/address?id="+id;        	  
+          }
+         
+          
+          
+          
+          
+          
+          
+         </script>
+         
+         
+         <script type="text/javascript">
+ $(document).ready(function() {
+     
+    document.getElementById('choose').addEventListener('click', function() { 
+        	 var chooseway=$("#choose").val();
+        	 
+        	 var price="${order.postageprice}";
+        	 
+        	 var totmoney="${order.currenttotalcmoney}";
+        	 
+        	  if(chooseway==0){
+        		  $("#postprice").text();
+        		  $("#lastprice").text("现金：${order.totalcmoney}  利享币：${order.totalyhmoney}");
+        	  }else if(chooseway==1){
+        		  $("#postprice").text("现金:"+price);
+        		  var c = Number(totmoney) + Number(price) 
+        		  $("#lastprice").text("现金："+c+"  利享币：${order.totalyhmoney}");
+        		  
+        	  }
+          });
+     $("#btnOrder").on("click",function(){
+    	 var chooseway=$("#choose").val();
+    	 
+    	 var url = "${base}/wechat/pay?orderId=${order.id}&&postway="+chooseway;
+
+ 	  	$.get(url,function(result) {
+ 	  		
+ 	  		//两种支付方式，利享币支付，或现金支付，
+ 	  		 if(result.state==1){
+   				appId = result.appId;
+ 				timeStamp = result.timeStamp;
+ 				nonceStr = result.nonceStr;
+ 				package = result.package;
+ 				signType = result.signType;
+ 				paySign = result.paySign;
+ 				
+ 				if (typeof WeixinJSBridge == "undefined") {
+ 					if (document.addEventListener) {
+ 						document.addEventListener('WeixinJSBridgeReady',
+ 								onBridgeReady, false);
+ 					} else if (document.attachEvent) {
+ 						document.attachEvent('WeixinJSBridgeReady',
+ 								onBridgeReady);
+ 						document.attachEvent('onWeixinJSBridgeReady',
+ 								onBridgeReady);
+ 					}
+ 				} else {
+ 					onBridgeReady();
+ 				}
+ 	  		 }else if(result.state==0)  {	 
+ 	  			 alert("支付成功");
+ 	  		 }else{
+ 	  		  alert("金额不足，支付失败"); 
+ 	  		 }
+ 				
+ 				
+ 			});
+ 		} 
+     );
+ });
+ 
+ 
+ 
+ 
+ function onBridgeReady(){
+	  WeixinJSBridge.invoke( 'getBrandWCPayRequest', {
+		  "appId":appId,     //公众号名称,由商户传入     
+         "timeStamp":timeStamp,         //时间戳,自1970年以来的秒数     
+         "nonceStr":nonceStr, //随机串     
+         "package":package,     
+         "signType":signType,         //微信签名方式：     
+         "paySign":paySign //微信签名 
+        }, 
+        function(res){   
+        	console.log("返回结果");
+        	console.log(package);
+        	
+     	   if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+                console.log('支付成功');
+                //支付成功后跳转的页面
+            }else if(res.err_msg == "get_brand_wcpay_request:cancel"){
+         	   console.log('支付取消');
+            }else if(res.err_msg == "get_brand_wcpay_request:fail"){
+         	   console.log('支付失败');
+                WeixinJSBridge.call('closeWindow');
+            } //使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回ok,但并不保证它绝对可靠。
+  });   
+}
+
+
+ </script>
+           
+        <style>
+       
+        
+         .bg{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: .7;
+            border-radius:0 0 10px 10px;
+            z-index: -1;
+        }
+        .price-items .price-item{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+      
+        }
+        .price-items .price-item span{
+            color: #000;
+        }
+        .price-items .price-item span.title{
+            font-size: .9rem;
+        }
+
+        #price1{
+            padding-right: 10px;
+        }
+        .price-items{
+           
+           display: flex;
+           flex-direction: column;
+           justify-content: space-between;
+           align-items: left;
+           padding: 10px;
+            background-color: #fff;
+           position: relative;
+       }
+        #choose{
+            height: 100%;
+            text-align: right;
+            padding: 10px;
+        }
+        .p-20{
+ padding: 20px;   
+}
+
+#address{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #fff;
+    margin-bottom: 15px;
+}
+#address .address-item{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+#address .address-item.detail-address{
+    flex-direction: column;
+}
+p{
+    text-indent: 2rem;
+}
+#chooseAddress{
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#map{
+    display: none;
+}
+#map iframe{
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+#map button{
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100px;
+    height: 40px;
+    background-color: green;
+    opacity: .7;
+    border-radius: 0 0 10px 0 ;
+    color: #fff;
+    z-index: 2200;
+}
+#map-show-btn{
+    width: 20%;
+    height: 30px;
+    border-radius: 0 0 0 10px;
+    box-shadow: 0px 0px 5px 5px currentColor;
+    position: fixed;
+    top: 0;
+    right: 0;
+    color: #fff;
+    z-index: 1003;
+    font-size: .7rem;
+    transition: box-shadow .2s linear;
+}
+
+#map-show-btn:active{
+    box-shadow: 5px -5px 5px 5px currentColor;
+}
+
+.layui-form-label{
+    width: unset;
+
+}
+        </style>      
+    </head>
+    <body style="background:#f7f7f7">
+            <button id="map-show-btn" onclick="hideMap(false)">查看是否包邮</button>
+        <div id="map">
+            <button onclick="hideMap()">隐藏地图</button>
+                <iframe  src="${base}/userorder/map" frameborder="0"></iframe>
+        </div>
+      
+
+
+
+        <section class="aui-flexView">
+            <header class="aui-navBar aui-navBar-fixed theme-bg-color" >
+                <a href="javascript:;" class="aui-navBar-item">
+                    <i  class="icon icon-return"></i>
+                </a>
+                <div class="aui-center">
+                    <span style="color: #fff;" class="aui-center-title" >确认订单</span>
+                </div>
+                <a href="javascript:;" class="aui-navBar-item">
+                    <i class="icon icon-sys"></i>
+                </a>
+               
+            </header>
+            <section class="aui-scrollView">
+                <div class="aui-order-box">
+                
+                       
+                    <div id="address" class="radius-10">
+                            <#if (order.address)??>
+                            <div onclick="address('${order.id}')" class="address-item detail-address">
+                                    <div class="aui-flex-box"  ><span class="glyphicon glyphicon-map-marker"> 收货人地址:</span></div>
+                                    <p>${order.address}</p>
+                               </div>
+                            <#else>
+                            <div id="chooseAddress" onclick="address('${order.id}')">
+                                    <span>请选择收货地址</span>
+                                    <span class="glyphicon glyphicon-triangle-right"></span>
+                            </div>
+                            </#if>
+                            
+                        <div class="address-item">
+                                <div class="aui-flex-box"  ><span class="glyphicon glyphicon-user"> 收货人:</span></div>
+                                <div>张三</div>
+                        </div>
+                       <div class="address-item">
+                            <div class="aui-flex-box"  ><span class="glyphicon glyphicon-phone"> 收货人手机号:</span></div>
+                            <div>16464646345163</div>
+                       </div>
+                      
+
+                    </div>
+              
+                    <!-- 订单项 -->
+                
+
+                    <div class="aui-flex aui-flex-default aui-mar15 radius-10">
+                            <div class="aui-flex-goods">
+                                <img src="${config.imgurl}/${order.image}" alt="">
+                            </div>
+                            
+                            <div class="aui-flex-box">
+                                <h2>${order.name}</h2>
+                                <p>${order.discountName}</p>
+                                <div class="aui-flex aui-flex-clear">
+                                    <div class="aui-flex-box"></div>
+                                    <div>x <span>${order.amount}</span></div>
+                                </div>
+                                <div class="aui-flex aui-flex-clear">
+                                    <div class="aui-flex-box">￥ <span>${order.currentsiglecmoney}</span></div>
+                                    <div><span class="shop-money-icon"></span> <span>${order.currentsiglecmoney}</span></div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                       
+
+
+
+
+
+
+                    <div class="aui-flex aui-choice-white b-line radius-10">
+                        <div class="aui-flex-box">配送方式</div>
+                        <!-- <div class="aui-flex-triangle"> -->
+                            <select id="choose">
+                         <option value ="0">用户自提</option>
+                          <option value ="1">普通快递</option>
+                          </select>
+                        
+                        </div>
+                    </div>
+                  
+                    <!-- 商品总价格 -->
+                    <div class="p-20">
+                            <div class="price-items radius-10">
+                                    <div class="price-item">
+                                        <span class="title">商品总价</span>
+                                        <div>
+                                            <span class="title">￥</span>
+                                            <span id="price1">${order.totalcmoney}</span>
+                                            <span class="shop-money-icon"></span>
+                                            <span id="price2">${order.totalyhmoney}</span>
+                                        </div>
+                                    </div>
+                                    <div class="price-item">
+                                        <span class="title">运费总额</span>
+                                        <div>
+                                            <span class="title">￥</span>
+                                            <span>10</span>
+                                        </div>
+                                    </div>
+                                    <#if ((member.leval)??)&&((member.leval)gt 0)>
+                                    <div class="price-item">
+                                            <span class="title">
+                                                    VIP折扣
+                                            </span>
+                                            <span>七折</span>
+                
+                                        </div>
+                                      </#if>
+                                    
+                                </div>
+                    </div>
+                    
+                </div>
+                
+            </section>
+            <div class="bg theme-bg-color">
+
+                </div>
+            <footer class="aui-bar-footer">
+                <div class="aui-flex">
+                    <div class="aui-flex-box">
+                 <em id="lastprice"></em> 
+                    </div>
+                    <div class="aui-btn-button">
+                        <button id="btnOrder">去支付</button>
+                    </div>
+                </div>
+            </footer>
+        </section>
+
+        <script>
+        function hideMap(hide=true){
+            if(hide)
+            document.getElementById("map").style.display="none";
+            else
+            document.getElementById("map").style.display="block";
+        }
+        </script>
+    </body>
+</html>

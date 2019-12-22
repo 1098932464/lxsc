@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>限时兑换</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/commonStyle.css" />
+    <link rel="stylesheet" type="text/css" href="./LCalendar.css" />
+    <link rel="stylesheet" type="text/css" href="../css/spcommon.css" />
+    <style>
+        .rob-item-wrapper {
+            position: relative;
+            display: flex;
+        }
+
+        .rob-list-item:nth-child(2n) .rob-item-wrapper {
+            flex-direction: row-reverse;
+        }
+
+        .rob-list-item:nth-child(2n+1) .rob-item-wrapper {
+
+            flex-direction: row;
+        }
+
+        .rob-list-item:nth-child(2n) .rob-bottom {
+            flex-direction: row-reverse;
+        }
+
+        .rob-list-item:nth-child(2n+1) .rob-bottom {
+
+            flex-direction: row;
+        }
+
+        .rob-title {
+            font-size: 16px;
+            font-weight: bold;
+            /* white-space: nowrap; */
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .rob-item-media {
+            width: 40%;
+        }
+
+        .rob-item-content {
+            width: 60%;
+            box-sizing: border-box;
+            padding-left: 5px;
+        }
+
+        .rob-bottom {
+            width: calc(60% - 5px);
+            padding-right: 5px;
+            display: flex;
+            position: absolute;
+            bottom: 0;
+            justify-content: space-between;
+        }
+
+        .rob-price {
+            font-size: 20px;
+            color: red;
+        }
+
+        .rob-list-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .rob-list {
+            /* height: 100vh;
+        overflow-y: scroll;
+        padding-bottom: 50px; */
+        }
+
+        .rob-time {
+            color: red;
+            font-size: 1rem;
+            font-weight: bolder;
+        }
+
+        .aui-content {
+            /* background-image: url(http://img.sccnn.com/bimg/341/09506.jpg);
+        background-repeat: no-repeat;
+        background-size: 100% 100%; */
+        }
+
+        .rob-ad {
+            width: 100%;
+        }
+
+        .scroll {
+            height: 100vh;
+            overflow-y: scroll;
+            padding-bottom: 50px;
+            transform: translateY(0);
+        }
+
+        @keyframes record {
+            0% {
+                transform: translateY(220px);
+            }
+
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+
+        @keyframes record2 {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+
+        .rob-records {
+            animation-name: record2;
+            /* animation-duration: 10s; */
+            animation-timing-function: linear;
+            animation-iteration-count: 1;
+        }
+
+        .rob-record {
+            display: grid;
+            padding: 10px;
+            line-height: 1.5;
+            grid-template-columns: repeat(4, 1fr);
+            border-bottom: 1px solid #ddd;
+            background-color: #fff;
+        }
+
+        .rob-record .rr-3 {
+            grid-column: 1/span 2;
+        }
+
+        .rob-record .rr-4 {
+            color: #777;
+            justify-self: flex-end;
+            grid-column: 3/span 2;
+        }
+
+        .rob-record .rr-5 {
+            color: goldenrod;
+        }
+
+        .rob-record .rr-6 {
+            justify-self: flex-end;
+            grid-column: 2/span 3;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            max-width: 100%;
+        }
+
+        .top-100 {
+            transform: translateY(-100%);
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="aui-content">
+        <header class="aui-bar aui-bar-nav">
+            <a class="aui-pull-left aui-btn">
+                <span class="aui-iconfont aui-icon-left"></span>
+            </a>
+            <div class="aui-title">限时兑换</div>
+        </header>
+        <section class="scroll">
+            <div class="rob-ad">
+                <img src="http://img0.imgtn.bdimg.com/it/u=452966427,3842240659&fm=26&gp=0.jpg" alt="">
+            </div>
+            <ul class="rob-list">
+
+                <li class="rob-list-item">
+                    <div class="rob-item-wrapper">
+                        <div class="rob-item-media">
+                            <img src="http://manage.yihuoshidai.com/files/366a277e-45c7-4dad-a571-4224b9fa2704.png">
+                        </div>
+                        <div class="rob-item-content">
+                            <div class="rob-title"> 苹果iPhone 11 Pro（128GB/全网通）</div>
+                            <div>2019-12-1</div>
+                            <div class="rob-time" data-time="1575172800000"></div>
+                            <div>剩余100件</div>
+                            <div class="rob-bottom">
+                                <div>
+                                    <span class="rob-price sp-money-icon">100</span>&nbsp;<span
+                                        style="text-decoration:line-through;color: gray;font-weight: normal;"
+                                        class="sp-money-icon">200</span>
+
+                                </div>
+                                <div class="rob-btn">
+                                    <div class="aui-btn aui-btn-danger">去兑换
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="rob-list-item">
+                    <div class="rob-item-wrapper">
+                        <div class="rob-item-media">
+                            <img src="http://manage.yihuoshidai.com/files/cba669f8-d722-4d9e-a085-1e2376bcb129.png">
+                        </div>
+                        <div class="rob-item-content">
+                            <div class="rob-title">茅台飞天2018年酱香型白酒 53度 500ml*6瓶装</div>
+                            <div>2019-12-12</div>
+                            <div class="rob-time" data-time="1576123200000"></div>
+                            <div>剩余100件</div>
+                            <div class="rob-bottom">
+                                <div>
+                                    <span class="rob-price sp-money-icon">100</span>&nbsp;<span
+                                        style="text-decoration:line-through;color: gray;font-weight: normal;"
+                                        class="sp-money-icon">200</span>
+                                </div>
+                                <div class="rob-btn">
+                                    <div class="aui-btn aui-btn-danger">去兑换
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+            <div style="overflow: hidden;height: 220px;">
+                <!-- <ul id="copy" class="rob-records">
+                             
+                                        <li class="rob-record">
+                                            <div class="rr-3">小苹果 <span style="color: #777;font-size: 12px;">(南阳)</span></div>
+                                            <div class="rr-4">2019 11/12 12:00:10</div>
+                                            <div class="rr-5">成功抢到</div>
+                                            <div class="rr-6">iphoneXI 64G[全网通]</div>
+                                        </li>
+                                        <li class="rob-record">
+                                                <div class="rr-3">小苹果 <span style="color: #777;font-size: 12px;">(南阳)</span></div>
+                                                <div class="rr-4">2019 11/12 12:00:10</div>
+                                                <div class="rr-5">成功抢到</div>
+                                                <div class="rr-6">iphoneXI 64G[全网通]</div>
+                                            </li>
+                                            <li class="rob-record">
+                                                    <div class="rr-3">小苹果 <span style="color: #777;font-size: 12px;">(南阳)</span></div>
+                                                    <div class="rr-4">2019 11/12 12:00:10</div>
+                                                    <div class="rr-5">成功抢到</div>
+                                                    <div class="rr-6">iphoneXI 64G[全网通]</div>
+                                                </li>
+                                                <li class="rob-record">
+                                                        <div class="rr-3">小苹果 <span style="color: #777;font-size: 12px;">(南阳)</span></div>
+                                                        <div class="rr-4">2019 11/12 12:00:10</div>
+                                                        <div class="rr-5">成功抢到</div>
+                                                        <div class="rr-6">iphoneXI 64G[全网通]</div>
+                                                    </li>
+                                    </ul> -->
+                <ul id="real" class="rob-records">
+                    <li class="rob-record">
+                        <div class="rr-3">小苹果 <span style="color: #777;font-size: 12px;">(南阳)</span></div>
+                        <div class="rr-4">2019 11/12 12:00:10</div>
+                        <div class="rr-5">成功抢到</div>
+                        <div class="rr-6">iphoneXI 64G[全网通]</div>
+                    </li>
+                    <li class="rob-record">
+                        <div class="rr-3">小苹果 <span style="color: #777;font-size: 12px;">(南阳)</span></div>
+                        <div class="rr-4">2019 11/12 12:00:10</div>
+                        <div class="rr-5">成功抢到</div>
+                        <div class="rr-6">iphoneXI 64G[全网通]</div>
+                    </li>
+                    <li class="rob-record">
+                        <div class="rr-3">小苹果 <span style="color: #777;font-size: 12px;">(南阳)</span></div>
+                        <div class="rr-4">2019 11/12 12:00:10</div>
+                        <div class="rr-5">成功抢到</div>
+                        <div class="rr-6">iphoneXI 64G[全网通]</div>
+                    </li>
+                    <li class="rob-record">
+                        <div class="rr-3">小苹果 <span style="color: #777;font-size: 12px;">(南阳)</span></div>
+                        <div class="rr-4">2019 11/12 12:00:10</div>
+                        <div class="rr-5">成功抢到</div>
+                        <div class="rr-6">iphoneXI 64G[全网通]</div>
+                    </li>
+                </ul>
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <script src="./loadingData.js"></script>
+    <script src="./LCalendar.js"></script>
+    <script src="../static/js/zepto.min.js"></script>
+    <script>
+        $(function () {
+            //    倒计时
+            $("[data-time]").each(function (i, e) {
+                var time = $(e).data("time")
+                setInterval(() => {
+                    var ms = time - new Date().getTime()
+                    var seconds = parseInt(ms / 1000)
+                    var d = parseInt(seconds / (3600 * 24))
+                    var h = parseInt((seconds % (3600 * 24)) / 3600)
+                    var m = parseInt(((seconds % (3600 * 24)) % 3600) / 60)
+                    var s = parseInt(((seconds % (3600 * 24)) % 3600) % 60)
+                    var str = h + ":" + m + ":" + s
+                    if (d != 0) {
+                        str = d + "天 " + str
+                    }
+                    $(e).html("距离兑换 " + str)
+                }, 1000);
+            })
+
+            initUl()
+        })
+
+
+        function initUl() {
+            var lis = $("#real li")
+        var time = lis.length * 2
+        $("#real").css("animation-duration", time+"s")
+        $("#real").one("animationend", function () {
+            $(this).css({
+                animationDuration: time+6+"s",
+                animationName: "record",
+                animationIterationCount: "infinite"
+            })
+        })
+        }
+
+    </script>
+</body>
+
+</html>

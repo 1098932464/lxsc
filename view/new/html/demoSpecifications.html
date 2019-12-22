@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+    <link rel="stylesheet" href="./specifications.css" type="text/css">
+    <style>
+        body {
+            background-color: tomato;
+        }
+
+        .shop-mask {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgb(0, 0, 0, .3);
+            display: none;
+            z-index: 100;
+        }
+
+        .shop-popup {
+            width: 100vw;
+            position: fixed;
+            background-color: #fff;
+            z-index: 2222;
+        }
+
+        .shop-popup-bottom {
+            height: 80vh;
+            border-radius: 10px 10px 0 0;
+            bottom: -80vh;
+            left: 0;
+            transition: bottom .5s ease-in;
+        }
+
+        .shop-popup-bottom.show {
+            bottom: 0;
+            transition: bottom .5s ease-out;
+        }
+
+      
+    </style>
+</head>
+
+<body>
+    <!-- 底部弹出面板 -->
+    <button class="popup-btn" data-target="#mypanel">点击弹出底部面板</button>
+
+    <!-- 遮罩 -->
+    <div class="shop-mask">
+
+    </div>
+
+    <!-- 底部面板 -->
+    <div id="mypanel" class="shop-popup shop-popup-bottom">
+
+
+            <div id="spf" class="shop-specifications-container">
+                    <!-- 图片和价格 -->
+                    <div class="shop-specifications-header">
+                        <div class="shop-specifications-img">
+                            <img src="http://pic1.win4000.com/wallpaper/2017-12-22/5a3cccef95b73.jpg" alt="">
+                        </div>
+                        <div class="shop-specifications-price">
+                            <div class="shop-price">￥ <span></span> </div>
+                            <div>库存 <span class="shop-specifications-num"></span> 件</div>
+                            <div>已选: 320GB 32GB</div>
+                        </div>
+                    </div>
+                    <div class="shop-specifications-content">
+                        <div class="shop-specifications-list">
+            
+                        </div>
+                        <!-- <div class="shop-specifications-detail">
+                            <div class="shop-specifications-detail-title">内存容量</div>
+                            <div class="shop-specifications-detail-content">
+                                <div>8GB</div>
+                                <div>18GB</div>
+                                <div>118GB</div>
+                                <div>1118GB</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="shop-specifications-detail-title">硬盘容量</div>
+                            <div class="shop-specifications-detail-content">
+                                <div>8GB</div>
+                                <div>18GB</div>
+                                <div>118GB</div>
+                                <div>1118GB</div>
+                            </div>
+                        </div> -->
+            
+                        <div class="shop-specifications-count">
+                            <div class="shop-specifications-detail-title">购买数量</div>
+                            <div class="aui-bar aui-bar-btn" style="width: 40%;margin: 0;" type="count">
+                                <div class="aui-bar-btn-item aui-font-size-20" tapmode="" data-item-order="0">
+                                    <i class="aui-iconfont aui-icon-minus"></i>
+                                </div>
+                                <div class="aui-bar-btn-item" tapmode="" data-item-order="1">
+                                    <input type="number" class="aui-input aui-text-center" id="count" value="1">
+                                </div>
+                                <div class="aui-bar-btn-item aui-font-size-20 aui-active" tapmode="" data-item-order="2">
+                                    <i class="aui-iconfont aui-icon-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+            
+            
+            
+            
+                    <div class="shop-specifications-footer">
+                        <div class="aui-btn aui-btn-warning">加入购物车</div>
+                        <div class="aui-btn aui-btn-success">立即购买</div>
+                    </div>
+                </div>
+
+
+
+
+    </div>
+    <script type="text/javascript" src="../script/aui-tab.js"></script>
+<script type="text/javascript" src="./specifications.js"></script>
+<script type="text/javascript" src="./popup.js"></script>
+
+    <script>
+
+            window.onload = function () {
+                var bar = document.querySelectorAll(".aui-bar-btn");
+            if (bar) {
+                for (var i = 0; i < bar.length; i++) {
+                    var d = bar[i];
+                    var tab = new auiTab({
+                        element: bar[i],
+                        repeatClick: true
+                    }, function (ret) {
+                        if (ret.dom.parentNode.getAttribute("type") && ret.dom.parentNode.getAttribute("type") == "count") {
+                            var count = parseInt(document.getElementById("count").value);
+                            if (ret.index == 2) return;
+                            if (ret.index == 1) {
+                                if(count>0)
+                                document.getElementById("count").value = count - 1;
+                            }
+                            if (ret.index == 3) {
+                                document.getElementById("count").value = count + 1;
+                            }
+                        }
+                    });
+    
+                }
+            }
+                var data = {
+                    originPrice: 500,
+                    default_img: "http://pic1.win4000.com/wallpaper/2017-12-22/5a3cccef95b73.jpg",
+                    default_price: "59-590",
+                    specifications: [
+                        {
+                            title: "内存容量",
+                            content: [
+                                {
+                                    value: "5GB",
+                                    addPrice: 8,
+                                    addNum: 5
+                                }
+                                ,
+                                {
+                                    value: "51GB",
+                                    addPrice: 555,
+                                    addNum: 6
+                                }, {
+                                    value: "50GB",
+                                    addPrice: 88,
+                                    addNum: 8
+                                }, {
+                                    value: "25GB",
+                                    addPrice: 2,
+                                    addNum: 2
+                                }
+                            ]
+                        },
+                        {
+                            title: "硬盘大小",
+                            content: [
+                                {
+                                    value: "5GB",
+                                    addPrice: 8,
+                                    addNum: 5
+                                }
+                                ,
+                                {
+                                    value: "51GB",
+                                    addPrice: 555,
+                                    addNum: 6
+                                }, {
+                                    value: "50GB",
+                                    addPrice: 88,
+                                    addNum: 8
+                                }, {
+                                    value: "25GB",
+                                    addPrice: 2,
+                                    addNum: 2
+                                }
+                            ]
+                        }
+                    ]
+                }
+                var ssf = new shopSpecifications("#spf", data)
+            }
+    
+    
+    
+        </script>
+</body>
+
+</html>

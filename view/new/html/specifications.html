@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>规格组件</title>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+
+    <style>
+        body {
+            background-color: cadetblue;
+        }
+
+        .shop-specifications-container {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 10px;
+        }
+
+        .shop-specifications-container>div.shop-specifications-header {
+            display: flex;
+        }
+
+        .shop-specifications-img img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .shop-specifications-detail-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+
+        .shop-specifications-count {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+
+
+        .shop-specifications-footer {
+            display: flex;
+            justify-content: flex-end;
+            padding-top: 10px;
+        }
+
+        .shop-specifications-footer>div:first-child {
+            margin-right: 10px;
+        }
+
+        .shop-specifications-detail-content .active {
+            border: 1px solid red!important;
+        }
+
+        .shop-specifications-price {
+            margin-left: 10px;
+            color: #666;
+        }
+
+        .shop-specifications-detail-title {
+            font-size: .7rem;
+            color: #666;
+        }
+
+        .shop-specifications-detail-content>div[data-price] {
+            padding: 2px;
+            box-sizing: border-box;
+            border: 1px solid transparent;
+        }
+
+        /* 价格类 */
+        .shop-price {
+            font-size: 1.2rem;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="spf" class="shop-specifications-container">
+        <!-- 图片和价格 -->
+        <div class="shop-specifications-header">
+            <div class="shop-specifications-img">
+                <img src="http://pic1.win4000.com/wallpaper/2017-12-22/5a3cccef95b73.jpg" alt="">
+            </div>
+            <div class="shop-specifications-price">
+                <div class="shop-price">￥ <span></span> </div>
+                <div>库存 <span class="shop-specifications-num"></span> 件</div>
+                <div>已选: 320GB 32GB</div>
+            </div>
+        </div>
+        <div class="shop-specifications-content">
+            <div class="shop-specifications-list">
+
+            </div>
+            <!-- <div class="shop-specifications-detail">
+                <div class="shop-specifications-detail-title">内存容量</div>
+                <div class="shop-specifications-detail-content">
+                    <div>8GB</div>
+                    <div>18GB</div>
+                    <div>118GB</div>
+                    <div>1118GB</div>
+                </div>
+            </div>
+            <div>
+                <div class="shop-specifications-detail-title">硬盘容量</div>
+                <div class="shop-specifications-detail-content">
+                    <div>8GB</div>
+                    <div>18GB</div>
+                    <div>118GB</div>
+                    <div>1118GB</div>
+                </div>
+            </div> -->
+
+            <div class="shop-specifications-count">
+                <div class="shop-specifications-detail-title">购买数量</div>
+                <div class="aui-bar aui-bar-btn" style="width: 40%;margin: 0;" type="count">
+                    <div class="aui-bar-btn-item aui-font-size-20" tapmode="" data-item-order="0">
+                        <i class="aui-iconfont aui-icon-minus"></i>
+                    </div>
+                    <div class="aui-bar-btn-item" tapmode="" data-item-order="1">
+                        <input type="number" class="aui-input aui-text-center" id="count" value="1">
+                    </div>
+                    <div class="aui-bar-btn-item aui-font-size-20 aui-active" tapmode="" data-item-order="2">
+                        <i class="aui-iconfont aui-icon-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="shop-specifications-footer">
+            <div class="aui-btn aui-btn-warning">加入购物车</div>
+            <div class="aui-btn aui-btn-success">立即购买</div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../script/aui-tab.js"></script>
+    <script>
+       
+
+
+
+        window.onload = function () {
+            var bar = document.querySelectorAll(".aui-bar-btn");
+        if (bar) {
+            for (var i = 0; i < bar.length; i++) {
+                var d = bar[i];
+                var tab = new auiTab({
+                    element: bar[i],
+                    repeatClick: true
+                }, function (ret) {
+                    if (ret.dom.parentNode.getAttribute("type") && ret.dom.parentNode.getAttribute("type") == "count") {
+                        var count = parseInt(document.getElementById("count").value);
+                        if (ret.index == 2) return;
+                        if (ret.index == 1) {
+                            if(count>0)
+                            document.getElementById("count").value = count - 1;
+                        }
+                        if (ret.index == 3) {
+                            document.getElementById("count").value = count + 1;
+                        }
+                    }
+                });
+
+            }
+        }
+            var data = {
+                originPrice: 500,
+                default_img: "http://pic1.win4000.com/wallpaper/2017-12-22/5a3cccef95b73.jpg",
+                default_price: "59-590",
+                specifications: [
+                    {
+                        title: "内存容量",
+                        content: [
+                            {
+                                value: "5GB",
+                                addPrice: 8,
+                                addNum: 5
+                            }
+                            ,
+                            {
+                                value: "51GB",
+                                addPrice: 555,
+                                addNum: 6
+                            }, {
+                                value: "50GB",
+                                addPrice: 88,
+                                addNum: 8
+                            }, {
+                                value: "25GB",
+                                addPrice: 2,
+                                addNum: 2
+                            }
+                        ]
+                    },
+                    {
+                        title: "硬盘大小",
+                        content: [
+                            {
+                                value: "5GB",
+                                addPrice: 8,
+                                addNum: 5
+                            }
+                            ,
+                            {
+                                value: "51GB",
+                                addPrice: 555,
+                                addNum: 6
+                            }, {
+                                value: "50GB",
+                                addPrice: 88,
+                                addNum: 8
+                            }, {
+                                value: "25GB",
+                                addPrice: 2,
+                                addNum: 2
+                            }
+                        ]
+                    }
+                ]
+            }
+            var ssf = new shopSpecifications("#spf", data)
+        }
+
+
+
+    </script>
+</body>
+
+</html>

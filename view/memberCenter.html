@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>利享商城个人中心</title>
+        <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+        <meta content="yes" name="apple-mobile-web-app-capable"/>
+        <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+        <meta content="telephone=no" name="format-detection"/>
+        <link href="${base}/templates/${config.theme}/view/static/css/commonStyle.css" rel="stylesheet" type="text/css"/>
+        <link href="${base}/templates/${config.theme}/view/static/css/memberCenter.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="${base}/templates/${config.theme}/view/static/css/footer.css" type="text/css">
+        <link rel="stylesheet" href="${base}/templates/${config.theme}/view/static/css/commonStyle.css" type="text/css">
+        <style>
+      
+        </style>
+    </head>
+    <body>
+
+        <section class="aui-flexView ">
+            <header class="aui-navBar aui-navBar-fixed theme-bg-color">
+                <a href="javascript:;" class="aui-navBar-item">
+                    <i class="icon icon-return"></i>
+                </a>
+                <div class="aui-center">
+                    <span class="aui-center-title"></span>
+                </div>
+                <a href="javascript:;" class="aui-navBar-item">
+                    <i class="icon icon-news"></i>
+                </a>
+            </header>
+            <section class="aui-scrollView ">
+                   <div class="aui-inter-user theme-bg-color">
+                    <div class="aui-flex">
+                        <div class="aui-inter-user-img">
+                    <!--     https://www.17sucai.com/preview/1268063/2018-11-05/interest/images/user-logo-005.png -->
+                            <img src="${memberinfo.img}" alt="">
+                        </div>
+                        <div class="aui-flex-box">
+                            <h2>${memberinfo.nickname}</h2>
+                            <p>可用额度0.00 <i class="icon icon-qa"></i></p>
+                        </div>
+                        <div class="aui-inter-user-no">
+                            <span>未授信</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="opacity: .8;" class="aui-inter-grids theme-bg-color">
+                    <a href="javascript:;" class="aui-grids-item">
+                        <h3>利享币</h3>
+                        <p>${memberinfo.yhmoney}</p>
+                    </a>
+               <!--      <a href="javascript:;" class="aui-grids-item">
+                        <h3>提额</h3>
+                        <p>当前额度0.00</p>
+                        <span class="aui-grids-item-tags">最高5000</span>
+                    </a> -->
+                </div>
+                <div class="aui-icon-list">
+                
+                      <a href="${base}/wechat/recharge" class="aui-flex b-line">
+                        <div class="aui-flex-srt">
+                            <img src="https://www.17sucai.com/preview/1268063/2018-11-05/interest/images/icon-in-002.png" alt="">
+                        </div>
+                        <div class="aui-flex-box">
+                           利享币充值
+                        </div>
+                     <div class="aui-flex-arrow"></div>
+                    </a>
+                    
+                    
+                           <a href="${base}/wechat/rechargevip" class="aui-flex b-line">
+                        <div class="aui-flex-srt">
+                            <img src="https://www.17sucai.com/preview/1268063/2018-11-05/interest/images/icon-in-002.png" alt="">
+                        </div>
+                        <div class="aui-flex-box">
+                          返佣会员
+                        </div>
+                        <div class="aui-flex-arrow"></div>
+                    </a>
+              
+                    <a href="javascript:;" class="aui-flex b-line">
+                        <div class="aui-flex-srt">
+                            <img src="https://www.17sucai.com/preview/1268063/2018-11-05/interest/images/icon-in-002.png" alt="">
+                        </div>
+                        <div class="aui-flex-box">
+                            我的订单
+                        </div>
+                        <div class="aui-flex-arrow"></div>
+                    </a>
+                     <a href="${base}/register/index" class="aui-flex b-line">
+                        <div class="aui-flex-srt">
+                            <img src="https://www.17sucai.com/preview/1268063/2018-11-05/interest/images/icon-in-002.png" alt="">
+                        </div>
+                        <div class="aui-flex-box">
+                            注册用户
+                        </div>
+                        <div class="aui-flex-arrow"></div>
+                    </a>
+                    <a href="${base}/qrcode/myqrcode" class="aui-flex b-line">
+                        <div class="aui-flex-srt">
+                            <img src="https://www.17sucai.com/preview/1268063/2018-11-05/interest/images/icon-in-001.png" alt="">
+                        </div>
+                        <div class="aui-flex-box">
+                            邀请好友赚取佣金
+                        </div>
+                        <div class="aui-flex-arrow"></div>
+                    </a>
+                    <a href="${base}/article/detail?artId=1" class="aui-flex b-line">
+                        <div class="aui-flex-srt">
+                            <img src="https://www.17sucai.com/preview/1268063/2018-11-05/interest/images/icon-in-003.png" alt="">
+                        </div>
+                        <div class="aui-flex-box">
+                            会员规则
+                        </div>
+                        <div class="aui-flex-arrow"></div>
+                    </a>
+        <!--             <a href="javascript:;" class="aui-flex b-line">
+                        <div class="aui-flex-srt">
+                            <img src="https://www.17sucai.com/preview/1268063/2018-11-05/interest/images/icon-in-004.png" alt="">
+                        </div>
+                        <div class="aui-flex-box">
+                            优惠券
+                        </div>
+                        <div class="aui-flex-arrow"></div>
+                    </a>
+                    <a href="javascript:;" class="aui-flex b-line">
+                        <div class="aui-flex-srt">
+                            <img src="https://www.17sucai.com/preview/1268063/2018-11-05/interest/images/icon-in-005.png" alt="">
+                        </div>
+                        <div class="aui-flex-box">
+                            大礼包
+                        </div>
+                        <div class="aui-flex-arrow"></div>
+                    </a>
+                    <a href="javascript:;" class="aui-flex b-line">
+                        <div class="aui-flex-srt">
+                            <img src="https://www.17sucai.com/preview/1268063/2018-11-05/interest/images/icon-in-006.png" alt="">
+                        </div>
+                        <div class="aui-flex-box">
+                            资金账户
+                        </div>
+                        <div class="aui-flex-arrow"></div>
+                    </a> -->
+                    <a href="${base}/article/detail?artId=2" class="aui-flex b-line">
+                        <div class="aui-flex-srt">
+                            <img src="https://www.17sucai.com/preview/1268063/2018-11-05/interest/images/icon-in-007.png" alt="">
+                        </div>
+                        <div class="aui-flex-box">
+                           关于我们
+                        </div>
+                        <div class="aui-flex-arrow"></div>
+                    </a>
+                </div>
+            </section>
+            <footer class="aui-footer">
+                <a href="${base}/wechat/index" class="aui-tabBar-item aui-tabBar-item-active">
+                <span class="aui-tabBar-item-icon">
+                    <i class="icon icon-loan"></i>
+                </span>
+            <span class="aui-tabBar-item-text">首页</span>
+        </a>
+        <a href="${base}/shop/index" class="aui-tabBar-item ">
+                <span class="aui-tabBar-item-icon">
+                    <i class="icon icon-credit"></i>
+                </span>
+            <span class="aui-tabBar-item-text">店铺</span>
+        </a>
+
+
+
+        <a href="${base}/cartshow/list" class="aui-tabBar-item ">
+                <span class="aui-tabBar-item-icon">
+                    <i class="icon icon-car"></i>
+                </span>
+            <span class="aui-tabBar-item-text">购物车</span>
+        </a>
+        <a href="${base}/center/user" class="aui-tabBar-item ">
+                <span class="aui-tabBar-item-icon">
+                    <i class="icon icon-mine"></i>
+                </span>
+            <span class="aui-tabBar-item-text">我的</span>
+        </a>
+
+            </footer>
+        </section>
+
+    </body>
+</html>

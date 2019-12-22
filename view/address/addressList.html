@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/commonStyle.css" />
+    <style>
+        .choose-address {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .choose-address .aui-iconfont {
+            font-size: 30px;
+            color: orange;
+        }
+
+        .choose-address>div:last-child {
+            padding-left: 5px;
+            width: -webkit-fill-available;
+        }
+
+        .choose-address .address-text {
+            font-size: .8rem;
+            line-height: 1rem;
+            color: #000;
+            float: left;
+        }
+
+        .name-phone {
+            font-size: .9rem;
+        }
+
+        .address-edit {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .address-name {
+            display: block;
+            width: 30px;
+            height: 30px;
+            background-color: #777;
+            color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        .address-content {
+            font-size: .8rem;
+            line-height: 1rem;
+            color: #000;
+            width: 80%;
+        }
+
+        ul {
+            height: 100%;
+            padding-bottom: 150px;
+            overflow: scroll;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="aui-content">
+        <header class="aui-bar aui-bar-nav">
+            <a class="aui-pull-left aui-btn">
+                <span class="aui-iconfont aui-icon-left"></span>
+            </a>
+            <div class="aui-title">我的收获地址</div>
+            <a class="aui-pull-right aui-btn aui-btn-outlined">
+                添加地址
+                <!-- 添加新地址 -->
+            </a>
+        </header>
+
+        <!-- 当前地址 -->
+        <div class="choose-address" style="border-bottom: 1px solid #ddd;">
+            <div>
+                <i class="aui-iconfont aui-icon-location"></i>
+            </div>
+            <div>
+                <div class="name-phone">
+                    <span style="color: #000;">张三</span>
+                    <span style="color: #666;">16341651351</span>
+                </div>
+                <div>
+                    <div class="address-text">
+                        <span style="color: orangered;padding: 0 5px;">默认</span> 云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                        云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 地址列表 -->
+        <ul>
+            <li>
+
+                <div class="choose-address">
+                    <div>
+                        <i class="aui-iconfont aui-icon-home"></i>
+                    </div>
+                    <div>
+                        <div>
+                            <span style="color: #000;">张三</span>
+                            <span style="color: #666;">16341651351</span>
+                        </div>
+                        <div style="position: relative;">
+                            <div class="address-content">
+                                <span style="color: orangered;padding: 0 5px;">默认</span> 云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                                云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                            </div>
+                            <span class="address-edit">编辑</span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li>
+
+                <div class="choose-address">
+                    <div>
+                        <span class="address-name">张</span>
+                    </div>
+
+                    <div>
+                        <div>
+                            <span style="color: #000;">张三</span>
+                            <span style="color: #666;">16341651351</span>
+                        </div>
+                        <div style="position: relative;">
+                            <div class="address-content">
+                                云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                                云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                            </div>
+                            <span class="address-edit">编辑</span>
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+
+                <div class="choose-address">
+                    <div>
+                        <span class="address-name">张</span>
+                    </div>
+
+                    <div>
+                        <div>
+                            <span style="color: #000;">张三</span>
+                            <span style="color: #666;">16341651351</span>
+                        </div>
+                        <div style="position: relative;">
+                            <div class="address-content">
+                                云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                                云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                            </div>
+                            <span class="address-edit">编辑</span>
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+
+                <div class="choose-address">
+                    <div>
+                        <span class="address-name">张</span>
+                    </div>
+
+                    <div>
+                        <div>
+                            <span style="color: #000;">张三</span>
+                            <span style="color: #666;">16341651351</span>
+                        </div>
+                        <div style="position: relative;">
+                            <div class="address-content">
+                                云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                                云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                            </div>
+                            <span class="address-edit">编辑</span>
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+
+                <div class="choose-address">
+                    <div>
+                        <span class="address-name">张</span>
+                    </div>
+
+                    <div>
+                        <div>
+                            <span style="color: #000;">张三</span>
+                            <span style="color: #666;">16341651351</span>
+                        </div>
+                        <div style="position: relative;">
+                            <div class="address-content">
+                                云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                                云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                            </div>
+                            <span class="address-edit">编辑</span>
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+
+                <div class="choose-address">
+                    <div>
+                        <span class="address-name">张</span>
+                    </div>
+
+                    <div>
+                        <div>
+                            <span style="color: #000;">张三</span>
+                            <span style="color: #666;">16341651351</span>
+                        </div>
+                        <div style="position: relative;">
+                            <div class="address-content">
+                                云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                                云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                            </div>
+                            <span class="address-edit">编辑</span>
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+
+                <div class="choose-address">
+                    <div>
+                        <span class="address-name">张</span>
+                    </div>
+
+                    <div>
+                        <div>
+                            <span style="color: #000;">张三</span>
+                            <span style="color: #666;">16341651351</span>
+                        </div>
+                        <div style="position: relative;">
+                            <div class="address-content">
+                                云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                                云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                            </div>
+                            <span class="address-edit">编辑</span>
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+
+                <div class="choose-address">
+                    <div>
+                        <span class="address-name">张</span>
+                    </div>
+
+                    <div>
+                        <div>
+                            <span style="color: #000;">张三</span>
+                            <span style="color: #666;">16341651351</span>
+                        </div>
+                        <div style="position: relative;">
+                            <div class="address-content">
+                                云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                                云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                            </div>
+                            <span class="address-edit">编辑</span>
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+
+                <div class="choose-address">
+                    <div>
+                        <span class="address-name">张</span>
+                    </div>
+
+                    <div>
+                        <div>
+                            <span style="color: #000;">张三</span>
+                            <span style="color: #666;">16341651351</span>
+                        </div>
+                        <div style="position: relative;">
+                            <div class="address-content">
+                                云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                                云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                            </div>
+                            <span class="address-edit">编辑</span>
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+
+                <div class="choose-address">
+                    <div>
+                        <span class="address-name">张</span>
+                    </div>
+
+                    <div>
+                        <div>
+                            <span style="color: #000;">张三</span>
+                            <span style="color: #666;">16341651351</span>
+                        </div>
+                        <div style="position: relative;">
+                            <div class="address-content">
+                                云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                                云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                            </div>
+                            <span class="address-edit">编辑</span>
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+
+                <div class="choose-address">
+                    <div>
+                        <span class="address-name">张</span>
+                    </div>
+
+                    <div>
+                        <div>
+                            <span style="color: #000;">张三</span>
+                            <span style="color: #666;">16341651351</span>
+                        </div>
+                        <div style="position: relative;">
+                            <div class="address-content">
+                                云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                                云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                            </div>
+                            <span class="address-edit">编辑</span>
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+
+                <div class="choose-address">
+                    <div>
+                        <span class="address-name">张</span>
+                    </div>
+
+                    <div>
+                        <div>
+                            <span style="color: #000;">张三</span>
+                            <span style="color: #666;">16341651351</span>
+                        </div>
+                        <div style="position: relative;">
+                            <div class="address-content">
+                                云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                                云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                            </div>
+                            <span class="address-edit">编辑</span>
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+
+                <div class="choose-address">
+                    <div>
+                        <span class="address-name">张</span>
+                    </div>
+
+                    <div>
+                        <div>
+                            <span style="color: #000;">张三</span>
+                            <span style="color: #666;">16341651351</span>
+                        </div>
+                        <div style="position: relative;">
+                            <div class="address-content">
+                                云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                                云南省西北部云贵高原与青藏高原的衔接地段,市区中心位于东经
+                            </div>
+                            <span class="address-edit">编辑</span>
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+
+        <div>
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+</body>
+
+</html>

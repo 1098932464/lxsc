@@ -1,0 +1,36 @@
+.spl-nav {
+  padding: 2.66667vw;
+  overflow: hidden;
+  position: relative;
+  background-color: #fff;
+}
+
+.sp-label2 {
+  padding: 2.66667vw;
+  font-size: 4.26667vw;
+}
+
+.spl-title {
+  padding: 2.66667vw;
+  padding-bottom: 0;
+  font-size: 4.26667vw;
+  color: #777;
+}
+
+.spl-list {
+  background-color: #e6e6e6;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.spl-list > div::after {
+  content: "";
+  display: block;
+  height: 40vw;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+/*# sourceMappingURL=shopProjectList.css.map */

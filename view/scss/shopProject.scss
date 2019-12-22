@@ -1,0 +1,288 @@
+@import "spvarious";
+$header-color:#fff;
+$color1: #777;
+$color2: rgb(107, 42, 12);
+$color3: rgb(230, 204, 168);
+$color4: #ddd;
+$color5: #ccc;
+$color6: rgb(226, 120, 45);
+$color7:rgb(33, 33, 33);
+$pricecolor1:rgb(181, 90, 25);
+$innerMargin:my-px2vw(5);
+$innerPadding:my-px2vw(5);
+$outterMargin:my-px2vw(10);
+$outterPadding:my-px2vw(10);
+$labelSize:my-px2vw(12);
+$fontsize16:my-px2vw(16);
+$fontsize14:my-px2vw(14);
+$fontsize12:my-px2vw(12);
+$fontsize20:my-px2vw(20); 
+$fontsize30:my-px2vw(30);
+
+.pd-header {
+    padding: $outterPadding;
+    font-size: $fontsize12;
+    color: $color7;
+    overflow: hidden;
+    >div {
+        margin-bottom: $innerMargin;
+    }
+
+    .pdh-2 {
+        font-size: $fontsize20;
+        font-weight: bold;
+        color: #000;
+        line-height: 1.5;
+
+    }
+
+    .pdh-3 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        i {
+            color: $color1;
+        }
+    }
+    .pdh-4{
+        width: 100vw;
+        height: my-px2vw(100);
+        white-space: nowrap;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        padding-top: $outterPadding;
+        padding-bottom: $outterPadding;
+        &::after{
+            display: inline-block;
+            content: "";
+            width: $outterPadding;
+        }
+        img{
+            width:  my-px2vw(150);
+            height: 100%;
+            margin-right: $innerMargin;
+            border-radius: my-px2vw(10);
+        }
+        
+    }
+    .pdh-5{
+        color: $color1;
+    }
+}
+
+.product-detail{
+    padding: $outterPadding;
+    font-size: $fontsize16;
+    line-height: 1.5;
+    .pd-1{
+        margin-bottom: $outterMargin;
+    }
+    .pd-2{
+        li{
+            display: grid;
+            justify-content: space-between;
+            align-items: center;
+            font-size: $fontsize14;
+            padding: $innerPadding;
+            margin-bottom: $innerMargin;
+            background-image:  linear-gradient(90deg, rgba(220, 163, 122, 0.15) 10%, rgba(214, 134, 65, 0.16) 90%);
+            grid-template-columns: 60% 40%;
+            .subtitle{
+                color: $color1;
+                font-size: $fontsize12;
+                grid-column: 1/2;
+                grid-row: 2/3;
+            }
+            .price{
+                justify-self: flex-end;
+                color: $color1;
+                font-size: $fontsize12;
+                grid-column: 2/3;
+                grid-row: 1/3;
+            }
+        }
+    }
+    .pd-3{
+        position: relative;
+        >div{
+            font-size: $fontsize14;
+            float: right;
+            .total{
+                color: $color1;
+                text-decoration: line-through;
+            }
+            .price{
+                font-size: $fontsize20;
+                font-weight: bold;
+                color: $color6;
+            }
+        }
+    }
+    .pd-4{
+        font-size: $fontsize14;
+        margin-bottom: $outterMargin;
+        img{
+            width: 100%!important;
+        }
+        &>div:first-child{
+            margin-bottom: $outterMargin;
+        }
+    }
+    .pd-5{
+        border-top: $border;
+        padding: $outterPadding 0;
+        text-align: center;
+        font-size: $fontsize14;
+        font-weight: bold;
+    }
+    .pd-6 img{
+        width: 100%!important;
+    }
+}
+
+.sp-pi{
+    font-size: $fontsize14;
+    padding: $outterPadding;
+    line-height: 1.5;
+    .pi-h{
+        padding-top: $outterPadding;
+        border-top: $border;
+        color: $color1;
+    }
+    .pi-title{
+        color: #ec9841;
+        font-weight: bold;
+    }
+    .pi-content{
+     background-image: url(../myproject/圆点小.png);
+     background-position: top left;
+     background-repeat: no-repeat;
+     background-size: 20px 20px;
+     background-origin: padding-box;
+     background-clip: padding-box;
+     padding-left: 20px;
+    }
+}
+.pd-info{
+    display: grid;
+    padding: $outterPadding;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: repeat(1fr);
+    line-height: 1.5;
+    .i-1{
+        font-size: $fontsize20;
+        
+        font-weight: bold;
+        grid-column: 1/3;
+    }
+    .i-2{
+        font-size: $fontsize20;
+        font-weight: bold;
+       grid-column: 1/2;
+       grid-row: 2/3;
+    }
+    .i-3{
+        font-size: $fontsize12;
+        color: $color1;
+       grid-column: 1/2;
+       grid-row: 3/4;
+    }
+    .i-4{
+        font-size: $fontsize20;
+        color: $color6;
+       grid-column: 2/3;
+       grid-row: 2/4;
+       align-self: center;
+       justify-self: center;
+    }
+}
+
+.sp-more-good{
+    box-sizing: border-box;
+    padding: $outterPadding;
+    width: 100vw;
+    overflow: hidden;
+    margin-bottom: my-px2vw(70);
+    .mg-1{
+        margin-bottom: $outterMargin;
+        color: $color1;
+        font-size: $fontsize14;
+    }
+    .mg-2{
+        overflow-x: scroll;
+        white-space: nowrap;
+        li{
+            margin: $innerMargin;
+            display: inline-block;
+            .good{
+                width: my-px2vw(150);
+                height: my-px2vw(220);
+                display: grid;
+                grid-template-rows:my-px2vw(150) 1fr 1fr;
+                grid-template-columns: 2fr 1fr;
+                font-size: $fontsize14;
+                justify-content: center;
+                align-items: center;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    grid-column: 1/3;
+                }
+                .good-price{
+                    grid-column: 1/2;
+                 
+                    span:first-child{
+                        font-size: $fontsize20;
+                        color: $color6;
+                    }
+                }
+                .good-sold{
+                    color: $color1;
+                    grid-column: 2/3;
+                 
+                }
+                .good-title{
+                    align-self: flex-start;
+                    overflow: hidden;
+                    line-height: 1.5;
+                    white-space: normal;
+                    -webkit-line-clamp: 2;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    text-overflow: ellipsis;
+                    grid-column: 1/3;
+                }
+            }
+
+
+        }
+    }
+    
+}
+
+.pd-footer{
+    position: fixed;
+    box-sizing: border-box;
+    z-index: 1000;
+    padding: $innerMargin $outterMargin;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    min-height: my-px2vw(50);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    background-color: #fff;
+    .lf{
+        max-width: vw(190);
+        span.s-1{
+            font-size: $fontsize20;
+            color: $color6;
+        }
+        span.s-2{
+            font-size: $fontsize14;
+            color: $color1;
+        }
+    }
+}

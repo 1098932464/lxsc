@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    <style>
+    .shop-full-screen{
+        background-color: rgb(0,0,0,.2);
+        display: flex;
+        align-items: center;
+    }
+    .shop-full-screen-item img{
+        width: 100%;
+    }
+    .shop-slide-container{
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #000;
+        overflow: hidden;
+        display: none;
+    }
+    .shop-slide-wrap{
+        height: 100vh;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        transition: transform .2s linear;
+    }
+    
+    .shop-slide-node img{
+        width: 100vw;
+    }
+    .shop-slide-node{
+        border-right: 10px solid #000;
+    }
+    .shop-slide-node:last-child{
+        border-right:none;
+    }
+    
+.shop-slide-container.show{
+    display: block;
+}
+    </style>
+</head>
+<body>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. A praesentium deserunt aperiam natus, ullam inventore ducimus aut labore at est error, odit fugit quasi nostrum dolorum! Illo molestiae similique asperiores?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. A praesentium deserunt aperiam natus, ullam inventore ducimus aut labore at est error, odit fugit quasi nostrum dolorum! Illo molestiae similique asperiores?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. A praesentium deserunt aperiam natus, ullam inventore ducimus aut labore at est error, odit fugit quasi nostrum dolorum! Illo molestiae similique asperiores?
+    </p>
+    <button onclick="fullScreen()">点击全屏</button>
+    <button onclick="exitScreen()">点击退出全屏</button>
+<!-- 相册全屏的轮播 -->
+<div id="slide" class="shop-slide-container">
+
+
+        <div class="shop-slide-wrap">
+            <div class="shop-slide-node">
+                    <img src="http://img.daimg.com/uploads/allimg/190916/1-1Z9162215040-L.jpg">
+            </div>
+            <div class="shop-slide-node">
+                    <img src="http://img2.imgtn.bdimg.com/it/u=873807156,2879879684&fm=26&gp=0.jpg">
+            </div>
+            <div class="shop-slide-node">
+                    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1572856734984&di=50ff37cb0081c0090d6a1a07e89775c4&imgtype=0&src=http%3A%2F%2Fimg.mp.sohu.com%2Fupload%2F20170623%2Faafbe97bd19841a0bd04c63806b24214.png">
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <script>
+       (function(){
+        "use strict";
+        var touchStartTime
+        var offsetX=0,offsetY,preScreenX,pageX=0,maxPageX=0,curIdx=0,startScreenX
+        // 图片节点
+        var nodes
+        // 滚动容器
+        var scrollWrap
+        var CLASS_SLIDE_WRAP="shop-slide-wrap"
+        var CLASS_SLIDE_NODE="shop-slide-node"
+
+        shopSlide.prototype._init=function(opt){
+            var el=document.querySelector(opt.el)
+            scrollWrap=el.querySelector(opt.el+" ."+CLASS_SLIDE_WRAP)
+             // 滚动最大距离
+             maxPageX=scrollWrap.clientWidth
+            nodes=el.querySelectorAll("."+CLASS_SLIDE_NODE)
+            maxPageX=-(maxPageX-nodes[nodes.length-1].offsetWidth)
+            var i=0
+            for(var node of nodes){
+               node.dataset.idx=i++
+                node.addEventListener("touchstart",this.touchStart.bind(this))
+                node.addEventListener("touchmove",this.touchMove.bind(this))
+                node.addEventListener("touchend",this.touchEnd.bind(this))
+            }
+        }
+        
+        shopSlide.prototype.touchStart=function(e){
+        touchStartTime=new Date().getTime() 
+        curIdx=parseInt(e.changedTouches[0].target.parentNode.dataset.idx)   
+        startScreenX=e.changedTouches[0].screenX
+        preScreenX=e.changedTouches[0].screenX
+        }
+
+        shopSlide.prototype.touchMove=function(e){
+            var lastEv=e.changedTouches[0]
+            pageX+=lastEv.screenX-preScreenX
+            console.log(pageX)
+            if(pageX>0){
+                pageX=0
+            }
+            if(pageX<maxPageX){
+                pageX=maxPageX
+            }
+           
+            // console.log(lastEv.screenX-preScreenX)
+            this.setTranslateX(pageX)
+            preScreenX=lastEv.screenX
+          
+            
+        }
+
+        shopSlide.prototype.touchEnd=function(e){
+            
+          
+            var endScreenX=e.changedTouches[0].screenX
+
+           
+            if(endScreenX-startScreenX>0&&curIdx>0){
+                // 右滑
+                console.log("右滑")
+                curIdx--      
+            }else if(endScreenX-startScreenX<0&&curIdx<nodes.length-1){
+                console.log("左滑")
+                curIdx++
+            }else{
+                return
+            }
+            this.slideTo(curIdx)
+        }
+
+        shopSlide.prototype.slideTo=function(idx){
+            console.log("翻页了~~~")
+            var constance=0;
+            for(var i=0;i<idx;i++){
+                constance+=nodes[i].offsetWidth
+            }
+            pageX=-constance
+                this.setTranslateX(-constance)
+        }
+
+        shopSlide.prototype.setTranslateX=function(num){
+            scrollWrap.style.transform=`translateX(${num}px)`
+        }
+
+        function shopSlide({
+            el=""
+        }){
+            var opt=arguments[0]
+            this._init(opt)
+        }
+        window.shopSlide=shopSlide
+       })()
+
+var a
+     
+       var slide=document.getElementById("slide")
+           function fullScreen(){
+               slide.className+=" show"
+               if(!a)
+                a =  new shopSlide({el:"#slide"})
+            var el = document.documentElement;
+            var rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullscreen;      
+                if(typeof rfs != "undefined" && rfs) {
+                    rfs.call(el);
+                };
+              return;
+        }
+
+
+        //    function fullScreen(){
+        //     var el = document.documentElement;
+        //     var rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullscreen;      
+        //         if(typeof rfs != "undefined" && rfs) {
+        //             rfs.call(el);
+        //         };
+        //       return;
+        // }
+        //退出全屏
+        function exitScreen(){
+            if (document.exitFullscreen) {  
+                document.exitFullscreen();  
+            }  
+            else if (document.mozCancelFullScreen) {  
+                document.mozCancelFullScreen();  
+            }  
+            else if (document.webkitCancelFullScreen) {  
+                document.webkitCancelFullScreen();  
+            }  
+            else if (document.msExitFullscreen) {  
+                document.msExitFullscreen();  
+            } 
+            if(typeof cfs != "undefined" && cfs) {
+             
+                cfs.call(el);
+            }
+        }
+        </script>
+</body>
+</html>

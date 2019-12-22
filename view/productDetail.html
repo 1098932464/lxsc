@@ -1,0 +1,414 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>商品详情</title>
+<meta name="Keywords" content="">
+<meta name="Description" content="">
+<!-- 移动设备支持 -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link href="${base}/templates/${config.theme}/view/static/css/mall.css" rel="stylesheet" type="text/css">
+     <link href="${base}/templates/${config.theme}/view/static/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="${base}/templates/${config.theme}/view/static/js/jquery.js"></script>
+    <script type="text/javascript" src="${base}/templates/${config.theme}/view/static/js/plugin/jquery.Spinner.js"></script>
+<script src="${base}/templates/${config.theme}/view/static/js/plugin/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+<script src="${base}/templates/${config.theme}/view/static/js/plugin/InputSpinner.js" type="text/javascript"></script>
+    <script src="${base}/templates/${config.theme}/view/static/js/plugin/swipe2.js" type="text/javascript"></script>
+    <style type="text/css">
+*,
+*:after,
+*:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html{
+    font-size: 16px!important;
+}
+/* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+pre.code {
+    padding: 10px;
+    background-color: #eee;
+    overflow-y: scroll;
+}
+
+.input-group {
+    width: 250px;
+}
+.num>span{
+    padding: 0 5px;
+}
+.num>input:nth-child(3){
+    width: 2rem;
+    text-align: center;
+    border: 0;
+}
+
+.box_swipe ul li img{
+    width: 100%;
+    height: auto;
+}
+.box_swipe>ol {
+    margin-top: -40px;
+    background-color: transparent;
+}
+.detail-card{
+    margin: 0 0 5px 0;
+    background-color: #fff;
+    padding: 5px;
+}
+
+.promotion-size{
+    font-size: 1.5rem;
+}
+.promotion-color{
+    
+    color: red;
+}
+.promotion-tag{
+    font-size: 0.7rem;
+    color: #000;
+    background-color: rgb(0,0,0,0.1);
+    margin: 0 5px;
+}
+#price{
+    color: #666;
+    font-size: 0.9rem;
+}
+#price>span{
+    text-decoration:line-through;
+}
+.good-title{
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.praise{
+    font-size: 0.9rem;
+    color: #666;
+}
+.praise_icon{
+    top: 0;
+    float: none;
+    padding: 0 0 0 32px;
+}
+.element::-webkit-scrollbar { width: 0 !important }
+
+.mall_main{
+    background-color: #eee;
+    /* background-color: #000; */
+}
+#subtraction,#add{
+    width: 36px;
+    border: 0;
+    background-color: #fff;
+    transition: background-color .3s linear;
+}
+#subtraction:active,#add:active{
+    opacity: .3;
+    background-color: #666;
+}
+.detail-name{
+    color: #666;
+    font-size: .9rem;
+    padding: 0 5px;
+}
+.service-tag{
+    font-size: 1rem;
+    padding: 0 5px;
+}
+.bottom{
+    margin-bottom: 40px;
+}
+      </style>
+</head>
+
+<body class="body_color">
+<div class="mall_main">
+    <!-- <div id="child_header">
+        <div class="goback"><a href="javascript:history.back(-1)"><i></i></a></div>
+        <div class="current_location"><span>商品详情</span></div>
+    </div> -->
+    <div id="banner_box" class="box_swipe" style="height: unset;">
+        <ul>
+          <#list product.img?split(";") as img>
+            <li><img src="${config.imgurl}/${img}"></li>
+            </#list> 
+        </ul>
+        <ol>
+            <li class="on"></li>&nbsp;
+            <li></li>&nbsp;
+            <li></li>&nbsp;
+            <li></li>&nbsp;
+        </ol>
+    </div>
+    <div class="detail-card">
+        <div>
+                <span class="promotion-color">￥</span> <span class="promotion-color promotion-size">${product.price}</span><span class="promotion-tag">促销价</span>
+        </div>
+        <div id="price">
+                价格 <span>￥${product.marketPrice}</span>
+        </div>
+       
+        <div class="good-title">
+                ${product.name}
+        </div>
+        <div class="praise">
+            <span class="praise_icon"></span>
+            1000人赞过
+        </div>
+    </div>
+    <!-- 商品规格 -->
+    <div class="detail-card">
+        <div class="spec_select">
+                <ul>
+                        <#if discount??>
+                          <li>
+                              <span>商品规格</span>
+                            <!--   <em class="click">HX6730</em> -->
+                                 <#list discount  as dis>
+                                 
+                                 <#if dis_index == 0>
+                                      <em id="${dis.id}" class="click">${dis.standards}</em>
+                                  <#else>
+                                      <em id="${dis.id}" >${dis.standards}</em>
+                                  </#if>
+                                      
+                                   </#list> 
+                          </li>
+                         </#if>  
+                          
+                        <!--   <li>
+                              <span>颜色</span>
+                              <em class="click">白色</em>
+                              <em>蓝色</em>
+                              <em>粉色</em>
+                          </li> -->
+                      </ul>
+        </div>
+    </div>
+    <div class="detail-card">
+            <div class="num">
+                    <span class="detail-name">数量</span>
+                    <input type="button" value="-" id="subtraction" onclick="subtraction()"></input>
+                    <input type="text" value="1" id="number" onBlur="number()"></input>
+                     <input type="button" value="+" id="add" onclick="add()"></input><br>
+                           <!-- <span id="a" class="Spinner"></span>   -->
+                   <span class="detail-name">库存${product.count}套</span>
+                </div>
+    </div>
+    <div class="detail-card">
+            <p><span class="pr detail-name">服务承诺</span><span class="service-tag">正品保证</span></p>
+
+    </div>
+
+    <div class="detail-card bottom">
+            <div class="">
+
+                    <!-- Nav pills -->
+                    <ul class="nav nav-tabs" role="tablist">
+                      <li role="presentation" class="active"><a href="#home" data-toggle="tab">商品详情</a></li>
+                      <!-- <li role="presentation"><a href="#profile"   data-toggle="tab">评论</a></li>
+                      <li role="presentation"><a href="#messages"  data-toggle="tab">成交记录</a></li>
+                      <li role="presentation"><a href="#settings"  data-toggle="tab">商品咨询</a></li> -->
+                    </ul>
+                  
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="home">${product.introduction} </div>
+                            <!-- <div role="tabpanel" class="tab-pane" id="profile">
+
+                        <div class="comment-container">
+                            <div class="comment-left">
+                                頭像
+                            </div>
+                            <ul class="comment-right">
+                                <li>
+                                    名字
+                                </li>
+                                <li>
+                                    日期 商品名稱
+                                </li>
+                                <li>
+                                    評論內容
+                                </li>
+                                <li>
+                                    瀏覽 9 次 
+
+                                </li>
+                            </ul>
+                        </div>
+                          
+                        
+                        </div>
+                      <div role="tabpanel" class="tab-pane" id="messages">.3..</div>
+                      <div role="tabpanel" class="tab-pane" id="settings">..4.</div> -->
+                    </div>
+                  
+                  </div>
+    </div>
+
+
+
+
+
+
+   
+
+    
+    <div class="bottomdiv clearfix">
+        <div class="inner clearfix">
+            <div class="fr btn_sure">
+                <a href="javascript:buy();">立即购买</a>
+            </div>
+            <div class="fr btn_buy_detail">
+          <a href="javascript:cart();">  加入购物车</a>
+             </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+
+  
+  
+  
+    $(function(){
+        new Swipe(document.getElementById('banner_box'), {
+            speed: 500,
+            auto: 3000,
+            callback: function(){
+                var lis = $(this.element).next("ol").children();
+                lis.removeClass("on").eq(this.index).addClass("on");
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function(){
+        $(".spec_select ul li em").click(function(){
+            $(this).addClass("click").siblings().removeClass("click");
+        })
+    })
+</script>
+<!--商品数量加减-->
+<script type="text/javascript">
+function subtraction(){
+    //获取-号按钮
+    var subtraction = document.getElementById("subtraction");
+    //获取文本框
+    var number = document.getElementById("number");
+    if (number.value<=1) {
+        //如果文本框的值小于1,则设置值为1
+        number.value = 1;
+    }else {
+        number.value = number.value - 1;
+    }
+}
+
+function number(){
+    var number = document.getElementById("number");
+    var value = number.value;
+    //如果文本值为空,设置为1
+    if (value=="") {
+        number.value = 1;
+    }
+    //如果文本值为非纯数字,设置为1
+    //isNaN()是否为非法数字
+    if (isNaN(value)) {
+        number.value = 1;
+    }
+    //如果文本值小于1,设置为1
+    if (parseInt(value)<=1) {
+        number.value = 1;
+    }
+}
+
+function add(){
+    var add = document.getElementById("add");
+    var number = document.getElementById("number");
+    //parseInt() 将数值型字符串转换为数值
+    number.value = parseInt(number.value)+1;
+}
+
+
+/* 
+$(function(){
+    $('#a').Spinner('changed', function(e, newVal, oldVal) {
+    	
+    	alert(newVal);
+      });	
+/* 	
+$("#a").Spinner({value:1, min:0, len:3, max:10000}); */
+/* });
+var b= $('#a').Spinner("value");
+console.log(b); */
+
+
+
+
+   /*  $(function(){
+        $("#a").Spinner({value:1, min:0, len:3, max:10000});
+    }); */
+</script>
+<script type="text/javascript">
+    jQuery(function($){
+        $('.box_list ul li').click(function(){
+            var index = $('.box_list ul li').index(this);
+            $(this).addClass('current').siblings('li').removeClass('current');
+            $('.box_list .goods_box:eq('+index+')').show().siblings('.goods_box').hide();
+        })
+    })
+    
+    
+   
+    //立即购买
+    function buy(){
+    	 var pid="${product.id}";
+    	var amount=$("#number").val();
+    	 var did=$("em[class~='click']").attr("id");
+    	 if(did===undefined){
+    		 did=0;
+    	 }
+    	 
+    	var url="${base}/userorder/add?pid="+pid+"&&did="+did+"&&amount="+amount;
+    	window.location.href=url;	
+    }
+  //加入购物车
+    function cart(){
+	  
+         var pid="${product.id}";
+         var amount=$("#number").val();
+         var did=$("em[class~='click']").attr("id"); 
+         if(did===undefined){
+             did=0;
+         }
+    	  $.ajax({
+              type: "post",
+              url: "${base}/cartshow/save",
+              data: {productId:pid, quantity:amount,discountId:did},
+              dataType: "json",
+              success: function(data){
+            	  alert("加入购物车成功");
+                       }
+          });
+    	
+    	
+    }
+    
+    
+</script>
+</body>
+</html>

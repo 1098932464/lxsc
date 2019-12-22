@@ -1,0 +1,118 @@
+#star1,
+#star2,
+#star3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#star1 img,
+#star2 img,
+#star3 img {
+  width: 24px;
+  height: 24px;
+}
+
+.sp-header .fabu {
+  font-size: 4.26667vw;
+  color: orangered;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  justify-self: flex-end;
+}
+
+.eva-wrapper {
+  padding: 2.66667vw;
+  background-color: #fff;
+  font-size: 4vw;
+}
+
+.eva-wrapper .dppj {
+  padding: 2.66667vw 0;
+}
+
+.eva-wrapper .qtpj {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 8vw;
+  line-height: 8vw;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.eva-wrapper .qtpj .name {
+  margin-right: 4vw;
+}
+
+.eva-wrapper #eva_content {
+  width: 100%;
+  font-size: 4.26667vw;
+  height: 40vw;
+  line-height: 1.5;
+  outline: none !important;
+  border: 1px solid #ddd;
+}
+
+.eva-wrapper .shangpin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.eva-wrapper .shangpin img {
+  width: 13.33333vw;
+  height: 13.33333vw;
+  margin-right: 2.66667vw;
+}
+
+.eva-wrapper .miaoshu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.eva-wrapper .miaoshu > div:first-child {
+  font-size: 5.33333vw;
+  font-weight: bold;
+  height: 8vw;
+  line-height: 8vw;
+  margin-right: 2.66667vw;
+}
+
+.eva-wrapper .miaoshu #star1 {
+  width: 150px !important;
+}
+
+.eva-wrapper .miaoshu #pjnr {
+  color: #777;
+}
+
+.filepond--root {
+  max-height: 80vw;
+}
+
+.filepond--item {
+  width: 29.33333vw;
+  height: 29.33333vw !important;
+}
+
+.filepond--list {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 29.33333vw 29.33333vw 29.33333vw;
+      grid-template-columns: 29.33333vw 29.33333vw 29.33333vw;
+}
+
+.filepond--item-panel {
+  background-color: unset !important;
+}
+/*# sourceMappingURL=evaluate.css.map */

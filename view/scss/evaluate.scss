@@ -1,0 +1,121 @@
+@import "spvarious";
+$header-color:#fff;
+$color1: #777;
+$color2: rgb(107, 42, 12);
+$color3: rgb(230, 204, 168);
+$color4: #ddd;
+$color5: #ccc;
+$color6: rgb(226, 120, 45);
+$color7:rgb(33, 33, 33);
+$color8:#ddd;
+$color9:#e6e6e6;
+$color10:#bbb;
+$pricecolor1:rgb(181, 90, 25);
+$innerMargin:my-px2vw(5);
+$innerPadding:my-px2vw(5);
+$outterMargin:my-px2vw(10);
+$outterPadding:my-px2vw(10);
+$labelSize:my-px2vw(12);
+$fontsize16:my-px2vw(16);
+$fontsize14:my-px2vw(14);
+$fontsize12:my-px2vw(12);
+$fontsize20:my-px2vw(20);
+$fontsize30:my-px2vw(30);
+
+#star1,
+#star2,
+#star3 {
+    display: flex;
+    align-items: center;
+}
+
+#star1 img,
+#star2 img,
+#star3 img {
+    width: 24px;
+    height: 24px;
+}
+
+.sp-header {
+    .fabu {
+        font-size: $fontsize16;
+        color: orangered;
+        align-self: center;
+        justify-self: flex-end;
+    }
+}
+
+.eva-wrapper {
+    padding: $outterMargin;
+    background-color: #fff;
+    font-size: vw(15);
+
+    .dppj {
+        padding: vw(10) 0;
+    }
+
+    .qtpj {
+        display: flex;
+        height: vw(30);
+        line-height: vw(30);
+        align-items: center;
+
+        .name {
+            margin-right: vw(15);
+        }
+    }
+
+    #eva_content {
+        width: 100%;
+        font-size: vw(16);
+        height: vw(150);
+        line-height: 1.5;
+        outline: none !important;
+        border: 1px solid #ddd;
+    }
+
+    .shangpin {
+        display: flex;
+
+        img {
+            width: vw(50);
+            height: vw(50);
+            margin-right: vw(10);
+        }
+    }
+
+    .miaoshu {
+        display: flex;
+        align-items: center;
+
+        >div:first-child {
+            font-size: $fontsize20;
+            font-weight: bold;
+            height: vw(30);
+            line-height: vw(30);
+            margin-right: vw(10);
+        }
+
+        #star1 {
+            width: 150px !important;
+        }
+
+        #pjnr {
+            color: $color1;
+        }
+    }
+}
+.filepond--root {
+    max-height: vw(300);
+}
+.filepond--item {
+    width: vw(110);
+    height: vw(110)!important;
+}
+.filepond--list{
+    display: grid;
+    grid-template-columns: vw(110) vw(110) vw(110);
+}
+.filepond--item-panel {
+   background-color: unset!important;
+}

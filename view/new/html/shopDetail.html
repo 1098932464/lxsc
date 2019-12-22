@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/aui-slide.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/commonStyle.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/footer.css" />
+    <style>
+      
+
+    
+
+    </style>
+</head>
+
+<body class="theme-bg-color">
+        <button id="map-show-btn" onclick="hideMap(false)">查看地理位置</button>
+        <div id="map">
+            <button onclick="hideMap()">隐藏地图</button>
+                <iframe  src="${base}/userorder/map" frameborder="0"></iframe>
+        </div>
+    <div class="aui-content">
+        <!-- 顶部导航栏 -->
+        <header class="aui-bar aui-bar-nav theme-bg-color">
+            <a href="javascript:history.back();" class="aui-pull-left aui-btn">
+                <span class="aui-iconfont aui-icon-left"></span>
+            </a>
+            <div class="aui-title" style="left:2rem; right: 0.5rem;">
+                康师傅旗舰店
+            </div>
+        </header>
+        <!-- 商品分类导航 -->
+        <div class="good-classify">
+
+            <!-- Nav tabs -->
+            <ul class="hide-scroll">
+
+                <li class="active"><a href="javascript:reducehref(${pca.id});">美容美发</a></li>
+
+                <li><a href="javascript:reducehref(${pca.id});">粮油</a></li>
+                <li><a href="javascript:reducehref(${pca.id});">粮油</a></li>
+                <li><a href="javascript:reducehref(${pca.id});">粮油</a></li>
+                <li><a href="javascript:reducehref(${pca.id});">粮油</a></li>
+                <li><a href="javascript:reducehref(${pca.id});">粮油</a></li>
+
+
+            </ul>
+
+        </div>
+
+        <div class="shop-scrollView">
+            <!-- 轮播图 -->
+            <div class="shop-card">
+                <div id="aui-slide">
+                    <div class="aui-slide-wrap">
+
+
+                        <div class="aui-slide-node bg-dark">
+                            <img src="../image/l1.png" />
+                        </div>
+                        <div class="aui-slide-node bg-dark">
+                            <img src="../image/l2.png" />
+                        </div>
+                        <div class="aui-slide-node bg-dark">
+                            <img src="../image/l3.png" />
+                        </div>
+                    </div>
+                    <div class="aui-slide-page-wrap">
+                        <!--分页容器-->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 商品分类 -->
+            <div class="shop-card">
+                <div id="shopContent">
+                    商店介绍
+
+                </div>
+            </div>
+            <!-- 标题 -->
+            <div class="shop-title">
+                    全部商品
+            </div>
+            <!-- 商品列表 -->
+            <ul class="shop-list-good" style="padding: 10px;">
+                <li class="shop-card shop-list-item" style="margin: 10px 0;">
+                    <a href="">
+                        <img
+                            src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1968125376,2165089056&amp;fm=26&amp;gp=0.jpg">
+
+                    </a>
+                    <div class="good-info">
+                        <p>红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面</p>
+                        <span  class="shop-price"> ￥ 2.5</span>
+                    </div>
+                </li>
+                <li class="shop-card shop-list-item" style="margin: 10px 0;">
+                    <div>
+                        <img
+                            src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1968125376,2165089056&amp;fm=26&amp;gp=0.jpg">
+
+                    </div>
+                    <div class="good-info">
+                        <p>红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面</p>
+                        <span  class="shop-price"> ￥ 2.5</span>
+                    </div>
+                </li>
+                <li class="shop-card shop-list-item" style="margin: 10px 0;">
+                    <div>
+                        <img
+                            src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1968125376,2165089056&amp;fm=26&amp;gp=0.jpg">
+
+                    </div>
+                    <div class="good-info">
+                        <p>红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面红烧牛肉面</p>
+                        <span  class="shop-price"> ￥ 2.5</span>
+                    </div>
+                </li>
+             
+           
+            </ul>
+
+        </div>
+        <!-- 底部导航栏 -->
+        <footer class="aui-footer aui-footer-fixed">
+            <a href="${base}/wechat/index" class="aui-tabBar-item aui-tabBar-item-active">
+                <span class="aui-tabBar-item-icon">
+                    <i class="icon icon-loan"></i>
+                </span>
+                <span class="aui-tabBar-item-text">首页</span>
+            </a>
+            <a href="${base}/shop/index" class="aui-tabBar-item ">
+                <span class="aui-tabBar-item-icon">
+                    <i class="icon icon-credit"></i>
+                </span>
+                <span class="aui-tabBar-item-text">店铺</span>
+            </a>
+
+
+
+            <a href="${base}/cartshow/list" class="aui-tabBar-item ">
+                <span class="aui-tabBar-item-icon">
+                    <i class="icon icon-car"></i><i class="shop-badge">22</i>
+                </span>
+                <span class="aui-tabBar-item-text">购物车</span>
+            </a>
+            <a href="${base}/center/user" class="aui-tabBar-item ">
+                <span class="aui-tabBar-item-icon">
+                    <i class="icon icon-mine"></i>
+                </span>
+                <span class="aui-tabBar-item-text">我的</span>
+            </a>
+        </footer>
+    </div>
+    <script type="text/javascript" src="../script/aui-slide.js"></script>
+    <script>
+        var slide = new auiSlide({
+            container: document.getElementById("aui-slide"),
+            // "width":300,
+            "height": 160,
+            "speed": 300,
+            "pageShow": true,
+            "pageStyle": 'dot',
+            "loop": true,
+            'dotPosition': 'center'
+            // currentPage:currentFun
+        })
+        function hideMap(hide=true){
+            if(hide)
+            document.getElementById("map").style.display="none";
+            else
+            document.getElementById("map").style.display="block";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+       
+
+        #container {
+            min-width: 100%;
+            min-height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+
+    </div>
+    <!-- <script charset="utf-8" src="https://map.qq.com/api/js?v=2.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77"></script> -->
+    <script charset="utf-8"
+        src="https://map.qq.com/api/js?v=2.exp&key=TF7BZ-VSF6K-BKVJV-A3B5G-WEOYF-7KBUU&libraries=drawing,geometry,autocomplete,convertor"></script>
+
+    <script>
+
+        window.onload = function () {
+
+            //直接加载地图
+            var center = new qq.maps.LatLng(32.99736, 112.51937);
+
+            //初始化地图函数  自定义函数名init
+            function init() {
+
+                var map = new qq.maps.Map(document.getElementById("container"), {
+                    center: center,
+                    zoom: 14
+                });
+              
+
+                // 標誌
+                var marker = new qq.maps.Marker({
+                    position: center,
+                    draggable: false,
+                    map: map
+                });
+        }
+            //调用初始化函数地图
+            init();
+    }
+        
+    </script>
+</body>
+
+</html>

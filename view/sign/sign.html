@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>签到</title>
+      <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="./swiper.min.css">
+    <style>
+        .shop-sign-header {
+            height: 150px;
+            background-color: coral;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        .shop-sign-header-both {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .shop-sign-header-both>div:first-child {
+            color: #fff;
+        }
+
+        .shop-sign-header-both>div:last-child {
+            color: yellow;
+        }
+
+        .shop-sign-header-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        .shop-sign-gift-title {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .shop-sign-gift-list {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .shop-sign-header-center img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .shop-calendar table {
+            width: 100%;
+        }
+
+        .shop-calendar table td {
+            height: 32px;
+            line-height: 32px;
+            font-size: 16px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 签到头部 -->
+    <header class="shop-sign-header">
+        <div class="shop-sign-header-both">
+            <div>连续签到</div>
+            <div>1天</div>
+        </div>
+        <div class="shop-sign-header-center">
+            <img src="../demo1.jpg" alt="">
+            <div>哈哈哈</div>
+            <div>我的易物点:15易物点</div>
+            <div>今日已签</div>
+        </div>
+        <div class="shop-sign-header-both">
+            <div>总签到</div>
+            <div>2天</div>
+        </div>
+    </header>
+    <!-- 签到日历 -->
+    <section id="calendar">
+        <!-- 年月 -->
+        <div class="shop-calendar-title">
+            <span>|||</span>
+            <select class="shop-calendar-year"></select>年
+            <select class="shop-calendar-month">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>月
+        </div>
+        <!-- 日历 -->
+        <div class="shop-calendar">
+            <!-- 星期 -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>日</th>
+                        <th>一</th>
+                        <th>二</th>
+                        <th>三</th>
+                        <th>四</th>
+                        <th>五</th>
+                        <th>六</th>
+                    </tr>
+                </thead>
+
+            </table>
+
+        </div>
+    </section>
+    <!-- tips -->
+    <section>
+        <div>提示：点击漏签日期可以补签哦~~~</div>
+    </section>
+    <!-- 签到有礼 -->
+    <section class="shop-sign-gift">
+        <!-- 标题 -->
+        <div class="shop-sign-gift-title">
+            <span>连续签到有礼</span>
+
+
+            <span>
+                连续签到即可领取
+            </span>
+        </div>
+        <!-- 礼品内容 -->
+        <div class="shop-sign-gift-list">
+            <!-- 礼品项 -->
+            <div>
+                <div>
+                    <div>
+                        +19
+                    </div>
+                    <div>
+                        易物点
+                    </div>
+
+                </div>
+                <div>
+                    <div>
+                        七天
+                    </div>
+                    <div>
+                        领取
+                    </div>
+
+                </div>
+            </div>
+            <!-- 礼品项 -->
+            <div>
+                <div>
+                    <div>
+                        +19
+                    </div>
+                    <div>
+                        易物点
+                    </div>
+
+                </div>
+                <div>
+                    <div>
+                        七天
+                    </div>
+                    <div>
+                        领取
+                    </div>
+
+                </div>
+            </div>
+            <!-- 礼品项 -->
+            <div>
+                <div>
+                    <div>
+                        +19
+                    </div>
+                    <div>
+                        易物点
+                    </div>
+
+                </div>
+                <div>
+                    <div>
+                        七天
+                    </div>
+                    <div>
+                        领取
+                    </div>
+
+                </div>
+            </div>
+            <!-- 礼品项 -->
+            <div>
+                <div>
+                    <div>
+                        +19
+                    </div>
+                    <div>
+                        易物点
+                    </div>
+
+                </div>
+                <div>
+                    <div>
+                        七天
+                    </div>
+                    <div>
+                        领取
+                    </div>
+
+                </div>
+            </div>
+            <!-- 礼品项 -->
+            <div>
+                <div>
+                    <div>
+                        +19
+                    </div>
+                    <div>
+                        易物点
+                    </div>
+
+                </div>
+                <div>
+                    <div>
+                        七天
+                    </div>
+                    <div>
+                        领取
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- 连续签到有礼 -->
+    <section>
+    </section>
+  <!-- Swiper JS -->
+  <script src="./swiper.min.js"></script>
+    <script>
+        // 日历组件
+        function shopCalendar(opt) {
+            this.el = {}
+            this.tableEl = {}
+            this.yearEl={}
+            this.monthEl={}
+
+            this._init(opt)
+        }
+
+        shopCalendar.prototype = {
+            // 初始化 默认当前日期
+            _init(opt) {
+                this.opt = {
+                    el: "",
+                    startYear:2019,
+                    endYear:new Date().getFullYear()
+                }
+                this.extend(this.opt, opt)
+                // 生成模板
+                var el = document.getElementById(this.opt.el)
+                this.el = el
+                var table = this.el.querySelector("table")
+                this.tableEl = table
+
+                var now = new Date()
+                var year = now.getFullYear()
+                var month = now.getMonth() + 1
+
+                var yearEl = el.querySelector(".shop-calendar-year")
+                this.yearEl=yearEl
+                for(var i=this.opt.startYear;i<=now.getFullYear();i++){
+                    var option=document.createElement("option")
+                    option.value=i
+                    option.innerHTML=i
+                    yearEl.appendChild(option)
+                }
+
+
+              
+                var monthEl = el.querySelector(".shop-calendar-month")
+                this.monthEl=monthEl
+
+                yearEl.addEventListener("change",this.changeDate.bind(this))
+                monthEl.addEventListener("change",this.changeDate.bind(this))
+
+                yearEl.value = year
+                monthEl.value = month
+
+                this.setDate(year,month)
+            },
+            changeDate(){
+                var year=this.yearEl.value
+                var month=this.monthEl.value
+                this.setDate(year,month)
+            },
+            setDate(year,month){
+                var dayArr = this._getDayArr(year,month)
+                console.log(dayArr)
+                // 生成日期项
+                this._generateCalendar(dayArr)
+            },
+            _getDayArr(year,month) {
+                // 查询指定月天数
+                var days = this.getMonthDays(year, month)
+                // 查询指定月第一天和最后一天星期
+                var weekArr = this.getFirstAndLastWeek(year, month, days)
+
+                // 查询开头的上个月天数
+                var preDays = this.getMonthDays(year, month - 1)
+
+                var dayArr = []
+                // console.log(weekArr)
+                // 上个月天数
+                for (var i = 0; i < weekArr.first; i++) {
+                    dayArr.push(preDays - weekArr.first + 1 + i)
+                }
+                // 当月天数
+                for (var j = 0; j < days; j++) {
+                    dayArr.push(j + 1)
+                }
+                // 下个月天数
+                for (var g = 0; g < (6 - weekArr.last); g++) {
+                    dayArr.push(g + 1)
+                }
+                return dayArr
+            },
+            _generateCalendar(dayArr) {
+                var table = this.tableEl
+                if (table.querySelector("tbody"))
+                    table.removeChild(table.querySelector("tbody"))
+
+                var tbody = document.createElement("tbody")
+                var rowNum = dayArr.length / 7
+                for (var h = 0; h < rowNum; h++) {
+                    var tr = document.createElement("tr")
+                    for (var hh = 0; hh < 7; hh++) {
+                        var td = document.createElement("td")
+                        td.innerHTML = dayArr[hh + h * 7]
+                        tr.appendChild(td)
+                        console.log(dayArr[hh + h * 7])
+                    }
+                    tbody.appendChild(tr)
+                }
+                table.appendChild(tbody)
+            },
+
+            getFirstAndLastWeek(year, month, lastDay) {
+                var first = new Date(year, month - 1, 1)
+                //    console.log(first.getDay())
+                var last = new Date(year, month - 1, lastDay)
+                // console.log(last.getDay())
+                return { first: first.getDay(), last: last.getDay() }
+            },
+            getMonthDays(year, month) {
+                var date = new Date(year, month, 0)
+                //    console.log(date)
+                var days = date.getDate()
+                return days
+                //    console.log(days)
+            },
+            // father 被继承的对象 child最后的对象
+            extend(child, father) {
+                for (var k in father) {
+                    if (child.hasOwnProperty(k)) {
+                        child[k] = father[k]
+                    }
+                }
+            }
+        }
+        new shopCalendar({ el: "calendar",startYear:2015 })
+    </script>
+</body>
+
+</html>

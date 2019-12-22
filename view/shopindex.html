@@ -1,0 +1,305 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商家店铺</title>
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<link href="${base}/templates/${config.theme}/view/static/css/shopindex.css" rel="stylesheet" type="text/css" />
+		<style type="text/css">
+		html{color:#000;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}
+		html *{outline:0;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+		body {background:#FFF;color:#4a4f5a;font: 400 14px/1.5 "微软雅黑",Helvetica,STHeiti,Droid Sans Fallback;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+		body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}
+		input,select,textarea{font-size:100%}
+		article,aside,footer,header,nav,section,audio,canvas,video,img {display: block;}
+		table{border-collapse:collapse;border-spacing:0}
+		fieldset,img{border:0}
+		abbr,acronym{border:0;font-variant:normal}
+		del{text-decoration:line-through}
+		address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:normal}
+		ol,ul{list-style:none}
+		caption,th{text-align:left}
+		h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}
+		q:before,q:after{content:''}
+		button{outline:0;border:none;}
+		a:hover{text-decoration:none}
+		ins,a{text-decoration:none}
+		textarea {resize: none;}
+		iframe,img {border:0;}
+		img{display:block;width:100%;}
+		ul,ol {list-style:none;}
+		input,select,textarea {outline: 0;-webkit-user-modify: read-write-plaintext-only;}
+		input {-webkit-appearance: none;}
+		.pr{position:relative;}
+		.abs{position: absolute}
+		.fl{float:left;display:inline-block;}
+		.fr{float:right;display:inline-block;}
+		.clearfix:after{content:".";display:block;height:0;clear: both;visibility:hidden;}
+		.clearfix{*zoom:1;}
+		.wrap{min-width: 320px;max-width:768px;margin:0 auto;overflow:hidden;position:relative;}
+
+		.htit{line-height:1rem;padding:0 .3rem;color:#ff8e2e;font-size: .4rem;margin:1rem 0 .4rem 0}
+		.wrapper01 {position:relative;height: 1rem;width: 100%;overflow: hidden;margin:0 auto;border-bottom:1px solid #ccc}
+		.wrapper01 .scroller {position:absolute}
+		.wrapper01 .scroller li {height: 1rem;color:#333;float: left;line-height: 1rem;font-size: .4rem;text-align: center}
+		.wrapper01 .scroller li a{color:#333;display:block;margin:0 .3rem}
+		.wrapper01 .scroller li.cur a{color:#1cbb9b;}
+
+		.wrapper02 {position:relative;height: 1rem;width: 100%;overflow: hidden;margin:0 auto;background:#ddd}
+		.wrapper02 .scroller {position:absolute}
+		.wrapper02 .scroller li {height: 1rem;color:#333;float: left;line-height: 1rem;font-size: .8rem;text-align: center}
+		.wrapper02 .scroller li a{color:#333;display:block;margin:0 .3rem}
+		.wrapper02 .scroller li.cur{background:#1cbb9b}
+		.wrapper02 .scroller li.cur a{color:#fff;}
+
+		.wrapper03 {position:relative;height: 1rem;width: 100%;overflow: hidden;margin:0 auto;border-bottom:1px solid #ccc}
+		.wrapper03 .scroller {position:absolute}
+		.wrapper03 .scroller li {height: 1rem;color:#333;float: left;line-height: 1rem;font-size: .4rem;text-align: center}
+		.wrapper03 .scroller li a{color:#333;display:block;margin:0 .3rem;padding:0 .1rem}
+		.wrapper03 .scroller li.cur a{color:#1cbb9b;height:.9rem;border-bottom:.1rem solid #1cbb9b}
+
+		.wrapper04 {position:relative;height: 1rem;width: 80%;overflow: hidden;margin:0 auto;background:#ddd}
+		.wrapper04 .scroller {position:absolute}
+		.wrapper04 .scroller li {height: 1rem;color:#333;float: left;line-height: 1rem;font-size: .4rem;text-align: center}
+		.wrapper04 .scroller li a{color:#333;display:block;margin:0 .3rem}
+		.wrapper04 .scroller li.cur{background:#1cbb9b}
+		.wrapper04 .scroller li.cur a{color:#fff;}
+
+	</style>
+	
+	
+	<script type="text/javascript" src="${base}/templates/${config.theme}/view/static/js/jquery.min.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=${mapkey}"></script>
+
+<script type="text/javascript" src="${base}/templates/${config.theme}/view/static/js/slider.js"></script>
+<script type="text/javascript" src="${base}/templates/${config.theme}/view/static/js/tab.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+<script type="text/javascript" src="${base}/templates/${config.theme}/view/jsp/js_sdk.jsp"></script>	
+	<script type="text/javascript">
+	
+	var mapkey="${mapkey}";
+	var ticket="${ticket}";
+	var lng="${lng}";
+	var lat="${lat}";
+	
+
+ 
+	/*  var url = "${base}/ticket/index";
+	 $.get(url,function(result) {
+	  		wx.config({
+	  		  debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+	  		  appId: result.appId, // 必填，公众号的唯一标识
+	  		  timestamp:result.timestamp , // 必填，生成签名的时间戳
+	  		  nonceStr:result.nonceStr, // 必填，生成签名的随机串
+	  		  signature:result.signature,// 必填，签名
+	  		  jsApiList:['getLocation'] // 必填，需要使用的JS接口列表
+	  		});
+	  	}); */
+	
+	  	wx.error(function(res){
+	  	  // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+	  	  console.log(res);
+	  	  
+	  	});
+	 
+	  	
+	  	wx.ready(function(){
+	  	  // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+	  		wx.getLocation({
+	  		  type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+	  		  success: function (res) {
+	  		    var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+	  		    var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+	  		    var speed = res.speed; // 速度，以米/每秒计
+	  		    var accuracy = res.accuracy; // 位置精度
+	  		     lat=qqMapTransBMap(longitude,latitude).lats;
+	  		     lng=qqMapTransBMap(longitude,latitude).lngs; 
+	  	
+	  		  }
+	  		});
+	  	});
+
+	
+	
+	  	
+	  	
+	  	function qqMapTransBMap(lng, lat) {
+	  	  let x_pi = 3.14159265358979324 * 3000.0 / 180.0;
+	  	  let x = lng;
+	  	  let y = lat;
+	  	  let z = Math.sqrt(x * x + y * y) + 0.00002 * Math.sin(y * x_pi);
+	  	  let theta = Math.atan2(y, x) + 0.000003 * Math.cos(x * x_pi);
+	  	  let lngs = z * Math.cos(theta) + 0.0065;
+	  	  let lats = z * Math.sin(theta) + 0.006;
+	  	  return {
+	  	    lng: lngs,
+	  	    lat: lats
+	  	  };
+	  	}
+	 /*  	console.log(qqMapTransBMap(1, 1)); */
+	 
+	 
+	    function reducehref(pcateId){     
+		   window.location.href="${base}/shop/index?pcateId="+pcateId;
+        } 
+	 
+	 
+	 
+	 
+</script>
+
+	
+	
+</head>
+<body>
+<section class="aui-flexView">
+	<header class="aui-navBar aui-navBar-fixed">
+		<a href="javascript:;" class="aui-navBar-item">
+			<i class="icon icon-return"></i>
+		</a>
+		<div class="aui-center">
+			<div class="aui-show-search">
+				<i class="icon icon-search"></i>
+				<input type="text" placeholder="" >
+			</div>
+		</div>
+		<!-- <a href="javascript:;" class="aui-navBar-item">
+			<i class="icon icon-car"></i>
+		</a> -->
+	</header>
+	
+	<div class="wrapper wrapper02" id="wrapper02">
+	<div class="scroller">
+		<ul class="clearfix">
+			[@product_category_root_list type=2  count=9]
+			   [#list productCategories as pcate]
+		    <li><a href="javascript:reducehref(${pcate.id});">${pcate.name}</a></li>
+		       [/#list]
+		   [/@product_category_root_list]
+		</ul>
+	</div>
+</div>
+	
+	
+	
+	
+	<section class="aui-scrollView">
+		<div class="m-slider" data-ydui-slider>
+			<div class="slider-wrapper">
+			
+			       [@ad_position id =5]
+			      [#list adPosition.ads as ad]
+			      
+			      <div class="slider-item">
+					<a href="javascript:;">
+						<img src="${ad.image}" alt="">
+					</a>
+				</div>
+				  [/#list]
+			    [/@ad_position]
+			
+			</div>
+			<div class="slider-pagination"></div>
+		</div>
+		
+		
+		
+		<div class="aui-palace aui-palace-one ">
+		
+		      [@product_category_children_list productCategoryId=pcateId recursive=false count=9]
+	            [#list productCategories as pc]
+	               
+	               
+	        <a href="javascript:;" class="aui-palace-grid">
+				<div class="aui-palace-grid-icon">
+					<img src="https://www.17sucai.com/preview/1527619/2019-08-13/a-greens/images//nav-001.png" alt="">
+				</div>
+				<div class="aui-palace-grid-text">
+					<h2>${pc.name}</h2>
+				</div>
+			</a>
+	               
+	               [/#list] 
+	         [/@product_category_children_list]
+	         
+	         <a href="${base}/shop/shopCategory" class="aui-palace-grid">
+				<div class="aui-palace-grid-icon">
+					<img src="http://m.yihuoshidai.com//assets/frontend/images/tb10.png" alt="">
+				</div>
+				<div class="aui-palace-grid-text">
+					<h2>全部分类</h2>
+				</div>
+			</a> 
+	         
+
+		</div>
+		<div class="aui-flex">
+			<div class="aui-flex-box">
+				<img src="images/ad-001.png" alt="">
+			</div>
+		</div>
+		<div class="divHeight"></div>
+		<div class="aui-tab" data-ydui-tab>
+			<div class="tab-panel">
+				<div class="tab-panel-item tab-active">
+			
+			[@Shop_list lat=lat lng=lng activity=1 count=50]
+	            [#list shopList as list]
+				  	<a href="${base}/shop/detail?sid=${list.id}" class="aui-flex b-line">
+						<div class="aui-ser-img">
+							<img src="${list.img}" alt="">
+						</div>
+						<div class="aui-flex-box">
+							<h2>${list.shopName}</h2>
+							<span>${list.introduce}</span>
+						<!-- 	<h3><em>20元劵</em> <i>天猫价 20.8</i></h3> -->
+							<h4><em>距离</em> <i>${list.distance?string("#.##")}千米</i></h4>
+						</div>
+					</a> 
+				   
+				 [/#list] 
+	         [/@Shop_list]
+				
+				</div>
+			
+			
+			</div>
+		</div>
+
+	</section>
+	<footer class="aui-footer aui-footer-fixed">
+		<a href="${base}/wechat/index" class="aui-tabBar-item aui-tabBar-item-active">
+                    <span class="aui-tabBar-item-icon">
+                        <i class="icon icon-loan"></i>
+                    </span>
+			<span class="aui-tabBar-item-text">首页</span>
+		</a>
+		<a href="${base}/shop/index" class="aui-tabBar-item ">
+                    <span class="aui-tabBar-item-icon">
+                        <i class="icon icon-credit"></i>
+                    </span>
+			<span class="aui-tabBar-item-text">线下店铺</span>
+		</a>
+		<a href="${base}/cartshow/list" class="aui-tabBar-item ">
+                    <span class="aui-tabBar-item-icon">
+                        <i class="icon icon-news"></i>
+                    </span>
+			<span class="aui-tabBar-item-text">购物车</span>
+		</a>
+		<a href="${base}/center/user" class="aui-tabBar-item ">
+                    <span class="aui-tabBar-item-icon">
+                        <i class="icon icon-me"></i>
+                    </span>
+			<span class="aui-tabBar-item-text">我的</span>
+		</a>
+	</footer>
+</section>
+
+</body>
+
+
+</html>

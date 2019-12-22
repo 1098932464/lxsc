@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: tomato;
+        }
+
+        .shop-mask {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgb(0, 0, 0, .3);
+            display: none;
+            z-index: 100;
+        }
+
+        .shop-popup {
+            width: 100vw;
+            position: fixed;
+            background-color: #fff;
+            z-index: 2222;
+        }
+
+        .shop-popup-bottom {
+            height: 80vh;
+            border-radius: 10px 10px 0 0;
+            bottom: -80vh;
+            left: 0;
+            transition: bottom .5s ease-in;
+        }
+
+        .shop-popup-bottom.show {
+            bottom: 0;
+            transition: bottom .5s ease-out;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 底部弹出面板 -->
+    <button class="popup-btn" data-target="#mypanel">点击弹出底部面板</button>
+
+    <!-- 遮罩 -->
+    <div class="shop-mask">
+
+    </div>
+
+    <!-- 底部面板 -->
+    <div id="mypanel" class="shop-popup shop-popup-bottom">
+
+    </div>
+    <script>
+
+
+
+        initMask()
+        function initMask() {
+
+            var btns = document.querySelectorAll(".popup-btn")
+            for (var b of btns) {
+                b.addEventListener("touchend", show)
+            }
+
+            var mask = document.querySelector(".shop-mask")
+            mask.addEventListener("touchend", hide)
+
+            function show(e) {
+                document.querySelector(this.dataset.target).className += " show"
+                mask.style.display = "block"
+            }
+
+            function hide(e) {
+
+                var str = document.querySelector(".shop-popup").className.replace(/show/, "")
+                document.querySelector(".shop-popup").className = str
+                this.style.display = "none"
+            }
+        }
+    </script>
+</body>
+
+</html>

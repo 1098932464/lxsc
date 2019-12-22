@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>利享商城商品列表页面</title>
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+
+	<link href="${base}/templates/${config.theme}/view/static/css/commonStyle.css" rel="stylesheet" type="text/css" />
+	<link href="${base}/templates/${config.theme}/view/static/css/fonts/productList.css" rel="stylesheet" type="text/css" />
+	<link href="${base}/templates/${config.theme}/view/static/css/footer.css" rel="stylesheet" type="text/css" />
+	<style>
+	#title{
+		background: rgb(0,0,0,.1);
+		font-size: 1rem;
+		font-weight: bold;
+	}
+	#title a span{
+		color: red;
+	}
+
+	.aui-flex{
+		height: 160px;
+		border-bottom: 1px solid #2317173b;
+	}
+	.aui-flex-box p{
+		height: 75px;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		text-align: justify;
+		overflow: hidden;
+    /* 几行后显示省略号 */
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+	}
+	.aui-flex-box h2{
+		font-weight:600;
+		white-space: nowrap;
+		text-overflow:ellipsis;
+		overflow: hidden;
+	
+	}
+	</style>
+</head>
+<body>
+<section class="aui-flexView">
+	<header class="aui-navBar aui-navBar-fixed theme-bg-color">
+		<a href="javascript:;" class="aui-navBar-item">
+			<i class="icon icon-return"></i>
+		</a>
+		<div class="aui-center">
+			<span class="aui-center-title">利享商城</span>
+		</div>
+		<a href="javascript:;" class="aui-navBar-item" >
+			<i class="icon icon-search"></i>
+		</a>
+	</header>
+	<section class="aui-scrollView">
+		<div class="aui-tab" data-ydui-tab>
+			<ul id="title" class="tab-nav b-line">
+			<!-- 	<li class="tab-nav-item tab-active">
+					<a href="javascript:;">
+						<span>热销</span>
+					</a>
+				</li> -->
+				<li class="tab-nav-item">
+					<a href="javascript:;">
+						<span>全部</span>
+					</a>
+				</li>
+			</ul>
+			
+			<div class="tab-panel">
+				<div class="tab-panel-item tab-active">
+						[#list page.list as product]
+					<a href="${base}/product/detail?pid=${product.id}" class="aui-flex b-line">
+						<div class="aui-sure-img">
+							<img src="${config.imgurl}/${product.img}" alt="" width="112" height="84">
+						</div>
+						<div class="aui-flex-box">
+							<h2>${product.name}</h2>
+							<p>${product.specifications}</p>
+							<h3><i>￥</i><em>${product.price}</em>起</h3>
+						</div>
+					</a>
+					[/#list]
+				</div>
+	         
+			   <!-- <div class="tab-panel">
+					<div class="tab-panel-item tab-active">
+						<a href="${base}/product/detail?pid=${product.id}" class="aui-flex b-line">
+							<div class="aui-sure-img">
+								<img src="${base}/templates/${config.theme}/view//demo1.jpg" alt="" width="112" height="84">
+							</div>
+							<div class="aui-flex-box">
+								<h2>哇哈哈</h2>
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos architecto at similique quo quaerat voluptate, excepturi quas deleniti. Perferendis, iusto.
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos architecto at similique quo quaerat voluptate, excepturi quas deleniti. Perferendis, iusto.</p>
+								<h3><i>￥</i><em>121212</em>起</h3>
+							</div>
+						</a>
+
+						<a href="${base}/product/detail?pid=${product.id}" class="aui-flex b-line">
+							<div class="aui-sure-img">
+								<img src="${base}/templates/${config.theme}/view//demo1.jpg" alt="" width="112" height="84">
+							</div>
+							<div class="aui-flex-box">
+								<h2>哇哈哈</h2>
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos architecto at similique quo quaerat voluptate, excepturi quas deleniti. Perferendis, iusto.</p>
+								<h3><i>￥</i><em>121212</em>起</h3>
+							</div>
+						</a>
+
+						<a href="${base}/product/detail?pid=${product.id}" class="aui-flex b-line">
+							<div class="aui-sure-img">
+								<img src="${base}/templates/${config.theme}/view//demo1.jpg" alt="" width="112" height="84">
+							</div>
+							<div class="aui-flex-box">
+								<h2>哇哈哈</h2>
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos architecto at similique quo quaerat voluptate, excepturi quas deleniti. Perferendis, iusto.</p>
+								<h3><i>￥</i><em>121212</em>起</h3>
+							</div>
+						</a>
+					</div> -->
+
+
+
+
+
+
+
+
+
+
+			</div>
+		</div>
+
+	</section>
+	<footer class="aui-footer aui-footer-fixed">
+			<a href="${base}/wechat/index" class="aui-tabBar-item aui-tabBar-item-active">
+					<span class="aui-tabBar-item-icon">
+						<i class="icon icon-loan"></i>
+					</span>
+				<span class="aui-tabBar-item-text">首页</span>
+			</a>
+			<a href="${base}/shop/index" class="aui-tabBar-item ">
+					<span class="aui-tabBar-item-icon">
+						<i class="icon icon-credit"></i>
+					</span>
+				<span class="aui-tabBar-item-text">店铺</span>
+			</a>
+	
+	
+	
+			<a href="${base}/cartshow/list" class="aui-tabBar-item ">
+					<span class="aui-tabBar-item-icon">
+						<i class="icon icon-car"></i>
+					</span>
+				<span class="aui-tabBar-item-text">购物车</span>
+			</a>
+			<a href="${base}/center/user" class="aui-tabBar-item ">
+					<span class="aui-tabBar-item-icon">
+						<i class="icon icon-mine"></i>
+					</span>
+				<span class="aui-tabBar-item-text">我的</span>
+			</a>
+		</footer>
+</section>
+</body>
+<script type="text/javascript" src="${base}/templates/${config.theme}/view/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="${base}/templates/${config.theme}/view/static/js/tab.js"></script>
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的订单</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/commonStyle.css" />
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+    <style>
+        html {
+            font-size: 16px !important;
+        }
+
+        .aui-list .aui-list-item {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="aui-content">
+        <header class="aui-bar aui-bar-nav">
+            <a class="aui-pull-left aui-btn">
+                <span class="aui-iconfont aui-icon-left"></span>
+            </a>
+            <div class="aui-title">我的订单</div>
+        </header>
+
+        <div>
+
+       
+        <div class="aui-tab" id="tab">
+            <div data-target="#unpaid" class="aui-tab-item aui-active">未付款</div>
+            <div data-target="#paid" class="aui-tab-item">已付款</div>
+
+        </div>
+
+            <!-- 已付款 -->
+            <ul id="paid" class="aui-list aui-media-list" style="display: none;">
+                <!-- 订单项 -->
+                <li class="aui-list-item">
+
+                    <!-- 商品项 -->
+                    <div class=".aui-list-item-title" style="font-weight: bold;">
+                        <span style="font-size: 1rem;">易安生食品专营店<i class="aui-iconfont aui-icon-right"></i></span>
+                        <span style="color:red;float:right">已付款</span>
+                    </div>
+                    <div class="aui-media-list-item-inner">
+
+                        <div class="aui-list-item-media">
+
+                            <img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1271824967,2408850608&amp;fm=58">
+                        </div>
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-text">
+                                <div class="aui-list-item-title">韩国三洋火鸡面</div>
+                                <div class="aui-list-item-right">
+                                    <span>￥48.00</span>
+                                    <span>x 1</span>
+                                </div>
+
+                            </div>
+
+                            <div class="aui-list-item-text">
+                                三洋火鸡面五包+三洋双倍辣5包
+                                三洋火鸡面五包+三洋双倍辣5包
+
+                            </div>
+                        </div>
+                    </div>
+                   
+
+
+                    <!-- 合计 -->
+                    <div class="aui-info" style="padding-top:0;flex-direction: row-reverse;">
+                        <div class="aui-info-item">共一件商品 合计:￥48.00</div>
+                    </div>
+                    <div class="aui-clearfix-after">         
+                            <div class="aui-btn aui-btn-success aui-pull-right" style="margin-left: 10px;">评价</div>
+                        <div class="aui-btn aui-btn-success aui-pull-right" style="margin-left: 10px;">确认订单</div>
+                                <div class="aui-btn aui-btn-danger aui-pull-right">删除订单</div>
+                </div>
+                </li>
+              <!-- 订单项 -->
+              <li class="aui-list-item">
+
+                    <!-- 商品项 -->
+                    <div class=".aui-list-item-title" style="font-weight: bold;">
+                        <span style="font-size: 1rem;">易安生食品专营店<i class="aui-iconfont aui-icon-right"></i></span>
+                        <span style="color:red;float:right">已付款</span>
+                    </div>
+                    <div class="aui-media-list-item-inner">
+
+                        <div class="aui-list-item-media">
+
+                            <img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1271824967,2408850608&amp;fm=58">
+                        </div>
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-text">
+                                <div class="aui-list-item-title">韩国三洋火鸡面</div>
+                                <div class="aui-list-item-right">
+                                    <span>￥48.00</span>
+                                    <span>x 1</span>
+                                </div>
+
+                            </div>
+
+                            <div class="aui-list-item-text">
+                                三洋火鸡面五包+三洋双倍辣5包
+                                三洋火鸡面五包+三洋双倍辣5包
+
+                            </div>
+                        </div>
+                    </div>
+                   
+
+
+                    <!-- 合计 -->
+                    <div class="aui-info" style="padding-top:0;flex-direction: row-reverse;">
+                        <div class="aui-info-item">共一件商品 合计:￥48.00</div>
+                    </div>
+                    <div class="aui-clearfix-after">         
+                        <div class="aui-btn aui-btn-success aui-pull-right" style="margin-left: 10px;">确认订单</div>
+                                <div class="aui-btn aui-btn-danger aui-pull-right">删除订单</div>
+                </div>
+                </li>
+                 <!-- 订单项 -->
+                 <li class="aui-list-item">
+
+                        <!-- 商品项 -->
+                        <div class=".aui-list-item-title" style="font-weight: bold;">
+                            <span style="font-size: 1rem;">易安生食品专营店<i class="aui-iconfont aui-icon-right"></i></span>
+                            <span style="color:red;float:right">已付款</span>
+                        </div>
+                        <div class="aui-media-list-item-inner">
+    
+                            <div class="aui-list-item-media">
+    
+                                <img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1271824967,2408850608&amp;fm=58">
+                            </div>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title">韩国三洋火鸡面</div>
+                                    <div class="aui-list-item-right">
+                                        <span>￥48.00</span>
+                                        <span>x 1</span>
+                                    </div>
+    
+                                </div>
+    
+                                <div class="aui-list-item-text">
+                                    三洋火鸡面五包+三洋双倍辣5包
+                                    三洋火鸡面五包+三洋双倍辣5包
+    
+                                </div>
+                            </div>
+                        </div>
+                       
+    
+    
+                        <!-- 合计 -->
+                        <div class="aui-info" style="padding-top:0;flex-direction: row-reverse;">
+                            <div class="aui-info-item">共一件商品 合计:￥48.00</div>
+                        </div>
+                        <div class="aui-clearfix-after">         
+                            <div class="aui-btn aui-btn-success aui-pull-right" style="margin-left: 10px;">确认订单</div>
+                                    <div class="aui-btn aui-btn-danger aui-pull-right">删除订单</div>
+                    </div>
+                    </li>
+                     <!-- 订单项 -->
+                <li class="aui-list-item">
+
+                        <!-- 商品项 -->
+                        <div class=".aui-list-item-title" style="font-weight: bold;">
+                            <span style="font-size: 1rem;">易安生食品专营店<i class="aui-iconfont aui-icon-right"></i></span>
+                            <span style="color:red;float:right">已付款</span>
+                        </div>
+                        <div class="aui-media-list-item-inner">
+    
+                            <div class="aui-list-item-media">
+    
+                                <img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1271824967,2408850608&amp;fm=58">
+                            </div>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title">韩国三洋火鸡面</div>
+                                    <div class="aui-list-item-right">
+                                        <span>￥48.00</span>
+                                        <span>x 1</span>
+                                    </div>
+    
+                                </div>
+    
+                                <div class="aui-list-item-text">
+                                    三洋火鸡面五包+三洋双倍辣5包
+                                    三洋火鸡面五包+三洋双倍辣5包
+    
+                                </div>
+                            </div>
+                        </div>
+                       
+    
+    
+                        <!-- 合计 -->
+                        <div class="aui-info" style="padding-top:0;flex-direction: row-reverse;">
+                            <div class="aui-info-item">共一件商品 合计:￥48.00</div>
+                        </div>
+                        <div class="aui-clearfix-after">         
+                            <div class="aui-btn aui-btn-success aui-pull-right" style="margin-left: 10px;">确认订单</div>
+                                    <div class="aui-btn aui-btn-danger aui-pull-right">删除订单</div>
+                    </div>
+                    </li>
+                     <!-- 订单项 -->
+                <li class="aui-list-item">
+
+                        <!-- 商品项 -->
+                        <div class=".aui-list-item-title" style="font-weight: bold;">
+                            <span style="font-size: 1rem;">易安生食品专营店<i class="aui-iconfont aui-icon-right"></i></span>
+                            <span style="color:red;float:right">已付款</span>
+                        </div>
+                        <div class="aui-media-list-item-inner">
+    
+                            <div class="aui-list-item-media">
+    
+                                <img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1271824967,2408850608&amp;fm=58">
+                            </div>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title">韩国三洋火鸡面</div>
+                                    <div class="aui-list-item-right">
+                                        <span>￥48.00</span>
+                                        <span>x 1</span>
+                                    </div>
+    
+                                </div>
+    
+                                <div class="aui-list-item-text">
+                                    三洋火鸡面五包+三洋双倍辣5包
+                                    三洋火鸡面五包+三洋双倍辣5包
+    
+                                </div>
+                            </div>
+                        </div>
+                       
+    
+    
+                        <!-- 合计 -->
+                        <div class="aui-info" style="padding-top:0;flex-direction: row-reverse;">
+                            <div class="aui-info-item">共一件商品 合计:￥48.00</div>
+                        </div>
+                        <div class="aui-clearfix-after">         
+                            <div class="aui-btn aui-btn-success aui-pull-right" style="margin-left: 10px;">确认订单</div>
+                                    <div class="aui-btn aui-btn-danger aui-pull-right">删除订单</div>
+                    </div>
+                    </li>
+                     <!-- 订单项 -->
+                <li class="aui-list-item">
+
+                        <!-- 商品项 -->
+                        <div class=".aui-list-item-title" style="font-weight: bold;">
+                            <span style="font-size: 1rem;">易安生食品专营店<i class="aui-iconfont aui-icon-right"></i></span>
+                            <span style="color:red;float:right">已付款</span>
+                        </div>
+                        <div class="aui-media-list-item-inner">
+    
+                            <div class="aui-list-item-media">
+    
+                                <img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1271824967,2408850608&amp;fm=58">
+                            </div>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title">韩国三洋火鸡面</div>
+                                    <div class="aui-list-item-right">
+                                        <span>￥48.00</span>
+                                        <span>x 1</span>
+                                    </div>
+    
+                                </div>
+    
+                                <div class="aui-list-item-text">
+                                    三洋火鸡面五包+三洋双倍辣5包
+                                    三洋火鸡面五包+三洋双倍辣5包
+    
+                                </div>
+                            </div>
+                        </div>
+                       
+    
+    
+                        <!-- 合计 -->
+                        <div class="aui-info" style="padding-top:0;flex-direction: row-reverse;">
+                            <div class="aui-info-item">共一件商品 合计:￥48.00</div>
+                        </div>
+                        <div class="aui-clearfix-after">         
+                            <div class="aui-btn aui-btn-success aui-pull-right" style="margin-left: 10px;">确认订单</div>
+                                    <div class="aui-btn aui-btn-danger aui-pull-right">删除订单</div>
+                    </div>
+                    </li>
+                     <!-- 订单项 -->
+                <li class="aui-list-item">
+
+                        <!-- 商品项 -->
+                        <div class=".aui-list-item-title" style="font-weight: bold;">
+                            <span style="font-size: 1rem;">易安生食品专营店<i class="aui-iconfont aui-icon-right"></i></span>
+                            <span style="color:red;float:right">已付款</span>
+                        </div>
+                        <div class="aui-media-list-item-inner">
+    
+                            <div class="aui-list-item-media">
+    
+                                <img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1271824967,2408850608&amp;fm=58">
+                            </div>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title">韩国三洋火鸡面</div>
+                                    <div class="aui-list-item-right">
+                                        <span>￥48.00</span>
+                                        <span>x 1</span>
+                                    </div>
+    
+                                </div>
+    
+                                <div class="aui-list-item-text">
+                                    三洋火鸡面五包+三洋双倍辣5包
+                                    三洋火鸡面五包+三洋双倍辣5包
+    
+                                </div>
+                            </div>
+                        </div>
+                       
+    
+    
+                        <!-- 合计 -->
+                        <div class="aui-info" style="padding-top:0;flex-direction: row-reverse;">
+                            <div class="aui-info-item">共一件商品 合计:￥48.00</div>
+                        </div>
+                        <div class="aui-clearfix-after">         
+                            <div class="aui-btn aui-btn-success aui-pull-right" style="margin-left: 10px;">确认订单</div>
+                                    <div class="aui-btn aui-btn-danger aui-pull-right">删除订单</div>
+                    </div>
+                    </li>
+            </ul>
+            <!-- 未付款 -->
+            <ul id="unpaid" class="aui-list aui-media-list">
+                    <!-- 订单项 -->
+                    <li class="aui-list-item">
+    
+                        <!-- 商品项 -->
+                        <div class=".aui-list-item-title" style="font-weight: bold;">
+                            <span style="font-size: 1rem;">易安生食品专营店<i class="aui-iconfont aui-icon-right"></i></span>
+                            <span style="color:red;float:right">未付款</span>
+                        </div>
+                        <div class="aui-media-list-item-inner">
+    
+                            <div class="aui-list-item-media">
+    
+                                <img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1271824967,2408850608&amp;fm=58">
+                            </div>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title">韩国三洋火鸡面</div>
+    
+                                </div>
+                                <div class="aui-list-item-text" style="display: flex;justify-content: flex-end;">
+                                    <div class="aui-list-item-right">
+                                        <span>￥48.00</span>
+                                        <span>x 1</span>
+                                    </div>
+    
+                                </div>
+    
+                                <div class="aui-list-item-text">
+                                    三洋火鸡面五包+三洋双倍辣5包
+                                    三洋火鸡面五包+三洋双倍辣5包
+    
+                                </div>
+                            </div>
+                        </div>
+                       
+    
+    
+                        <!-- 合计 -->
+                        <div class="aui-info" style="padding-top:0;flex-direction: row-reverse;">
+                            <div class="aui-info-item">共一件商品 合计:￥48.00</div>
+                        </div>
+                        <div class="aui-clearfix-after">    
+                                <div class="aui-btn aui-btn-primary aui-pull-right" style="margin-left: 10px;">评价</div>   
+                            <div class="aui-btn aui-btn-success aui-pull-right" style="margin-left: 10px;">确认订单</div>
+                                    <div class="aui-btn aui-btn-danger aui-pull-right">删除订单</div>
+                                
+                    </div>
+                    </li>
+                 
+                </ul>
+            </div>
+    </div>
+
+
+
+
+
+
+
+    <script type="text/javascript" src="../script/aui-tab.js"></script>
+
+    <script type="text/javascript">
+
+        var tab = new auiTab({
+            element: document.getElementById("tab"),
+        }, function (ret) {
+            var uls=tab.params.element.parentNode.getElementsByTagName("ul")
+       
+            for(var ul of uls){
+                ul.style.display="none";
+            }
+       
+            document.querySelector(ret.dom.dataset.target).style.display="block"
+            console.log(document.querySelector(ret.dom.dataset.target))
+            
+        });
+    
+    </script>
+
+</body>
+
+</html>

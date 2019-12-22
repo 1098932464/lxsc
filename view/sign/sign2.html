@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>签到</title>
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="./swiper.min.css">
+    <link rel="stylesheet" href="./shopDatepicker.css">
+    <link rel="stylesheet" type="text/css" href="./aui.css" />
+    <link rel="stylesheet" href="../static/css/footer.css?shareshopversion=1.1.1.191103" type="text/css">
+
+    <style>
+        .shop-sign-header {
+            height: 150px;
+            background-color: coral;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        .shop-sign-header-both {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .shop-sign-header-both>div:first-child {
+            color: #fff;
+        }
+
+        .shop-sign-header-both>div:last-child {
+            color: yellow;
+        }
+
+        .shop-sign-header-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        .shop-sign-gift-title {
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .shop-sign-gift-title>span:first-child {
+            float: left;
+        }
+
+        .shop-sign-gift-title>span:last-child {
+            float: right;
+        }
+
+        .shop-sign-gift-list {
+            white-space: nowrap;
+            overflow-y: scroll;
+        }
+
+        .shop-sign-header-center img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        /* 日历 */
+        .shop-calendar {
+            width: 100%;
+            height: 100%;
+
+            border-radius: 10px;
+
+        }
+
+        .shop-calendar>tbody {
+            background: #55de55;
+            color: #fff;
+        }
+
+        .shop-calendar>tbody>tr>td.today {
+            color: red;
+        }
+
+        .shop-calendar>tbody>tr>td.disabled {
+            background-color: gray;
+        }
+
+        .shop-calendar>tbody>tr>td.supplement {
+            background-color: #00e1ff;
+        }
+
+        .shop-calendar>tbody>tr>td.signed {
+            background-image: url(./checkmark.png);
+            background-position: center;
+            background-size: 70%;
+            background-repeat: no-repeat;
+        }
+
+        .shop-calendar-title {
+            display: flex;
+            align-items: center;
+            font-size: 25px;
+
+
+        }
+
+        .shop-calendar table td {
+            height: 32px;
+            line-height: 32px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+
+        #swiperCalendar {
+            width: 100%;
+            height: 240px;
+            margin: 0 auto;
+        }
+
+        #swiperCalendar .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        .shop-date-pick {
+            width: 222px;
+            height: 300px;
+            position: fixed;
+            z-index: 2000;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #999;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .shop-date-pick .shop-month,
+        .shop-date-pick .shop-year {
+            position: absolute;
+            top: 161px;
+            transform: translateY(-50%);
+        }
+
+        .shop-date-pick .shop-month {
+            right: 10px;
+        }
+
+        .shop-mask {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgb(0, 0, 0, .3);
+            display: none;
+            z-index: 100;
+        }
+
+        .shop-calendar-icon {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-image: url(./calendar.png);
+            background-repeat: no-repeat;
+            background-size: 45px;
+            background-position: center;
+        }
+
+        .shop-gift-icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-image: url(./gift.png);
+            background-repeat: no-repeat;
+            background-size: 70px;
+            background-position: center;
+        }
+
+        .shop-sign-icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-image: url(./sign.png);
+            background-repeat: no-repeat;
+            background-size: 30px;
+            background-position: center;
+        }
+
+        .tips {
+            padding: 10px;
+            font-size: .8rem;
+        }
+
+        .shop-sign-gift {
+            padding: 10px;
+        }
+
+        .shop-sign-gift-item {
+            width: 65px;
+            height: 120px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .shop-gift-title {
+            padding-bottom: 15px;
+        }
+
+        .gift-btn {
+            border: 1px solid #666;
+
+        }
+
+        #signRulesContent {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 310px;
+            width: 300px;
+            background-color: #fff;
+            border-radius: 10px;
+            z-index: 2000;
+
+        }
+
+        #signRulesContent>div:first-child {
+            font-size: 16px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+        }
+
+        #signRulesContent>div:last-child {
+            font-size: 18px;
+            line-height: 22px;
+            text-align: left;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            padding: 10px;
+        }
+
+        .shop-scroll {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            margin-bottom: 50px;
+        }
+        #signDetails{
+            color: #000;
+            opacity: .5;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 滚动内容 -->
+    <div class="shop-scroll">
+        <!-- 签到头部 -->
+        <header class="shop-sign-header">
+            <a href="./signDetail.html" id="signDetails" class="aui-btn">
+                <!-- 签到详情 -->
+                签到记录
+            </a>
+            <div class="shop-sign-header-both">
+                <div>连续签到</div>
+                <div ><span id="constantSign"></span> 天</div>
+            </div>
+            <div class="shop-sign-header-center">
+                <img src="../demo1.jpg" alt="">
+                <div>哈哈哈</div>
+                <div >我的易物点: <span id="myMoney"></span>易物点</div>
+                <div id="todaySign" class="aui-btn aui-btn-success" style="border-radius: 15px;">签到</div>
+            </div>
+            <div class="shop-sign-header-both">
+                <div>总签到</div>
+                <div id="totalSign">2天</div>
+            </div>
+        </header>
+        <!-- 签到日历 -->
+        <section id="calendar">
+            <!-- 年月 -->
+            <div class="shop-calendar-title">
+                <span class="shop-calendar-icon"></span>
+                <span class="shop-year"></span>年
+                <span class="shop-month"></span>月
+            </div>
+            <!-- 日历 -->
+
+            <!-- Swiper -->
+            <div id="swiperCalendar" class="swiper-container">
+                <div class="swiper-wrapper">
+
+
+
+                </div>
+                <!-- Add Arrows -->
+                <!-- <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div> -->
+            </div>
+        </section>
+        <!-- tips -->
+        <section>
+            <div class="tips">提示：点击漏签日期可以补签哦~~~ <span id="signRules" style="float: right;">签到规则</span></div>
+        </section>
+
+        <!-- 连续签到有礼 -->
+        <section class="shop-sign-gift">
+            <!-- 标题 -->
+            <div class="shop-sign-gift-title">
+                <span class="shop-gift-icon"></span><span>连续签到有礼</span>
+
+
+                <span>
+                    连续签到即可领取
+                </span>
+            </div>
+            <!-- 礼品内容 -->
+            <div>
+                <div class="shop-sign-gift-list">
+
+                    <!-- 礼品项 -->
+                    <div class="shop-sign-gift-item">
+                        <div class="shop-gift-title">
+                            <div>
+                                +19
+                            </div>
+                            <div>
+                                易物点
+                            </div>
+
+                        </div>
+                        <div>
+                            <div>
+                                七天
+                            </div>
+                            <div data-num="19" class="aui-btn aui-btn-success">
+                                领取
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- 礼品项 -->
+                    <div class="shop-sign-gift-item">
+                        <div class="shop-gift-title">
+                            <div>
+                                +19
+                            </div>
+                            <div>
+                                易物点
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                七天
+                            </div>
+                            <div data-num="19" class="aui-btn">
+                                已领取
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- 签到有礼 -->
+        <section class="shop-sign-gift">
+            <!-- 标题 -->
+            <div class="shop-sign-gift-title">
+                <span class="shop-sign-icon"></span><span>签到有礼</span>
+
+
+                <span>
+                    签到满足次数即可领取
+                </span>
+            </div>
+            <!-- 礼品内容 -->
+            <div>
+                <div class="shop-sign-gift-list">
+                    <!-- 礼品项 -->
+                    <div class="shop-sign-gift-item">
+                        <div class="shop-gift-title">
+                            <div>
+                                +19
+                            </div>
+                            <div>
+                                易物点
+                            </div>
+
+                        </div>
+                        <div>
+                            <div>
+                                七天
+                            </div>
+                            <div data-num="19" class="aui-btn aui-btn-success">
+                                领取
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- 礼品项 -->
+                    <div class="shop-sign-gift-item">
+                        <div class="shop-gift-title">
+                            <div>
+                                +19
+                            </div>
+                            <div>
+                                易物点
+                            </div>
+
+                        </div>
+                        <div>
+                            <div>
+                                七天
+                            </div>
+                            <div data-num="19" class="aui-btn">
+                                已领取
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- 日期选择器 -->
+    <div id="chooseDate" class="shop-datepick-container">
+        <div class="shop-datepick-title">
+            <div>选择日期</div>
+            <div><span class="shop-year"></span> 年 <span class="shop-month"></span> 月</div>
+
+        </div>
+        <div class="shop-datepick-name">
+            <div class="shop-year">年</div>
+            <div class="shop-month">月</div>
+        </div>
+        <div class="shop-datepick-year">
+            <div class="shop-datepick-slide">
+                <div data-year="">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="shop-datepick-month">
+            <div class="shop-datepick-slide">
+                <div data-month="">
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- 签到规则 -->
+    <div id="signRulesContent">
+        <div>
+            签到规则
+        </div>
+        <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam exercitationem quos saepe, ipsum fugiat
+            facere. Praesentium soluta aspernatur nostrum? Ullam pariatur hic voluptates est incidunt ducimus commodi
+            voluptatem, sapiente perferendis!
+        </div>
+    </div>
+
+    <div class="shop-mask"></div>
+
+	<footer class="aui-footer aui-footer-fixed">
+            <a href="${base}/wechat/index" class="aui-tabBar-item aui-tabBar-item-active">
+                    <span class="aui-tabBar-item-icon">
+                        <i class="icon icon-loan"></i>
+                    </span>
+                <span class="aui-tabBar-item-text">首页</span>
+            </a>
+            <a href="${base}/shop/index" class="aui-tabBar-item ">
+                    <span class="aui-tabBar-item-icon">
+                        <i class="icon icon-credit"></i>
+                    </span>
+                <span class="aui-tabBar-item-text">店铺</span>
+            </a>
+    
+    
+    
+            <a href="${base}/cartshow/list" class="aui-tabBar-item ">
+                    <span class="aui-tabBar-item-icon">
+                        <i class="icon icon-car"></i><i class="shop-badge">22</i>
+                    </span>
+                <span class="aui-tabBar-item-text">购物车</span>
+            </a>
+            <a href="${base}/center/user" class="aui-tabBar-item ">
+                    <span class="aui-tabBar-item-icon">
+                        <i class="icon icon-mine"></i>
+                    </span>
+                <span class="aui-tabBar-item-text">我的</span>
+            </a>
+        </footer>
+    <!-- Swiper JS -->
+    <script src="./swiper.min.js"></script>
+    <script src="./shopDatepicker.js"></script>
+    <script src="./shopCalendar.js"></script>
+    <script src="./zepto.js"></script>
+    <script src="./touch.js"></script>
+    <script type="text/javascript" src="./aui-toast.js"></script>
+
+    <script>
+        window.onload = initMySign;
+        // 签到页面初始化
+        function initMySign() {
+
+            var mask = document.querySelector(".shop-mask")
+            // 为日期赋默认值
+            var now = new Date()
+            var showyear = document.querySelector(".shop-calendar-title .shop-year")
+            var showmonth = document.querySelector(".shop-calendar-title .shop-month")
+            showyear.innerHTML = now.getFullYear()
+            showmonth.innerHTML = now.getMonth() + 1
+            var date = { year: now.getFullYear(), month: now.getMonth() + 1 }
+            var mydatepicker = new shopDatepicker("chooseDate", {
+                dateChange: function (year, month) {
+                    showyear.innerHTML = year
+                    showmonth.innerHTML = month
+                    date.year = year
+                    date.month = month
+                },
+                startYear: 2019
+            })
+
+            // 初始化日历
+            var calendarObj = initShopCalendar("swiperCalendar",
+                // 显示日期
+                function (year, month) {
+                    showyear.innerHTML = year
+                    showmonth.innerHTML = month
+
+                    date.year = year
+                    date.month = month
+                }, loadSignData)
+
+
+            // 显示日期选择器
+            document.querySelector(".shop-calendar-title").addEventListener("touchstart", function () {
+                if (date.year !== 0)
+                    mydatepicker.setDate(date.year, date.month)
+                mydatepicker.show()
+                mask.style.display = "block"
+            })
+
+            // 遮罩
+            mask.addEventListener("touchstart", function () {
+                mydatepicker.hide()
+                this.style.display = "none"
+                // 重新绘制日历
+                calendarObj(date)
+                document.getElementById("signRulesContent").style.display = "none"
+            })
+
+            // 签到规则
+            document.getElementById("signRules").addEventListener("touchstart", function () {
+                mask.style.display = "block"
+                document.getElementById("signRulesContent").style.display = "block"
+            })
+            
+          
+            bindSignTapEvent()
+
+
+
+            // 加载签到信息
+            function loadSignData() {
+                if (now.getFullYear() < date.year) {
+                    return
+                } else if (now.getFullYear() == date.year && now.getMonth() + 1 < date.month) {
+                    return
+                }
+                // 签到日期
+                var signedDays = [1, 2, 11, 25, 31, 30]
+                for (var day of signedDays) {
+                    var td = document.querySelector("#swiperCalendar div.swiper-slide.swiper-slide-active>table>tbody>tr>td:not(.disabled)[data-day='" + day + "']")
+                    if (td)
+                        $(td).addClass("signed")
+                }
+            }
+        }
+
+        // 更新签到信息
+        function updateSignInfo() {
+            $("#constantSign").html(5)
+            $("#totalSign").html(6)
+            $("#myMoney").html(10.00)
+            $.get("",function(data){
+
+            })
+        }
+     
+        // 绑定事件
+        function bindSignTapEvent() {
+            var toast = new auiToast();
+            $("#todaySign").tap(function () {
+                if (!$(this).data("signed")) {
+                    // 发送请求
+                    var today = new Date()
+                    var td = document.querySelector("#swiperCalendar td[data-day='" + today.getDate() + "']" + "[data-year='" + today.getFullYear() + "'][data-month='" + (today.getMonth() + 1) + "']")
+                    $(td).trigger("tap")
+                    $(this).html("今日已签")
+                    $(this).data("signed", true)
+                    updateSignInfo()
+                }
+            })
+            // 签到有礼
+            $(".shop-sign-gift-list .shop-sign-gift-item .aui-btn-success").tap(function () {
+
+                $.get("",function(data){
+                
+            })
+
+                var num = this.dataset.num
+                toast.success({
+                    title: "领取" + num + "利享币",
+                    duration: 2000
+                });
+                $(this).html("已领取")
+                $(this).removeClass("aui-btn-success")
+                $(this).off()
+            })
+        
+          // 签到和补签
+          $("#swiperCalendar").on("tap", function (e) {
+                var el = e.target
+                if (el.className == "supplement") {
+                    console.log("补签")
+                    $.get("",function(data){
+                
+            })
+                    toast.success({
+                        title: "补签成功",
+                        duration: 2000
+                    });
+                    $(el).addClass("signed")
+                    updateSignInfo()
+                } else if (el.className.indexOf("today") != -1 && el.className.indexOf("signed") == -1) {
+                    console.log("签到")
+                    $.get("",function(data){
+                
+            })
+                    toast.success({
+                        title: "签到成功",
+                        duration: 2000
+                    });
+                    $(el).addClass("signed")
+                    updateSignInfo()
+                }
+            })
+        }
+
+
+    </script>
+</body>
+
+</html>

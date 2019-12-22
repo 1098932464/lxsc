@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>姐妹美甲</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/commonStyle.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/aui.css" />
+    <style>
+    #d1{
+        height: 100px;
+        background-image: linear-gradient(135deg,#fff 0%,#000 100%);
+    }
+    </style>
+</head>
+<body>
+        <div class="aui-content">
+        <header class="aui-bar aui-bar-nav">
+                <a class="aui-pull-left aui-btn">
+                    <span class="aui-iconfont aui-icon-left"></span>
+                </a>
+                <div class="aui-title">姐妹美甲</div>
+            </header>
+        </div>
+
+    <script type="text/javascript" src="./jquery.min.js"></script>
+    <script type="text/javascript" src="./jquery.raty.min.js"></script>
+    <script>
+          $.fn.raty.defaults.path = 'img';
+    $('#star').raty({ space: false });
+    </script>
+</body>
+</html>

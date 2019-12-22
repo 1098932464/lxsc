@@ -1,0 +1,10 @@
+@function my-px2vw($n){
+    @return $n / 375 *100 +vw;
+}
+@function vw($n){
+    @return $n / 375 *100 +vw;
+}
+@mixin Fillet {
+    border-radius: my-px2vw(10);
+}
+$border:1px solid #666;

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>购物车</title>
+
+<!--公共集合样式-->
+<link rel="stylesheet" href="${base}/templates/${config.theme}/view/static/css/commonStyle.css" />
+<link rel="stylesheet" href="${base}/templates/${config.theme}/view/static/css/cart.css" />
+<script type="text/javascript" src="${base}/templates/${config.theme}/view/static/js/jquery.min.js" ></script>
+<style>
+    .m-box .list ul li .box .img img {
+
+    height: 100%;
+}
+.all-price{
+   display: flex;
+   align-items: center;
+ 
+}
+.all-price>span{
+    padding: 0 5px;
+}
+.m-box .list ul li .box .price {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.title{
+    color: #666;
+    font-size: .9rem;
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.foot {
+    padding: 0;
+    height: 100px;
+}
+.foot-box{
+    display: flex;
+    flex-direction: column;
+}
+.foot .foot-box .itme {
+    width: 100%;
+}
+.foot .foot-box {
+    width: 100%;
+    float: right;
+}
+.total-price {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row-reverse;
+    background-color: #eee;
+}
+.total-price>div{
+    margin: 0 10px;
+}
+.total-check{
+    width: 30vw;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+}
+.total-check>.check{
+    background-color: #fff;
+}
+.m-box .list ul li .box .img {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.m-box .list ul li {
+    height: 120px;
+}
+.m-box .list ul li .box {
+    height: 120px;
+}
+</style>
+</head>
+<body>
+
+<div class="m-box">
+    <div class="head theme-bg-color">
+          <!--全选-->
+          <div class="total-check">
+              <div class=" check"></div>
+                全选
+            </div>
+        <a href="#"></a>
+        <span>购物车</span>
+        <div class="del" id="del">删除</div>
+    </div>
+    <div style="height: 50px;"></div>
+    <div class="list">
+        <ul id="item">
+               
+        </ul>
+    </div>
+    <div class="foot clearfix">
+       
+        <!--总价-->
+        <div class="foot-box">
+
+            <div class="itme total-price">
+           
+              <div >
+                    <span class="shop-money-icon"></span>
+                    <span id="shopPrice"></span>
+              </div>
+            
+              <div >
+                    ￥<span id="totalPrice">0</span>
+               </div> 
+        </div>
+            <div class="itme"><input type="button" class="btn theme-bg-color" value="确认下单"  /></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="${base}/templates/${config.theme}/view/static/js/cart.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+		
+		$.ajax({
+	              url:"${base}/cartshow/view", //请求的地址
+	              type:"post", //请求的方式
+	              data:{}, //请求的数据
+	              success:function (data) {
+	            	  
+	                  var content="";
+              for (var i = 0; i < data.cartItems.length; i++) {
+                  var id=data.cartItems[i].id;
+                  var name=data.cartItems[i].product.name;
+                  var quantity=data.cartItems[i].quantity;
+                  var image=data.cartItems[i].product.image;            
+                  var yprice=data.cartItems[i].product.yprice;
+                  var cprice=data.cartItems[i].product.cprice;
+                  var path="${config.imgurl}"+image;
+                  
+                  content+=" <li id='"+id+"'>"+
+                "<div class=\"box\">"+
+                    "<div class=\"check dark-check\"></div>"+
+                    "<div class=\"img\">"+
+                        "<img src=\""+path+
+                        "\" />"+
+                        " </div>"+
+                        "<div class=\"info clearfix\">"+
+                            "<div class=\"title\">"+name+
+                            "</div>"+
+                            "<div class=\"m-num fl\">"+
+                                "<span class=\"jian\">-</span>"+ 
+                                "<input type=\"text\"    value=\""+quantity+
+                                "\" class=\"num\" />"+
+                                "<span class=\"add\">+</span>"+  
+                                "</div>"+
+                                "<div class=\"price fr\">"+
+                                    "<div>"+
+                                            "￥<span class='shop_price' data-price=\""+cprice+
+                                        "\">"+cprice+
+                                        "</span>"+ 
+                                        "</div>"+
+                                    
+                                    
+                                        "<div>"+
+                                                "<span class=\"shop-money-icon\"></span><span class='shop_price' data-yprice='"+yprice+"'>'"+yprice+"'</span>"+
+                                            "</div></div>"
+                                            "</div>"+
+                                            "</div>"+
+                                            "</li>";
+              
+             } 
+        	
+              document.getElementById("item").innerHTML =content;
+              initCheckBox()
+          } });
+		
+	
+	
+});
+
+</script>
+
+</body>
+</html>

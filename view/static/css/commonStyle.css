@@ -1,0 +1,384 @@
+:root{
+    --purple:#e542e6;
+    --gold:#e8ec1f;
+    --red:#f13228;
+    --gray:gray;
+    --btn-color:#5cb85c;
+    --font-gray:gray;
+}
+
+
+#map{
+    display: none;
+}
+#map iframe{
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+#map button{
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100px;
+    height: 40px;
+    background-color: green;
+    opacity: .7;
+    border-radius: 0 0 10px 0 ;
+    color: #fff;
+    z-index: 2200;
+}
+#map-show-btn{
+    width: 25%;
+    height: 30px;
+    border-radius: 0 0 0 10px;
+    box-shadow: 0px 0px 5px 5px currentColor;
+    position: fixed;
+    top: 0;
+    right: 0;
+    color: #fff;
+    z-index: 1003;
+    font-size: .7rem;
+    transition: box-shadow .2s linear;
+    background-color: transparent;
+}
+
+#map-show-btn:active{
+    box-shadow: 5px -5px 5px 5px currentColor;
+}
+.shop-title{
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 10px;
+    width: 4rem;
+    text-align: center;
+    font-size: .9rem;
+    font-weight: bold;
+    color: #666;
+}
+.shop-list-good{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.shop-list-good .shop-list-item{
+    width: 48%;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+.good-info{
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+}
+.good-info p{
+    line-height: .9rem;
+    font-size: .9rem;
+    display: -webkit-box;             /*将对象转为弹性盒模型展示*/
+    -webkit-box-orient: vertical;     /*设置弹性盒模型子元素的排列方式*/
+    -webkit-line-clamp: 2;            /*限制文本行数*/
+    overflow: hidden;                 /*超出隐藏*/
+}
+.shop-list-good .shop-list-item img{
+    width: 180px;
+    height: 180px;
+}
+.shop-price{
+    font-size: 1.2rem;
+    color: var(--red);
+}
+
+.shop-red{
+    color: var(--red);
+}
+.shop-card{
+    margin: 10px;
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.radius-10{
+    border-radius:10px;
+}
+
+.p-0{
+    padding: 0;
+}
+.good-classify{
+    height: 50px;
+    overflow: hidden;
+    background-color: rgb(0,0,0,.2);
+    display: flex;
+    align-items: center;
+}
+.good-classify ul{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+.good-classify li{
+    white-space: nowrap;
+    padding:  5px 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: baseline;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: font-size .6s linear;
+
+}
+.shop-logo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #fff;
+
+}
+.shop-logo div {
+    width: 30%;
+    height: 50px;
+    margin: 10px 0;
+}
+.shop-logo div>img{
+    width: auto;
+    height: 100%;
+    margin: 0 auto;
+}
+.shop-show-more{
+    float: right;
+    padding: 2px;
+    margin: 2px;
+    color: #666;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+.good-classify li a{
+    color: #000;
+}
+.good-classify li.active>a{
+    font-size: 1.1rem;
+    color: red;
+}
+.radius-10:active{
+    box-shadow: 2px 2px 2px currentColor;
+}
+.shop-sold-out{
+    background-color: #000;
+    opacity: .8;
+}
+.aui-list {
+    background-color: transparent;
+}
+.shop-sales {
+    color: #666!important;
+    font-size: .8rem;
+}
+.shop-sold-out>span:only-of-type {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: #000;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.shop-sold-out img{
+    opacity: .5;
+}
+.shop-money-icon{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    padding: 0 2px;
+    background-image: url(../img/money_icon.jpg);
+    background-repeat: no-repeat;
+    background-size:20px;
+    vertical-align: middle;
+}
+.aui-content{
+    height: 100vh;
+    overflow: hidden;
+}
+.shop-scrollView {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+    padding-bottom: 153px;
+}
+.shop-center>img{
+    margin: 0 auto;
+}
+.aui-list-header{
+    background-color: rgb(0,0,0,.1)!important;
+}
+/*.aui-bar-nav{*/
+    /*height: 44px!important;*/
+    /*display: flex;*/
+    /*align-items: center;*/
+/*}*/
+.aui-grid img{
+    height: 50px;
+}
+
+html{
+    font-size: 16px;
+}
+
+.theme-bg-color{
+    background-color: #56d0f1!important;
+}
+.theme-font-color{
+    color:var(--red)!important;
+}
+
+
+
+.hide-scroll::-webkit-scrollbar {
+
+    display: none
+}
+::-webkit-scrollbar {
+
+    display: none
+}
+.input-box {
+    display: flex;
+    border-bottom: 1px solid #000;
+    align-items: center;
+    position: relative;
+}
+
+
+.input-box input {
+    width: 100%;
+    background: #fff!important;
+    outline: none;
+    border: none!important;
+    font-size: 1rem!important;
+    padding: 10px!important;
+}
+
+.input-box input:valid+.clear-input {
+    display: block;
+}
+
+.clear-input {
+
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+}
+
+.clear-input>img {
+    width: 15px;
+    height: auto;
+}
+
+.input-box button {
+    background: #fff;
+    outline: none;
+    border: none;
+}
+
+
+.input-box-container{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.input-box-container .shop-btn{
+    height: 50px;
+    font-size: 1.5rem;
+    background:var(--btn-color);
+    border-radius: 10px;
+    outline: none;
+    border: 0;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.shop-gold-medal {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background-image: url(../img/goldMedal.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.shop-bronze-medal {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background-image: url(../img/bronzeMedal.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.shop-silver-medal {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background-image: url(../img/silverMedal.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.shop-num4 {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background-image: url(../img/num4.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.shop-num5 {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background-image: url(../img/num5.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.shop-num6 {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background-image: url(../img/num6.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}

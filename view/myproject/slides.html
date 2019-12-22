@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>滑块</title>
+    <link rel="stylesheet" href="../css/dySlider.css">
+</head>
+<body>
+    <div class="slider-wrapper">
+            <div class="slider-bg"></div>
+        <ul class="slider vipcard" id="dys">
+            <li class="item" data-ids="1">
+                <img src="https://dss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4017168983,2353441090&fm=26&gp=0.jpg" alt="">
+            </li>
+            <li class="item" data-ids="1,2"><img src="http://img5.imgtn.bdimg.com/it/u=1053998594,976399719&fm=11&gp=0.jpg" alt=""></li>
+            <li class="item" data-ids="1,2,3"><img src="http://img3.imgtn.bdimg.com/it/u=2565983383,1443179762&fm=26&gp=0.jpg" alt=""></li>
+            <li class="item" data-ids="1,2,3,4"><img src="http://img0.imgtn.bdimg.com/it/u=2425599493,534460427&fm=11&gp=0.jpg" alt=""></li>
+            <li class="item" data-ids="1,2,3,4,5,6"><img src="http://img1.imgtn.bdimg.com/it/u=138574545,4174835840&fm=26&gp=0.jpg" alt=""></li>
+            <li class="item" data-ids="1,2,3,4,5,6,7"><img src="http://img3.imgtn.bdimg.com/it/u=2810888638,446674985&fm=26&gp=0.jpg" alt=""></li>
+            <li class="item" data-ids="1,2,3,4,5,6,7,8"><img src="http://img1.imgtn.bdimg.com/it/u=1541184195,1793134888&fm=26&gp=0.jpg" alt=""></li>
+            <li class="item" data-ids="1,2,3,4,5,6,7,8,10"><img src="http://img5.imgtn.bdimg.com/it/u=3040533817,4021064804&fm=26&gp=0.jpg" alt=""></li>
+            <li class="item" data-ids="1,2,3,4,5,6,7,8,9,10"><img src="http://img5.imgtn.bdimg.com/it/u=3040533817,4021064804&fm=26&gp=0.jpg" alt=""></li>
+            <li class="item" data-ids="5,6,7,8,9,10"><img src="http://img0.imgtn.bdimg.com/it/u=3520380256,1318207566&fm=26&gp=0.jpg" alt=""></li>
+            <li class="item" data-ids="0,1,2,3,4,8,9,10"><img src="http://img1.imgtn.bdimg.com/it/u=3467666162,3760167117&fm=26&gp=0.jpg" alt=""></li>
+        </ul>
+        
+    </div>
+    <div class="slider-wrapper">
+            <div class="slider-bg"></div>
+            <ul class="slider" id="dys2">
+              
+           
+            </ul>
+            
+        </div>
+    <script src="../static/js/zepto.min.js"></script>
+    <script src="../static/js/touch.js"></script>
+    <script src="../js/selector.js"></script>
+    <script src="../js/dySlider.zepto.js"></script>
+    <script>
+        $(function(){
+            var data=[
+            {
+                id:"1",
+                img:"http://img1.imgtn.bdimg.com/it/u=3467666162,3760167117&fm=26&gp=0.jpg"
+            },
+            {
+                id:"2",
+                img:"http://img0.imgtn.bdimg.com/it/u=3520380256,1318207566&fm=26&gp=0.jpg"
+            },
+            {
+                id:"3",
+                img:"http://img5.imgtn.bdimg.com/it/u=3040533817,4021064804&fm=26&gp=0.jpg"
+            },
+            {
+                id:"4",
+                img:"http://img5.imgtn.bdimg.com/it/u=3040533817,4021064804&fm=26&gp=0.jpg"
+            },
+            {
+                id:"5",
+                img:"http://img1.imgtn.bdimg.com/it/u=1541184195,1793134888&fm=26&gp=0.jpg"
+            },
+            {
+                id:"6",
+                img:"http://img3.imgtn.bdimg.com/it/u=2810888638,446674985&fm=26&gp=0.jpg"
+            },
+            {
+                id:"7",
+                img:"http://img1.imgtn.bdimg.com/it/u=138574545,4174835840&fm=26&gp=0.jpg"
+            },
+            {
+                id:"8",
+                img:"http://img0.imgtn.bdimg.com/it/u=2425599493,534460427&fm=11&gp=0.jpg"
+            },
+            {
+                id:"9",
+                img:"http://img3.imgtn.bdimg.com/it/u=2565983383,1443179762&fm=26&gp=0.jpg"
+            },
+            {
+                id:"10",
+                img:"http://img5.imgtn.bdimg.com/it/u=1053998594,976399719&fm=11&gp=0.jpg"
+            },
+            {
+                id:"0",
+                img:"https://dss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4017168983,2353441090&fm=26&gp=0.jpg"
+            },
+        ]
+            initMySlider(data)
+        })
+        function initMySlider(data){
+            var mySlider
+            new dySlider("dys",{
+        isVipcard:true,
+        tap:function(el){
+            var ids=el.dataset.ids.split(",")
+            var tmpData=[]
+      
+            ids.forEach(element => {
+                data.forEach((e,i)=>{
+                    if(element==e.id){
+                        tmpData.push(e)
+                    }
+                })
+                
+            });
+            // console.log(tmpData);
+            
+            mySlider=new dySlider("dys2",{
+        data:tmpData
+       })
+
+        }
+       })
+
+      
+        }
+      
+      
+    </script>
+</body>
+</html>

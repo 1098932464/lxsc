@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>发表评价</title>
+    <link rel="stylesheet" href="../css/screen.css">
+    <link rel="stylesheet" href="../css/spcommon.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1536176_zq3f2ybh17q.css">
+    <link rel="stylesheet" href="../css/evaluate.css">
+    <link rel="stylesheet" href="../css/filepond.css">
+    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
+        rel="stylesheet">
+    <script
+        src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
+    <script
+        src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="../js/filepond.js"></script>
+
+</head>
+
+<body>
+    <header class="sp-header">
+        <a href="javascript:history.back();" class="lf"><i class="iconfont icon-zuo1"></i></a>
+        <div class="title">发表评价</div>
+        <div class="fabu">发布</div>
+    </header>
+    <section class="eva-wrapper">
+        <div class="shangpin">
+            <img src="https://pic.xiami.net/images/album/img3/175/5836abb2ed13d_8772903_1479977906.jpg?x-oss-process=image/resize,limit_0,s_410,m_fill/quality,q_80"
+                alt="">
+            <div>【双11狂欢价】雷蛇游戏鼠标</div>
+        </div>
+
+        <div class="miaoshu">
+            <div>
+                描述相符
+            </div>
+            <div id="star1">
+
+            </div>
+            <div id="pjnr">非常好</div>
+        </div>
+        <form action="">
+            <textarea name="" id="eva_content" cols="30" rows="10" placeholder="请填写评价"></textarea>
+            <div>
+                <input type="file" multiple accept="image/png, image/jpeg, image/gif" name="" id="pics">
+            </div>
+
+        </form>
+        <!-- <div>
+                <div>公开</div>
+            </div> -->
+        <div class="dppj">
+            店铺评价
+        </div>
+        <div class="qtpj">
+            <div class="name">
+                送货服务
+            </div>
+            <div id="star2"></div>
+        </div>
+        <div class="qtpj">
+            <div class="name">
+                服务态度
+            </div>
+            <div id="star3"></div>
+        </div>
+    </section>
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/zepto.min.js"></script>
+    <script src="../js/jquery.raty.min.js"></script>
+  
+    <script>
+        $(function(){
+            initStar()
+            var  pond2=initUpload() 
+       
+           
+        })
+        function initUpload() {
+            FilePond.registerPlugin(
+                FilePondPluginFileValidateType,
+                FilePondPluginImagePreview,
+                FilePondPluginFileValidateSize
+            );
+            const inputElement = document.querySelector('input[type="file"]');
+            const pond = FilePond.create(inputElement, {
+                labelIdle: "添加图片",
+                captureMethod: "camera",
+                maxFiles: 3,
+                maxFileSize: "5MB",
+                labelMaxFileSize: "文件大小最大为5MB",
+                server: "http://localhost:8080/shareshop/admin/file/upload",
+                labelFileLoadError: "出错",
+                labelFileProcessing: "上传中",
+                labelFileProcessingError: "出错",
+                labelTapToCancel: "",
+                labelTapToRetry: "",
+                labelTapToUndo: "",
+                labelFileProcessingComplete:"上传成功"
+              
+            });
+            return pond
+            
+        }
+        function initStar(){
+            $('#star1').raty({
+            hints: ['非常差', '差', '一般', '好', '非常好'],
+            target: '#pjnr',
+            targetKeep: true,
+            targetText: '非常好',
+            half: true,
+            size: 30,
+            starHalf: '../js/img/star-half.png',
+            starOff: '../js/img/star-off.png',
+            starOn: '../js/img/star-on.png',
+            score: 5
+        });
+        $('#star2').raty({
+            hints: ['非常差', '差', '一般', '好', '非常好'],
+            half: true,
+            size: 30,
+            starHalf: '../js/img/star-half.png',
+            starOff: '../js/img/star-off.png',
+            starOn: '../js/img/star-on.png',
+            score: 5
+        });
+        $('#star3').raty({
+            hints: ['非常差', '差', '一般', '好', '非常好'],
+            half: true,
+            size: 30,
+            starHalf: '../js/img/star-half.png',
+            starOff: '../js/img/star-off.png',
+            starOn: '../js/img/star-on.png',
+            score: 5
+        });
+        }
+     
+    </script>
+</body>
+
+</html>

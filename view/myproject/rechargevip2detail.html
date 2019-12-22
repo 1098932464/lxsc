@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../css/screen.css">
+    <link rel="stylesheet" href="../css/spcommon.css">
+    <link rel="stylesheet" href="../css/rechargevip2detail.css">
+    <link rel="stylesheet" href="../static/css/all.min.css">
+
+    <title>返佣详情</title>
+   
+  
+</head>
+<body>
+    <header class="sp-header" >
+        <a href="javascript:history.back();" class="lf"><i class="fas fa-chevron-left"></i></a>
+        <div class="title">返佣成员</div>
+    </header>
+    <div id="outterscroll" class="sp-scroll">
+        <div>
+                <section class="wd">
+                        <div class="pt-30">
+                                <div class="tx">
+                                        <img src="https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268%3Bg%3D0/sign=bf1f9fba0f082838680ddb1280a2ce3c/8cb1cb1349540923453457db9a58d109b3de4931.jpg" alt="">
+                                    </div>
+                                    <div class="nc">
+                                        <span>Pony</span>
+                                    </div>
+                        </div>
+                        
+                        <div class="xiangqing">
+                            <div class="xq-1">累计商品返佣:</div>
+                            <div class="xq-2">
+                                <div>
+                                    <span>￥</span>
+                                    <span>200</span>
+                                </div>
+                                <div>
+                                        <span class="sp-money-icon">1000</span>
+                                </div>
+                            </div>
+                            <div class="xq-1">累计充值返佣:</div>
+                            <div class="xq-2">
+                                <div>
+                                    <span>￥</span>
+                                    <span>200</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </section>
+                    <section style="background-color: #fff;">
+                            <div class="sp-title">
+                                    <div>返佣记录</div>
+                                    <div>
+                                        <a href="">
+                                            <span> 共计8条</span>
+                                        </a>
+                                    </div>
+                                </div>
+                    </section>
+                   
+                    <section>
+                        <ul>
+                            <li>
+                                <a href="./rechargevip2detail.html" class="fanyongchengyuan">
+                                    <div class="xiangqing">
+                                            <div class="xq-1">商品返佣:</div>
+                                            <div class="xq-2">
+                                                <div>
+                                                    <span>￥</span>
+                                                    <span>200</span>
+                                                </div>
+                                                <div>
+                                                    <span class="sp-money-icon">1000</span>
+                                                </div>
+                                            </div>
+                                            <div class="xq-1">充值返佣:</div>
+                                            <div class="xq-2">
+                                                <div>
+                                                    <span>￥</span>
+                                                    <span>200</span>
+                                                </div>
+                                            </div>
+                                            <div class="sj">
+                                                2019-12-04 (今天)
+                                            </div>
+                                        </div>
+                                        
+                                    </a>
+                            </li>
+    
+                            <li>
+                                    <a href="./rechargevip2detail.html" class="fanyongchengyuan">
+                                        <div class="xiangqing">
+                                                <div class="xq-1">商品返佣:</div>
+                                                <div class="xq-2">
+                                                    <div>
+                                                        <span>￥</span>
+                                                        <span>200</span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="sp-money-icon">1000</span>
+                                                    </div>
+                                                </div>
+                                                <div class="xq-1">充值返佣:</div>
+                                                <div class="xq-2">
+                                                    <div>
+                                                        <span>￥</span>
+                                                        <span>200</span>
+                                                    </div>
+                                                </div>
+                                                <div class="sj">
+                                                    2019-12-04 (今天)
+                                                </div>
+                                            </div>
+                                            
+                                        </a>
+                                </li>
+                        </ul>
+                    </section>
+        </div>
+           
+    </div>
+    <script src="../static/js/iscroll.js"></script>
+    <script>
+         loadScroll()
+         function isPassive() {
+                var supportsPassiveOption = false;
+                try {
+                    addEventListener("test", null, Object.defineProperty({}, 'passive', {
+                        get: function () {
+                            supportsPassiveOption = true;
+                        }
+                    }));
+                } catch (e) { }
+                return supportsPassiveOption;
+            }
+         function bindScroll(el) {
+                el.addEventListener('touchmove', function (e) { e.preventDefault(); }, isPassive() ? {
+                    capture: false,
+                    passive: false
+                } : false);
+            }
+     function loadScroll() {
+             var  outterscroll=  new IScroll('#outterscroll', { mouseWheel: true });
+               bindScroll(document.getElementById("outterscroll"))
+            }
+            </script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!-- 
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<title>商品详情</title>
+
+<link rel="stylesheet" href="${base}/templates/${config.theme}/view/static/css/swiper.min.css">
+<link href="${base}/templates/${config.theme}/view/static/css/app.css" rel="stylesheet">
+
+</head>
+<body class="item">
+
+<section class="home">
+	<a href=""></a>
+</section>
+
+<section class="images">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <#list product.img?split(";") as img>
+                <div class="swiper-slide">
+            	   <img src="https://www.17sucai.com/preview/1527619/2019-07-17/insure/images/ad-009.png" />
+               </div>
+               
+            </#list>
+          
+        </div>
+        Add Pagination
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
+
+<section class="header">
+    <h2 class="title">${product.name}  </h2>
+    <div class="price ">
+        <div class="current-price">
+            <span class="current-price"><small>￥</small>${product.price}</span>
+        </div>
+        <span class="express">¥${product.market_price}</span>
+    </div>
+    <div class="sales">库存: ${product.count}</div>
+</section>
+
+<section class="sku">
+	<dl class="sku-group">
+    	<dt>规格: </dt>
+        <dd>蓝色</dd>
+    </dl>
+</section>
+
+<section class="content">
+	<div class="nav">
+    	<a class="active">商品详细</a>
+    	<a>兑换记录</a>
+    </div>
+	<div class="desc">
+	    ${product.introduction}
+        <img data-original="http://wd.geilicdn.com/vshop214911204-1437124807048-33816-s1.jpg?w=1080&amp;h=0" width="100%">        
+        <img data-original="http://wd.geilicdn.com/vshop214911204-1437124807048-33816-s1.jpg?w=1080&amp;h=0" width="100%">        
+        <img data-original="https://dn-kdt-img.qbox.me/upload_files/2016/03/09/FpFyH9z-IsdCNcvxNIOLVHtwuyq_.jpg?imageView2/2/w/980/h/980/q/75/format/jpg" width="100%">        
+		<img data-original="https://img.yzcdn.cn/upload_files/2016/03/09/FlVblvZUBEpGL9DtUNy1Iqvl2fIw.jpg!730x0.jpg" />
+		<img data-original="https://img.yzcdn.cn/upload_files/2016/03/09/FpB0aR6biQEx32OjpLCTMqowrCYR.jpg?imageView2/2/w/730/h/0/q/75/format/jpg" />
+    </div>
+</section>
+
+<section class="layer">
+	<div class="content">
+        <div class="head"><a class="close"></a></div>
+        
+         <#if discount??>
+    	<div class="bd">
+    	    <dl>
+                <dt>数量</dt>
+                <dd><span><b><input id="amount" style="width: 20px" name="amount" type="number" min="1" max="${product.count}" value="1" /></b></span></dd>
+            </dl>
+    	
+    	
+             <dl>
+                <dt>本网价</dt>
+                <dd><span>￥<b id="showprice">${product.price}</b></span></dd>
+            </dl>
+            <dl>
+                <dt>规格</dt>
+                <dd>
+                    <ul id="sku">
+                      <#list discount  as dis>
+            	          <li><a id="${dis.id}" data-sku="${dis.current_totmoney}"  >${dis.standards}</a><i></i></li>
+                      </#list> 
+                    </ul>
+                </dd>
+            </dl>   
+             
+        </div>
+          </#if> 
+        <div class="foot"><a class="next" data-id=10 href="javascript:;">下一步</a></div>
+    </div>
+
+</section>
+
+<footer class="footer">
+	<span class="server"><a onclick="saveItem('${product.id}')">购物车</a></span>
+	
+	<div class="button"><a class="buy">加入购物车</a></div>
+    <div class="button"><a class="buy">立即购买</a></div>
+</footer>
+
+<script src="${base}/templates/${config.theme}/view/static/js/jquery.min.js"></script>
+<script src="${base}/templates/${config.theme}/view/static/js/swiper.min.js"></script>
+<script src="${base}/templates/${config.theme}/view/static/js/jquery.lazyload.js"></script>
+<script>
+
+
+//兼容性：字体大小，全局尺寸(rem)
+(function(doc, win) {
+	var docEl = doc.documentElement,
+		resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+		recalc = function() {
+			var clientWidth = docEl.clientWidth;
+			if (!clientWidth) return;
+			var docElWidth = 100 * (clientWidth / 640);
+			if (docElWidth > 100) docElWidth = 100;
+			docEl.style.fontSize = docElWidth + 'px';
+		};
+	if (!doc.addEventListener) return;
+	win.addEventListener(resizeEvt, recalc, false);
+	doc.addEventListener('DOMContentLoaded', recalc, false);
+})(document, window);
+
+(function(){
+	//轮播图
+	new Swiper('.swiper-container', {
+		pagination: '.swiper-pagination',
+		paginationClickable: true,
+		autoplay:3000
+	});
+	
+	$('.nav a').click(function(){
+		$('.nav a').removeClass('active');
+		$(this).addClass('active');
+	})
+	//sku
+	$('.sku,.buy').click(function(){
+		$('.layer').addClass('acitve');
+	})
+	$('.close').click(function(){
+		$('.layer').removeClass('acitve');
+	});
+	//却动
+	$('#sku a').click(function(){
+		$('#sku a').removeClass('active');
+		$(this).addClass('active');
+		var did=$(this).attr("id");
+		var pid="${product.id}";
+		var amount=$("#amount").val();
+		
+		var url="${base}/userorder/add?pid="+pid+"&&did="+did+"&&amount="+amount
+		
+		var price=$(this).data('sku');
+			$('#showprice').text(price);
+		
+			
+		if(amount==""||amount==null||amount==undefined){	
+	        alert("请输入数量");
+	   }else{
+			$('.next').attr('href',url);
+	   }
+		$('.sku-group dd').text($(this).text());
+	});
+	
+	function saveItem(){
+		var did=$('.active').attr("id");
+		
+		
+	}
+	
+	
+	//图片懒加载
+/* 	$("img").lazyload({
+		effect : 'fadeIn',
+		placeholder :'http://img.weizhi.so/placeholder.png'
+	}); */
+	
+})();
+
+</script>
+
+
+
+
+
+</body>
+</html>
+ -->

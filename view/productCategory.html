@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<head>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>品牌团分类</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		<meta http-equiv="Content-Type" content="text/html" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, minimum-scale=1.0 , maximum-scale=1.0, user-scalable=0">
+
+		<link rel="stylesheet" type="text/css" href="${base}/templates/${config.theme}/view/static/css/pub.css" />
+		<link rel="stylesheet" type="text/css"
+			href="${base}/templates/${config.theme}/view/static/css/productCategory.css" />
+
+		<script type="text/javascript" src="${base}/templates/${config.theme}/view/static/js/jquery.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			window.onload = function () {
+				$(".menu-container").css("height", window.innerHeight - 44 + "px");
+				document.querySelector(".left-menu>ul").addEventListener("touchstart",function(e){
+				
+					if(e.target.nodeName=="LI"){
+						var id=e.target.id;
+						loadData(id);
+						var tmp=document.querySelector(".left-menu>ul>li.active")
+						if(tmp){
+							tmp.className=""
+						}
+						
+						e.target.className="active"
+
+					}
+
+					if(e.target.nodeName=="SPAN"){
+						var id=e.target.parentNode.id;
+						loadData(id);
+						var tmp=document.querySelector(".left-menu>ul>li.active")
+						if(tmp){
+							tmp.className=""
+						}
+					
+						e.target.parentNode.className="active"
+					}
+				
+			})
+			}
+			function loadData(id=1){
+				$.ajax(
+            		 {
+            		 url:"${base}/productCategory/search", //请求的地址
+            		 type:"post", //请求的方式
+            		 data:{"cid":id,"type":1}, //请求的数据
+            		 success:function (data) {
+            			 var content="";
+            			 for (var i = 0; i < data.category.length; i++) {
+            				 var id=data.category[i].id;
+							 var name=data.category[i].name;
+							 console.log(name)
+							 var base="${base}"
+							content+="<div id='"+id+"' class=\"item\"><a  href='${base}/product/search?productCategoryId="+id+"'>"+
+								"<img src=\"${base}/templates/${config.theme}/view/demo1.jpg\" alt=\"\"></a>"+
+							"<span>"+name+"</span></div>";
+						}
+						console.log(content)
+            			  document.getElementById("card").innerHTML =content;
+            		 //data 后台返回的数据
+            		 },//请求成功后执行函数
+            		 error:function (error) {
+            		 //error 后台返回的错误数据
+            		 }//请求失败后执行函数
+            		 });
+			}
+			
+		</script>
+		<style>
+			.menu-container {
+				display: flex;
+			}
+
+			.left-menu {
+				width: 20%;
+				height: 100%;
+				overflow-y: scroll;
+			}
+
+			.left-menu ul {
+				display: flex;
+				flex-direction: column;
+
+			}
+
+			.left-menu ul li {
+				height: 40px;
+				text-align: center;
+				transition: background-color .5s linear;
+			}
+
+
+			.left-menu ul li.active {
+				background-color: #ddd;
+			}
+
+			.left-menu ul li span {
+				line-height: 40px;
+				font-size: 1.1rem;
+			}
+
+			.right-menu {
+				width: 80%;
+				height: 100%;
+				background-color: #ddd;
+				display: flex;
+				align-items: center;
+				flex-direction: column;
+				overflow: scroll;
+			}
+			.right-menu .card{
+				width: 250px;
+				background-color: #fff;
+				border-radius: 5%;
+				margin: 15px;
+				display: flex;
+				flex-wrap: wrap;
+			}
+
+			.right-menu .card .item{
+				width: 83px;
+				height: 83px;
+				/* border: 1px solid #000; */
+				box-sizing: border-box;
+				padding: 10px;
+				text-align: center;
+				font-size: .9rem;
+				display: flex;
+				flex-direction: column;
+			}
+			.right-menu .card .item img{
+				width: 80%;
+				height: 80%;
+			}
+			.right-menu .tips{
+				text-align: center;
+				color: red;
+				padding: 15px;
+			}
+
+			
+			.hide-scroll::-webkit-scrollbar {
+				
+				display: none
+			}
+		</style>
+
+	</head>
+
+<body>
+	<!-- <body onLoad="loaded()"> -->
+
+	<header class="OldHeader">
+		<div class="OHeader">
+			<h1>商品分类</h1>
+			<div class="OHeadBack"><a href="#" onclick="history.go(-1)">返回</a></div>
+		</div>
+	</header>
+
+	<div class="menu-container">
+		<!-- 左侧菜单 -->
+		<div class="left-menu hide-scroll">
+			<ul>
+					[@product_category_root_list type=1]
+					[#list productCategories as pcate]
+							 <li id="${pcate.id}"><span>${pcate.name}</span> </li>
+					 [/#list]
+				[/@product_category_root_list]
+			</ul>
+		</div>
+
+		<!-- 右侧菜单 -->
+		<div class="right-menu hide-scroll">
+
+			<div>
+					<div id="card" class="card">
+						<!-- <div class="item">
+							<img src="${base}/templates/${config.theme}/view/demo1.jpg" alt="">
+							<span>哇哈哈</span>
+						</div>
+						<div class="item">
+								<img src="" alt="">
+								<span>哇哈哈</span>
+							</div>
+							<div class="item">
+									<img src="" alt="">
+									<span>哇哈哈</span>
+								</div>
+								<div class="item">
+										<img src="" alt="">
+										<span>哇哈哈</span>
+									</div><div class="item">
+											<img src="" alt="">
+											<span>哇哈哈</span>
+										</div> -->
+						</div>
+						<div class="card">
+			
+						</div>
+						<div class="card">
+			
+						</div>
+						<div class="tips">
+							没有内容了
+						</div>
+			</div>
+		
+		</div>
+	</div>
+	
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+@import "spvarious";
+$header-color:#fff;
+$color1: #777;
+$color2: rgb(107, 42, 12);
+$color3: rgb(230, 204, 168);
+$color4: #ddd;
+$color5: #ccc;
+$color6: rgb(226, 120, 45);
+$color7:rgb(33, 33, 33);
+$color8:#ddd;
+$color9:#e6e6e6;
+$color10:#bbb;
+$pricecolor1:rgb(181, 90, 25);
+$innerMargin:my-px2vw(5);
+$innerPadding:my-px2vw(5);
+$outterMargin:my-px2vw(10);
+$outterPadding:my-px2vw(10);
+$labelSize:my-px2vw(12);
+$fontsize16:my-px2vw(16);
+$fontsize14:my-px2vw(14);
+$fontsize12:my-px2vw(12);
+$fontsize20:my-px2vw(20);
+$fontsize30:my-px2vw(30);
+body{
+    height: 100vh;
+    overflow: hidden;
+}
+.titles{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    .item{
+        text-align: center;
+     font-size: $fontsize16;
+     height: vw(30);
+     line-height: vw(30);
+     &.active{
+         color: orangered;
+         border-bottom: vw(2) solid orangered;
+     }
+    }
+}
+.sp-header{
+    grid-template-columns: 10% 80% 10%;
+    a{
+        line-height: vw(30);
+        height: vw(30);
+        color: orangered;
+    }
+    .title{
+        width: 100%;
+        ul{
+            font-size: vw(16); ;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            border: 1px solid orangered;
+            color: orangered;
+            border-radius: vw(5);
+            li{
+        
+                text-align: center;
+                height: vw(30);
+                line-height: vw(30);
+               &.active{
+                   background-color: orangered;
+                   color: #fff;
+               }
+            }
+        }
+    }
+}
+.sm-sec{
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    overflow: scroll;
+    background-color: #fff;
+    &.active{
+        display: block;
+    }
+}
+.pics{
+    display: grid;
+    grid-template-columns: 50vw 50vw;
+    padding: vw(10) 0;
+    padding-bottom: vw(80);
+    li{
+        overflow: hidden;
+        &:nth-child(2n) div{
+            margin-left: 0;
+        }
+        div{
+            height: 30vw;
+            margin: 0 vw(10) vw(10) vw(10);
+            position: relative;
+            border-radius: vw(5);
+            overflow: hidden;
+        }
+        img{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 100%;
+        }
+    }
+}
+
+
+    .video-wrapper{
+        padding: vw(10);
+        .video{
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           height: vw(198.8);
+        }
+        .text{
+            display: flex;
+            justify-content: space-between;
+            font-size: $fontsize14;
+            color: $color1;
+            align-items: baseline;
+            padding: vw(10) 0;
+            .name .title{
+                font-size: $fontsize16;
+                color: #000;
+            }
+            .anchor{
+                color: orangered;
+            }
+        }
+    }
+    .f-wrapper{
+    display: none;
+}
+.f-wrapper.active{
+    display: block;
+}

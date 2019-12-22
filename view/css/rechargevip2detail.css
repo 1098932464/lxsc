@@ -1,0 +1,112 @@
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+ul li {
+  background-color: #fff;
+  padding: 1.33333vw;
+  margin-bottom: 2.66667vw;
+}
+
+.sp-scroll {
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.sp-scroll > div {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-bottom: 14.66667vw;
+}
+
+.pt-30 {
+  padding-top: 8vw;
+}
+
+.xiangqing {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100vw;
+  padding: 2.66667vw 13.33333vw;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: [s] 40% [md] 1fr [ed];
+      grid-template-columns: [s] 40% [md] 1fr [ed];
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  line-height: 1.5;
+  font-size: 4.26667vw;
+}
+
+.xiangqing .xq-2 {
+  color: #b55a19;
+  justify-self: flex-end;
+  text-align: right;
+}
+
+.xiangqing .sj {
+  font-size: 3.73333vw;
+  color: #777;
+  grid-column: s/ed;
+  justify-self: flex-end;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.wd {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.wd .tx {
+  width: 58.66667vw;
+  height: 58.66667vw;
+  margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.wd .tx img {
+  width: 100%;
+}
+
+.wd .nc {
+  text-align: center;
+}
+
+.wd .nc span {
+  font-size: 8vw;
+}
+
+.fanyongchengyuan {
+  background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.fanyongchengyuan .nc {
+  font-size: 4.26667vw;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.fanyongchengyuan .xiangqing {
+  padding: 0 2.66667vw;
+}
+
+.fanyongchengyuan .tx {
+  width: 30vw;
+  height: 30vw;
+  margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.fanyongchengyuan .tx img {
+  width: 100%;
+}
+/*# sourceMappingURL=rechargevip2detail.css.map */

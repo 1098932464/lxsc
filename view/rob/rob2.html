@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>限时兑换</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/commonStyle.css" />
+    <link rel="stylesheet" type="text/css" href="./jquery.flipcountdown.css" />
+    <style>
+        .rob-item-wrapper{
+            position: relative;
+            display: flex;
+        }
+        .rob-list-item:nth-child(2n) .rob-item-wrapper{
+            flex-direction: row-reverse;
+        }
+        .rob-list-item:nth-child(2n+1) .rob-item-wrapper{
+
+            flex-direction: row;
+        }
+        .rob-list-item:nth-child(2n) .rob-bottom{
+            flex-direction: row-reverse;
+        }
+        .rob-list-item:nth-child(2n+1) .rob-bottom{
+
+            flex-direction: row;
+        }
+        .rob-title{
+            font-size: 16px;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .rob-item-media{
+            width: 40%;
+        }
+        .rob-item-content{
+            width: 60%;
+            box-sizing: border-box;
+            padding-left: 5px;
+        }
+        .rob-bottom{
+            width: calc(60% - 5px);
+            padding-right: 5px;
+            display: flex;
+            position: absolute;
+            bottom: 0;
+            justify-content: space-between;
+        }
+        .rob-price{
+            font-size: 20px;
+            color: red;
+        }
+        .rob-list-item{
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .rob-list{
+            height: 100vh;
+            overflow-y: scroll;
+            padding-bottom: 50px;
+        }
+        .rob-time{
+            color: red;
+            font-size: 1rem;
+            font-weight: bolder;
+        }
+        .aui-content{
+            /* background-image: url(http://img.sccnn.com/bimg/341/09506.jpg);
+            background-repeat: no-repeat;
+            background-size: 100% 100%; */
+        }
+    </style>
+</head>
+
+<body>
+<div class="aui-content">
+    <header class="aui-bar aui-bar-nav">
+        <a class="aui-pull-left aui-btn">
+            <span class="aui-iconfont aui-icon-left"></span>
+        </a>
+        <div class="aui-title">限时兑换</div>
+    </header>
+
+    <ul class="rob-list">
+
+        <li class="rob-list-item">
+            <div class="rob-item-wrapper">
+                <div class="rob-item-media">
+                    <img src="http://manage.yihuoshidai.com//files/c415b72d-c728-40d4-8bc2-21e2e8ba2604.jpg">
+                </div>
+                <div class="rob-item-content">
+                    <div class="rob-title">Apple iPhone 11 (A2223) 128GB 白色 移动联通电信4G手机 双卡双待【南阳地区现货】</div>
+                    <div>2019-11-28</div>
+                    <div class="rob-time" data-time="1574952899538"></div>
+                    <div class="rob-bottom">
+                        <div >
+                            <span class="rob-price">$100</span>&nbsp;<span style="text-decoration:line-through;">$200</span>
+                        </div>
+                        <div class="rob-btn">
+                            <div class="aui-btn aui-btn-danger" style="width: 5rem;height: 3rem;">去兑换
+                                <div class="aui-progress aui-progress-sm" style="height:  .8rem;">
+                                    <div class="aui-progress-bar" style="width: 60%;">60%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li class="rob-list-item">
+            <div class="rob-item-wrapper">
+                <div class="rob-item-media">
+                    <img src="http://manage.yihuoshidai.com//files/c415b72d-c728-40d4-8bc2-21e2e8ba2604.jpg">
+                </div>
+                <div class="rob-item-content">
+                    <div class="rob-title">Apple iPhone 11 (A2223) 128GB 白色 移动联通电信4G手机 双卡双待【南阳地区现货】</div>
+                    <div>2019-11-28</div>
+                    <div class="rob-time" data-time="1574952899538"></div>
+                    <div class="rob-bottom">
+                        <div >
+                            <span class="rob-price">$100</span>&nbsp;<span style="text-decoration:line-through;">$200</span>
+                        </div>
+                        <div class="rob-btn">
+                            <div class="aui-btn aui-btn-danger" style="width: 5rem;height: 3rem;">去兑换
+                                <div class="aui-progress aui-progress-sm" style="height:  .8rem;">
+                                    <div class="aui-progress-bar" style="width: 60%;">60%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="rob-list-item">
+            <div class="rob-item-wrapper">
+                <div class="rob-item-media">
+                    <img src="http://manage.yihuoshidai.com//files/c415b72d-c728-40d4-8bc2-21e2e8ba2604.jpg">
+                </div>
+                <div class="rob-item-content">
+                    <div class="rob-title">Apple iPhone 11 (A2223) 128GB 白色 移动联通电信4G手机 双卡双待【南阳地区现货】</div>
+                    <div>2019-11-28</div>
+                    <div class="rob-time" data-time="1574952899538"></div>
+                    <div class="rob-bottom">
+                        <div >
+                            <span class="rob-price">$100</span>&nbsp;<span style="text-decoration:line-through;">$200</span>
+                        </div>
+                        <div class="rob-btn">
+                            <div class="aui-btn aui-btn-danger" style="width: 5rem;height: 3rem;">去兑换
+                                <div class="aui-progress aui-progress-sm" style="height:  .8rem;">
+                                    <div class="aui-progress-bar" style="width: 60%;">60%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="rob-list-item">
+            <div class="rob-item-wrapper">
+                <div class="rob-item-media">
+                    <img src="http://manage.yihuoshidai.com//files/c415b72d-c728-40d4-8bc2-21e2e8ba2604.jpg">
+                </div>
+                <div class="rob-item-content">
+                    <div class="rob-title">Apple iPhone 11 (A2223) 128GB 白色 移动联通电信4G手机 双卡双待【南阳地区现货】</div>
+                    <div>2019-11-28</div>
+                    <div class="rob-time" data-time="1574952899538"></div>
+                    <div class="rob-bottom">
+                        <div >
+                            <span class="rob-price">$100</span>&nbsp;<span style="text-decoration:line-through;">$200</span>
+                        </div>
+                        <div class="rob-btn">
+                            <div class="aui-btn aui-btn-danger" style="width: 5rem;height: 3rem;">去兑换
+                                <div class="aui-progress aui-progress-sm" style="height:  .8rem;">
+                                    <div class="aui-progress-bar" style="width: 60%;">60%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="rob-list-item">
+            <div class="rob-item-wrapper">
+                <div class="rob-item-media">
+                    <img src="http://manage.yihuoshidai.com//files/c415b72d-c728-40d4-8bc2-21e2e8ba2604.jpg">
+                </div>
+                <div class="rob-item-content">
+                    <div class="rob-title">Apple iPhone 11 (A2223) 128GB 白色 移动联通电信4G手机 双卡双待【南阳地区现货】</div>
+                    <div>2019-11-28</div>
+                    <div class="rob-time" data-time="1574952899538"></div>
+                    <div class="rob-bottom">
+                        <div >
+                            <span class="rob-price">$100</span>&nbsp;<span style="text-decoration:line-through;">$200</span>
+                        </div>
+                        <div class="rob-btn">
+                            <div class="aui-btn aui-btn-danger" style="width: 5rem;height: 3rem;">去兑换
+                                <div class="aui-progress aui-progress-sm" style="height:  .8rem;">
+                                    <div class="aui-progress-bar" style="width: 60%;">60%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+
+</div>
+
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/zepto.min.js"></script>
+<script type="text/javascript" src="./jquery.flipcountdown.js"></script>
+<script>
+    window.$$=window.Zepto = Zepto
+   $(function () {
+       initTime()
+   })
+
+    function initTime() {
+        //    倒计时
+        $("[data-time]").each(function(i,e){
+            var time=$(e).data("time")
+            var NY=Math.round(time/1000)
+            $(this).flipcountdown({
+                size:"xs",
+                tick:function(){
+                    var nol = function(h){
+                        return h>9?h:'0'+h;
+                    }
+                    var	range  	= NY-Math.round((new Date()).getTime()/1000),
+                        secday = 86400, sechour = 3600,
+                        days 	= parseInt(range/secday),
+                        hours	= parseInt((range%secday)/sechour),
+                        min		= parseInt(((range%secday)%sechour)/60),
+                        sec		= ((range%secday)%sechour)%60;
+                    return nol(days)+' '+nol(hours)+' '+nol(min)+' '+nol(sec);
+                }
+            });
+        })
+
+    }
+</script>
+</body>
+
+</html>

@@ -1,0 +1,133 @@
+@import "fn";
+$header-color:#fff;
+$color1: #777;
+$color2: rgb(107, 42, 12);
+$color3: rgb(230, 204, 168);
+$color4: #ddd;
+$color5: #ccc;
+$color6: rgb(226, 120, 45);
+$color7:rgb(33, 33, 33);
+$color8:#ddd;
+$color9:#e6e6e6;
+$color10:#6cd437;
+$pricecolor1:rgb(181, 90, 25);
+$innerMargin:my-px2vw(5);
+$innerPadding:my-px2vw(5);
+$outterMargin:my-px2vw(10);
+$outterPadding:my-px2vw(10);
+$labelSize:my-px2vw(12);
+$fontsize16:my-px2vw(16);
+$fontsize14:my-px2vw(14);
+$fontsize12:my-px2vw(12);
+$fontsize20:my-px2vw(20);
+$fontsize30:my-px2vw(30);
+.po-cb{
+    display: flex;
+    align-items: center;
+}
+
+.po-sc-bottom{
+    padding: $outterPadding;
+    background-color: #fff;
+    line-height: 1.5;
+    .sc-b-2{
+        font-size: $fontsize14;
+        color: $color10;
+    }
+}
+.po-sc-2{
+    display: grid;
+    padding: $outterPadding;
+    grid-template-columns: [s] 70% [m] 30% [e];
+    grid-template-rows: [s] max-content [m] max-content [e];
+    row-gap: $innerPadding;
+    background-color: #fff;
+    align-items: center;
+    .sc-21{
+        grid-column: s/m;
+        grid-row: s/e;
+    }
+    .sc-22{
+        grid-column: m/e;
+        grid-row: s/m;
+        >span{
+            float: right;
+        }
+    }
+    .sc-23{
+        justify-self: flex-end;
+        grid-column: m/e;
+        grid-row: m/e;
+        color: $color1;
+        font-size: $fontsize12;
+    }
+}
+@mixin 
+ border_ddd{
+    border-bottom: 1px solid #ddd;    
+}
+.sp-lf-rt{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $outterMargin;
+    padding: $outterPadding;
+    align-items: baseline;
+    background-color: #fff;
+    @include border_ddd;
+}
+@mixin sp_one {
+    display: inline-block;
+    font-size: $fontsize16;
+    
+    padding: $innerPadding;
+    border-radius: 10%;;
+    margin-right: $outterMargin;
+}
+.sp-jian{
+    @include sp_one;
+    color: #fff;
+    background-color: #c73dc7;
+}
+
+.sp-bao{
+    @include sp_one;
+    color: #fff;
+    background-color: #e6ba5e;
+}
+.po-top{
+    display: grid;
+    background-color: #fff;
+    grid-template-columns: [s] 70% [m] 30% [e];
+    grid-template-rows: [s] max-content [m] max-content [e];
+    padding: $outterPadding;
+    margin-bottom: $outterMargin;
+    @include border_ddd;
+    >div{
+        margin-bottom: $innerMargin;
+    }
+    .pot-1{
+        line-height: 1.5;
+        font-size: $fontsize16;
+        font-weight: bold;
+        grid-column: s/m;
+    }
+    .pot-2{
+        justify-self: flex-end;
+        font-size: $fontsize14;
+        grid-column: m/e;
+    }
+    .pot-3{
+        color: $color1;
+        font-size: $fontsize14;
+        grid-column: s/e;
+    }
+    .pot-4{
+        font-size: $fontsize16;
+        grid-column: s/m;
+        color: $color1;
+    }
+    .pot-5{
+        justify-self: flex-end;
+        grid-column: m/e;
+    }
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>添加地址</title>
+        <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+        <meta content="yes" name="apple-mobile-web-app-capable"/>
+        <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+        <meta content="telephone=no" name="format-detection"/>
+        <link href="${base}/templates/${config.theme}/view/static/css/changaddress.css" rel="stylesheet" type="text/css"/>
+        <script src="https://3gimg.qq.com/lightmap/components/geolocation/geolocation.min.js"></script>
+    </head>
+    <body>
+
+        <section class="aui-flexView">
+            <header class="aui-navBar aui-navBar-fixed">
+                <a href="javascript:;" class="aui-navBar-item">
+                    <i class="icon icon-return"></i>
+                </a>
+                <div class="aui-center">
+                    <span class="aui-center-title">添加地址</span>
+                </div>
+               
+            </header>
+            <form id="Form" action="${base}/userorder/changeaddress"  method="post" onsubmit="return checkForm();"> 
+            <section class="aui-scrollView">
+                <div class="aui-address-box">
+                
+
+                            <input type="hidden" class="cell-input" placeholder="请输入收件人的姓名"  value="${order.id}" name="id" >
+                    <div class="aui-address-cell-item">
+                        <div class="aui-cell-name">收货人</div>
+                        <div class="aui-cell-input">
+                            <input type="text" class="cell-input" placeholder="请输入收件人的姓名"  value="${order.receiver}" name="receiver" >
+                        </div>
+                    </div>
+                    <div class="aui-address-cell-item">
+                        <div class="aui-cell-name">收货人手机号</div>
+                        <div class="aui-cell-input">
+                            <input type="text" class="cell-input" placeholder="请输入收件人手机号"  value="${order.phone}" name="phone">
+                        </div>
+                    </div>
+                    <div class="aui-address-cell-item">
+                        <div class="aui-cell-name">所在地区</div>
+                        <div class="aui-cell-input cell-input-text">
+                            <input type="text" class="cell-input" readonly id="J_Address" placeholder="请选择收货地址" value="${order.areaName}" name="areaName">   
+                        </div>
+                    </div>
+                    <div class="aui-address-cell-item">
+                        <div class="aui-cell-name">详细地址</div>
+                        <div class="aui-cell-input">
+                            <input type="text" class="cell-input" placeholder="请输入街道地址"   value="${order.address}" name="address">
+                        </div>
+                    </div>
+                </div>
+                 <a href="javascript:;" class="aui-navBar-item" onclick="subForm();">
+                    <i class="icon icon-sys"></i>
+                             确定
+                
+                </a>
+                
+           
+            </section>
+            
+           </form>
+        </section>
+        <script src="${base}/templates/${config.theme}/view/static/js/jquery.min.js"></script>
+             <script src="${base}/templates/${config.theme}/view/static/js/plugin/jquery.form.js"></script>
+        <script src="${base}/templates/${config.theme}/view/static/js/city.js"></script>
+        <script src="${base}/templates/${config.theme}/view/static/js/address.js"></script>
+        <script>
+    
+            !function() {
+                var $target = $('#J_Address');
+
+                $target.citySelect();
+
+                $target.on('click', function(event) {
+                    event.stopPropagation();
+                    $target.citySelect('open');
+                });
+
+                $target.on('done.ydui.cityselect', function(ret) {
+                    $(this).val(ret.provance + ' ' + ret.city + ' ' + ret.area);
+                });
+            }();
+    
+        </script>
+        <script>
+    /*这里是提交表单前的非空校验*/
+      function checkForm () {
+        var receiver = $("input[name='receiver']").val();
+        var phone = $("input[name='phone']").val();
+        var areaName = $("input[name='areaName']").val();
+        var address = $("input[name='address']").val();
+
+        if (receiver == "" || receiver == null || receiver == undefined) {
+            alert("收货人姓名不能为空");
+            return false;/*阻止表单提交*/
+        } else if (phone == "" || phone == null || phone == undefined) {
+            alert("手机号不能为空");
+            return false;
+        }  else if (areaName == "" || areaName == null || areaName == undefined) {
+            alert("地区选择不能为空");
+            return false;
+        }  else if (address == "" || address == null || address == undefined) {
+            alert("地址不能为空");
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+    function subForm(){
+        $("#Form").submit();
+        var id = $("input[name='id']").val();
+        window.location.href = "${base}/wechat/payment?orderId="+id;
+    }
+</script>
+        
+    </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./swiper.min.css">
+    <link rel="stylesheet" href="./shopDatepicker.css">
+    <style>
+       
+    </style>
+</head>
+
+<body>
+    <!-- 日期 -->
+    <div id="date">2019年11月</div>
+
+    <!-- 日期选择器 -->
+    <div id="chooseDate" class="shop-datepick-container">
+        <div class="shop-datepick-title">
+            <div>选择日期</div>
+            <div><span class="shop-year">2019</span> 年 <span class="shop-month">11</span> 月</div>
+
+        </div>
+        <div class="shop-datepick-name">
+            <div class="shop-year">年</div>
+            <div class="shop-month">月</div>
+        </div>
+        <div class="shop-datepick-year">
+            <div class="shop-datepick-slide">
+                <div data-year="">
+                    
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="shop-datepick-month">
+            <div class="shop-datepick-slide">
+                <div data-month="">
+                    
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Swiper JS -->
+    <script src="./swiper.min.js"></script>
+    <script src="./shopDatepicker.js"></script>
+    <script>
+        var date=document.getElementById("date")
+        var mydatepicker=new shopDatepicker("chooseDate",{
+            dateChange:function(year,month){
+                date.innerHTML=year+" 年"+month+" 月"
+            },
+            startYear:2020
+        })
+
+        date.addEventListener("touchstart",function(){
+
+            mydatepicker.show()
+               
+        })
+        
+    </script>
+</body>
+
+</html>

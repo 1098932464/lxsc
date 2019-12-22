@@ -1,0 +1,1570 @@
+<html lang="en"><head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>商家店铺</title>
+        <!-- <link rel="stylesheet" type="text/css" href="/shareshop/templates/default/view/static/css/aui/aui.css">
+        <link rel="stylesheet" type="text/css" href="/shareshop/templates/default/view/static/css/aui/aui-slide.css">
+        <link rel="stylesheet" type="text/css" href="/shareshop/templates/default/view/static/css/commonStyle.css?shareshopversion=1.1.1.191114">
+        <link rel="stylesheet" type="text/css" href="/shareshop/templates/default/view/static/css/footer.css?shareshopversion=1.1.1.191114">
+        <link type="text/css" rel="stylesheet" href="/shareshop/templates/default/view/static/css/application.css">
+        <link href="/shareshop/templates/default/view/static/css/all.min.css" rel="stylesheet" type="text/css"> -->
+        <link rel="stylesheet" type="text/css" href="../static/css/aui/aui.css?shareshopversion=1.1.1.191112" />
+        <link rel="stylesheet" type="text/css" href="../view/static/css/aui/aui-slide.css?shareshopversion=1.1.1.191112" />
+        <link rel="stylesheet" type="text/css" href="../static/css/commonStyle.css?shareshopversion=1.1.1.191112" />
+        <link rel="stylesheet" type="text/css" href="../static/css/footer.css?shareshopversion=1.1.1.191112" />
+        <link rel="stylesheet" type="text/css" href="../static/css/swiper.min.css" />
+        <style>
+            .aui-searchbar {
+                background: transparent;
+            }
+    
+    
+            .aui-list {
+                background-color: transparent;
+            }
+    
+            .aui-list .aui-list-item {
+                padding-left: 0;
+            }
+    
+            .aui-list .aui-list-item:active {
+                background-color: transparent;
+            }
+    
+            .aui-list .aui-list-item-media {
+                padding-left: 8px;
+                display: flex;
+                align-items: center;
+            }
+    
+            .aui-list,
+            .aui-list .aui-list-item {
+                background: none;
+            }
+            .hot-shop-list {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .hot-shop {
+                width: 33%;
+                padding: 5px!important;
+                border-radius: 5px;
+    
+            }
+            .hot-shop>div:first-child{
+                position: relative;
+    
+            }
+            .hot-shop>div:last-child>h3{
+                height: 3rem;
+                color: #000;
+                font-size: .8rem;
+                font-weight: bold;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            }
+            .hot-shop img {
+                max-width: 100%;
+                width: auto;
+                height: 30vw;
+    
+            }
+            .hot-shop-title{
+                padding: 10px;
+                font-size: 1.1rem;
+                font-weight: bold;
+                background-image: linear-gradient(160deg,#d6561f 20%,#9c0a4e 80%);
+            }
+            .good-shop-title{
+                padding: 10px;
+                font-size: 1.1rem;
+                font-weight: bold;
+                background-image: linear-gradient(160deg,#1fb0d6 20%,#e0c6d2 80%);
+            }
+            .aui-grid img{
+                width: auto;
+            }
+            .aui-slide-wrap .aui-slide-node{
+                background-color: transparent;
+            }
+            .aui-slide-page-wrap{
+                z-index: 10;
+            }
+    
+            .header-left{
+                display: flex;
+                padding-left: 10px;
+            }
+            .header-left-media img{
+                width: 30px;height: 30px;border-radius: 50%;margin-right: 5px;
+            }
+            .header-right-text{
+                line-height: 16px;
+                font-size: 13px;
+            }
+    
+            .aui-dialog {
+                width: 80%;
+                left: 38%;
+            }
+            .shop-icon-red{
+                background-image: url("http://manage.yihuoshidai.com/files/af1f0962-d5bc-4ccd-9280-654961e7b139.png");
+            }
+            .aui-col-xs-4{
+                height: calc(30vw + 25px);
+            }
+            .aui-col-xs-4 img{
+                width: 100%;
+                height: 30vw;
+                border-radius: 10px;
+            }
+            .bg-color{
+                background-image: linear-gradient(#56d0f1 0,#fff 150px,#f6f6f6 100%)
+            }
+            .shop-seal {
+                width: 20vw;
+                height: 20vw;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                background-image: url("http://manage.yihuoshidai.com/files/dcb88474-4b8b-4c7d-a5d5-979f1ad13caa.png");
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+                background-position: center;
+            }
+            .aui-list-item-text{
+                font-size: 3vw;
+            }
+            .aui-list-item-title{
+                font-size: 3.41vw;
+            }
+        </style>
+    
+    <script type="text/javascript" src="../static/js/zepto.min.js"></script>
+    <script type="text/javascript" src="../static/js/touch.js"></script>
+    <script type="text/javascript" src="../static/js/swiper.min.js"></script>
+    <script type="text/javascript" src="../static/aui/js/aui-slide.js"></script>
+    <script type="text/javascript" src="../new/script/aui-collapse.js"></script>
+    <script type="text/javascript" src="../new/script/aui-toast.js"></script>
+        <script type="text/javascript">
+    
+            var mapkey="SVRcuMUPCfp86O0MIGRASui6zpeZQYI4";
+            var ticket="";
+            var lng="112.52";
+            var lat="33.03";
+    
+    
+    
+            /*  var url = "/shareshop/ticket/index";
+             $.get(url,function(result) {
+                      wx.config({
+                        debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                        appId: result.appId, // 必填，公众号的唯一标识
+                        timestamp:result.timestamp , // 必填，生成签名的时间戳
+                        nonceStr:result.nonceStr, // 必填，生成签名的随机串
+                        signature:result.signature,// 必填，签名
+                        jsApiList:['getLocation'] // 必填，需要使用的JS接口列表
+                      });
+                  }); */
+    
+            wx.error(function(res){
+                // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+                console.log(res);
+    
+            });
+    
+    
+            wx.ready(function(){
+                // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+                wx.getLocation({
+                    type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+                    success: function (res) {
+                        var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+                        var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+                        var speed = res.speed; // 速度，以米/每秒计
+                        var accuracy = res.accuracy; // 位置精度
+                /*		lat=qqMapTransBMap(longitude,latitude).lats;
+                        lng=qqMapTransBMap(longitude,latitude).lngs;*/
+                        lat=latitude;
+                        lng=longitude;
+                        console.log("经纬度为：");
+                        console.log(lat);
+                        console.log(lat);
+    
+                    }
+                });
+            });
+    
+    
+    
+    
+    
+            function qqMapTransBMap(lng, lat) {
+                let x_pi = 3.14159265358979324 * 3000.0 / 180.0;
+                let x = lng;
+                let y = lat;
+                let z = Math.sqrt(x * x + y * y) + 0.00002 * Math.sin(y * x_pi);
+                let theta = Math.atan2(y, x) + 0.000003 * Math.cos(x * x_pi);
+                let lngs = z * Math.cos(theta) + 0.0065;
+                let lats = z * Math.sin(theta) + 0.006;
+                return {
+                    lng: lngs,
+                    lat: lats
+                };
+            }
+            /*  	console.log(qqMapTransBMap(1, 1)); */
+    
+    
+            function reducehref(pcateId){
+                window.location.href="/shareshop/shop/index?pcateId="+pcateId;
+            }
+    
+    
+    
+    
+        </script>
+    
+    
+    </head>
+    
+    <body class="">
+    <div class="aui-content">
+        <header class="aui-bar aui-bar-nav theme-bg-color" style="display: flex;align-items: center;">
+            <div class="header-left">
+                <div class="header-left-media">
+                    <img src="http://aui.dianm.cc/aui2.0/image/l1.png" alt="">
+                </div>
+                <div class="header-right-text">
+                    <div>南阳</div>
+                    <div>
+                        多云 12°C
+                    </div>
+                </div>
+            </div>
+            <div class="aui-title" style="left:7rem; right: 0.5rem;">
+                <div class="aui-searchbar" id="search">
+                    <div class="aui-searchbar-input aui-border-radius">
+                        <i class="aui-iconfont aui-icon-search"></i>
+                        <input type="search" placeholder="请输入搜索内容" id="search-input">
+                        <div class="aui-searchbar-clear-btn">
+                            <i class="aui-iconfont aui-icon-close"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+    
+    
+        <div class="shop-scrollView bg-color">
+    
+    
+    
+    
+            <div class="shop-card">
+                <div class="aui-grid">
+                    <div class="aui-row">
+    
+                        <div class="aui-col-5  shop-center">
+                            <img src="http://manage.yihuoshidai.com//files/a4541644-8153-43ca-9a1f-bb38b6674a87.jpg">
+                            <div class="aui-grid-label">酒店住宿</div>
+                        </div>
+                        <div class="aui-col-5  shop-center">
+                            <img src="http://manage.yihuoshidai.com//files/8e9de62c-4c45-4dc0-9808-62bd97e86dbd.jpg">
+                            <div class="aui-grid-label">医疗整形</div>
+                        </div>
+    
+    
+    
+                        <div class="aui-col-5  shop-center">
+                            <img src="http://manage.yihuoshidai.com//files/a609284b-99b6-4bc6-8d1b-05115de0f289.jpg">
+                            <div class="aui-grid-label">教育培训</div>
+                        </div>
+    
+    
+    
+                        <div class="aui-col-5  shop-center">
+                            <img src="http://manage.yihuoshidai.com//files/d0872374-c200-48ea-a69a-e92a88d581f8.jpg">
+                            <div class="aui-grid-label">汽车服务</div>
+                        </div>
+    
+    
+    
+                        <div class="aui-col-5  shop-center">
+                            <img src="http://manage.yihuoshidai.com//files/41cb1861-1bc3-4cfb-afcb-02dde13f772b.jpg">
+                            <div class="aui-grid-label">装饰窗帘壁纸</div>
+                        </div>
+    
+    
+    
+                        <div class="aui-col-5  shop-center">
+                            <img src="http://manage.yihuoshidai.com//files/6751bd04-3335-4801-97d6-ffe27cb671d8.jpg">
+                            <div class="aui-grid-label">厨具电器</div>
+                        </div>
+    
+    
+    
+                        <div class="aui-col-5  shop-center">
+                            <img src="http://manage.yihuoshidai.com//files/711e96a2-197d-4ad1-9d61-0628e2fc9b6e.jpg">
+                            <div class="aui-grid-label">娱乐项目</div>
+                        </div>
+    
+    
+    
+    
+    
+    
+                        <div class="aui-col-5  shop-center">
+                            <img src="http://manage.yihuoshidai.com//files/d4d7250a-57e9-4dd5-8e1b-3f1e5b7f2d32.jpg">
+                            <div class="aui-grid-label">健身</div>
+                        </div>
+    
+    
+    
+                        <div class="aui-col-5  shop-center">
+                            <img src="http://manage.yihuoshidai.com//files/e56e57b6-2dfe-4f80-aaf1-038c933d12de.jpg">
+                            <div class="aui-grid-label">高端玉器翡翠</div>
+                        </div>
+    
+    
+                    </div>
+                </div>
+            </div>
+    
+    
+    
+    
+            <!-- 轮播图 -->
+            <div class="shop-card">
+                <div id="aui-slide" style="width: 96.67vw; height: 53.33vw; position: relative;">
+                    <div class="aui-slide-wrap">
+                        <div class="aui-slide-node bg-dark" style="transform: translate3d(0px, 0px, 0px);">
+                            <img src="http://manage.yihuoshidai.com/files/8b83015e-5267-423b-b4e7-c6c5c0c28f06.gif">
+                        </div>
+    
+                        <div class="aui-slide-node bg-dark" style="transform: translate3d(400px, 0px, 0px);">
+                            <img src="http://manage.yihuoshidai.com/https://www.17sucai.com/preview/1527619/2019-08-13/a-greens/images/banner.png">
+                        </div>
+    
+                        <div class="aui-slide-node bg-dark" style="transform: translate3d(800px, 0px, 0px);">
+                            <img src="http://manage.yihuoshidai.com/https://www.17sucai.com/preview/1527619/2019-08-13/a-greens/images/banner.png">
+                        </div>
+    
+                        <div class="aui-slide-node bg-dark" style="transform: translate3d(1200px, 0px, 0px);">
+                            <img src="http://manage.yihuoshidai.com/https://www.17sucai.com/preview/1527619/2019-08-13/a-greens/images/banner.png">
+                        </div>
+    
+                    </div>
+                    <div class="aui-slide-page-wrap" style="text-align: center;"><span class="aui-slide-page aui-slide-page-dot aui-slide-page-active"></span><span class="aui-slide-page aui-slide-page-dot"></span><span class="aui-slide-page aui-slide-page-dot"></span><span class="aui-slide-page aui-slide-page-dot"></span></div>
+                </div>
+            </div>
+    
+    
+    
+    
+            <!--本周人气商家排行-->
+            <div class="hot-shop-title"> 本周人气商家排行</div>
+            <div class="shop-card hot-shop-list">
+            </div>
+    
+            <!--本周好评商家排行-->
+            <div class="good-shop-title"> 本周好评商家排行</div>
+            <div class="shop-card hot-shop-list">
+            </div>
+    
+    
+    
+    
+    
+            <!-- 商铺列表 -->
+            <ul class="aui-list aui-media-list">
+                <li class="aui-list-header">
+                    附近的商铺
+                </li>
+    
+    
+    
+    
+                <li class="aui-list-item">
+                    <div class="shop-card">
+                        <div class="aui-media-list-item-inner">
+                            <a href="/shareshop/shop/detail?sid=8" class="aui-list-item-media" style="flex-direction: column;width: 40.53vw;height: 40.53vw;">
+                                <img src="http://manage.yihuoshidai.com//files/b813ca46-4bd6-4e4b-8bdb-37172a5b51dd.jpg" style="height: 100%;">
+                            </a>
+                            <div class="aui-list-item-inner" style="width: calc(100% - 40.53vw);">
+                                <div class="aui-list-item-text" style="font-size: 3vw;">
+                                    <div class="aui-list-item-title" style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;width: 32vw;font-weight: bold;font-size: 4.27vw;">龙升商贸</div>
+                                     <div class="aui-list-item-right" style="display: flex;align-items: center;font-size: 2.56vw;width: 28vw;"> <div class="shop-icon shop-icon-red"></div>&nbsp;<div>到店免费领取</div></div>
+                                </div>
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-left" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;width: 29.33vw;">
+                                        <span>美容类</span>
+                                        <span>|</span>
+                                        <span>卧龙区</span>
+                                    </div>
+                                    <div class="aui-list-item-title">
+                                        <div style="cursor: pointer;width: 21.33vw;display: flex;align-items: center;">
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="1" title="bad" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="2" title="poor" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="3" title="regular" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="4" title="good" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-off.png" alt="5" title="gorgeous" style="width: .8rem;height: .8rem;">
+    
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="aui-info" style="padding-top:0;justify-content: flex-start;margin: 0;">
+                                    <div class="aui-info-item" style="width: 100%;">
+                                        <div class="aui-list-item-text" style="color: #000;width: 100%;">
+                                            <div class="aui-list-item-title shop-one-line" style="font-size: 3vw;"> <div style="background-color: yellow;padding: 2px;width: 4.27vw;height: 4.27vw;font-size: 3.2vw;display: inline-block;line-height: 4.27vw;">兑</div>
+                                                套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                    <div class="aui-list-item-right" style="position: absolute;right: 3.2vw;bottom:0;padding-bottom: 2.13vw;"></div>
+                                </div>
+    
+                                <div class="aui-list-item-text" style="position: absolute;bottom: 2.13vw;right: 3.2vw;">
+                                    <div class="aui-list-item-left">
+                                        1.11千米
+                                    </div>
+                                </div>
+    
+    
+                            </div>
+    
+                        </div>
+                        <div>
+                            <div class="aui-row">
+                            </div>
+    
+                        </div>
+    
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="shop-card">
+                        <div class="aui-media-list-item-inner">
+                            <a href="/shareshop/shop/detail?sid=6" class="aui-list-item-media" style="flex-direction: column;width: 40.53vw;height: 40.53vw;">
+                                <img src="http://manage.yihuoshidai.com/" style="height: 100%;">
+                            </a>
+                            <div class="aui-list-item-inner" style="width: calc(100% - 40.53vw);">
+                                <div class="aui-list-item-text" style="font-size: 3vw;">
+                                    <div class="aui-list-item-title" style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;width: 32vw;font-weight: bold;font-size: 4.27vw;">包包店</div>
+                                     <div class="aui-list-item-right" style="display: flex;align-items: center;font-size: 2.56vw;width: 28vw;"> <div class="shop-icon shop-icon-red"></div>&nbsp;<div>到店免费领取</div></div>
+                                </div>
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-left" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;width: 29.33vw;">
+                                        <span>美容类</span>
+                                        <span>|</span>
+                                        <span>卧龙区</span>
+                                    </div>
+                                    <div class="aui-list-item-title">
+                                        <div style="cursor: pointer;width: 21.33vw;display: flex;align-items: center;">
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="1" title="bad" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="2" title="poor" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="3" title="regular" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="4" title="good" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-off.png" alt="5" title="gorgeous" style="width: .8rem;height: .8rem;">
+    
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="aui-info" style="padding-top:0;justify-content: flex-start;margin: 0;">
+                                    <div class="aui-info-item" style="width: 100%;">
+                                        <div class="aui-list-item-text" style="color: #000;width: 100%;">
+                                            <div class="aui-list-item-title shop-one-line" style="font-size: 3vw;"> <div style="background-color: yellow;padding: 2px;width: 4.27vw;height: 4.27vw;font-size: 3.2vw;display: inline-block;line-height: 4.27vw;">兑</div>
+                                                套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                    <div class="aui-list-item-right" style="position: absolute;right: 3.2vw;bottom:0;padding-bottom: 2.13vw;"></div>
+                                </div>
+    
+                                <div class="aui-list-item-text" style="position: absolute;bottom: 2.13vw;right: 3.2vw;">
+                                    <div class="aui-list-item-left">
+                                        4.54千米
+                                    </div>
+                                </div>
+    
+    
+                            </div>
+    
+                        </div>
+                        <div>
+                            <div class="aui-row">
+                            </div>
+    
+                        </div>
+    
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="shop-card">
+                        <div class="aui-media-list-item-inner">
+                            <a href="/shareshop/shop/detail?sid=10" class="aui-list-item-media" style="flex-direction: column;width: 40.53vw;height: 40.53vw;">
+                                <img src="http://manage.yihuoshidai.com//files/e6e9011c-4b49-4274-84e2-ca9cc0c01a2e.jpg" style="height: 100%;">
+                            </a>
+                            <div class="aui-list-item-inner" style="width: calc(100% - 40.53vw);">
+                                <div class="aui-list-item-text" style="font-size: 3vw;">
+                                    <div class="aui-list-item-title" style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;width: 32vw;font-weight: bold;font-size: 4.27vw;">惠杰抗衰养生会所</div>
+                                     <div class="aui-list-item-right" style="display: flex;align-items: center;font-size: 2.56vw;width: 28vw;"> <div class="shop-icon shop-icon-red"></div>&nbsp;<div>到店免费领取</div></div>
+                                </div>
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-left" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;width: 29.33vw;">
+                                        <span>美容类</span>
+                                        <span>|</span>
+                                        <span>卧龙区</span>
+                                    </div>
+                                    <div class="aui-list-item-title">
+                                        <div style="cursor: pointer;width: 21.33vw;display: flex;align-items: center;">
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="1" title="bad" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="2" title="poor" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="3" title="regular" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="4" title="good" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-off.png" alt="5" title="gorgeous" style="width: .8rem;height: .8rem;">
+    
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="aui-info" style="padding-top:0;justify-content: flex-start;margin: 0;">
+                                    <div class="aui-info-item" style="width: 100%;">
+                                        <div class="aui-list-item-text" style="color: #000;width: 100%;">
+                                            <div class="aui-list-item-title shop-one-line" style="font-size: 3vw;"> <div style="background-color: yellow;padding: 2px;width: 4.27vw;height: 4.27vw;font-size: 3.2vw;display: inline-block;line-height: 4.27vw;">兑</div>
+                                                套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                    <div class="aui-list-item-right" style="position: absolute;right: 3.2vw;bottom:0;padding-bottom: 2.13vw;"></div>
+                                </div>
+    
+                                <div class="aui-list-item-text" style="position: absolute;bottom: 2.13vw;right: 3.2vw;">
+                                    <div class="aui-list-item-left">
+                                        47.33千米
+                                    </div>
+                                </div>
+    
+    
+                            </div>
+    
+                        </div>
+                        <div>
+                            <div class="aui-row">
+                            </div>
+    
+                        </div>
+    
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="shop-card">
+                        <div class="aui-media-list-item-inner">
+                            <a href="/shareshop/shop/detail?sid=13" class="aui-list-item-media" style="flex-direction: column;width: 40.53vw;height: 40.53vw;">
+                                <img src="http://manage.yihuoshidai.com//files/b8c98996-bf50-407a-8287-522f9a796edc.jpg" style="height: 100%;">
+                            </a>
+                            <div class="aui-list-item-inner" style="width: calc(100% - 40.53vw);">
+                                <div class="aui-list-item-text" style="font-size: 3vw;">
+                                    <div class="aui-list-item-title" style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;width: 32vw;font-weight: bold;font-size: 4.27vw;">全脑风暴早教中学</div>
+                                     <div class="aui-list-item-right" style="display: flex;align-items: center;font-size: 2.56vw;width: 28vw;"> <div class="shop-icon shop-icon-red"></div>&nbsp;<div>到店免费领取</div></div>
+                                </div>
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-left" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;width: 29.33vw;">
+                                        <span>美容类</span>
+                                        <span>|</span>
+                                        <span>卧龙区</span>
+                                    </div>
+                                    <div class="aui-list-item-title">
+                                        <div style="cursor: pointer;width: 21.33vw;display: flex;align-items: center;">
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="1" title="bad" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="2" title="poor" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="3" title="regular" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="4" title="good" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-off.png" alt="5" title="gorgeous" style="width: .8rem;height: .8rem;">
+    
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="aui-info" style="padding-top:0;justify-content: flex-start;margin: 0;">
+                                    <div class="aui-info-item" style="width: 100%;">
+                                        <div class="aui-list-item-text" style="color: #000;width: 100%;">
+                                            <div class="aui-list-item-title shop-one-line" style="font-size: 3vw;"> <div style="background-color: yellow;padding: 2px;width: 4.27vw;height: 4.27vw;font-size: 3.2vw;display: inline-block;line-height: 4.27vw;">兑</div>
+                                                套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                    <div class="aui-list-item-right" style="position: absolute;right: 3.2vw;bottom:0;padding-bottom: 2.13vw;"></div>
+                                </div>
+    
+                                <div class="aui-list-item-text" style="position: absolute;bottom: 2.13vw;right: 3.2vw;">
+                                    <div class="aui-list-item-left">
+                                        12090.21千米
+                                    </div>
+                                </div>
+    
+    
+                            </div>
+    
+                        </div>
+                        <div>
+                            <div class="aui-row">
+                            </div>
+    
+                        </div>
+    
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="shop-card">
+                        <div class="aui-media-list-item-inner">
+                            <a href="/shareshop/shop/detail?sid=12" class="aui-list-item-media" style="flex-direction: column;width: 40.53vw;height: 40.53vw;">
+                                <img src="http://manage.yihuoshidai.com//files/2d817e78-952c-4aeb-90de-c9ff40ca6908.jpg" style="height: 100%;">
+                            </a>
+                            <div class="aui-list-item-inner" style="width: calc(100% - 40.53vw);">
+                                <div class="aui-list-item-text" style="font-size: 3vw;">
+                                    <div class="aui-list-item-title" style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;width: 32vw;font-weight: bold;font-size: 4.27vw;">时代玉器利享店铺</div>
+                                     <div class="aui-list-item-right" style="display: flex;align-items: center;font-size: 2.56vw;width: 28vw;"> <div class="shop-icon shop-icon-red"></div>&nbsp;<div>到店免费领取</div></div>
+                                </div>
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-left" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;width: 29.33vw;">
+                                        <span>美容类</span>
+                                        <span>|</span>
+                                        <span>卧龙区</span>
+                                    </div>
+                                    <div class="aui-list-item-title">
+                                        <div style="cursor: pointer;width: 21.33vw;display: flex;align-items: center;">
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="1" title="bad" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="2" title="poor" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="3" title="regular" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="4" title="good" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-off.png" alt="5" title="gorgeous" style="width: .8rem;height: .8rem;">
+    
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="aui-info" style="padding-top:0;justify-content: flex-start;margin: 0;">
+                                    <div class="aui-info-item" style="width: 100%;">
+                                        <div class="aui-list-item-text" style="color: #000;width: 100%;">
+                                            <div class="aui-list-item-title shop-one-line" style="font-size: 3vw;"> <div style="background-color: yellow;padding: 2px;width: 4.27vw;height: 4.27vw;font-size: 3.2vw;display: inline-block;line-height: 4.27vw;">兑</div>
+                                                套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                    <div class="aui-list-item-right" style="position: absolute;right: 3.2vw;bottom:0;padding-bottom: 2.13vw;"></div>
+                                </div>
+    
+                                <div class="aui-list-item-text" style="position: absolute;bottom: 2.13vw;right: 3.2vw;">
+                                    <div class="aui-list-item-left">
+                                        12090.21千米
+                                    </div>
+                                </div>
+    
+    
+                            </div>
+    
+                        </div>
+                        <div>
+                            <div class="aui-row">
+                            </div>
+    
+                        </div>
+    
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="shop-card">
+                        <div class="aui-media-list-item-inner">
+                            <a href="/shareshop/shop/detail?sid=11" class="aui-list-item-media" style="flex-direction: column;width: 40.53vw;height: 40.53vw;">
+                                <img src="http://manage.yihuoshidai.com//files/4eae20b5-67a1-42b5-bc71-d66c354fcca7.jpg" style="height: 100%;">
+                            </a>
+                            <div class="aui-list-item-inner" style="width: calc(100% - 40.53vw);">
+                                <div class="aui-list-item-text" style="font-size: 3vw;">
+                                    <div class="aui-list-item-title" style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;width: 32vw;font-weight: bold;font-size: 4.27vw;">英格玛窗帘壁纸店</div>
+                                     <div class="aui-list-item-right" style="display: flex;align-items: center;font-size: 2.56vw;width: 28vw;"> <div class="shop-icon shop-icon-red"></div>&nbsp;<div>到店免费领取</div></div>
+                                </div>
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-left" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;width: 29.33vw;">
+                                        <span>美容类</span>
+                                        <span>|</span>
+                                        <span>卧龙区</span>
+                                    </div>
+                                    <div class="aui-list-item-title">
+                                        <div style="cursor: pointer;width: 21.33vw;display: flex;align-items: center;">
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="1" title="bad" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="2" title="poor" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="3" title="regular" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="4" title="good" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-off.png" alt="5" title="gorgeous" style="width: .8rem;height: .8rem;">
+    
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="aui-info" style="padding-top:0;justify-content: flex-start;margin: 0;">
+                                    <div class="aui-info-item" style="width: 100%;">
+                                        <div class="aui-list-item-text" style="color: #000;width: 100%;">
+                                            <div class="aui-list-item-title shop-one-line" style="font-size: 3vw;"> <div style="background-color: yellow;padding: 2px;width: 4.27vw;height: 4.27vw;font-size: 3.2vw;display: inline-block;line-height: 4.27vw;">兑</div>
+                                                套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                    <div class="aui-list-item-right" style="position: absolute;right: 3.2vw;bottom:0;padding-bottom: 2.13vw;"></div>
+                                </div>
+    
+                                <div class="aui-list-item-text" style="position: absolute;bottom: 2.13vw;right: 3.2vw;">
+                                    <div class="aui-list-item-left">
+                                        12090.21千米
+                                    </div>
+                                </div>
+    
+    
+                            </div>
+    
+                        </div>
+                        <div>
+                            <div class="aui-row">
+                            </div>
+    
+                        </div>
+    
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="shop-card">
+                        <div class="aui-media-list-item-inner">
+                            <a href="/shareshop/shop/detail?sid=14" class="aui-list-item-media" style="flex-direction: column;width: 40.53vw;height: 40.53vw;">
+                                <img src="http://manage.yihuoshidai.com//files/e9fdb8af-ab43-4788-9ce1-e944e1003456.jpg" style="height: 100%;">
+                            </a>
+                            <div class="aui-list-item-inner" style="width: calc(100% - 40.53vw);">
+                                <div class="aui-list-item-text" style="font-size: 3vw;">
+                                    <div class="aui-list-item-title" style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;width: 32vw;font-weight: bold;font-size: 4.27vw;">私人订制健身房</div>
+                                     <div class="aui-list-item-right" style="display: flex;align-items: center;font-size: 2.56vw;width: 28vw;"> <div class="shop-icon shop-icon-red"></div>&nbsp;<div>到店免费领取</div></div>
+                                </div>
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-left" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;width: 29.33vw;">
+                                        <span>美容类</span>
+                                        <span>|</span>
+                                        <span>卧龙区</span>
+                                    </div>
+                                    <div class="aui-list-item-title">
+                                        <div style="cursor: pointer;width: 21.33vw;display: flex;align-items: center;">
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="1" title="bad" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="2" title="poor" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="3" title="regular" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="4" title="good" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-off.png" alt="5" title="gorgeous" style="width: .8rem;height: .8rem;">
+    
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="aui-info" style="padding-top:0;justify-content: flex-start;margin: 0;">
+                                    <div class="aui-info-item" style="width: 100%;">
+                                        <div class="aui-list-item-text" style="color: #000;width: 100%;">
+                                            <div class="aui-list-item-title shop-one-line" style="font-size: 3vw;"> <div style="background-color: yellow;padding: 2px;width: 4.27vw;height: 4.27vw;font-size: 3.2vw;display: inline-block;line-height: 4.27vw;">兑</div>
+                                                套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                    <div class="aui-list-item-right" style="position: absolute;right: 3.2vw;bottom:0;padding-bottom: 2.13vw;"></div>
+                                </div>
+    
+                                <div class="aui-list-item-text" style="position: absolute;bottom: 2.13vw;right: 3.2vw;">
+                                    <div class="aui-list-item-left">
+                                        12090.21千米
+                                    </div>
+                                </div>
+    
+    
+                            </div>
+    
+                        </div>
+                        <div>
+                            <div class="aui-row">
+                            </div>
+    
+                        </div>
+    
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="shop-card">
+                        <div class="aui-media-list-item-inner">
+                            <a href="/shareshop/shop/detail?sid=15" class="aui-list-item-media" style="flex-direction: column;width: 40.53vw;height: 40.53vw;">
+                                <img src="http://manage.yihuoshidai.com//files/df93caf2-d979-4956-99ef-352db7055ae8.jpg" style="height: 100%;">
+                            </a>
+                            <div class="aui-list-item-inner" style="width: calc(100% - 40.53vw);">
+                                <div class="aui-list-item-text" style="font-size: 3vw;">
+                                    <div class="aui-list-item-title" style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;width: 32vw;font-weight: bold;font-size: 4.27vw;">南岸明珠商务酒店</div>
+                                     <div class="aui-list-item-right" style="display: flex;align-items: center;font-size: 2.56vw;width: 28vw;"> <div class="shop-icon shop-icon-red"></div>&nbsp;<div>到店免费领取</div></div>
+                                </div>
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-left" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;width: 29.33vw;">
+                                        <span>美容类</span>
+                                        <span>|</span>
+                                        <span>卧龙区</span>
+                                    </div>
+                                    <div class="aui-list-item-title">
+                                        <div style="cursor: pointer;width: 21.33vw;display: flex;align-items: center;">
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="1" title="bad" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="2" title="poor" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="3" title="regular" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="4" title="good" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-off.png" alt="5" title="gorgeous" style="width: .8rem;height: .8rem;">
+    
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="aui-info" style="padding-top:0;justify-content: flex-start;margin: 0;">
+                                    <div class="aui-info-item" style="width: 100%;">
+                                        <div class="aui-list-item-text" style="color: #000;width: 100%;">
+                                            <div class="aui-list-item-title shop-one-line" style="font-size: 3vw;"> <div style="background-color: yellow;padding: 2px;width: 4.27vw;height: 4.27vw;font-size: 3.2vw;display: inline-block;line-height: 4.27vw;">兑</div>
+                                                套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                    <div class="aui-list-item-right" style="position: absolute;right: 3.2vw;bottom:0;padding-bottom: 2.13vw;"></div>
+                                </div>
+    
+                                <div class="aui-list-item-text" style="position: absolute;bottom: 2.13vw;right: 3.2vw;">
+                                    <div class="aui-list-item-left">
+                                        12090.21千米
+                                    </div>
+                                </div>
+    
+    
+                            </div>
+    
+                        </div>
+                        <div>
+                            <div class="aui-row">
+                            </div>
+    
+                        </div>
+    
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="shop-card">
+                        <div class="aui-media-list-item-inner">
+                            <a href="/shareshop/shop/detail?sid=16" class="aui-list-item-media" style="flex-direction: column;width: 40.53vw;height: 40.53vw;">
+                                <img src="http://manage.yihuoshidai.com//files/b364d137-fc46-48d7-813d-a7c39bdf18d1.jpg" style="height: 100%;">
+                            </a>
+                            <div class="aui-list-item-inner" style="width: calc(100% - 40.53vw);">
+                                <div class="aui-list-item-text" style="font-size: 3vw;">
+                                    <div class="aui-list-item-title" style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;width: 32vw;font-weight: bold;font-size: 4.27vw;">世纪豪庭住宿酒店</div>
+                                     <div class="aui-list-item-right" style="display: flex;align-items: center;font-size: 2.56vw;width: 28vw;"> <div class="shop-icon shop-icon-red"></div>&nbsp;<div>到店免费领取</div></div>
+                                </div>
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-left" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;width: 29.33vw;">
+                                        <span>美容类</span>
+                                        <span>|</span>
+                                        <span>卧龙区</span>
+                                    </div>
+                                    <div class="aui-list-item-title">
+                                        <div style="cursor: pointer;width: 21.33vw;display: flex;align-items: center;">
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="1" title="bad" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="2" title="poor" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="3" title="regular" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="4" title="good" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-off.png" alt="5" title="gorgeous" style="width: .8rem;height: .8rem;">
+    
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="aui-info" style="padding-top:0;justify-content: flex-start;margin: 0;">
+                                    <div class="aui-info-item" style="width: 100%;">
+                                        <div class="aui-list-item-text" style="color: #000;width: 100%;">
+                                            <div class="aui-list-item-title shop-one-line" style="font-size: 3vw;"> <div style="background-color: yellow;padding: 2px;width: 4.27vw;height: 4.27vw;font-size: 3.2vw;display: inline-block;line-height: 4.27vw;">兑</div>
+                                                套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                    <div class="aui-list-item-right" style="position: absolute;right: 3.2vw;bottom:0;padding-bottom: 2.13vw;"></div>
+                                </div>
+    
+                                <div class="aui-list-item-text" style="position: absolute;bottom: 2.13vw;right: 3.2vw;">
+                                    <div class="aui-list-item-left">
+                                        12090.21千米
+                                    </div>
+                                </div>
+    
+    
+                            </div>
+    
+                        </div>
+                        <div>
+                            <div class="aui-row">
+                            </div>
+    
+                        </div>
+    
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="shop-card">
+                        <div class="aui-media-list-item-inner">
+                            <a href="/shareshop/shop/detail?sid=17" class="aui-list-item-media" style="flex-direction: column;width: 40.53vw;height: 40.53vw;">
+                                <img src="http://manage.yihuoshidai.com//files/6adc7414-ccad-4fab-96bc-16fca8f2b732.jpg" style="height: 100%;">
+                            </a>
+                            <div class="aui-list-item-inner" style="width: calc(100% - 40.53vw);">
+                                <div class="aui-list-item-text" style="font-size: 3vw;">
+                                    <div class="aui-list-item-title" style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;width: 32vw;font-weight: bold;font-size: 4.27vw;">惠美国际美容养生馆</div>
+                                     <div class="aui-list-item-right" style="display: flex;align-items: center;font-size: 2.56vw;width: 28vw;"> <div class="shop-icon shop-icon-red"></div>&nbsp;<div>到店免费领取</div></div>
+                                </div>
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-left" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;width: 29.33vw;">
+                                        <span>美容类</span>
+                                        <span>|</span>
+                                        <span>卧龙区</span>
+                                    </div>
+                                    <div class="aui-list-item-title">
+                                        <div style="cursor: pointer;width: 21.33vw;display: flex;align-items: center;">
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="1" title="bad" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="2" title="poor" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="3" title="regular" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="4" title="good" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-off.png" alt="5" title="gorgeous" style="width: .8rem;height: .8rem;">
+    
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="aui-info" style="padding-top:0;justify-content: flex-start;margin: 0;">
+                                    <div class="aui-info-item" style="width: 100%;">
+                                        <div class="aui-list-item-text" style="color: #000;width: 100%;">
+                                            <div class="aui-list-item-title shop-one-line" style="font-size: 3vw;"> <div style="background-color: yellow;padding: 2px;width: 4.27vw;height: 4.27vw;font-size: 3.2vw;display: inline-block;line-height: 4.27vw;">兑</div>
+                                                套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                    <div class="aui-list-item-right" style="position: absolute;right: 3.2vw;bottom:0;padding-bottom: 2.13vw;"></div>
+                                </div>
+    
+                                <div class="aui-list-item-text" style="position: absolute;bottom: 2.13vw;right: 3.2vw;">
+                                    <div class="aui-list-item-left">
+                                        12090.21千米
+                                    </div>
+                                </div>
+    
+    
+                            </div>
+    
+                        </div>
+                        <div>
+                            <div class="aui-row">
+                            </div>
+    
+                        </div>
+    
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="shop-card">
+                        <div class="aui-media-list-item-inner">
+                            <a href="/shareshop/shop/detail?sid=18" class="aui-list-item-media" style="flex-direction: column;width: 40.53vw;height: 40.53vw;">
+                                <img src="http://manage.yihuoshidai.com//files/51005239-009c-4512-bcc0-2e49e484c8f3.jpg" style="height: 100%;">
+                            </a>
+                            <div class="aui-list-item-inner" style="width: calc(100% - 40.53vw);">
+                                <div class="aui-list-item-text" style="font-size: 3vw;">
+                                    <div class="aui-list-item-title" style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;width: 32vw;font-weight: bold;font-size: 4.27vw;">百鸟园</div>
+                                     <div class="aui-list-item-right" style="display: flex;align-items: center;font-size: 2.56vw;width: 28vw;"> <div class="shop-icon shop-icon-red"></div>&nbsp;<div>到店免费领取</div></div>
+                                </div>
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-left" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;width: 29.33vw;">
+                                        <span>美容类</span>
+                                        <span>|</span>
+                                        <span>卧龙区</span>
+                                    </div>
+                                    <div class="aui-list-item-title">
+                                        <div style="cursor: pointer;width: 21.33vw;display: flex;align-items: center;">
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="1" title="bad" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="2" title="poor" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="3" title="regular" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="4" title="good" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-off.png" alt="5" title="gorgeous" style="width: .8rem;height: .8rem;">
+    
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="aui-info" style="padding-top:0;justify-content: flex-start;margin: 0;">
+                                    <div class="aui-info-item" style="width: 100%;">
+                                        <div class="aui-list-item-text" style="color: #000;width: 100%;">
+                                            <div class="aui-list-item-title shop-one-line" style="font-size: 3vw;"> <div style="background-color: yellow;padding: 2px;width: 4.27vw;height: 4.27vw;font-size: 3.2vw;display: inline-block;line-height: 4.27vw;">兑</div>
+                                                套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                    <div class="aui-list-item-right" style="position: absolute;right: 3.2vw;bottom:0;padding-bottom: 2.13vw;"></div>
+                                </div>
+    
+                                <div class="aui-list-item-text" style="position: absolute;bottom: 2.13vw;right: 3.2vw;">
+                                    <div class="aui-list-item-left">
+                                        12090.21千米
+                                    </div>
+                                </div>
+    
+    
+                            </div>
+    
+                        </div>
+                        <div>
+                            <div class="aui-row">
+                            </div>
+    
+                        </div>
+    
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="shop-card">
+                        <div class="aui-media-list-item-inner">
+                            <a href="/shareshop/shop/detail?sid=19" class="aui-list-item-media" style="flex-direction: column;width: 40.53vw;height: 40.53vw;">
+                                <img src="http://manage.yihuoshidai.com//files/f8f3bc82-ba5b-49ac-86aa-44fcb14c50ca.jpg" style="height: 100%;">
+                            </a>
+                            <div class="aui-list-item-inner" style="width: calc(100% - 40.53vw);">
+                                <div class="aui-list-item-text" style="font-size: 3vw;">
+                                    <div class="aui-list-item-title" style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;width: 32vw;font-weight: bold;font-size: 4.27vw;">完美整形医院</div>
+                                     <div class="aui-list-item-right" style="display: flex;align-items: center;font-size: 2.56vw;width: 28vw;"> <div class="shop-icon shop-icon-red"></div>&nbsp;<div>到店免费领取</div></div>
+                                </div>
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-left" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;width: 29.33vw;">
+                                        <span>美容类</span>
+                                        <span>|</span>
+                                        <span>卧龙区</span>
+                                    </div>
+                                    <div class="aui-list-item-title">
+                                        <div style="cursor: pointer;width: 21.33vw;display: flex;align-items: center;">
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="1" title="bad" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="2" title="poor" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="3" title="regular" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="4" title="good" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-off.png" alt="5" title="gorgeous" style="width: .8rem;height: .8rem;">
+    
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="aui-info" style="padding-top:0;justify-content: flex-start;margin: 0;">
+                                    <div class="aui-info-item" style="width: 100%;">
+                                        <div class="aui-list-item-text" style="color: #000;width: 100%;">
+                                            <div class="aui-list-item-title shop-one-line" style="font-size: 3vw;"> <div style="background-color: yellow;padding: 2px;width: 4.27vw;height: 4.27vw;font-size: 3.2vw;display: inline-block;line-height: 4.27vw;">兑</div>
+                                                套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                    <div class="aui-list-item-right" style="position: absolute;right: 3.2vw;bottom:0;padding-bottom: 2.13vw;"></div>
+                                </div>
+    
+                                <div class="aui-list-item-text" style="position: absolute;bottom: 2.13vw;right: 3.2vw;">
+                                    <div class="aui-list-item-left">
+                                        12090.21千米
+                                    </div>
+                                </div>
+    
+    
+                            </div>
+    
+                        </div>
+                        <div>
+                            <div class="aui-row">
+                            </div>
+    
+                        </div>
+    
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="shop-card">
+                        <div class="aui-media-list-item-inner">
+                            <a href="/shareshop/shop/detail?sid=20" class="aui-list-item-media" style="flex-direction: column;width: 40.53vw;height: 40.53vw;">
+                                <img src="http://manage.yihuoshidai.com//files/a1c1d0d3-0717-479c-81f5-4686967109cc.jpg" style="height: 100%;">
+                            </a>
+                            <div class="aui-list-item-inner" style="width: calc(100% - 40.53vw);">
+                                <div class="aui-list-item-text" style="font-size: 3vw;">
+                                    <div class="aui-list-item-title" style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;width: 32vw;font-weight: bold;font-size: 4.27vw;">维多利亚整形医院</div>
+                                     <div class="aui-list-item-right" style="display: flex;align-items: center;font-size: 2.56vw;width: 28vw;"> <div class="shop-icon shop-icon-red"></div>&nbsp;<div>到店免费领取</div></div>
+                                </div>
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-left" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;width: 29.33vw;">
+                                        <span>美容类</span>
+                                        <span>|</span>
+                                        <span>卧龙区</span>
+                                    </div>
+                                    <div class="aui-list-item-title">
+                                        <div style="cursor: pointer;width: 21.33vw;display: flex;align-items: center;">
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="1" title="bad" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="2" title="poor" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="3" title="regular" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-on.png" alt="4" title="good" style="width: .8rem;height: .8rem;">&nbsp;
+                                            <img src="/shareshop/templates/default/view/static/img/raty/star-off.png" alt="5" title="gorgeous" style="width: .8rem;height: .8rem;">
+    
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="aui-info" style="padding-top:0;justify-content: flex-start;margin: 0;">
+                                    <div class="aui-info-item" style="width: 100%;">
+                                        <div class="aui-list-item-text" style="color: #000;width: 100%;">
+                                            <div class="aui-list-item-title shop-one-line" style="font-size: 3vw;"> <div style="background-color: yellow;padding: 2px;width: 4.27vw;height: 4.27vw;font-size: 3.2vw;display: inline-block;line-height: 4.27vw;">兑</div>
+                                                套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1套餐1
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                    <div class="aui-list-item-right" style="position: absolute;right: 3.2vw;bottom:0;padding-bottom: 2.13vw;"></div>
+                                </div>
+    
+                                <div class="aui-list-item-text" style="position: absolute;bottom: 2.13vw;right: 3.2vw;">
+                                    <div class="aui-list-item-left">
+                                        12090.21千米
+                                    </div>
+                                </div>
+    
+    
+                            </div>
+    
+                        </div>
+                        <div>
+                            <div class="aui-row">
+                            </div>
+    
+                        </div>
+    
+                    </div>
+                </li>
+    
+    
+    <!--			
+    
+                <li class="aui-list-item">
+                    <div class="shop-card">
+                        <div class="aui-media-list-item-inner">
+                            <a href="/shareshop/shop/detail?sid=8" class="aui-list-item-media">
+                                <img src="http://manage.yihuoshidai.com//files/b813ca46-4bd6-4e4b-8bdb-37172a5b51dd.jpg">
+                            </a>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title">龙升商贸</div>
+                                    &lt;!&ndash; <div class="aui-list-item-right">08:00</div> &ndash;&gt;
+                                </div>
+                                <div class="aui-list-item-text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-info" style="padding-top:0">
+                            <div class="aui-info-item">
+                                <span class="aui-margin-l-5">距离当前位置</span>
+                            </div>
+                            <div class="aui-info-item"><span
+                                    class="shop-red">1.11</span>&nbsp;米</div>
+                        </div>
+                    </div>
+                </li>
+    
+                <li class="aui-list-item">
+                    <div class="shop-card">
+                        <div class="aui-media-list-item-inner">
+                            <a href="/shareshop/shop/detail?sid=6" class="aui-list-item-media">
+                                <img src="http://manage.yihuoshidai.com/">
+                            </a>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title">包包店</div>
+                                    &lt;!&ndash; <div class="aui-list-item-right">08:00</div> &ndash;&gt;
+                                </div>
+                                <div class="aui-list-item-text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-info" style="padding-top:0">
+                            <div class="aui-info-item">
+                                <span class="aui-margin-l-5">距离当前位置</span>
+                            </div>
+                            <div class="aui-info-item"><span
+                                    class="shop-red">4.54</span>&nbsp;米</div>
+                        </div>
+                    </div>
+                </li>
+    
+                <li class="aui-list-item">
+                    <div class="shop-card">
+                        <div class="aui-media-list-item-inner">
+                            <a href="/shareshop/shop/detail?sid=10" class="aui-list-item-media">
+                                <img src="http://manage.yihuoshidai.com//files/e6e9011c-4b49-4274-84e2-ca9cc0c01a2e.jpg">
+                            </a>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title">惠杰抗衰养生会所</div>
+                                    &lt;!&ndash; <div class="aui-list-item-right">08:00</div> &ndash;&gt;
+                                </div>
+                                <div class="aui-list-item-text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-info" style="padding-top:0">
+                            <div class="aui-info-item">
+                                <span class="aui-margin-l-5">距离当前位置</span>
+                            </div>
+                            <div class="aui-info-item"><span
+                                    class="shop-red">47.33</span>&nbsp;米</div>
+                        </div>
+                    </div>
+                </li>
+    
+                <li class="aui-list-item">
+                    <div class="shop-card">
+                        <div class="aui-media-list-item-inner">
+                            <a href="/shareshop/shop/detail?sid=13" class="aui-list-item-media">
+                                <img src="http://manage.yihuoshidai.com//files/b8c98996-bf50-407a-8287-522f9a796edc.jpg">
+                            </a>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title">全脑风暴早教中学</div>
+                                    &lt;!&ndash; <div class="aui-list-item-right">08:00</div> &ndash;&gt;
+                                </div>
+                                <div class="aui-list-item-text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-info" style="padding-top:0">
+                            <div class="aui-info-item">
+                                <span class="aui-margin-l-5">距离当前位置</span>
+                            </div>
+                            <div class="aui-info-item"><span
+                                    class="shop-red">12090.21</span>&nbsp;米</div>
+                        </div>
+                    </div>
+                </li>
+    
+                <li class="aui-list-item">
+                    <div class="shop-card">
+                        <div class="aui-media-list-item-inner">
+                            <a href="/shareshop/shop/detail?sid=12" class="aui-list-item-media">
+                                <img src="http://manage.yihuoshidai.com//files/2d817e78-952c-4aeb-90de-c9ff40ca6908.jpg">
+                            </a>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title">时代玉器利享店铺</div>
+                                    &lt;!&ndash; <div class="aui-list-item-right">08:00</div> &ndash;&gt;
+                                </div>
+                                <div class="aui-list-item-text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-info" style="padding-top:0">
+                            <div class="aui-info-item">
+                                <span class="aui-margin-l-5">距离当前位置</span>
+                            </div>
+                            <div class="aui-info-item"><span
+                                    class="shop-red">12090.21</span>&nbsp;米</div>
+                        </div>
+                    </div>
+                </li>
+    
+                <li class="aui-list-item">
+                    <div class="shop-card">
+                        <div class="aui-media-list-item-inner">
+                            <a href="/shareshop/shop/detail?sid=11" class="aui-list-item-media">
+                                <img src="http://manage.yihuoshidai.com//files/4eae20b5-67a1-42b5-bc71-d66c354fcca7.jpg">
+                            </a>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title">英格玛窗帘壁纸店</div>
+                                    &lt;!&ndash; <div class="aui-list-item-right">08:00</div> &ndash;&gt;
+                                </div>
+                                <div class="aui-list-item-text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-info" style="padding-top:0">
+                            <div class="aui-info-item">
+                                <span class="aui-margin-l-5">距离当前位置</span>
+                            </div>
+                            <div class="aui-info-item"><span
+                                    class="shop-red">12090.21</span>&nbsp;米</div>
+                        </div>
+                    </div>
+                </li>
+    
+                <li class="aui-list-item">
+                    <div class="shop-card">
+                        <div class="aui-media-list-item-inner">
+                            <a href="/shareshop/shop/detail?sid=14" class="aui-list-item-media">
+                                <img src="http://manage.yihuoshidai.com//files/e9fdb8af-ab43-4788-9ce1-e944e1003456.jpg">
+                            </a>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title">私人订制健身房</div>
+                                    &lt;!&ndash; <div class="aui-list-item-right">08:00</div> &ndash;&gt;
+                                </div>
+                                <div class="aui-list-item-text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-info" style="padding-top:0">
+                            <div class="aui-info-item">
+                                <span class="aui-margin-l-5">距离当前位置</span>
+                            </div>
+                            <div class="aui-info-item"><span
+                                    class="shop-red">12090.21</span>&nbsp;米</div>
+                        </div>
+                    </div>
+                </li>
+    
+                <li class="aui-list-item">
+                    <div class="shop-card">
+                        <div class="aui-media-list-item-inner">
+                            <a href="/shareshop/shop/detail?sid=15" class="aui-list-item-media">
+                                <img src="http://manage.yihuoshidai.com//files/df93caf2-d979-4956-99ef-352db7055ae8.jpg">
+                            </a>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title">南岸明珠商务酒店</div>
+                                    &lt;!&ndash; <div class="aui-list-item-right">08:00</div> &ndash;&gt;
+                                </div>
+                                <div class="aui-list-item-text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-info" style="padding-top:0">
+                            <div class="aui-info-item">
+                                <span class="aui-margin-l-5">距离当前位置</span>
+                            </div>
+                            <div class="aui-info-item"><span
+                                    class="shop-red">12090.21</span>&nbsp;米</div>
+                        </div>
+                    </div>
+                </li>
+    
+                <li class="aui-list-item">
+                    <div class="shop-card">
+                        <div class="aui-media-list-item-inner">
+                            <a href="/shareshop/shop/detail?sid=16" class="aui-list-item-media">
+                                <img src="http://manage.yihuoshidai.com//files/b364d137-fc46-48d7-813d-a7c39bdf18d1.jpg">
+                            </a>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title">世纪豪庭住宿酒店</div>
+                                    &lt;!&ndash; <div class="aui-list-item-right">08:00</div> &ndash;&gt;
+                                </div>
+                                <div class="aui-list-item-text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-info" style="padding-top:0">
+                            <div class="aui-info-item">
+                                <span class="aui-margin-l-5">距离当前位置</span>
+                            </div>
+                            <div class="aui-info-item"><span
+                                    class="shop-red">12090.21</span>&nbsp;米</div>
+                        </div>
+                    </div>
+                </li>
+    
+                <li class="aui-list-item">
+                    <div class="shop-card">
+                        <div class="aui-media-list-item-inner">
+                            <a href="/shareshop/shop/detail?sid=17" class="aui-list-item-media">
+                                <img src="http://manage.yihuoshidai.com//files/6adc7414-ccad-4fab-96bc-16fca8f2b732.jpg">
+                            </a>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title">惠美国际美容养生馆</div>
+                                    &lt;!&ndash; <div class="aui-list-item-right">08:00</div> &ndash;&gt;
+                                </div>
+                                <div class="aui-list-item-text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-info" style="padding-top:0">
+                            <div class="aui-info-item">
+                                <span class="aui-margin-l-5">距离当前位置</span>
+                            </div>
+                            <div class="aui-info-item"><span
+                                    class="shop-red">12090.21</span>&nbsp;米</div>
+                        </div>
+                    </div>
+                </li>
+    
+                <li class="aui-list-item">
+                    <div class="shop-card">
+                        <div class="aui-media-list-item-inner">
+                            <a href="/shareshop/shop/detail?sid=18" class="aui-list-item-media">
+                                <img src="http://manage.yihuoshidai.com//files/51005239-009c-4512-bcc0-2e49e484c8f3.jpg">
+                            </a>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title">百鸟园</div>
+                                    &lt;!&ndash; <div class="aui-list-item-right">08:00</div> &ndash;&gt;
+                                </div>
+                                <div class="aui-list-item-text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-info" style="padding-top:0">
+                            <div class="aui-info-item">
+                                <span class="aui-margin-l-5">距离当前位置</span>
+                            </div>
+                            <div class="aui-info-item"><span
+                                    class="shop-red">12090.21</span>&nbsp;米</div>
+                        </div>
+                    </div>
+                </li>
+    
+                <li class="aui-list-item">
+                    <div class="shop-card">
+                        <div class="aui-media-list-item-inner">
+                            <a href="/shareshop/shop/detail?sid=19" class="aui-list-item-media">
+                                <img src="http://manage.yihuoshidai.com//files/f8f3bc82-ba5b-49ac-86aa-44fcb14c50ca.jpg">
+                            </a>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title">完美整形医院</div>
+                                    &lt;!&ndash; <div class="aui-list-item-right">08:00</div> &ndash;&gt;
+                                </div>
+                                <div class="aui-list-item-text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-info" style="padding-top:0">
+                            <div class="aui-info-item">
+                                <span class="aui-margin-l-5">距离当前位置</span>
+                            </div>
+                            <div class="aui-info-item"><span
+                                    class="shop-red">12090.21</span>&nbsp;米</div>
+                        </div>
+                    </div>
+                </li>
+    
+                <li class="aui-list-item">
+                    <div class="shop-card">
+                        <div class="aui-media-list-item-inner">
+                            <a href="/shareshop/shop/detail?sid=20" class="aui-list-item-media">
+                                <img src="http://manage.yihuoshidai.com//files/a1c1d0d3-0717-479c-81f5-4686967109cc.jpg">
+                            </a>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title">维多利亚整形医院</div>
+                                    &lt;!&ndash; <div class="aui-list-item-right">08:00</div> &ndash;&gt;
+                                </div>
+                                <div class="aui-list-item-text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-info" style="padding-top:0">
+                            <div class="aui-info-item">
+                                <span class="aui-margin-l-5">距离当前位置</span>
+                            </div>
+                            <div class="aui-info-item"><span
+                                    class="shop-red">12090.21</span>&nbsp;米</div>
+                        </div>
+                    </div>
+                </li>
+                -->
+    
+    
+            </ul>
+    
+        </div>
+        <!-- 底部导航栏 -->
+    
+    
+        <footer class="aui-bar aui-bar-tab" id="footer" style="height: 50px;">
+    
+            <a href="/shareshop/wechat/index" class="aui-bar-tab-item aui-active">
+                <i class="fa fa-home" aria-hidden="true" style="font-size: 20px;"></i>
+                <div class="aui-bar-tab-label">线上商品</div>
+            </a>
+    
+            <a href="/shareshop/shop/index" class="aui-bar-tab-item">
+    
+                <i class="fa fa-shopping-bag" aria-hidden="true" style="font-size: 20px;"></i>
+                <div class="aui-bar-tab-label">线下商铺</div>
+            </a>
+            <a href="/shareshop/shop/activityshop" class="aui-bar-tab-item">
+                <div class="shop-icon-free"></div>
+                <div class="aui-bar-tab-label">免费领币</div>
+            </a>
+            <a href="/shareshop/cartshow/list" class="aui-bar-tab-item">
+                <!--<div class="aui-badge">99</div>-->
+                <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 20px;"></i>
+                <div class="aui-bar-tab-label">购物车</div>
+            </a>
+    
+            <a href="/shareshop/center/user" class="aui-bar-tab-item">
+                <div class="aui-dot"></div>
+                <i class="fa fa-user" aria-hidden="true" style="font-size: 20px;"></i>
+                <div class="aui-bar-tab-label">我的</div>
+            </a>
+        </footer>
+    </div>
+    
+    <script type="text/javascript" src="/shareshop/templates/default/view/static/js/aui/aui-slide.js"></script>
+    <script type="text/javascript" src="/shareshop/templates/default/view/static/js/aui/aui-dialog.js"></script>
+    <script>
+    
+        var slide = new auiSlide({
+            container: document.getElementById("aui-slide"),
+            // "width":300,
+            "speed": 300,
+            "pageShow": true,
+            "pageStyle": 'dot',
+            "loop": true,
+            'dotPosition': 'center'
+            // currentPage:currentFun
+        })
+        var slide = new auiSlide({
+            container: document.getElementById("aui-slide2"),
+            // "width":300,
+            "height": 220,
+            "speed": 300,
+            "pageShow": true,
+            "pageStyle": 'dot',
+            "loop": true,
+            'dotPosition': 'center'
+            // currentPage:currentFun
+        })
+    
+    
+        function openDialog() {
+            var dialog = new auiDialog({})
+            dialog.alert({
+                title:"公告",
+                msg:'<div style="text-align: left;position: relative;padding-bottom: 30px;"><div style="font-size: 16px;text-align: center;color: red;">利享商城 “你消费 我送钱”活动</div>' +
+                        '<div style="line-height: 20px">1.商家承诺：参与活动的"商品（服务）”均低于市场价</div>' +
+                        '<div style="line-height: 20px">2.商家承诺：利享商城用户到店，将享受更多尊贵特权待遇（VIP会员待遇)</div>' +
+                        '<div style="line-height: 20px">3.商家承诺：自觉接受商城用户与公司的监督。</div><div class="shop-seal"></div></div>',
+                buttons:['确认']
+            },function(ret){
+    
+            })
+        }
+        openDialog()
+    </script><div class="aui-mask"></div>
+    
+    
+    </body></html>

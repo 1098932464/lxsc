@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #bg {
+            width: 325px;
+            height: 300px;
+            background: url(luckyDraw2.png) no-repeat;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background-size: 100%;
+        }
+ 
+        img[src^="luckyDraw3"] {
+            width: 87px;
+    position: absolute;
+    z-index: 10;
+    top: 79px;
+    left: 126px;
+        }
+ 
+        img[src^="luckyDraw.png"] {
+            width: 225px;
+    position: absolute;
+    z-index: 5;
+    top: 27px;
+    left: 61px;
+    transition: all 4s;
+        }
+        body{
+            height: 100vh;
+            background-size: 100% 100%;
+            background-image: url(./drawBg.jpg);
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+     <!-- 这里是HTML结构部分 --> 
+     <div id="bg"><img src="luckyDraw3.png" alt="pointer"><img src="luckyDraw.png" alt="turntable"></div>  
+     <!-- 这里是js部分 -->
+     <script>
+         var oPointer = document.getElementsByTagName("img")[0];
+         var oTurntable = document.getElementsByTagName("img")[1];
+         var cat = 51.4; //总共7个扇形区域，每个区域约51.4度
+         var num = 0; //转圈结束后停留的度数
+         var offOn = true; //是否正在抽奖
+         oPointer.onclick = function () {
+             if (offOn) {
+                 oTurntable.style.transform = "rotate(0deg)";
+                 offOn = !offOn;
+                 ratating();
+             }
+         }
+         //旋转
+         function ratating() {
+
+
+            //  var timer = null;
+            //  var rdm = 0; //随机度数
+            //  clearInterval(timer);
+            //  timer = setInterval(function () {
+            //      if (Math.floor(rdm / 360) < 3) { rdm = Math.floor(Math.random() * 3600); }
+            //      else {
+            //          oTurntable.style.transform = "rotate(" + rdm + "deg)";
+            //          clearInterval(timer);
+            //          setTimeout(function () {
+            //              offOn = !offOn;
+            //              num = rdm % 360;
+            //              if (num <= cat * 1) { alert("300现金"); console.log("rdm=" + rdm + "，num=" + num + "，" + "4999元"); }
+            //              else if (num <= cat * 2) { alert("苹果XI"); console.log("rdm=" + rdm + "，num=" + num + "，" + "50元"); }
+            //              else if (num <= cat * 3) { alert("华为mate30"); console.log("rdm=" + rdm + "，num=" + num + "，" + "10元"); }
+            //              else if (num <= cat * 4) { alert("5利享币"); console.log("rdm=" + rdm + "，num=" + num + "，" + "5元"); }
+            //              else if (num <= cat * 5) { alert("10利享币"); console.log("rdm=" + rdm + "，num=" + num + "，" + "免息服务"); }
+            //              else if (num <= cat * 6) { alert("500利享币"); console.log("rdm=" + rdm + "，num=" + num + "，" + "提交白金"); }
+            //              else if (num <= cat * 7) { alert("未中奖"); console.log("rdm=" + rdm + "，num=" + num + "，" + "未中奖"); }
+            //          }, 4000);
+            //      }
+            //  }, 30);
+        
+        
+            var timer = null;
+             // 获取异步请求
+             var dataNum=0
+             var cellDeg=360/7
+             var startDeg=dataNum*cellDeg
+             var finalDeg=Math.random()*cellDeg+startDeg
+             var rdm = 0; //随机度数
+             rdm=parseInt((Math.random()*15+5)) * 360+finalDeg
+
+           
+             clearInterval(timer);
+             timer = setInterval(function () {
+                 // if (Math.floor(rdm / 360) < 3) 
+                 // { rdm = Math.floor(Math.random() * 3600); }
+                 // else
+                 //     {
+                     oTurntable.style.transform = "rotate(" + rdm + "deg)";
+                     clearInterval(timer);
+                     setTimeout(function () {
+                         offOn = !offOn;
+                         num = rdm % 360;
+                         if (num <= cat * 1) { alert("300现金"); console.log("rdm=" + rdm + "，num=" + num + "，" + "4999元"); }
+                         else if (num <= cat * 2) { alert("苹果XI"); console.log("rdm=" + rdm + "，num=" + num + "，" + "50元"); }
+                         else if (num <= cat * 3) { alert("华为mate30"); console.log("rdm=" + rdm + "，num=" + num + "，" + "10元"); }
+                         else if (num <= cat * 4) { alert("5利享币"); console.log("rdm=" + rdm + "，num=" + num + "，" + "5元"); }
+                         else if (num <= cat * 5) { alert("10利享币"); console.log("rdm=" + rdm + "，num=" + num + "，" + "免息服务"); }
+                         else if (num <= cat * 6) { alert("500利享币"); console.log("rdm=" + rdm + "，num=" + num + "，" + "提交白金"); }
+                         else if (num <= cat * 7) { alert("未中奖"); console.log("rdm=" + rdm + "，num=" + num + "，" + "未中奖"); }
+                     }, 4000);
+                 // }
+             }, 30);
+        
+            }
+     </script>
+</body>
+</html>

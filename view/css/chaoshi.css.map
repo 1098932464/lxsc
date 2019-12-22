@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../scss/chaoshi.scss",
+        "../scss/_spvarious.scss",
+        "../scss/_fn.scss"
+    ],
+    "names": [],
+    "file": "chaoshi.css"
+}

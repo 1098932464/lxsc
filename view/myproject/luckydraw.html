@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="x5-page-mode" content="app">
+    <link rel="stylesheet" href="../css/screen.css">
+    <link rel="stylesheet" href="../css/spcommon.css">
+    <link rel="stylesheet" href="../static/css/all.min.css">
+    <link rel="stylesheet" href="../css/luckydraw.css">
+    <title>幸运抽奖</title>
+    <style>
+     @keyframes record {
+            0% {
+                transform: translateY(220px);
+            }
+
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+
+        @keyframes record2 {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+
+        .rob-records {
+            animation-name: record2;
+            /* animation-duration: 10s; */
+            animation-timing-function: linear;
+            animation-iteration-count: 1;
+        }
+
+        .rob-record {
+            display: grid;
+            padding: 10px;
+            line-height: 1.5;
+            grid-template-columns: repeat(4, 1fr);
+            border-bottom: 1px solid #ddd;
+            background-color: #fff;
+        }
+
+        .rob-record .rr-3 {
+            grid-column: 1/span 2;
+        }
+
+        .rob-record .rr-4 {
+            color: #777;
+            justify-self: flex-end;
+            grid-column: 3/span 2;
+        }
+
+        .rob-record .rr-5 {
+            color: goldenrod;
+        }
+
+        .rob-record .rr-6 {
+            justify-self: flex-end;
+            grid-column: 2/span 3;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            max-width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="sp-header">
+        <a href="javascript:history.back();" class="lf"><i class="fas fa-chevron-left"></i></a>
+        <div class="title">幸运抽奖</div>
+    </header>
+    <div class="lucky-scroll">
+<!-- 中奖名单 -->
+<div style="color: #fff;padding: 10px;">中奖名单</div>
+<div style="overflow: hidden;height: 220px;">
+
+<ul id="real" class="rob-records">
+       <li class="rob-record">
+           <div class="rr-3">小苹果 <span style="color: #777;font-size: 12px;">(南阳)</span></div>
+           <div class="rr-4">2019 11/12 12:00:10</div>
+           <div class="rr-5">抽到</div>
+           <div class="rr-6">iphoneXI 64G[全网通]</div>
+       </li>
+       <li class="rob-record">
+           <div class="rr-3">小苹果 <span style="color: #777;font-size: 12px;">(南阳)</span></div>
+           <div class="rr-4">2019 11/12 12:00:10</div>
+           <div class="rr-5">抽到</div>
+           <div class="rr-6">iphoneXI 64G[全网通]</div>
+       </li>
+       <li class="rob-record">
+           <div class="rr-3">小苹果 <span style="color: #777;font-size: 12px;">(南阳)</span></div>
+           <div class="rr-4">2019 11/12 12:00:10</div>
+           <div class="rr-5">抽到</div>
+           <div class="rr-6">iphoneXI 64G[全网通]</div>
+       </li>
+       <li class="rob-record">
+           <div class="rr-3">小苹果 <span style="color: #777;font-size: 12px;">(南阳)</span></div>
+           <div class="rr-4">2019 11/12 12:00:10</div>
+           <div class="rr-5">抽到</div>
+           <div class="rr-6">iphoneXI 64G[全网通]</div>
+       </li>
+   </ul>
+   </div>
+
+   <section class="luckydraw-wrapper">
+       <div class="luckydraw">
+           <div id="btn" class="btn">
+               <div class="go">
+                   GO
+                   <div class="shengyu">
+                       剩余 <span class="count">10</span> 次机会
+                   </div>
+               </div>
+
+           </div>
+           <div class="item active" data-id="1">
+               <img src="./红包.png" alt="">
+               <div class="name">300现金</div>
+           </div>
+
+           <div class="item" data-id="2">
+               <img src="http://manage.yihuoshidai.com/files/2c78029f-0ef4-4cbe-b608-aeea312b1a05.png" alt="">
+               <div class="name">苹果XI</div>
+           </div>
+           <div class="item" data-id="3">
+               <img src="http://manage.yihuoshidai.com/files/43a6b68c-d82e-4a32-ab57-e562d3e5a1cb.png" alt="">
+               <div class="name">华为mate30</div>
+           </div>
+           <div class="item" data-id="4">
+                   <img src="http://manage.yihuoshidai.com/files/67fe0a84-bab6-4b17-92bc-f061eac88cd9.png" alt="">
+               <div class="name">5利享币</div>
+           </div>
+           <div class="item" data-id="4">
+                   <img src="http://manage.yihuoshidai.com/files/67fe0a84-bab6-4b17-92bc-f061eac88cd9.png" alt="">
+               <div class="name">5利享币</div>
+           </div>
+           <div class="item" data-id="5">
+                   <img src="http://manage.yihuoshidai.com/files/67fe0a84-bab6-4b17-92bc-f061eac88cd9.png" alt="">
+               <div class="name">10利享币</div>
+           </div>
+           <div class="item" data-id="7">
+               <img src="http://manage.yihuoshidai.com/files/b6c4adcb-3c1d-4d0c-b217-76acb9ab7fcb.png" alt="">
+               <div class="name">未中奖</div>
+           </div>
+           <div class="item" data-id="5">
+                   <img src="http://manage.yihuoshidai.com/files/67fe0a84-bab6-4b17-92bc-f061eac88cd9.png" alt="">
+               <div class="name">10利享币</div>
+           </div>
+           <div class="item" data-id="4">
+                   <img src="http://manage.yihuoshidai.com/files/67fe0a84-bab6-4b17-92bc-f061eac88cd9.png" alt="">
+               <div class="name">5利享币</div>
+           </div>
+           <div class="item" data-id="5">
+                   <img src="http://manage.yihuoshidai.com/files/67fe0a84-bab6-4b17-92bc-f061eac88cd9.png" alt="">
+               <div class="name">10利享币</div>
+           </div>
+           <div class="item" data-id="7">
+               <img src="http://manage.yihuoshidai.com/files/b6c4adcb-3c1d-4d0c-b217-76acb9ab7fcb.png" alt="">
+               <div class="name">未中奖</div>
+           </div>
+           <div class="item" data-id="6">
+               <img src="http://manage.yihuoshidai.com/files/67fe0a84-bab6-4b17-92bc-f061eac88cd9.png" alt="">
+               <div class="name">500利享币</div>
+           </div>
+       </div>
+   </section>
+   <section class="rule-sec">
+       <div class="award-wrapper">
+           <div class="award">获奖记录</div>
+       </div>
+       <div class="rules">
+           <div class="through"></div>
+           <div class="name">抽奖规则</div>
+       </div>
+       <ul>
+           <li>
+               1、抽奖箱内共有红白球33个，红球5个。
+           </li>
+           <li>
+               2、单次抽奖以5个球为一组。
+           </li>
+           <li>
+               3、奖项共设5个。
+           </li>
+           <li>
+               4、单次消费满28元可抽奖一次，56元抽奖两次，以此类推。
+           </li>
+       </ul>
+   </section>
+    </div>
+ 
+    <div id="tip" class="sp-dialog" style="height: unset;">
+        <div class="content" style="height: unset;text-align: center;">
+
+        </div>
+    </div>
+    <div id="awardRecords" class="sp-dialog">
+        <div class="title">获奖记录</div>
+        <div class="content">
+            <ul>
+                <li class="item">
+                    <div class="time">2019-11-01 10:22:56 <a class="btn-lingqu" style="float: right;">立即领取</a></div>
+                    <div class="name">iphone11 256G x1</div>
+                </li>
+                <li class="item">
+                    <div class="time">2019-11-01 10:22:56<a class="btn-yiling" style="float: right;">已领取</a></div>
+                    <div class="name">iphone11 256G</div>
+                </li>
+                <li class="item">
+                    <div class="time">2019-11-01 10:22:56</div>
+                    <div class="name">iphone11 256G</div>
+                </li>
+                <li class="item">
+                    <div class="time">2019-11-01 10:22:56</div>
+                    <div class="name">iphone11 256G</div>
+                </li>
+                <li class="item">
+                    <div class="time">2019-11-01 10:22:56</div>
+                    <div class="name">iphone11 256G</div>
+                </li>
+                <li class="item">
+                    <div class="time">2019-11-01 10:22:56</div>
+                    <div class="name">iphone11 256G</div>
+                </li>
+                <li class="item">
+                    <div class="time">2019-11-01 10:22:56</div>
+                    <div class="name">iphone11 256G x2</div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <script src="../static/js/zepto.min.js"></script>
+    <script src="../static/js/touch.js"></script>
+    <script src="../js/spcommon.js"></script>
+    <script>
+        $(function () {
+            initUl()
+            var arr = $(".luckydraw .item")
+            var list = []
+            arr.each(function (i, e) {
+                if (i < 4) {
+                    list.push({
+                        idx: i,
+                        el: e
+                    })
+                    return true
+                }
+                var idx
+                switch (i) {
+                    case 4: idx = 11;
+                        break;
+                    case 5: idx = 4;
+                        break;
+                    case 6: idx = 10; break;
+                    case 7: idx = 5; break;
+                    case 8: idx = 9; break;
+                    case 9: idx = 8; break;
+                    case 10: idx = 7; break;
+                    case 11: idx = 6; break;
+                }
+                list.push({
+                    idx: idx,
+                    el: e
+                })
+            })
+            list.sort((a, b) => {
+                return a.idx - b.idx
+            })
+            var luckydraw = {
+                idx: 0,
+                draw: function () {
+                    var id
+                    setTimeout(() => {
+                //         $.get("${base}/Luckydraw/turntable",function (data) {
+                //  var dataNum= parseInt(data.num)
+                //  id=dataNum
+                // //  id = parseInt(Math.random() * 7 + 1)
+                // })
+                         id = parseInt(Math.random() * 7 + 1) 
+                    }, 5000);
+                    var t = setInterval(() => {
+                        this.idx++
+                        if (this.idx > list.length - 1) {
+                            this.idx = 0
+                            $(list[list.length - 1].el).removeClass("active")
+                        } else {
+                            $(list[this.idx - 1].el).removeClass("active")
+                        }
+
+                        $(list[this.idx].el).addClass("active")
+                        if (id && id == list[this.idx].el.dataset.id) {
+                            var curel = list[this.idx].el
+                            clearInterval(t)
+                            spdialog.show("tip")
+                            $("#tip .content").html( $(curel).children(".name").html())
+                            $("#btn").one("tap", function () {
+                                luckydraw.draw()
+                            })
+                        }
+                    }, 100);
+                }
+            }
+            $("#btn").one("tap", function () {
+                luckydraw.draw()
+            })
+            $(".award").tap(function () {
+                spdialog.show("awardRecords")
+            })
+            function initUl() {
+            var lis = $("#real li")
+        var time = lis.length * 2
+        $("#real").css("animation-duration", time+"s")
+        $("#real").one("animationend", function () {
+            $(this).css({
+                animationDuration: time+6+"s",
+                animationName: "record",
+                animationIterationCount: "infinite"
+            })
+        })
+        }
+        })
+    </script>
+</body>
+
+</html>

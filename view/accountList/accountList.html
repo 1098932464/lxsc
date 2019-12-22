@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的账单</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/aui/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/commonStyle.css" />
+    <link rel="stylesheet" type="text/css" href="./LCalendar.css" />
+    <style>
+        .account-text-wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .account-text-title {
+            width: 100%;
+            display: flex;
+            font-size: 1rem !important;
+            font-weight: bold;
+            justify-content: space-between;
+        }
+
+        .account-text-wrapper>div {
+            font-size: .8rem;
+            padding-bottom: 5px;
+        }
+
+        .account-text-wrapper>div:first-child {
+            padding-top: 5px;
+        }
+
+        .account-text-wrapper>div.time {
+            color: #666;
+        }
+
+        .shop-money-bag1 {
+            width: 2rem;
+            height: 2rem;
+            background-image: url(./money_bag_1.png);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+
+        .shop-money-bag2 {
+            width: 2rem;
+            height: 2rem;
+            background-image: url(./money_bag_2.png);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+
+        .aui-list.aui-list-in {
+            padding-bottom: 40px;
+            height: 100%;
+            overflow: scroll;
+        }
+
+        .shop-loading-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin: 5px auto;
+            background-image: url(./loading.gif);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+
+        .shop-loading {
+            text-align: center;
+        }
+
+        #dateYM {
+            width: 4rem;
+            font-size: .8rem;
+            height: 1.2rem;
+            line-height: 1.2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="aui-content">
+        <header class="aui-bar aui-bar-nav">
+            <a class="aui-pull-left aui-btn">
+                <span class="aui-iconfont aui-icon-left"></span>
+            </a>
+            <div class="aui-title">我的订单</div>
+        </header>
+
+        <ul id="list" class="aui-list aui-list-in">
+            <li class="aui-list-header">
+                <input id="dateYM" type="text" readonly="" value="2019-11-16" />
+                <div>
+                    支出￥1000
+                </div>
+                <div style="color: red;">
+                    收入￥ 1000000
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-label-icon">
+                    <div class="shop-money-bag1"></div>
+                </div>
+                <div class="aui-list-item-inner">
+                    <div class="account-text-wrapper">
+                        <div class="account-text-title">
+                            <div>利享币-收益发放</div>
+                            <div style="color: red;">+1000 <span class="shop-money-icon"></span></div>
+                            <!-- <div>-1000</div> -->
+                        </div>
+                        <div>
+                            投资理财
+                        </div>
+                        <div class="time">11-23 05:02</div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-label-icon">
+                    <div class="shop-money-bag1"></div>
+                </div>
+                <div class="aui-list-item-inner">
+                    <div class="account-text-wrapper">
+                        <div class="account-text-title">
+                            <div>利享币-收益发放</div>
+                            <div style="color: red;">+1000 <span class="shop-money-icon"></span></div>
+                            <!-- <div>-1000</div> -->
+                        </div>
+                        <div>
+                            投资理财
+                        </div>
+                        <div class="time">11-23 05:02</div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-label-icon">
+                    <div class="shop-money-bag1"></div>
+                </div>
+                <div class="aui-list-item-inner">
+                    <div class="account-text-wrapper">
+                        <div class="account-text-title">
+                            <div>利享币-收益发放</div>
+                            <div style="color: red;">+1000 <span class="shop-money-icon"></span></div>
+                            <!-- <div>-1000</div> -->
+                        </div>
+                        <div>
+                            投资理财
+                        </div>
+                        <div class="time">11-23 05:02</div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-label-icon">
+                    <div class="shop-money-bag1"></div>
+                </div>
+                <div class="aui-list-item-inner">
+                    <div class="account-text-wrapper">
+                        <div class="account-text-title">
+                            <div>利享币-收益发放</div>
+                            <div style="color: red;">+1000 <span class="shop-money-icon"></span></div>
+                            <!-- <div>-1000</div> -->
+                        </div>
+                        <div>
+                            投资理财
+                        </div>
+                        <div class="time">11-23 05:02</div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-label-icon">
+                    <div class="shop-money-bag1"></div>
+                </div>
+                <div class="aui-list-item-inner">
+                    <div class="account-text-wrapper">
+                        <div class="account-text-title">
+                            <div>利享币-收益发放</div>
+                            <div style="color: red;">+1000 <span class="shop-money-icon"></span></div>
+                            <!-- <div>-1000</div> -->
+                        </div>
+                        <div>
+                            投资理财
+                        </div>
+                        <div class="time">11-23 05:02</div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-label-icon">
+                    <div class="shop-money-bag1"></div>
+                </div>
+                <div class="aui-list-item-inner">
+                    <div class="account-text-wrapper">
+                        <div class="account-text-title">
+                            <div>利享币-收益发放</div>
+                            <div style="color: red;">+1000 <span class="shop-money-icon"></span></div>
+                            <!-- <div>-1000</div> -->
+                        </div>
+                        <div>
+                            投资理财
+                        </div>
+                        <div class="time">11-23 05:02</div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-label-icon">
+                    <div class="shop-money-bag1"></div>
+                </div>
+                <div class="aui-list-item-inner">
+                    <div class="account-text-wrapper">
+                        <div class="account-text-title">
+                            <div>利享币-收益发放</div>
+                            <div style="color: red;">+1000 <span class="shop-money-icon"></span></div>
+                            <!-- <div>-1000</div> -->
+                        </div>
+                        <div>
+                            投资理财
+                        </div>
+                        <div class="time">11-23 05:02</div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-label-icon">
+                    <div class="shop-money-bag1"></div>
+                </div>
+                <div class="aui-list-item-inner">
+                    <div class="account-text-wrapper">
+                        <div class="account-text-title">
+                            <div>利享币-收益发放</div>
+                            <div style="color: red;">+1000 <span class="shop-money-icon"></span></div>
+                            <!-- <div>-1000</div> -->
+                        </div>
+                        <div>
+                            投资理财
+                        </div>
+                        <div class="time">11-23 05:02</div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-label-icon">
+                    <div class="shop-money-bag1"></div>
+                </div>
+                <div class="aui-list-item-inner">
+                    <div class="account-text-wrapper">
+                        <div class="account-text-title">
+                            <div>利享币-收益发放</div>
+                            <div style="color: red;">+1000 <span class="shop-money-icon"></span></div>
+                            <!-- <div>-1000</div> -->
+                        </div>
+                        <div>
+                            投资理财
+                        </div>
+                        <div class="time">11-23 05:02</div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-label-icon">
+                    <div class="shop-money-bag1"></div>
+                </div>
+                <div class="aui-list-item-inner">
+                    <div class="account-text-wrapper">
+                        <div class="account-text-title">
+                            <div>利享币-收益发放</div>
+                            <div style="color: red;">+1000 <span class="shop-money-icon"></span></div>
+                            <!-- <div>-1000</div> -->
+                        </div>
+                        <div>
+                            投资理财
+                        </div>
+                        <div class="time">11-23 05:02</div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-label-icon">
+                    <div class="shop-money-bag1"></div>
+                </div>
+                <div class="aui-list-item-inner">
+                    <div class="account-text-wrapper">
+                        <div class="account-text-title">
+                            <div>利享币-收益发放</div>
+                            <div style="color: red;">+1000 <span class="shop-money-icon"></span></div>
+                            <!-- <div>-1000</div> -->
+                        </div>
+                        <div>
+                            投资理财
+                        </div>
+                        <div class="time">11-23 05:02</div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-label-icon">
+                    <div class="shop-money-bag1"></div>
+                </div>
+                <div class="aui-list-item-inner">
+                    <div class="account-text-wrapper">
+                        <div class="account-text-title">
+                            <div>利享币-收益发放</div>
+                            <div style="color: red;">+1000 <span class="shop-money-icon"></span></div>
+                            <!-- <div>-1000</div> -->
+                        </div>
+                        <div>
+                            投资理财
+                        </div>
+                        <div class="time">11-23 05:02</div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-label-icon">
+                    <div class="shop-money-bag1"></div>
+                </div>
+                <div class="aui-list-item-inner">
+                    <div class="account-text-wrapper">
+                        <div class="account-text-title">
+                            <div>利享币-收益发放</div>
+                            <div style="color: red;">+1000 <span class="shop-money-icon"></span></div>
+                            <!-- <div>-1000</div> -->
+                        </div>
+                        <div>
+                            投资理财
+                        </div>
+                        <div class="time">11-23 05:02</div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-label-icon">
+                    <div class="shop-money-bag1"></div>
+                </div>
+                <div class="aui-list-item-inner">
+                    <div class="account-text-wrapper">
+                        <div class="account-text-title">
+                            <div>利享币-收益发放</div>
+                            <div style="color: red;">+1000 <span class="shop-money-icon"></span></div>
+                            <!-- <div>-1000</div> -->
+                        </div>
+                        <div>
+                            投资理财
+                        </div>
+                        <div class="time">11-23 05:02</div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-label-icon">
+                    <div class="shop-money-bag1"></div>
+                </div>
+                <div class="aui-list-item-inner">
+                    <div class="account-text-wrapper">
+                        <div class="account-text-title">
+                            <div>利享币-收益发放</div>
+                            <div style="color: red;">+1000 <span class="shop-money-icon"></span></div>
+                            <!-- <div>-1000</div> -->
+                        </div>
+                        <div>
+                            投资理财
+                        </div>
+                        <div class="time">11-23 05:02</div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-label-icon">
+                    <div class="shop-money-bag1"></div>
+                </div>
+                <div class="aui-list-item-inner">
+                    <div class="account-text-wrapper">
+                        <div class="account-text-title">
+                            <div>利享币-收益发放</div>
+                            <div style="color: red;">+1000 <span class="shop-money-icon"></span></div>
+                            <!-- <div>-1000</div> -->
+                        </div>
+                        <div>
+                            投资理财
+                        </div>
+                        <div class="time">11-23 05:02</div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-label-icon">
+                    <div class="shop-money-bag1"></div>
+                </div>
+                <div class="aui-list-item-inner">
+                    <div class="account-text-wrapper">
+                        <div class="account-text-title">
+                            <div>利享币-收益发放</div>
+                            <div style="color: red;">+1000 <span class="shop-money-icon"></span></div>
+                            <!-- <div>-1000</div> -->
+                        </div>
+                        <div>
+                            投资理财
+                        </div>
+                        <div class="time">11-23 05:02</div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-label-icon">
+                    <div class="shop-money-bag1"></div>
+                </div>
+                <div class="aui-list-item-inner">
+                    <div class="account-text-wrapper">
+                        <div class="account-text-title">
+                            <div>利享币-收益发放</div>
+                            <div style="color: red;">+1000 <span class="shop-money-icon"></span></div>
+                            <!-- <div>-1000</div> -->
+                        </div>
+                        <div>
+                            投资理财
+                        </div>
+                        <div class="time">11-23 05:02</div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-label-icon">
+                    <div class="shop-money-bag1"></div>
+                </div>
+                <div class="aui-list-item-inner">
+                    <div class="account-text-wrapper">
+                        <div class="account-text-title">
+                            <div>利享币-收益发放</div>
+                            <div style="color: red;">+1000 <span class="shop-money-icon"></span></div>
+                            <!-- <div>-1000</div> -->
+                        </div>
+                        <div>
+                            投资理财
+                        </div>
+                        <div class="time">11-23 05:02</div>
+                    </div>
+                </div>
+            </li>
+          
+        </ul>
+    </div>
+
+
+    <script src="./loadingData.js"></script>
+    <script src="./LCalendar.js"></script>
+    <script src="../static/js/zepto.min.js"></script>
+    <script>
+        window.onload = function () {
+            var calendarym = new LCalendar();
+            calendarym.init({
+                'trigger': '#dateYM',
+                'type': 'ym',
+                'minDate': '2000-1',
+                'maxDate': new Date().getFullYear() + '-' + (new Date().getMonth() + 1),
+                "confirmDate": function (date) {
+                    // 加载数据
+                    console.log(date);
+                    // 发送请求
+                    $("li.aui-list-item").remove()
+                    $.get("",function(data){
+                        loadData(data)
+                    })
+                    
+                }
+            });
+
+            function loadData(data){
+                var data=[1,2,3]
+                var str= ""
+                for(var item of data){
+                    str+="<li class=\"aui-list-item\">\n" +
+         "                <div class=\"aui-list-item-label-icon\">\n" +
+         "                    <div class=\"shop-money-bag1\"></div>\n" +
+         "                </div>\n" +
+         "                <div class=\"aui-list-item-inner\">\n" +
+         "                    <div class=\"account-text-wrapper\">\n" +
+         "                        <div class=\"account-text-title\">\n" +
+         "                            <div>利享币-收益发放"+item+"</div>\n" +
+         "                            <div style=\"color: red;\">+1000 <span class=\"shop-money-icon\"></span></div>\n" +
+         "                            <!-- <div>-1000</div> -->\n" +
+         "                        </div>\n" +
+         "                        <div>\n" +
+         "                            投资理财\n" +item+
+         "                        </div>\n" +
+         "                        <div class=\"time\">11-23 05:02"+item+"</div>\n" +
+         "                    </div>\n" +
+         "                </div>\n" +
+         "            </li>"
+                }
+            $("#list").append(str)
+            }
+
+            // 上拉加载
+            var a = new loadingData("list", function (resolve) {
+                setTimeout(function () {
+                    // 发送请求
+                    $.get("",function(data){
+                        resolve()
+                        loadData(data)
+                    })
+                    
+                }, 1000)
+            })
+
+
+
+        }
+
+    </script>
+</body>
+
+</html>

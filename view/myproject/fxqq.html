@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>分享赚</title>
+    <link rel=stylesheet href="../css/weui.min.css"> 
+    <link rel="stylesheet" href="../css/screenshot.css">
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <link rel="stylesheet" href="../css/spcommon.css">
+    <style>
+        #jietu img {
+            width: 100%;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #temp {
+            height: 0;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="temp"></div>
+    <button onclick="jietu()">
+        截图
+    </button>
+   
+    <div class="screenshot-bottom">
+        <div id="fghy" class="item">
+            <img src="./img/weixin.png" alt="">
+            <div class="name">发给好友</div>
+        </div>
+        <div id="fxpyq" class="item">
+            <img src="./img/pengyouquan.png" alt="">
+            <div class="name">分享朋友圈</div>
+        </div>
+        <div id="bckp" class="item">
+            <img src="./img/baocuntupian.png" alt="">
+            <div class="name">
+                保存卡片
+            </div>
+        </div>
+    </div>
+   
+    <script src="../js/dom-to-image.js"></script>
+    <script src="../js/qrcode.min.js"></script>
+    <script src="../static/js/touch.js"></script>
+    <script src="../js/vconsole.min.js"></script>
+    <script>
+        $(function(){
+              // 初始化
+  var vConsole = new VConsole();
+            $("#fghy,#fxpyq").tap(function(){
+              
+                        $(` <div id="fenxiang" class="fenxiang">
+        <div class="fx-btn">知道啦</div>
+    </div>`).appendTo("body").tap(function(){
+        $(this).remove()
+    })
+            })
+            $("#bckp").tap(function(){
+
+                $("<div class='cabc'>长按下方图片,可以保存海报</div>").appendTo("body")
+                setTimeout(() => {
+                    $(".cabc").remove()
+                }, 2000);
+
+            })
+        })
+
+
+
+        var screenshot = {
+            
+            loadding:function(){
+                $(".screenshot-bottom").addClass("show")
+                var load_str=
+' <div id="loadingToast">\n' +
+'        <div class="weui-mask_transparent"></div>\n' +
+'        <div class="weui-toast">\n' +
+'            <i class="weui-loading weui-icon_toast"></i>\n' +
+'            <p class="weui-toast__content">数据加载中</p>\n' +
+'        </div>\n' +
+'    </div>'
+                $("body").append(load_str)
+            
+            },
+            begin: function (data) {
+                this.loadding()
+                var obj = this.template(data)
+                var canvas = document.createElement("canvas")
+                $("#temp").append(obj)
+                setTimeout(() => {
+                    domtoimage.toPng(obj, {
+                        height: obj.offsetHeight, width: obj.offsetWidth
+                    }).then(function (dataUrl) {
+                        if (dataUrl != "error") {
+                            //Android
+                            $("#loadingToast").remove()
+                        var mask = $("<div class='sp-mask'></div>")
+                        mask.tap(function () {
+                            mask.remove()
+                            $(".screenshot-img").remove()
+                            $("#temp").html("")
+                            $(".screenshot-bottom").removeClass("show")
+                        })
+                        $("body").append(mask)
+                        var img = new Image();
+                        img.src = dataUrl;
+                        img.className = "screenshot-img"
+                        document.body.appendChild(img);
+                         }
+                      
+                    }).catch(function (err) {
+                        alert("出错"+JSON.stringify(err))
+                            console.error('oops, something went wrong!', err);
+                        });
+                }, 1000);
+
+
+
+
+
+            },
+            template: function (data) {
+           a()
+             
+             
+               
+    
+                
+      
+                // 生成图片
+                // var qrcode = new QRCode(div, {
+                //     text: qrcodeUrl,
+                //     width: w,
+                //     height: w,
+                //     colorDark: "#000000",
+                //     colorLight: "#ffffff",
+                //     correctLevel: QRCode.CorrectLevel.H
+                // });
+                // qr.append(div)
+         
+            }
+        }
+        function jietu() {
+            screenshot.template()
+        }
+        function a(){
+
+            var img
+                var url 
+                var portraitUrl
+                var name = "郭庄芳香皮肤管理中心"
+                var title = "68强1506美容套餐！小气泡清洁+淋巴排毒+水养公主等八大项目"
+                var price = "68.00"
+                var like = "193"
+                var originPrice = "300"
+                var address = "陕西省渭南市林庆区东兴街是崇业路街道高薪-锦绣缘"
+                var username = "钢铁侠"
+                var str 
+                // var qrcodeUrl = "http://localhost:5500"
+          
+          
+                var temp
+
+                $(".screenshot-bottom").addClass("show")
+                var load_str=
+' <div id="loadingToast">\n' +
+'        <div class="weui-mask_transparent"></div>\n' +
+'        <div class="weui-toast">\n' +
+'            <i class="weui-loading weui-icon_toast"></i>\n' +
+'            <p class="weui-toast__content">数据加载中</p>\n' +
+'        </div>\n' +
+'    </div>'
+                $("body").append(load_str)
+            
+            new Promise(function(resolve, reject){
+    console.log("AAA");
+    resolve()
+}).then(function(){
+    getURLBase64("./img/ironman.jpg").then(result=>{
+                    img=result
+                })
+                }).then(function(){
+                    getURLBase64("./img/lxsc_logo.jpg").then(result=>{
+                    url=result
+                })
+                }).then(function(){
+                    getURLBase64("./img/lxsc_logo.jpg").then(result=>{
+                    portraitUrl=result
+                })
+                })
+                        setTimeout(() => {
+                            str = `
+    <section class="screenshot">
+        <header>
+            <div class="lxsc"><img crossOrigin="Anonymous" src="${url}" alt=""></div><div>利享商城</div>
+        </header>
+        <div class="card">
+            <div class="cd-lf"></div>
+            <div class="cd-rt"></div>
+            <div class="top">
+                <div class="zx-dm">
+                    <div class="lxzx">
+                        利享甄选
+                    </div>
+                    <div class="dividing"></div>
+                    <div class="dm">
+                        ${name}
+                    </div>
+                </div>
+                <div class="img-wrapper">
+                    <img crossOrigin="Anonymous" src="${img}" alt="">
+                </div>
+                <div class="spm">${title}</div>
+                <div class="jg-xh">
+                    <div class="jg">￥<span>${price}</span></div>
+                    <div class="xh"><i class="iconfont icon-xihuan-copy"></i> ${like} 人喜欢</div>
+                </div>
+                <div class="yj">原价: ￥${originPrice}</div>
+                <div class="dz">地址: <span>${address}</span></div>
+            </div>
+            <div class="bottom">
+                <div class="tx">
+                    <img crossOrigin="Anonymous" src="${portraitUrl}" alt="">
+                </div>
+               <div class="mz-fx">
+                   <div class="mz">
+                       ${username}
+                   </div>
+                   <div class="fx">
+                    发现了一个好东西，想跟你分享！~
+                   </div>
+               </div>
+       
+                <div class="qrcode">
+    
+                </div>
+            </div>
+        </div>
+    </section>`
+            
+     temp = $(str)
+                var qr = temp.find(".qrcode")
+                var div = document.createElement("div")
+                var w = document.body.offsetWidth * 21.33333 / 100
+console.log("555555555555555555555"+temp);
+
+            
+
+           
+           var obj=temp[0]
+                var canvas = document.createElement("canvas")
+                $("#temp").append(obj)
+                setTimeout(() => {
+                    domtoimage.toPng(obj, {
+                        height: obj.offsetHeight, width: obj.offsetWidth
+                    }).then(function (dataUrl) {
+                        if (dataUrl != "error") {
+                            //Android
+                            $("#loadingToast").remove()
+                        var mask = $("<div class='sp-mask'></div>")
+                        mask.tap(function () {
+                            mask.remove()
+                            $(".screenshot-img").remove()
+                            $("#temp").html("")
+                            $(".screenshot-bottom").removeClass("show")
+                        })
+                        $("body").append(mask)
+                        var img = new Image();
+                        img.src = dataUrl;
+                        img.className = "screenshot-img"
+                        document.body.appendChild(img);
+                         }
+                      
+                    }).catch(function (err) {
+                        alert("出错"+JSON.stringify(err))
+                            console.error('oops, something went wrong!', err);
+                        });
+                }, 1000);
+
+
+                        }, 10000);
+               
+        }
+       function getURLBase64(url) {
+  return new Promise((resolve, reject) => {
+    var xhr = new XMLHttpRequest()
+    xhr.open('get', url, true)
+    xhr.responseType = 'blob'
+    xhr.onload = function() {
+      if (this.status === 200) {
+        var blob = this.response
+        var fileReader = new FileReader()
+        fileReader.onloadend = function(e) {
+          var result = e.target.result
+          resolve(result)
+        }
+        fileReader.readAsDataURL(blob)
+      }
+    }
+    xhr.onerror = function() {
+      reject()
+    }
+    xhr.send()
+  })
+}
+    </script>
+</body>
+
+</html>

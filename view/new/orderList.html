@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的订单</title>
+    <link rel="stylesheet" type="text/css" href="./css/aui.css" />
+</head>
+<body>
+
+    <div class="aui-content-padded">
+
+            <div class="aui-tab" id="tab">
+                    <div class="aui-tab-item aui-active">Item1</div>
+                    <div class="aui-tab-item"><div></div>Item2</div>
+                    <div class="aui-tab-item">Item3</div>
+                    <div class="aui-tab-item">Item4</div>   
+            </div>
+
+            <!-- <div class="aui-card-list">
+                <div class="">
+
+                </div>
+            </div> -->
+            <div class="aui-content aui-margin-b-15">
+                <ul class="aui-list aui-media-list">
+                    <li class="aui-list-header">
+                        图文列表
+                    </li>
+                    <li class="aui-list-item aui-list-item-arrow">
+                        <div class="aui-media-list-item-inner">
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title">带有媒体的列表一</div>
+                                    <div class="aui-list-item-right">08:00</div>
+                                </div>
+                                <div class="aui-list-item-text aui-ellipsis-2">
+                                    这里是内容区域，新版中的列表布局可以很轻松的帮助开发者完成常见列表样式。
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="aui-list-item">
+                        <div class="aui-media-list-item-inner">
+                            <div class="aui-list-item-media">
+                                <img src="../image/demo1.png">
+                            </div>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title">带有媒体的列表二</div>
+                                    <div class="aui-list-item-right">08:00</div>
+                                </div>
+                                <div class="aui-list-item-text">
+                                    在下方我们加入了aui-info信息条
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-info" style="padding-top:0">
+                            <div class="aui-info-item">
+                                <img src="../image/liulangnan.png" style="width:1rem" class="aui-img-round" /><span class="aui-margin-l-5">流浪男</span>
+                                </div>
+                            <div class="aui-info-item">2015-07-14 10:31</div>
+                        </div>
+                    </li>
+                    <li class="aui-list-item">
+                        <div class="aui-media-list-item-inner">
+                            <div class="aui-list-item-media">
+                                <img src="../image/demo1.png">
+                            </div>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title">带有媒体的列表二</div>
+                                    <div class="aui-list-item-right">08:00</div>
+                                </div>
+                                <div class="aui-list-item-text">
+                                    这里是内容区域，新版中的列表布局可以很轻松的帮助开发者完成常见列表样式。
+                                </div>
+                                <div class="aui-info aui-margin-t-5" style="padding:0">
+                                    <div class="aui-info-item">
+                                        <img src="../image/liulangnan.png" style="width:1rem" class="aui-img-round" /><span class="aui-margin-l-5">流浪男</span>
+                                        </div>
+                                    <div class="aui-info-item">2015-07-14 10:31</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="aui-list-item">
+                        <div class="aui-media-list-item-inner">
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-title">媒体项右侧显示</div>
+                                <div class="aui-list-item-text">
+                                    这里是内容区域，新版中的列表布局可以很轻松的帮助开发者完成常见列表样式。
+                                </div>
+                            </div>
+                            <div class="aui-list-item-media">
+                                <img src="../image/demo4.png">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+    </div>
+       
+
+   
+
+
+
+              <!-- <script type="text/javascript" src="./js/api.js" ></script> -->
+              <script type="text/javascript" src="./js/aui-tab.js" ></script>
+              <script type="text/javascript">
+                var tab = new auiTab({
+                    element:document.getElementById("tab"),
+                },function(ret){
+                    console.log(ret)
+                });
+            </script>
+</body>
+</html>

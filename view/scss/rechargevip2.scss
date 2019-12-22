@@ -1,0 +1,112 @@
+@import "spvarious";
+$header-color:#fff;
+$color1: #777;
+$color2: rgb(107, 42, 12);
+$color3: rgb(230, 204, 168);
+$color4: #ddd;
+$color5: #ccc;
+$color6: rgb(226, 120, 45);
+$color7:rgb(33, 33, 33);
+$color8:#ddd;
+$color9:#e6e6e6;
+$color10:#bbb;
+$pricecolor1:rgb(181, 90, 25);
+$innerMargin:my-px2vw(5);
+$innerPadding:my-px2vw(5);
+$outterMargin:my-px2vw(10);
+$outterPadding:my-px2vw(10);
+$labelSize:my-px2vw(12);
+$fontsize16:my-px2vw(16);
+$fontsize14:my-px2vw(14);
+$fontsize12:my-px2vw(12);
+$fontsize20:my-px2vw(20);
+$fontsize30:my-px2vw(30);
+body{
+    height: 100vh;
+    overflow: hidden;
+}
+ul li{
+    background-color: #fff;
+    padding: $innerPadding;
+    margin-bottom: $outterMargin;
+}
+.sp-scroll{
+ 
+    width: 100vw;
+    height: 100vh;
+  
+    overflow: scroll;
+    >div{
+        box-sizing: border-box;
+        padding-bottom: vw(55);
+    }
+}
+.pt-30{
+    padding-top: vw(30);
+}
+.xiangqing{
+    box-sizing: border-box;
+    width: 100vw;
+    padding: $outterPadding vw(50);
+    display: grid;
+    grid-template-columns: [s]40% [md] 1fr [ed];
+    align-items: flex-start;
+    line-height: 1.5;
+    font-size: $fontsize16;
+    .xq-1{}
+    .xq-2{
+        color: $pricecolor1;
+       justify-self: flex-end;
+       text-align: right;  
+    }
+    .sj{
+        font-size: $fontsize14;
+        color: $color1;
+        grid-column: s/ed;
+        justify-self: flex-end;
+        align-self: flex-end;
+    }
+}
+.wd{
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+.tx {
+    width: vw(220);
+    height: vw(220);
+    margin: 0 auto;
+   border-radius: 50%;
+   overflow: hidden;
+   img{
+       width: 100%;
+   }
+}
+.nc{
+    text-align: center;
+   span{
+    font-size: $fontsize30;
+   } 
+}
+}
+.fanyongchengyuan{
+    background-color: #fff;
+    display: flex;
+    .nc{
+        font-size: $fontsize16;
+        text-align: center;
+        line-height: 1.5;
+    }
+    .xiangqing {
+        width: 70vw;
+        padding: 0 vw(10);
+    }
+    .tx{
+        width: 30vw;
+        height: 30vw;
+        margin: 0 auto;
+       border-radius: 50%;
+       overflow: hidden;
+       img{
+           width: 100%;
+       }
+    }
+}

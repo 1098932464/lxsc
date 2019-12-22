@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商家店铺</title>
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<link href="./static/css/shopindex.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="./static/js/jquery.min.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=${mapkey}"></script>
+
+<script type="text/javascript" src="./static/js/slider.js"></script>
+<script type="text/javascript" src="./static/js/tab.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>	
+	<script type="text/javascript">
+	
+	var mapkey="${mapkey}";
+	var ticket="${ticket}";
+	var lng="${lng}";
+	var lat="${lat}";
+
+	
+	var url = "${base}/ticket/index";
+	$.get(url,function(result) {
+		wx.config({
+		  debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+		  appId: result.appId, // 必填，公众号的唯一标识
+		  timestamp:result.timestamp , // 必填，生成签名的时间戳
+		  nonceStr:result.nonceStr, // 必填，生成签名的随机串
+		  signature: result.signature,// 必填，签名
+		  jsApiList:result.jsApiList // 必填，需要使用的JS接口列表
+		});
+	});
+		
+		
+	  	wx.error(function(res){
+	  	  // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+	  	  console.log(res);
+	  	  
+	  	});
+	 
+	  	
+	  	wx.ready(function(){
+	  	  // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+	  		wx.getLocation({
+	  		  type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+	  		  success: function (res) {
+	  		    var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+	  		    var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+	  		    var speed = res.speed; // 速度，以米/每秒计
+	  		    var accuracy = res.accuracy; // 位置精度
+	  		    var baidulat=qqMapTransBMap(longitude,latitude).lats;
+	  		    var baidulng=qqMapTransBMap(longitude,latitude).lngs; 
+	  		    if(lng==-1||lat==-1){
+	  		    	window.location.href="${base}/shop/usershop?lat="+lat+"&lng="+lng;
+	  		    } 
+	  		  }
+	  		});
+	  	});
+
+	
+	
+	  	
+	  	
+	  	function qqMapTransBMap(lng, lat) {
+	  	  let x_pi = 3.14159265358979324 * 3000.0 / 180.0;
+	  	  let x = lng;
+	  	  let y = lat;
+	  	  let z = Math.sqrt(x * x + y * y) + 0.00002 * Math.sin(y * x_pi);
+	  	  let theta = Math.atan2(y, x) + 0.000003 * Math.cos(x * x_pi);
+	  	  let lngs = z * Math.cos(theta) + 0.0065;
+	  	  let lats = z * Math.sin(theta) + 0.006;
+	  	  return {
+	  	    lng: lngs,
+	  	    lat: lats
+	  	  };
+	  	}
+	 /*  	console.log(qqMapTransBMap(1, 1)); */
+	 
+	 
+	    function reducehref(pcateId){     
+		   window.location.href="${base}/shop/index?pcateId="+pcateId;
+        } 
+	 
+	 
+	 
+	 
+</script>
+
+	
+	
+</head>
+<body>
+<div id="allmap"></div>
+<section class="aui-flexView">
+	<header class="aui-navBar aui-navBar-fixed">
+		<a href="javascript:;" class="aui-navBar-item">
+			<i class="icon icon-return"></i>
+		</a>
+		<div class="aui-center">
+			<div class="aui-show-search">
+				<i class="icon icon-search"></i>
+				<input type="text" placeholder="纸巾">
+			</div>
+		</div>
+		<a href="javascript:;" class="aui-navBar-item">
+			<i class="icon icon-car"></i>
+		</a>
+	</header>
+	
+	<div class="wrapper wrapper02" id="wrapper02">
+	<div class="scroller">
+		<ul class="clearfix">
+			[@product_category_root_list type=2  count=9]
+			   [#list productCategories as pcate]
+		    <li><a href="javascript:reducehref(${pcate.id});">${pcate.name}</a></li>
+		       [/#list]
+		   [/@product_category_root_list]
+		</ul>
+	</div>
+</div>
+	
+	
+	
+	
+	<section class="aui-scrollView">
+		<div class="m-slider" data-ydui-slider>
+			<div class="slider-wrapper">
+			
+			       [@ad_position id = 3]
+			      [#list adPosition.ads as ad]
+			      
+			      <div class="slider-item">
+					<a href="javascript:;">
+						<img src="${ad.image}" alt="">
+					</a>
+				</div>
+				  [/#list]
+			    [/@ad_position]
+			
+			</div>
+			<div class="slider-pagination"></div>
+		</div>
+		
+		
+		
+		<div class="aui-palace aui-palace-one ">
+		
+		      [@product_category_children_list productCategoryId=1 recursive=false count=10]
+	            [#list productCategories as pc]
+	               
+	               
+	        <a href="javascript:;" class="aui-palace-grid">
+				<div class="aui-palace-grid-icon">
+					<img src="https://www.17sucai.com/preview/1527619/2019-08-13/a-greens/images//nav-001.png" alt="">
+				</div>
+				<div class="aui-palace-grid-text">
+					<h2>${pc.name}</h2>
+				</div>
+			</a>
+	               
+	               [/#list] 
+	         [/@product_category_children_list]
+
+		</div>
+		<div class="aui-flex">
+			<div class="aui-flex-box">
+				<img src="images/ad-001.png" alt="">
+			</div>
+		</div>
+		<div class="divHeight"></div>
+		<div class="aui-tab" data-ydui-tab>
+			<div class="tab-panel">
+				<div class="tab-panel-item tab-active">
+				
+				
+			[@Shop_list lat=lat lng=lng activity=1 count=50]
+	            [#list shopList as list]
+				  	<a href="javascript:;" class="aui-flex b-line">
+						<div class="aui-ser-img">
+							<img src="${list.img}" alt="">
+						</div>
+						<div class="aui-flex-box">
+							<h2>${list.shopName}</h2>
+							<span>${list.introduce}</span>
+							<h3><em>20元劵</em> <i>天猫价 20.8</i></h3>
+							<h4><em>到手价￥16</em> <i>再返1.88元</i></h4>
+						</div>
+					</a> 
+				   
+				 [/#list] 
+	         [/@Shop_list]
+				
+				
+				</div>
+			</div>
+		</div>
+
+	</section>
+	<footer class="aui-footer aui-footer-fixed">
+		<a href="javascript:;" class="aui-tabBar-item aui-tabBar-item-active">
+                    <span class="aui-tabBar-item-icon">
+                        <i class="icon icon-loan"></i>
+                    </span>
+			<span class="aui-tabBar-item-text">首页</span>
+		</a>
+		<a href="javascript:;" class="aui-tabBar-item ">
+                    <span class="aui-tabBar-item-icon">
+                        <i class="icon icon-credit"></i>
+                    </span>
+			<span class="aui-tabBar-item-text">分类</span>
+		</a>
+		<a href="javascript:;" class="aui-tabBar-item ">
+                    <span class="aui-tabBar-item-icon">
+                        <i class="icon icon-ions"></i>
+                    </span>
+			<span class="aui-tabBar-item-text">红包</span>
+		</a>
+		<a href="javascript:;" class="aui-tabBar-item ">
+                    <span class="aui-tabBar-item-icon">
+                        <i class="icon icon-news"></i>
+                    </span>
+			<span class="aui-tabBar-item-text">返利</span>
+		</a>
+		<a href="javascript:;" class="aui-tabBar-item ">
+                    <span class="aui-tabBar-item-icon">
+                        <i class="icon icon-me"></i>
+                    </span>
+			<span class="aui-tabBar-item-text">我的</span>
+		</a>
+	</footer>
+</section>
+
+</body>
+
+
+</html>

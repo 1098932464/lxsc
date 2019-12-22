@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+       
+
+        #container {
+            min-width: 100%;
+            min-height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+
+    </div>
+    <!-- <script charset="utf-8" src="https://map.qq.com/api/js?v=2.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77"></script> -->
+    <script charset="utf-8"
+        src="https://map.qq.com/api/js?v=2.exp&key=TF7BZ-VSF6K-BKVJV-A3B5G-WEOYF-7KBUU&libraries=drawing,geometry,autocomplete,convertor"></script>
+
+    <script>
+
+        window.onload = function () {
+
+            //直接加载地图
+            var center = new qq.maps.LatLng(32.99736, 112.51937);
+
+            //初始化地图函数  自定义函数名init
+            function init() {
+
+                var map = new qq.maps.Map(document.getElementById("container"), {
+                    center: center,
+                    zoom: 14
+                });
+                var circle = new qq.maps.Circle({
+                    map: map,
+                    center: center,
+                    radius: 2000,
+                    strokeWeight: 10,
+                    fillColor: new qq.maps.Color(0, 255, 0, 0.5),
+                    strokeColor: new qq.maps.Color(0, 255, 0, 0.5)
+                });
+                // 標誌
+                var marker = new qq.maps.Marker({
+                    position: center,
+                    draggable: true,
+                    map: map
+                });
+
+                //添加到提示窗
+                var info = new qq.maps.InfoWindow({
+                    map: map
+                });
+                // 添加拖拽事件  
+                qq.maps.event.addListener(marker, 'dragend', function (e) {
+                    setTimeout(function () {
+                        info.close();
+                    }, 2000);
+                });
+                // 點擊事件
+                var listener = qq.maps.event.addListener(
+                    map,
+                    'click',
+                    function (event) {
+                        var position=event.latLng;
+                        marker.setPosition(position)
+                        markMove(position);
+                        setTimeout(function () {
+                        info.close();
+                    }, 3000);
+                    }
+                );
+
+                qq.maps.event.addListener(marker, 'dragging', function (e) {
+
+                    var a = marker.getPosition();
+                    markMove(a)
+                });
+                function markMove(position){
+                    var content;
+
+                    //计算两点间的距离
+                    var distance = qq.maps.geometry.spherical.computeDistanceBetween(position, center);
+                    content = "距离倉庫:" + distance + "米";
+
+                    var color;
+                    var flag = distance > 2000;
+                    // 提示
+
+                    info.open();
+
+                    info.setPosition(position);
+
+                    if (flag) {
+                        color = new qq.maps.Color(255, 0, 0, 0.5);
+                        info.setContent('<div style="text-align:center;white-space:nowrap;color:red;' +
+                            'margin:10px;">到付</div>');
+                    } else {
+                        color = new qq.maps.Color(0, 255, 0, 0.5);
+                        info.setContent('<div style="text-align:center;white-space:nowrap;color:green;' +
+                            'margin:10px;">同城快遞</div>');
+                    }
+                    circle.setFillColor(color);
+                    circle.setStrokeColor(color);
+                }
+                
+
+
+
+                //setMap
+                // var mapM = document.getElementById("mapM");
+                // qq.maps.event.addDomListener(mapM, "click", function () {
+                //     circle.setVisible(true);
+                //     if (circle.getMap()) {
+                //         circle.setMap(null);
+                //     } else {
+                //         circle.setMap(map);
+                //     }
+                // });
+                //setCursor
+                // var curF = true;
+                // var cursor = document.getElementById("cursor");
+                // qq.maps.event.addDomListener(cursor, "click", function () {
+                //     circle.setMap(map);
+                //     circle.setVisible(true);
+                //     if (curF) {
+                //         curF = false;
+                //         circle.setCursor("default");
+                //     } else {
+                //         curF = true;
+                //         circle.setCursor("pointer");
+                //     }
+                // });
+                //setFillColor
+                // var fillCF = true;
+                // var fillC = document.getElementById("fillC");
+                // qq.maps.event.addDomListener(fillC, "click", function () {
+                //     circle.setMap(map);
+                //     circle.setVisible(true);
+                //     if (fillCF) {
+                //         fillCF = false;
+                //         circle.setFillColor("#0f0");
+                //     } else {
+                //         fillCF = true;
+                //         circle.setFillColor("#111");
+                //     }
+                // });
+                //setRadius
+                // var pathF = true;
+                // var path = document.getElementById("path");
+                // qq.maps.event.addDomListener(path, "click", function () {
+                //     circle.setMap(map);
+                //     circle.setVisible(true);
+                //     if (pathF) {
+                //         pathF = false;
+                //         circle.setRadius(500);
+                //     } else {
+                //         pathF = true;
+                //         circle.setRadius(1000);
+                //     }
+                // });
+                //setStrokeColor
+                // var strokeCF = true;
+                // var strokeC = document.getElementById("strokeC");
+                // qq.maps.event.addDomListener(strokeC, "click", function () {
+                //     circle.setMap(map);
+                //     circle.setVisible(true);
+                //     if (strokeCF) {
+                //         strokeCF = false;
+                //         circle.setStrokeColor("#1c29d8");
+                //     } else {
+                //         strokeCF = true;
+                //         circle.setStrokeColor("#000");
+                //     }
+                // });
+                //setStrokeDashStyle
+                // var dashF = true;
+                // var dash = document.getElementById("dash");
+                // qq.maps.event.addDomListener(dash, "click", function () {
+                //     circle.setMap(map);
+                //     circle.setVisible(true);
+                //     if (dashF) {
+                //         dashF = false;
+                //         circle.setStrokeDashStyle("dash");
+                //     } else {
+                //         dashF = true;
+                //         circle.setStrokeDashStyle("solid");
+                //     }
+                // });
+                //setStrokeWeight
+                // var strokeWeightF = true;
+                // var strokeWeight = document.getElementById("strokeWeight");
+                // qq.maps.event.addDomListener(strokeWeight, "click", function () {
+                //     circle.setMap(map);
+                //     circle.setVisible(true);
+                //     if (strokeWeightF) {
+                //         strokeWeightF = false;
+                //         circle.setStrokeWeight(10);
+                //     } else {
+                //         strokeWeightF = true;
+                //         circle.setStrokeWeight(5);
+                //     }
+                // });
+                //setVisible
+                // var visibleTF = true;
+                // var visibleT = document.getElementById("visibleT");
+                // qq.maps.event.addDomListener(visibleT, "click", function () {
+                //     circle.setMap(map);
+                //     if (visibleTF) {
+                //         visibleTF = false;
+                //         circle.setVisible(false);
+                //     } else {
+                //         visibleTF = true;
+                //         circle.setVisible(true);
+                //     }
+                // });
+            }
+
+            //调用初始化函数地图
+            init();
+
+
+        }
+        
+    </script>
+</body>
+
+</html>
