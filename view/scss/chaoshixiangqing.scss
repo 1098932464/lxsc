@@ -162,6 +162,30 @@ $fontsize30:my-px2vw(30);
         border-radius: vw(15);
         background-color: #ff971d;
     }
+    .yb {
+        display: flex;
+        align-items: center;
+
+        .reduce {
+            i {
+                font-size: vw(20);
+            }
+
+            color: $color1;
+        }
+
+        .num {
+            margin: 0 vw(8);
+        }
+
+        .add {
+            i {
+                font-size: vw(20);
+            }
+
+            color: #64e291;
+        }
+    }
 }
 .cxxq-p-u-o {
     display: flex;

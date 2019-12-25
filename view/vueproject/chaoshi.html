@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../css/spcommon.css">
     <link rel="stylesheet" href="../font/iconfont.css">
     <link rel="stylesheet" href="../css/chaoshi.css">
+    <link rel="stylesheet" href="../css/chaoshixiangqing.css">
 </head>
 
 <body>
@@ -106,7 +107,7 @@
                                                 ￥{{v.originPrice|price}}
                                             </div>
                                         </div>
-                                        <i @click="addCart(v,$event)" class="iconfont icon-tianjia"></i>
+                                        <i @click="shareStore.addAction(v,$event)" class="iconfont icon-tianjia"></i>
                                     </div>
                                 </div>
                             </li>
@@ -126,7 +127,7 @@
                     <ul class="list">
                         <li v-for="(v,idx) in goods" class="item-wrapper" :key="v.id">
                             <div class="item">
-                                <div class="img-wrapper">
+                                <div class="img-wrapper" @click="toDetail(v.id)">
 
                                     <img :src="v.img" alt="">
                                 </div>
@@ -151,7 +152,7 @@
                                         </div>
                                     </div>
 
-                                    <i @click="addCart(v,$event)" class="iconfont icon-tianjia"></i>
+                                    <i @click="shareStore.addAction(v,$event)" class="iconfont icon-tianjia"></i>
                                 </div>
                             </div>
                         </li>
@@ -174,7 +175,7 @@
                             购物车
                             <span>(共{{cartLength}}件商品,总重量约{{cart.weight}}kg)</span>
                         </div>
-                        <div class="yb" @click="clearCart">
+                        <div class="yb" @click="shareStore.clearAction()">
                             <i class="iconfont icon-shanchu"></i>
                             清空购物车
                         </div>
@@ -182,7 +183,7 @@
                     <ul class="cart-list">
                         <li v-for="(v,i) in cart_goods" :key="v.id">
                             <div class="item">
-                                <div class="img-wrapper">
+                                <div class="img-wrapper" @click="toDetail(v.id)">
                                     <img :src="v.img" alt="">
                                 </div>
                                 <div class="mz-dz-jg">
@@ -191,7 +192,8 @@
                                         <div class="zb">
                                             <div class="xianliang-wrapper">
                                                 <div class="xianliang" v-if="v.discount">
-                                                    {{v.discount.value}}折,限{{v.discount.num}}份
+                                                    {{v.discount}}
+                                                    <!-- {{v.discount.value}}折,限{{v.discount.num}}份 -->
                                                 </div>
                                             </div>
 
@@ -205,10 +207,11 @@
                                             </div>
                                         </div>
                                         <div class="yb">
-                                            <div class="reduce" @click="handleReduce(i)"><i
+                                            <div class="reduce" @click="shareStore.reduceAction(v)"><i
                                                     class="iconfont icon-jian"></i></div>
                                             <div class="num">{{v.count}}</div>
-                                            <div class="add" @click="handleAdd(i)"><i class="iconfont icon-tianjia"></i>
+                                            <div class="add" @click="shareStore.addAction(v,$event)"><i
+                                                    class="iconfont icon-tianjia"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -253,7 +256,7 @@
 
 
         </div>
-        <router-view></router-view>
+        <router-view :key="$route.fullPath"></router-view>
     </div>
     <script src="../static/js/jquery.min.js"></script>
     <script src="../js/vue.js"></script>
@@ -261,15 +264,307 @@
     <script src="../js/parabola.js"></script>
 
     <script>
+        var store = {
+            debug: true,
+            cartLength: 0,
+            cart: {
+                show: false,
+                // 总重
+                weight: 0.2,
+                // 还差多少凑单
+                // difference: 5,
+            }, cart_goods: [
+                //     {
+                //     id: 1,
+                //     name: "五角辣条",
+                //     sold: 162,
+                //     price: 0.09,
+                //     unit: "袋",
+                //     originPrice: 2.20,
+                //     img: "http://img0.imgtn.bdimg.com/it/u=1650195230,4072566368&fm=26&gp=0.jpg",
+                //     count: 1
+                //     // discount:{
+                //     //     value:1.5,
+                //     //     num:1,
+                //     //     residue:5
+                //     // }
+                // }
+            ],
+            reduceAction(v) {
+                if (this.debug) console.log('reduceAction triggered with')
+
+                var i = 0
+                for (g of this.cart_goods) {
+                    i++
+                    if (g && g.id == v.id) {
+                        g.count--
+                       
+                        if (g.count == 0) {
+                            console.log(g.count);
+                            
+                    Vue.delete(this.cart_goods, i-1)
+                    if (this.cart_goods.length == 0) {
+                        this.cart.show = false
+                    }
+                   
+                    return
+                }else{
+                    Vue.set(this.cart_goods, i - 1, g)
+                break
+                }
+              
+                    }
+                   
+                }
+
+            },
+            clearAction() {
+              this.cart_goods.length=0
+              this.cart_goods.reverse()
+                this.cart.show=false
+                this.cart.weight=0.2
+            },
+            addAction(v, ev) {
+                if (this.debug) console.log('addAction triggered')
+
+                var ps = $(".psf-zj img")
+                var psf = ps.offset()
+                var psfL = psf.left
+                var psfT = psf.top
+                var tof = $(ev.target).offset()
+
+                var div = document.createElement("div")
+                div.className = "ball"
+                // Parabola
+                $(div).css({
+                    top: tof.top,
+                    left: tof.left
+                })
+                $("body").append(div)
+                var offsetY = psfT - tof.top + ps.height() / 2
+                var pb = new Parabola({
+                    curvature: 0.015,
+                    duration: offsetY * 1.5,
+                    el: div,
+                    offset: [psfL - tof.left + ps.width() / 2, offsetY],
+                    callback: function () {
+                        $(div).remove()
+                    }
+                })
+                pb.start()
+                var i = 0
+                for (g of this.cart_goods) {
+                    i++
+                    if (g && g.id == v.id) {
+                        g.count++
+                        Vue.set(this.cart_goods, i - 1, g)
+                        return
+                    }
+                }
+                v.count = 1
+                this.cart_goods.push(v)
+
+
+            }
+        }
         // 1. 定义 (路由) 组件。
-        const Detail = { template: `` }
+        const Detail = {
+            methods:{
+                toDetail: function (id) {
+                    
+this.$router.push('detail').catch(err => {
+    console.log('输出报错',err)
+})
+                    // this.$router.push({ path: 'detail', query: { id: 2 } })
+                },
+            },
+            computed:{
+                shareGoodCount:function(){
+                    // for(var g in this.shareStore.cart_goods){
+                    //     if(g.id==this.good.id){
+                    //         return g.count
+                    //     }
+                    // }
+                    return 0
+                }
+            },
+            data: function () {
+                return {
+                    good: {
+                        residue: 53,
+                        id: 1,
+                        name: "五角辣条",
+                        sold: 162,
+                        price: 9,
+                        unit: "袋",
+                        originPrice: 2.20,
+                        img: "http://img0.imgtn.bdimg.com/it/u=1650195230,4072566368&fm=26&gp=0.jpg",
+                        discount: "超级免单"
+                    },
+                    shareStore: store,
+                    evaluateRate: "100%",
+                    // activities: [
+                    //     "超级免单",
+                    //     "超级免单",
+                    // ],
+                    peisong: "满28免费配送",
+                    service: ["免费配送", "支持自取"],
+                    goods: [{
+
+                        residue: 53,
+                        id: 1,
+                        name: "五角辣条",
+                        sold: 162,
+                        price: 9,
+                        unit: "袋",
+                        originPrice: 2.20,
+                        img: "http://img0.imgtn.bdimg.com/it/u=1650195230,4072566368&fm=26&gp=0.jpg",
+                        discount: "超级免单"
+
+                    }],
+                    detail: [
+                        {
+                            name: "单位",
+                            value: "克"
+                        }, {
+                            name: "单位",
+                            value: "克"
+                        },
+                    ],
+                    evaluate: [
+                        {
+                            img: "https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1107263072,1224997471&fm=26&gp=0.jpg",
+                            nickName: "紫色风铃",
+                            time: "2019.11.07",
+                            content: `“新闻哥”的整个致歉说明，最坑爹的一句话就是“该文不代表腾讯在《庆余年》视频会员事件中的态度”。
+
+难道，“新闻哥”是不想连累腾讯视频，但是这么说，恰恰是“哪壶不开提哪壶”，有殃及池鱼的味道。
+
+在当下这种情形，大可不必、也不应该再提及《庆余年》事件，让受众的怒火再次被点燃。可以适当转移下公众的注意力。
+
+`, pictures: [
+                                "https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3939836005,2581076466&fm=26&gp=0.jpg",
+                                "https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3939836005,2581076466&fm=26&gp=0.jpg",
+                            ]
+                        }
+                    ]
+                }
+
+            },
+            template: `<div class="chaoshixiangqing">
+
+<div class="csxq-img">
+    <img :src="good.img" alt="">
+</div>
+<section class="csxq-top">
+    <div class="cxxq-title">
+        {{good.name}}
+    </div>
+    <div class="cxxq-sold">月售{{good.sold}}</div>
+    <div class="cxxq-jg-jr">
+        <div class="cxxq-p-u-o">
+            <div class="price">
+                ￥<span>{{good.price|price}}&nbsp;</span>
+            </div>
+            <div class="unit">
+
+            </div>
+            <div class="originPrice">
+                ￥{{good.originPrice|price}}
+            </div>
+           
+        </div>
+        <div v-if="shareGoodCount>0" class="yb">  
+              <div class="reduce" @click="shareStore.reduceAction(good)"><i  class="iconfont icon-jian"></i></div>
+                 <div class="num">1</div>
+                <div class="add" @click="shareStore.addAction(good)"><i class="iconfont icon-tianjia"></i>
+                </div>
+            </div>
+        <div v-else @click="shareStore.addAction(good,$event)"  class="jr">
+            加入购物车
+        </div>
+      
+    </div>
+    <div class="csxq-hd">
+        <div class="mz">活动</div>
+        <div class="nr">
+            <div v-if="good.discount" >{{good.discount}}</div>
+        </div>
+    </div>
+    <div class="csxq-hd">
+        <div class="mz">配送</div>
+        <div class="ps">
+                {{peisong}}
+        </div>
+    </div>
+    <div class="csxq-hd">
+        <div class="mz">服务</div>
+        <div class="fw">
+            <div v-for="(v,idx) in service" :key="idx">
+               <i class="iconfont icon-duihao1"></i> {{v}}
+            </div>
+          
+        </div>
+    </div>
+</section>
+<section class="csxq-pj" v-if="evaluate.length>0">
+    <div class="title">评价<span>(好评率{{evaluateRate}})</span></div>
+    <ul class="pj-list">
+        <li v-for="(v,idx) in evaluate" :key="idx" class="pj-item">
+            <div class="tx">
+                <img :src="v.img" alt="">
+              <div>
+                <div class="nc-sj">
+                    <div class="nc">
+                        {{v.nickName}}
+                    </div>
+                    <div class="sj">{{v.time}}</div>
+                </div>
+                <div class="plnr">
+                    <div class="pj">
+                        {{v.content}}
+                    </div>
+                    <div class="tp">
+                        <img v-for="(v,idx) in v.pictures" :key="idx" src="v" alt="">
+                    </div>
+                </div>
+              </div>
+               
+            </div>
+           
+        </li>
+    </ul>
+</section>
+<section class="spxq">
+   <div class="title"> 商品详情</div>
+   <ul class="list">
+       <li v-for="(v,idx) in detail" :key="idx" class="item">
+           <div class="name">{{v.name}}</div>
+           <div class="text">{{v.value}}</div>
+       </li>
+   </ul>
+</section>
+<section class="tdtj">
+    <div class="title">同店推荐</div>
+    <ul v-for="(v,idx) in goods" :key="v.id" class="csxq-goods">
+        <li class="item-wrapper"><div class="item"><div class="img-wrapper" @click="toDetail(v.id)"><img :src="v.img" alt=""></div> <div class="name">{{v.name}}</div> <div class="sold-discount"><div class="sold">
+            月售{{v.sold}}
+        </div></div> <div class="add"><div class="p-u-o"><div class="price">
+                ￥<span>{{v.price|price}}</span></div> <div class="unit">
+                /{{v.unit}}
+            </div> <div class="originPrice">
+                ￥{{v.originPrice|price}}
+            </div></div> <i class="iconfont icon-tianjia"></i></div></div></li>
+    </ul>
+</section>
+</div>` }
 
         const routes = [
             { path: '/detail', component: Detail },
         ]
 
         const router = new VueRouter({
-            routes 
+            routes
         })
         Vue.directive('anchor', {
             inserted: function (el, binding, vnode, oldVnode) {
@@ -295,7 +590,7 @@
 
             // },
             data: {
-
+                shareStore: store,
                 active_menu_idx: 0,
                 menu: [
                     {
@@ -386,11 +681,7 @@
                     unit: "袋",
                     originPrice: 2.20,
                     img: "http://img0.imgtn.bdimg.com/it/u=1650195230,4072566368&fm=26&gp=0.jpg",
-                    discount: {
-                        value: 1.5,
-                        num: 1,
-
-                    }
+                    discount: "超级免单"
                 }],
                 list_nav: [
                     {
@@ -443,31 +734,13 @@
                         }
                     ]
                 },
+                // 运费
                 totalFee: 5,
+                // 运费原价
                 totalOriginFee: 20,
-                cartLength: 0,
-                cart: {
-                    show: false,
-                    weight: 0.2,
-                    difference: 5,
-                    discount_price: 20,
-                }, cart_goods: [
-                    //     {
-                    //     id: 1,
-                    //     name: "五角辣条",
-                    //     sold: 162,
-                    //     price: 0.09,
-                    //     unit: "袋",
-                    //     originPrice: 2.20,
-                    //     img: "http://img0.imgtn.bdimg.com/it/u=1650195230,4072566368&fm=26&gp=0.jpg",
-                    //     count: 1
-                    //     // discount:{
-                    //     //     value:1.5,
-                    //     //     num:1,
-                    //     //     residue:5
-                    //     // }
-                    // }
-                ]
+                cartLength: store.cartLength,
+                cart: store.cart,
+                cart_goods: store.cart_goods,
             },
             methods: {
                 toDetail: function (id) {
@@ -490,68 +763,58 @@
                     // 排序
                 },
 
-                addCart: function (v, ev) {
-                    var ps = $(".psf-zj img")
-                    var psf = ps.offset()
-                    var psfL = psf.left
-                    var psfT = psf.top
-                    var tof = $(ev.target).offset()
+                // addCart: function (v, ev) {
+                //     var ps = $(".psf-zj img")
+                //     var psf = ps.offset()
+                //     var psfL = psf.left
+                //     var psfT = psf.top
+                //     var tof = $(ev.target).offset()
 
-                    var div = document.createElement("div")
-                    div.className = "ball"
-                    // Parabola
-                    $(div).css({
-                        top: tof.top,
-                        left: tof.left
-                    })
-                    $("body").append(div)
-                    var offsetY = psfT - tof.top + ps.height() / 2
-                    var pb = new Parabola({
-                        curvature: 0.015,
-                        duration: offsetY * 1.5,
-                        el: div,
-                        offset: [psfL - tof.left + ps.width() / 2, offsetY],
-                        callback: function () {
-                            $(div).remove()
-                        }
-                    })
-                    pb.start()
-                    var i = 0
-                    for (g of this.cart_goods) {
-                        i++
-                        if (g && g.id == v.id) {
-                            g.count++
-                            Vue.set(this.cart_goods, i - 1, g)
-                            return
-                        }
-                    }
-                    v.count = 1
-                    this.cart_goods.push(v)
+                //     var div = document.createElement("div")
+                //     div.className = "ball"
+                //     // Parabola
+                //     $(div).css({
+                //         top: tof.top,
+                //         left: tof.left
+                //     })
+                //     $("body").append(div)
+                //     var offsetY = psfT - tof.top + ps.height() / 2
+                //     var pb = new Parabola({
+                //         curvature: 0.015,
+                //         duration: offsetY * 1.5,
+                //         el: div,
+                //         offset: [psfL - tof.left + ps.width() / 2, offsetY],
+                //         callback: function () {
+                //             $(div).remove()
+                //         }
+                //     })
+                //     pb.start()
+                //     var i = 0
+                //     for (g of this.cart_goods) {
+                //         i++
+                //         if (g && g.id == v.id) {
+                //             g.count++
+                //             Vue.set(this.cart_goods, i - 1, g)
+                //             return
+                //         }
+                //     }
+                //     v.count = 1
+                //     this.cart_goods.push(v)
 
-                },
+                // },
                 handleCart: function () {
                     if (this.totalPrice)
                         this.cart.show = !this.cart.show
                 },
-                clearCart: function () {
-                    this.cart_goods = []
-                    this.cart.show = false
-                },
-                handleReduce(i) {
-                    --this.cart_goods[i].count
-
-                    if (this.cart_goods[i].count == 0) {
-                        Vue.delete(this.cart_goods, i)
-                        if (this.cart_goods.length == 0) {
-                            this.cart.show = false
-                        }
-                        return
-                    }
-                    Vue.set(this.cart_goods, i, this.cart_goods[i])
-                }, handleAdd(i) {
-                    ++this.cart_goods[i].count
-                    Vue.set(this.cart_goods, i, this.cart_goods[i])
-                }
+                // clearCart: function () {
+                //     this.cart_goods = []
+                //     this.cart.show = false
+                // },
+                // handleReduce(i) { },
+                //  handleAdd(i) {
+                //     ++this.cart_goods[i].count
+                //     Vue.set(this.cart_goods, i, this.cart_goods[i])
+                // }
             },
             watch: {
                 cart_goods: function (val, oldVal) {

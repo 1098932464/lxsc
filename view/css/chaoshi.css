@@ -225,7 +225,7 @@ textarea {
   position: fixed;
   bottom: 0;
   font-size: 3.2vw;
-  z-index: 100;
+  z-index: 1090;
 }
 
 .cs-cart.no-qcd {
@@ -384,7 +384,7 @@ textarea {
   border-radius: 13.33333vw;
   height: 13.33333vw;
   padding: 0 6.66667vw;
-  z-index: 1000;
+  z-index: 1100;
 }
 
 .pay-bottom .qs {
@@ -766,7 +766,7 @@ textarea {
   height: 2.66667vw;
   border-radius: 50%;
   background-color: red;
-  z-index: 100;
+  z-index: 2200;
 }
 
 a {
@@ -777,8 +777,13 @@ a {
   display: none !important;
 }
 
-.shop-detail {
-  z-index: 2222;
+.chaoshixiangqing {
+  background-color: #e6e6e6;
+  z-index: 1001;
+  height: 100vh;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow: auto;
   position: fixed;
   top: 0;
   left: 0;

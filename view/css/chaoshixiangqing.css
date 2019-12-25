@@ -281,6 +281,35 @@ textarea {
   background-color: #ff971d;
 }
 
+.cxxq-jg-jr .yb {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cxxq-jg-jr .yb .reduce {
+  color: #777;
+}
+
+.cxxq-jg-jr .yb .reduce i {
+  font-size: 5.33333vw;
+}
+
+.cxxq-jg-jr .yb .num {
+  margin: 0 2.13333vw;
+}
+
+.cxxq-jg-jr .yb .add {
+  color: #64e291;
+}
+
+.cxxq-jg-jr .yb .add i {
+  font-size: 5.33333vw;
+}
+
 .cxxq-p-u-o {
   display: -webkit-box;
   display: -ms-flexbox;
