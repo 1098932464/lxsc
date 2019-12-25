@@ -56,6 +56,7 @@ body{
        overflow-x: scroll;
        padding: vw(5) 0;
        transition: background-color 1s linear;
+       transform: scaleX(1.2);
     //    background-color: #2d132c;
        &.vipcard{
         height: 24.72vw;
@@ -73,6 +74,9 @@ body{
             text-align: center;
             transition: all .2s linear;
             vertical-align: text-bottom;
+            img{
+                border-radius: vw(5);
+            }
             &.active{
                 width: 40vw;
                 height: 24.72vw;
@@ -99,10 +103,15 @@ body{
                 width: 22vw;
                 height: 35.6vw;
                 line-height: 35.6vw;
+                img{
+                    width: 80%;
+                    border: 1px solid #fff;
+                }
             }
             img{
-                width: 90%;
-                height: 90%;
+                margin: 0 auto;
+                width: 80%;
+                height: 80%;
             }
         }
     }

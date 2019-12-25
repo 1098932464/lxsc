@@ -168,6 +168,7 @@
                     img.src = canvas.toDataURL()
                     img.className = "screenshot-img"
                     document.body.appendChild(img);
+                    screenshot.imgSrc=img.src
                 });
             }, 500);
         }

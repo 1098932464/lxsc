@@ -31,7 +31,7 @@ body{
     .top{
         display: flex;
         background-color: #fff;
-        height: 27vw;
+        height: vw(83);
         .img-wrapper{
             width: 20vw;
             padding: $outterPadding;
@@ -234,20 +234,20 @@ body{
     }
     .bt{
         line-height: 1.5;
+        display: flex;
+        align-items: baseline;
+        white-space: nowrap;
+        max-width: 100%;
+        overflow: hidden;
         .dm{
             display: inline-block;
-            max-width: 70%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
             font-size: $fontsize16;
             font-weight: bold;
-            vertical-align: text-bottom;
         }
         .fbt{
-            font-size: vw(13);
-            color: $color1;
-            vertical-align: text-bottom;
+            font-size: vw(12);
+            color: #999;
+            margin-right: vw(3);
         }
     }
     }

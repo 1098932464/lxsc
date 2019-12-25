@@ -155,7 +155,7 @@ $fontsize30:my-px2vw(30);
         position: absolute;
         bottom: 5vw;
         right: 5vw;
-        z-index: 2000;
+        z-index: 10;
         color: #fff;
         border-radius: vw(5);
         >div{
@@ -265,8 +265,16 @@ $fontsize30:my-px2vw(30);
             line-height: vw(30);
             padding: 0 vw(5);
             border-radius: vw(5);
-            span {
+            .b {
                 font-weight: bold;
+            }
+            .xq{
+                display: inline-block;
+                i{
+                    font-size: vw(12);
+                }
+                transform: scale(.8);
+                font-size: vw(12);
             }
         }
 

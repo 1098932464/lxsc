@@ -231,8 +231,14 @@ $(function () {
         ]
      },
     ]
-
-    initMySlider(data)
+   
+    if(data.length>0&&data[0].list){
+        $("#card-wrapper").css("display","block")
+        initMySlider(data)
+    }else if(data.length>0){
+        $("#item-wrapper").css("display","block")
+        initMySlider(data,true)
+    }
     initSwiper()
     initFullPicture()
     function initSwiper() {
@@ -304,6 +310,11 @@ $(function () {
 })
 // 会员卡和商品项
 function initGoodItem(data,onlyItem) {
+    if(data.length>0){
+        $("#item-wrapper").css("display","block")
+    }else{
+        $("#item-wrapper").css("display","none")
+    }
     mySlider = new dySlider("dys2", {
         data: data,
         tap: function (el) {
@@ -339,15 +350,17 @@ function initMySlider(data, onlyItem) {
             $("#cardName.as-name .msj span").html(el.dataset.marketprice)
             $("#cardName.as-name .mz").html(el.dataset.name)
             $("#cardName.as-name .jg span").html(el.dataset.price)
-            $("#cardMansong").html(" <li class=\"item\">\n" +
+            $("#cardMansong").html(" <li class=\"item popup-btn\" data-target='#mypanel'>\n" +
                 "                        <div class=\"text animated swing\">\n" +
-                "                            满1000 <span>送</span> 2000利享币\n" +
+                "                            满1000 <span class='b'>送</span> 2000利享币 \n" +
                 "                        </div>\n" +
                 "                        <div class=\"btn animated shake\">立即兑换</div>\n" +
                 "                    </li>")
+          
                 $(data).each(function(i,e){
                     if (e.id == el.dataset.id) {
                         initGoodItem(e.list)
+                        
                     }
                 })
         }
@@ -368,4 +381,26 @@ function spMore(el){
             }
 
         }
+}
+function showCardDetail(ele){
+ 
+    var mask = document.createElement("div")
+    mask.className="shop-mask"
+    mask.style.display="block"
+    mask.addEventListener("touchstart",function(e){
+        e.stopPropagation();
+        e.preventDefault();
+    },false);
+    $("body").append(mask)
+    mask.addEventListener("touchend", hide)
+    var el=  $("#mypanel")[0]
+          el.className += " show" 
+ 
+
+    function hide(e) {
+
+        var str = document.querySelector(".shop-popup").className.replace(/show/, "")
+        document.querySelector(".shop-popup").className = str
+       $(this).remove()
+    }
 }

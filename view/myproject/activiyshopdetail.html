@@ -13,6 +13,44 @@
     <link rel="stylesheet" href="../static/css/shopPhotoSlide.css?shareshopversion=1.1.1.191114" type="text/css">
     <link rel="stylesheet" href="../css/dySlider.css">
     <link rel="stylesheet" href="../static/css/swiper.min.css">
+    <style>
+    #card-wrapper,#item-wrapper{
+        display: none;
+    }
+    .shop-mask {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0, .3);
+    display: none;
+    z-index: 100;
+}
+
+.shop-popup {
+    width: 100vw;
+    position: fixed;
+    background-color: #fff;
+    z-index: 2222;
+}
+
+.shop-popup-bottom {
+    height: 60vh;
+    border-radius: 10px 10px 0 0;
+    top: 180vh;
+    left: 0;
+    transition: bottom .5s ease-in;
+    -webkit-overflow-scrolling: touch; 
+    overflow-y: scroll;
+}
+
+.shop-popup-bottom.show {
+    top: 40vh;
+    transition: top .5s ease-out;
+}
+
+    </style>
 </head>
 
 <body>
@@ -53,26 +91,32 @@
             <a class="dh">地图/导航<i class="iconfont icon-jiantouyou"></i></a>
             <div class="jl"><i class="iconfont icon-diliweizhi"></i>据我直线2.2km，驾车约7分钟</div>
         </div>
-        <div class="slider-wrapper">
-            <div class="slider-bg"></div>
-            <ul class="slider vipcard" id="dys">
-            </ul>
 
-        </div>
-        <div id="cardName" class="as-name"> <div class="msj">
-                门市价￥<span></span> 
+        <!-- 卡片 -->
+        <div id="card-wrapper">
+            <div class="slider-wrapper">
+                <div class="slider-bg"></div>
+                <ul class="slider vipcard" id="dys">
+                </ul>
+    
             </div>
-            <div class="mz-wrapper">
-                <div class="mz">
-
+            <div id="cardName" class="as-name"> 
+                <div class="msj">
+                    门市价￥<span></span> 
                 </div>
-                <div class="jg">
-                        ￥<span></span> 
+                <div class="mz-wrapper">
+                    <div class="mz">
+    
                     </div>
-            </div></div>
-        <ul id="cardMansong" class="mansong">
-
-        </ul>
+                    <div class="jg">
+                            ￥<span></span> 
+                        </div>
+                </div></div>
+            <ul id="cardMansong" class="mansong">
+    
+            </ul>
+        </div>
+       <div id="item-wrapper">
         <div class="slider-wrapper">
             <div class="slider-bg"></div>
             <ul class="slider" id="dys2">
@@ -99,6 +143,8 @@
         <ul id="itemMansong" class="mansong">
 
         </ul>
+       </div>
+       
         <section id="goods" class="product-detail">
                 <div class="pd-1">产品详情</div>
                 <ul class="pd-2">
@@ -322,6 +368,66 @@
             </div>
         </div>
     </div>
+    <!-- 弹出框 -->
+    <div id="mypanel" class="shop-popup shop-popup-bottom">
+        <section id="card_goods" class="product-detail">
+            <div class="pd-1">产品详情</div>
+            <ul class="pd-2">
+                <li>
+                    <span class="title">形体管理与调整</span>
+                    <span class="subtitle">副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题</span>
+                    <span class="price">一份<div class="sp-dividing"></div>200元</span>
+                </li>
+    
+            </ul>
+            <div class="pd-3">
+                <div> 总价 <span class="total">200元</span></div>
+                <table style="clear: both;"></table>
+                <div>团购价 <span class="price">19.8元</span></div>
+                <table style="clear: both;"></table>
+            </div>
+            <div class="pd-4">
+                <div>10选1体验,需电话提前预约</div>
+                <div>颈前移、高低肩、扣背拱背、Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure et provident, necessitatibus
+                    sequi voluptatibus ipsa quo deserunt? Ex, sunt iusto?</div>
+            </div>
+            <div  class="pd-5">图文详情</div>
+            <div id="card_pic-text" class="sp-collapse-wrapper pd-6" style="height: unset;">
+                <img src="http://img0.imgtn.bdimg.com/it/u=1821682225,1908512453&fm=26&gp=0.jpg" alt="">
+    
+            </div>
+    
+    
+            <!-- <div data-target="#pic-text" onclick="spMore(this)" class="sp-more">查看更多&nbsp;<i class="fas fa-angle-down"></i></div> -->
+        </section>
+    
+        <section id="card_info" class="sp-pi">
+            <div class="pi-h">
+                购买须知
+            </div>
+            <div id="card_info-clp">
+                <div class="pi-title">有效期</div>
+                <div class="pi-content">
+                    购买后15天内有效
+                </div>
+                <div class="pi-title">使用时间</div>
+                <div class="pi-content">
+                    10:00-21:00
+                </div>
+                <div class="pi-title">温馨提示</div>
+                <div class="pi-content">
+                    安全才是离家最近的路。
+                </div>
+                <div class="pi-content">
+                    车好人好道路好,更需你来照章跑。 你不争我不争,交通事故不发生。 和谐泉州万家欢乐,文明交通一路平安。
+                </div>
+            </div>
+       
+        </section>
+
+    
+    
+    </div>
     <script src="../static/js/zepto.min.js"></script>
     <script src="../static/js/touch.js"></script>
     <script src="../static/js/swiper.min.js"></script>
@@ -329,6 +435,9 @@
     <script src="../js/dySlider.zepto.js"></script>
     <script src="../js/selector.js"></script>
     <script src="../js/activiyshopdetail.js"></script>
+    <script>
+    
+</script>
 </body>
 
 </html>

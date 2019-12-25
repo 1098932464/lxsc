@@ -14,6 +14,11 @@
         $el.html("")
         $el.off()
         var str = ""
+        var scd=""
+       
+        if(data[0]&&data[0].list){
+            scd= " onclick='showCardDetail(this)' "
+        }
         data.forEach(element => {
            let keys= Object.keys(element)
            var keys_str=""
@@ -21,7 +26,8 @@
                 if( typeof element[_e]!="object"&&_e!="img")
                 keys_str+=" data-"+_e+"='"+element[_e]+"'"
             })
-            str += "<li class='item' "+keys_str+"><img src='" + element.img + "'></li>"
+            str += "<li"+scd+
+            " class='item' "+keys_str+"><img src='" + element.img + "'></li>"
         });
         $(str).appendTo($el)
 

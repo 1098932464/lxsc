@@ -1,3 +1,96 @@
+html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input, textarea, th, td, select {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  font-family: "Microsoft YaHei";
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  border: none;
+  vertical-align: middle;
+}
+
+a {
+  text-decoration: none;
+  color: #232323;
+}
+
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+input, textarea {
+  outline: none;
+  border: none;
+}
+
+textarea {
+  resize: none;
+  overflow: auto;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+.clearfix:after {
+  content: ".";
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
+  overflow: hidden;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.tl {
+  text-align: left;
+}
+
+.tc {
+  text-align: center;
+}
+
+.tr {
+  text-align: right;
+}
+
+.ellipse {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.inline {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
 body {
   width: 100vw;
   overflow: hidden;
@@ -8,7 +101,7 @@ body {
   display: -ms-flexbox;
   display: flex;
   background-color: #fff;
-  height: 27vw;
+  height: 22.13333vw;
 }
 
 .mflq-good2 a .top .img-wrapper {
@@ -258,22 +351,26 @@ body {
 
 .mflq-good a .content .bt {
   line-height: 1.5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .mflq-good a .content .bt .dm {
   display: inline-block;
-  max-width: 70%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   font-size: 4.26667vw;
   font-weight: bold;
-  vertical-align: text-bottom;
 }
 
 .mflq-good a .content .bt .fbt {
-  font-size: 3.46667vw;
-  color: #777;
-  vertical-align: text-bottom;
+  font-size: 3.2vw;
+  color: #999;
+  margin-right: 0.8vw;
 }
 /*# sourceMappingURL=goodList.css.map */

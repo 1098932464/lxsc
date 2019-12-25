@@ -1,4 +1,97 @@
 @charset "UTF-8";
+html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input, textarea, th, td, select {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  font-family: "Microsoft YaHei";
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  border: none;
+  vertical-align: middle;
+}
+
+a {
+  text-decoration: none;
+  color: #232323;
+}
+
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+input, textarea {
+  outline: none;
+  border: none;
+}
+
+textarea {
+  resize: none;
+  overflow: auto;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+.clearfix:after {
+  content: ".";
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
+  overflow: hidden;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.tl {
+  text-align: left;
+}
+
+.tc {
+  text-align: center;
+}
+
+.tr {
+  text-align: right;
+}
+
+.ellipse {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.inline {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
 .product-detail {
   background-color: #fff;
   padding: 2.66667vw;
@@ -170,7 +263,7 @@
   position: absolute;
   bottom: 5vw;
   right: 5vw;
-  z-index: 2000;
+  z-index: 10;
   color: #fff;
   border-radius: 1.33333vw;
 }
@@ -312,8 +405,19 @@
   border-radius: 1.33333vw;
 }
 
-.mansong .item .text span {
+.mansong .item .text .b {
   font-weight: bold;
+}
+
+.mansong .item .text .xq {
+  display: inline-block;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+  font-size: 3.2vw;
+}
+
+.mansong .item .text .xq i {
+  font-size: 3.2vw;
 }
 
 .mansong .item .btn {

@@ -1,81 +1,612 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
+
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="../css/screen.css">
     <link rel="stylesheet" href="../css/spcommon.css">
-    <link rel="stylesheet" href="../static/css/font/iconfont.css">
+    <link rel="stylesheet" href="../font/iconfont.css">
     <link rel="stylesheet" href="../css/chaoshi.css">
 </head>
+
 <body>
     <div id="app">
-       <sp-chaoshi-menu></sp-chaoshi-menu>
-       <component v-bind:is="currentTabComponent"></component>
-      </div>
-    
+        <div class="cs-bg"
+            style="background-image: url(http://img0.imgtn.bdimg.com/it/u=1099603176,1913748234&fm=26&gp=0.jpg);"></div>
+        <header class="sp-header search">
+            <div class="back">
+                <a href="history.back()"> <i class="iconfont icon-icon-arrow-left4"></i></a>
+            </div>
+            <div class="content">
+                <i class="iconfont icon-secondsearch_accurate"></i>
+                <input type="text" placeholder="请输入商铺名称">
+                <div class="btn">搜索</div>
+            </div>
+            <div class="cart">
+                <a href=""><i class="iconfont icon-gouwuche1"></i></a>
+            </div>
+        </header>
+        <div class="h-50"></div>
+        <div v-cloak class="layout" @scroll.passive>
+            <div class="cs-header">
+                <div class="cs-logo">
+                    <img :src="shop.logo" alt="">
+                    <div>评分{{shop.score.toFixed(1)}}+</div>
+                </div>
+                <div class="cs-title">
+                    {{shop.name}}
+                </div>
+                <div class="cs-fuwu">
+                    <div v-for="(v,i) in shop.fuWu" :key="i">{{v.value}}</div>
+                </div>
+                <div class="gonggao">
+                    {{shop.gongGao}}
+                </div>
+                <div class="cs-labels">
+                    <div class="zb">
+                        <div v-for="(v,i) in shop.labels" :key="i">{{v.value}}</div>
+                    </div>
+
+                    <!-- <div class="yb"><i class="iconfont icon-jiantouxia"></i></div> -->
+                </div>
+            </div>
+            <div id="anchor-menu-list" class="menu-list">
+                <ul class="menu">
+                    <li v-anchor="'menu-list'" v-for='(item,idx) in menu' class="item"
+                        :class="{'active':idx==active_menu_idx}" @click="handleMenu(idx)">
+                        <span>{{item.name}}</span>
+                    </li>
+                </ul>
+                <div class="list-nav" @scroll.passive>
+                    <ul class="nav">
+                        <li v-for="(v,i) in list_nav" class="item" :class="{active:active_list_nav_idx==i}" :key="v.id"
+                            @click="handleListNav(i)">
+                            <span>{{v.name}}</span>
+                        </li>
+                    </ul>
+                    <div class="activity-list">
+                        <div v-for="v in activities" class="activity">
+                            <span>{{v.name}}</span>
+                        </div>
+                        <ul class="list">
+                            <li v-for="(v,idx) in activity_goods" class="item-wrapper" :key="v.id">
+                                <div class="item">
+                                    <div class="img-wrapper" @click="toDetail(v.id)">
+                                        <div class="xianliang" v-if="v.discount">
+                                            超级免单
+                                            <!-- {{v.discount.value}}折
+                                            限{{v.discount.num}}份 -->
+                                        </div>
+                                        <img :src="v.img" alt="">
+                                    </div>
+
+                                    <div class="name">{{v.name+'/'+v.unit}}</div>
+                                    <div class="sold-discount">
+                                        <div class="sold">
+                                            月售{{v.sold}}
+                                        </div>
+                                        <div class="discount">优惠仅剩{{v.residue}}件</div>
+                                    </div>
+                                    <div class="add">
+                                        <div class="p-u-o">
+                                            <div class="price">
+                                                ￥<span>{{v.price|price}}&nbsp;</span>
+                                            </div>
+                                            <div class="unit">
+
+                                            </div>
+                                            <div class="originPrice">
+                                                ￥{{v.originPrice|price}}
+                                            </div>
+                                        </div>
+                                        <i @click="addCart(v,$event)" class="iconfont icon-tianjia"></i>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="filter-list">
+                        <li class="item" :class="{'active':filter_idx==0}" @click="handleFilter(0)">
+                            <div>力度</div>
+                        </li>
+                        <li class="item" :class="{'active':filter_idx==1}" @click="handleFilter(1)">
+                            <div>销量</div>
+                        </li>
+                        <li class="item" :class="{'active':filter_idx==2}" @click="handleFilter(2)">
+                            <div>价格<i class="iconfont icon-paixu"></i></div>
+                        </li>
+                    </ul>
+                    <ul class="list">
+                        <li v-for="(v,idx) in goods" class="item-wrapper" :key="v.id">
+                            <div class="item">
+                                <div class="img-wrapper">
+
+                                    <img :src="v.img" alt="">
+                                </div>
+
+                                <div class="name">{{v.name}}</div>
+                                <div class="sold-discount">
+                                    <div class="sold">
+                                        月售{{v.sold}}
+                                    </div>
+
+                                </div>
+                                <div class="add">
+                                    <div class="p-u-o">
+                                        <div class="price">
+                                            ￥<span>{{v.price|price}}</span>
+                                        </div>
+                                        <div class="unit">
+                                            /{{v.unit}}
+                                        </div>
+                                        <div class="originPrice">
+                                            ￥{{v.originPrice|price}}
+                                        </div>
+                                    </div>
+
+                                    <i @click="addCart(v,$event)" class="iconfont icon-tianjia"></i>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="cs-cart" :class="{'show':cart.show,'no-qcd':!hasTip}">
+                <div class="qcd" v-if="totalOriginPrice-totalPrice>0">
+                    已省￥{{totalOriginPrice-totalPrice|price}}
+                </div>
+                <!-- <div class="qcd" v-if="is_difference_tips">
+                    还差
+                    <span>{{cart.difference}}</span>
+                    元就能起送
+                    <span>[去凑单]</span>
+                </div> -->
+                <div class="cart-wrapper">
+                    <div class="cart-title">
+                        <div class="zb">
+                            购物车
+                            <span>(共{{cartLength}}件商品,总重量约{{cart.weight}}kg)</span>
+                        </div>
+                        <div class="yb" @click="clearCart">
+                            <i class="iconfont icon-shanchu"></i>
+                            清空购物车
+                        </div>
+                    </div>
+                    <ul class="cart-list">
+                        <li v-for="(v,i) in cart_goods" :key="v.id">
+                            <div class="item">
+                                <div class="img-wrapper">
+                                    <img :src="v.img" alt="">
+                                </div>
+                                <div class="mz-dz-jg">
+                                    <div class="mz">{{v.name}}</div>
+                                    <div class="zb-yb">
+                                        <div class="zb">
+                                            <div class="xianliang-wrapper">
+                                                <div class="xianliang" v-if="v.discount">
+                                                    {{v.discount.value}}折,限{{v.discount.num}}份
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <a class="price">￥
+                                                    <span>{{v.price|price}}</span>
+                                                </a>
+                                                <a class="originPrice">
+                                                    <span>￥{{v.originPrice|price}}</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="yb">
+                                            <div class="reduce" @click="handleReduce(i)"><i
+                                                    class="iconfont icon-jian"></i></div>
+                                            <div class="num">{{v.count}}</div>
+                                            <div class="add" @click="handleAdd(i)"><i class="iconfont icon-tianjia"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="pay-bottom">
+                <a :href="'tel:'+shop.phone" class="lxsj">
+                    <i class="iconfont icon-lianxi"></i>
+                    <div>联系商家</div>
+                </a>
+                <div class="psf-zj" @click="handleCart">
+                    <img src="./img/kd.png" alt="">
+                    <div class="zj-wrapper">
+                        <div class="zj" v-if="totalPrice">
+                            <div class="yg">
+                                ￥
+                                <span> {{totalPrice|price}}</span>
+                            </div>
+                            <div class="yj">
+                                ￥{{totalOriginPrice|price}}
+                            </div>
+                        </div>
+                        <div class="psf">另需配送费￥{{totalFee}} <span>￥{{totalOriginFee}}</span></div>
+                    </div>
+
+                </div>
+                <div v-if="shop.initialDeliveryprice-totalPrice>0" class="qs" @click="handleCart">
+                    差￥{{shop.initialDeliveryprice-totalPrice|price}}起送
+                </div>
+                <div v-else class="qs buy">
+                    去结算
+                </div>
+            </div>
+
+
+        </div>
+        <router-view></router-view>
+    </div>
+    <script src="../static/js/jquery.min.js"></script>
     <script src="../js/vue.js"></script>
-    <script type="x-template" id="sp-chaoshi-list">
-        <div>
-                <ul>
-                    <li>爆品</li>
-                    <li>折扣</li>
-                </ul>
-                <ul>
-                    <li>
-                        <img src="http://img0.imgtn.bdimg.com/it/u=1650195230,4072566368&fm=26&gp=0.jpg" alt="">
-                        <div>五角辣条</div>
-                        <div>月售162</div>
-                    </li>
-                    <li>
-                        <img src="http://img0.imgtn.bdimg.com/it/u=1650195230,4072566368&fm=26&gp=0.jpg" alt="">
-                        <div>五角辣条</div>
-                        <div>月售162</div>
-                    </li>
-                </ul>
-        </div>
-    </script>
-    <script type="x-template" id="sp-chaoshi-menu">
-        <div>
-            <ul>
-                <li>
-                    活动
-                </li>
-                <li>
-                    槟榔
-                </li>
-            </ul>
-          
-        </div>
-    </script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="../js/parabola.js"></script>
 
     <script>
-        // 左侧菜单
-        Vue.component('sp-chaoshi-menu',{
-            template:"#sp-chaoshi-menu",
-            data:function(){
-                return {
-                    
+        // 1. 定义 (路由) 组件。
+        const Detail = { template: `` }
+
+        const routes = [
+            { path: '/detail', component: Detail },
+        ]
+
+        const router = new VueRouter({
+            routes 
+        })
+        Vue.directive('anchor', {
+            inserted: function (el, binding, vnode, oldVnode) {
+
+
+                el.onclick = function () {
+
+                    $('#anchor-' + binding.value)[0].scrollIntoView()
                 }
             }
         })
-        // 右侧列表
-        Vue.component('sp-chaoshi-list',{
-            template:"#sp-chaoshi-list",
-            data:function(){
-                return {
-                    
+        // 注册
+        Vue.filter('price', function (value) {
+            // 返回处理后的值
+            return value.toFixed(2)
+        })
+        var app = new Vue({
+            router,
+            el: '#app',
+            // components: {
+            //     // 左侧菜单
+            //     'sp-chaoshi-menu': spChaoshiMenu,
+
+            // },
+            data: {
+
+                active_menu_idx: 0,
+                menu: [
+                    {
+                        name: "糖果巧克力",
+                        id: 1
+                    },
+                    {
+                        name: "槟榔",
+                        id: 2
+                    },
+                    {
+                        name: "矿泉水",
+                        id: 3
+                    },
+                    {
+                        name: "矿泉水",
+                        id: 3
+                    },
+                    {
+                        name: "矿泉水",
+                        id: 3
+                    },
+                    {
+                        name: "矿泉水",
+                        id: 3
+                    },
+                    {
+                        name: "矿泉水",
+                        id: 3
+                    },
+                    {
+                        name: "矿泉水",
+                        id: 3
+                    },
+                    {
+                        name: "矿泉水",
+                        id: 3
+                    },
+                    {
+                        name: "矿泉水",
+                        id: 3
+                    },
+                    {
+                        name: "矿泉水",
+                        id: 3
+                    },
+                    {
+                        name: "矿泉水",
+                        id: 3
+                    },
+                    {
+                        name: "矿泉水",
+                        id: 3
+                    },
+                    {
+                        name: "矿泉水",
+                        id: 3
+                    },
+                    {
+                        name: "矿泉水",
+                        id: 3
+                    },
+                    {
+                        name: "矿泉水222",
+                        id: 3
+                    }
+                ]
+                ,
+                goods: [{
+                    residue: 53,
+                    id: 1,
+                    name: "五角辣条",
+                    sold: 162,
+                    price: 9,
+                    unit: "袋",
+                    originPrice: 2.20,
+                    img: "http://img0.imgtn.bdimg.com/it/u=1650195230,4072566368&fm=26&gp=0.jpg",
+                    discount: "超级免单"
+                }],
+                filter_idx: 0,
+                active_list_nav_idx: 0,
+                activity_goods: [{
+                    residue: 5,
+                    id: 2,
+                    name: "6角辣条",
+                    sold: 162,
+                    price: 0.09,
+                    unit: "袋",
+                    originPrice: 2.20,
+                    img: "http://img0.imgtn.bdimg.com/it/u=1650195230,4072566368&fm=26&gp=0.jpg",
+                    discount: {
+                        value: 1.5,
+                        num: 1,
+
+                    }
+                }],
+                list_nav: [
+                    {
+                        name: "爆品",
+                        id: 1
+                    }, {
+                        name: "折扣",
+                        id: 2
+                    }, {
+                        name: "三只松鼠",
+                        id: 3
+                    }
+                ],
+                activities: [
+                    // {
+                    //     name: "爆品可与满减优惠同享"
+                    // }, {
+                    //     name: "爆品可与满减优惠同享2"
+                    // }
+                ],
+
+                shop: {
+                    initialDeliveryprice: 25,
+                    name: "24小时零点便利店(八一路店)",
+                    logo: "http://img0.imgtn.bdimg.com/it/u=1099603176,1913748234&fm=26&gp=0.jpg",
+                    score: 5.0,
+                    gongGao: "公告:欢迎光临,很高兴为您服务~",
+                    phone: 135464634,
+                    fuWu: [{
+                        value: "配送30分钟"
+                    },
+                    {
+                        value: "配送30分钟"
+                    }],
+                    labels: [
+                        {
+                            value: "减2元配送费"
+                        },
+                        {
+                            value: "减2元配送费"
+                        },
+                        {
+                            value: "减2元配送费"
+                        },
+                        {
+                            value: "减2元配送费"
+                        },
+                        {
+                            value: "减2元配送费"
+                        }
+                    ]
+                },
+                totalFee: 5,
+                totalOriginFee: 20,
+                cartLength: 0,
+                cart: {
+                    show: false,
+                    weight: 0.2,
+                    difference: 5,
+                    discount_price: 20,
+                }, cart_goods: [
+                    //     {
+                    //     id: 1,
+                    //     name: "五角辣条",
+                    //     sold: 162,
+                    //     price: 0.09,
+                    //     unit: "袋",
+                    //     originPrice: 2.20,
+                    //     img: "http://img0.imgtn.bdimg.com/it/u=1650195230,4072566368&fm=26&gp=0.jpg",
+                    //     count: 1
+                    //     // discount:{
+                    //     //     value:1.5,
+                    //     //     num:1,
+                    //     //     residue:5
+                    //     // }
+                    // }
+                ]
+            },
+            methods: {
+                toDetail: function (id) {
+                    this.$router.push({ path: 'detail', query: { id: id } })
+                },
+                handleMenu: function (idx) {
+                    this.active_menu_idx = idx
+                    // 滑动菜单
+
+                    // 更新右侧商品数据
+                },
+
+
+                handleListNav: function (idx) {
+                    this.active_list_nav_idx = idx
+                    // 更新右侧商品数据
+                },
+                handleFilter: function (idx) {
+                    this.filter_idx = idx
+                    // 排序
+                },
+
+                addCart: function (v, ev) {
+                    var ps = $(".psf-zj img")
+                    var psf = ps.offset()
+                    var psfL = psf.left
+                    var psfT = psf.top
+                    var tof = $(ev.target).offset()
+
+                    var div = document.createElement("div")
+                    div.className = "ball"
+                    // Parabola
+                    $(div).css({
+                        top: tof.top,
+                        left: tof.left
+                    })
+                    $("body").append(div)
+                    var offsetY = psfT - tof.top + ps.height() / 2
+                    var pb = new Parabola({
+                        curvature: 0.015,
+                        duration: offsetY * 1.5,
+                        el: div,
+                        offset: [psfL - tof.left + ps.width() / 2, offsetY],
+                        callback: function () {
+                            $(div).remove()
+                        }
+                    })
+                    pb.start()
+                    var i = 0
+                    for (g of this.cart_goods) {
+                        i++
+                        if (g && g.id == v.id) {
+                            g.count++
+                            Vue.set(this.cart_goods, i - 1, g)
+                            return
+                        }
+                    }
+                    v.count = 1
+                    this.cart_goods.push(v)
+
+                },
+                handleCart: function () {
+                    if (this.totalPrice)
+                        this.cart.show = !this.cart.show
+                },
+                clearCart: function () {
+                    this.cart_goods = []
+                    this.cart.show = false
+                },
+                handleReduce(i) {
+                    --this.cart_goods[i].count
+
+                    if (this.cart_goods[i].count == 0) {
+                        Vue.delete(this.cart_goods, i)
+                        if (this.cart_goods.length == 0) {
+                            this.cart.show = false
+                        }
+                        return
+                    }
+                    Vue.set(this.cart_goods, i, this.cart_goods[i])
+                }, handleAdd(i) {
+                    ++this.cart_goods[i].count
+                    Vue.set(this.cart_goods, i, this.cart_goods[i])
                 }
+            },
+            watch: {
+                cart_goods: function (val, oldVal) {
+                    this.cartLength = val.length
+                },
+                // cart: {
+                //     handler: function (val, oldVal) {
+                //          /* 清空购物车 */
+                //         if (val.goods = []) {
+                //             this.cart.show = false
+                //         }
+                //     },
+
+                // },
+
+            },
+            computed: {
+
+                hasTip: function () {
+                    if (this.cart_goods.length > 0) {
+                        return true
+                    }
+                    return false
+                },
+                is_discount_tips: function () {
+                    if (this.cart_goods.length > 0) {
+                        return true
+                    }
+                    return false
+                }
+                ,
+                // is_difference_tips: function () {
+                //     return false
+                //     if (this.cart_goods.length > 0) {
+                //         return false
+                //     }
+                // },
+                totalPrice: function () {
+                    var p = 0
+                    this.cart_goods.forEach(element => {
+                        p += element.price * element.count
+                    });
+                    return p
+                },
+                totalOriginPrice: function () {
+                    var p = 0
+                    this.cart_goods.forEach(element => {
+                        p += element.originPrice * element.count
+                    });
+                    return p
+                }
+
             }
         })
-          var app = new Vue({
-        el: '#app',
-        data: {
-            currentTabComponent:"sp-chaoshi-list"
-        }
-      })
     </script>
 </body>
+
 </html>

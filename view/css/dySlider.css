@@ -1,3 +1,96 @@
+html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input, textarea, th, td, select {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  font-family: "Microsoft YaHei";
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  border: none;
+  vertical-align: middle;
+}
+
+a {
+  text-decoration: none;
+  color: #232323;
+}
+
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+input, textarea {
+  outline: none;
+  border: none;
+}
+
+textarea {
+  resize: none;
+  overflow: auto;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+.clearfix:after {
+  content: ".";
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
+  overflow: hidden;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.tl {
+  text-align: left;
+}
+
+.tc {
+  text-align: center;
+}
+
+.tr {
+  text-align: right;
+}
+
+.ellipse {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.inline {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
 body {
   margin: 0;
 }
@@ -42,6 +135,8 @@ ul, li {
   padding: 1.33333vw 0;
   -webkit-transition: background-color 1s linear;
   transition: background-color 1s linear;
+  -webkit-transform: scaleX(1.2);
+          transform: scaleX(1.2);
 }
 
 .slider-wrapper .slider.vipcard {
@@ -64,6 +159,10 @@ ul, li {
   -webkit-transition: all .2s linear;
   transition: all .2s linear;
   vertical-align: text-bottom;
+}
+
+.slider-wrapper .slider.vipcard .item img {
+  border-radius: 1.33333vw;
 }
 
 .slider-wrapper .slider.vipcard .item.active {
@@ -96,8 +195,14 @@ ul, li {
   line-height: 35.6vw;
 }
 
+.slider-wrapper .slider .item.active img {
+  width: 80%;
+  border: 1px solid #fff;
+}
+
 .slider-wrapper .slider .item img {
-  width: 90%;
-  height: 90%;
+  margin: 0 auto;
+  width: 80%;
+  height: 80%;
 }
 /*# sourceMappingURL=dySlider.css.map */

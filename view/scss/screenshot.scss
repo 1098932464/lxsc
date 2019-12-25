@@ -118,6 +118,7 @@ $fontsize30:my-px2vw(30);
         .text{
             width: vw(234);
             margin-left: vw(10);
+            line-height: 1.5;
             .lxkf{
                 font-size: $fontsize16;
             }
