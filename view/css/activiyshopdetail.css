@@ -585,6 +585,7 @@ textarea {
   overflow: scroll;
   padding-bottom: 29.33333vw;
   -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
 }
 
 body {

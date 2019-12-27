@@ -92,6 +92,28 @@ textarea {
   *zoom: 1;
 }
 
+.shop-msg {
+  display: inline-block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: black;
+  color: #fff;
+  font-size: 3.2vw;
+  padding: 2.13333vw 2.66667vw;
+  border-radius: 1.33333vw;
+  z-index: 3333;
+}
+
+.two-line {
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .del {
   text-decoration: line-through;
 }

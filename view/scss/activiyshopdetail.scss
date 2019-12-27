@@ -460,6 +460,7 @@ $fontsize30:my-px2vw(30);
 }
 .asd-scroll{
     @include sp_scroll;
+    overflow-x: hidden;
 }
 body{
     overflow: hidden;

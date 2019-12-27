@@ -1,0 +1,135 @@
+@import "spvarious";
+@import "chashi_good";
+$header-color:#fff;
+$color1: #777;
+$color2: rgb(107, 42, 12);
+$color3: rgb(230, 204, 168);
+$color4: #ddd;
+$color5: #ccc;
+$color6: rgb(226, 120, 45);
+$color7:rgb(33, 33, 33);
+$color8:#ddd;
+$color9:#e6e6e6;
+$color10:#bbb;
+$pricecolor1:rgb(181, 90, 25);
+$innerMargin:my-px2vw(5);
+$innerPadding:my-px2vw(5);
+$outterMargin:my-px2vw(10);
+$outterPadding:my-px2vw(10);
+$labelSize:my-px2vw(12);
+$fontsize16:my-px2vw(16);
+$fontsize14:my-px2vw(14);
+$fontsize12:my-px2vw(12);
+$fontsize20:my-px2vw(20);
+$fontsize30:my-px2vw(30);
+.sousuo-container{
+    background-color: #fff;
+    height: calc(100vh - 13.33333vw);
+}
+.sousuo-list{
+    display: flex;
+    flex-wrap: wrap;
+    padding:0 0 0 vw(10);
+    background-color: #fff;
+    .item{
+        font-size: vw(12);
+        background-color: #eae6e6;
+        color: #333;
+        border: 1px solid #ddd;
+        padding: vw(5) vw(10);
+        margin: 0 vw(15) vw(15) 0;
+    }
+}
+.sousuo-title{
+    background-color: #fff;
+    padding: vw(10);
+    font-size: vw(14);
+    font-weight: 500;
+    margin-bottom: vw(5);
+    i.icon-shanchu{
+        float: right;
+        font-size: vw(16);
+    }
+}
+.sousuo-goods{
+    display: flex;
+    flex-wrap: wrap;
+    padding: vw(8);
+    justify-content: space-between;
+    .item-wrapper {
+        background-color: #fff;
+        width: vw(175);
+        padding: vw(8);
+        box-sizing: border-box;
+        margin-bottom: vw(8);
+        margin-right: vw(8);
+        &:nth-child(2n){
+            margin-right: 0;
+        }
+       @include chaoshi_item();
+
+    }
+}
+.sousuo-sort{
+    padding: vw(10);
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    font-size: vw(14);
+    color: $color1;
+    i{
+        font-size: vw(14);
+    }
+    .yb{
+        display: flex;
+        >div{
+            margin-left: vw(10);
+        }
+    }
+    .active{
+        color: #000;
+    }
+}
+.sousuo-header{
+    display: grid;
+    height: vw(50);
+    background-color: #fff;
+    align-items: center;
+    box-sizing: border-box;
+    padding: vw(10);
+   
+    justify-content: center;
+    grid-template-columns: 10% 80% 10%;
+    i{
+        font-size: vw(16);
+    }
+    .back{
+        text-align: left;
+    }
+    .content{
+        background-color: #e6e6e6;
+        border-radius: vw(10);
+        width: 90%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        i.icon-secondsearch_accurate{
+            padding: 0 vw(5) 0 vw(10);
+        }
+        i.icon-guanbi{
+            padding: 0 vw(10);
+        }
+        input{
+            background-color: #e6e6e6;
+            width: calc(100% - 16vw);
+            font-size: vw(16);
+        }
+    }
+    .btn{
+        font-size: vw(15);
+        color: $color1;
+        &.active{
+            color: #f8b400;
+        }
+    }
+}

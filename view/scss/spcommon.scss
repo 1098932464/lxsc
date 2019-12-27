@@ -21,6 +21,25 @@ $fontsize14:my-px2vw(14);
 $fontsize12:my-px2vw(12);
 $fontsize20:my-px2vw(20);
 $fontsize30:my-px2vw(30);
+.shop-msg{
+    display: inline-block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: rgba(0,0,0,5);
+    color: #fff;
+    font-size: vw(12);
+    padding: vw(8) vw(10);
+    border-radius: vw(5);
+    z-index: 3333;
+}
+.two-line{
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
 .del{
     text-decoration: line-through;
 }

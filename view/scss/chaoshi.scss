@@ -1,4 +1,5 @@
 @import "spvarious";
+@import "chashi_good";
 $header-color:#fff;
 $color1: #777;
 $color2: rgb(107, 42, 12);
@@ -21,6 +22,9 @@ $fontsize14:my-px2vw(14);
 $fontsize12:my-px2vw(12);
 $fontsize20:my-px2vw(20);
 $fontsize30:my-px2vw(30);
+.routeWrapper,.menu,.list-nav,.layout{
+    -webkit-overflow-scrolling: touch;
+}
 
 .cs-bg {
     position: fixed;
@@ -266,7 +270,7 @@ $fontsize30:my-px2vw(30);
         .cart-title {
             display: flex;
             justify-content: space-between;
-            padding-top: vw(55);
+            padding-top: vw(85);
             margin-bottom: vw(10);
 
             .zb {
@@ -341,7 +345,7 @@ $fontsize30:my-px2vw(30);
 
         img {
             width: vw(60);
-            height: vw(70);
+            // height: vw(70);
             margin-top: vw(-20);
         }
 
@@ -457,97 +461,8 @@ $fontsize30:my-px2vw(30);
             transform: scale(.9);
             box-sizing: border-box;
 
-            .item {
-                >div {
-                    margin-bottom: vw(2);
-                    line-height: 1.5;
-                }
-
-                .img-wrapper {
-                    position: relative;
-                    height: vw(120);
-                    max-width: 100%;
-
-                    img {
-                        width: 100%;
-                        height: 100%;
-                    }
-
-                    .xianliang {
-                        display: inline-block;
-                        line-height: 1.5;
-                        vertical-align: middle;
-                        font-size: vw(12);
-                        padding-right: vw(10);
-                        position: absolute;
-                        bottom: 0;
-                        left: 0;
-                        color: #fff;
-                        background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
-                        clip-path: polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%);
-                    }
-                }
-
-                .name {
-                    font-size: vw(13);
-                    font-weight: 600;
-                }
-
-                .sold-discount {
-                    display: flex;
-                    font-size: vw(12);
-
-                    .sold {
-                        color: $color1;
-                        margin-right: vw(5);
-                    }
-
-                    .discount {
-                        color: #ff9d76;
-                    }
-                }
-
-                .add {
-                    position: relative;
-                    padding-top: vw(10);
-                    white-space: nowrap;
-                    display: flex;
-                    align-items: baseline;
-                    justify-content: space-between;
-
-                    .p-u-o {
-                        display: flex;
-                        align-items: baseline;
-                    }
-
-                    .price {
-                        font-size: vw(12);
-
-                        span {
-                            color: #da2d2d;
-                            font-weight: bold;
-                            font-size: vw(20);
-                        }
-                    }
-
-                    .unit,
-                    .originPrice {
-                        font-size: vw(12);
-                        color: $color1;
-                    }
-
-                    .originPrice {
-                        text-decoration: line-through;
-                    }
-
-                    i {
-                        justify-self: flex-end;
-                        color: #64e291;
-                        font-size: vw(20);
-                    }
-                }
-
-            }
+            @include chaoshi_item();
+       
 
         }
     }
@@ -593,8 +508,11 @@ $fontsize30:my-px2vw(30);
     }
 }
 
-.sp-header.search {
+.chaoshi-header.search {
     width: 100%;
+    height: vw(50);
+    display: grid;
+    background-color: #fff;
     position: fixed;
     top: 0;
     left: 0;
@@ -603,18 +521,22 @@ $fontsize30:my-px2vw(30);
     border: none;
     background-color: transparent;
     z-index: 1000;
-
     .content {
+        padding: vw(8);
         background-color: #fff;
-        grid-column: 2/span 1;
-
+        display: flex;
+        overflow: hidden;
+        font-weight: normal;
+        align-items: center;
+        border-radius: 8vw;
+        border: 1px solid orangered;
         i {
             font-size: vw(14);
+            margin-right: vw(10);
         }
-
-        input {
+        div{
+            color: $color1;
             font-size: vw(14);
-            width: vw(202);
         }
     }
 
@@ -650,7 +572,8 @@ a{
 [v-cloak]{
     display: none!important;
 }
-.chaoshixiangqing{
+.routeWrapper{
+    width: 100vw;
     background-color:#e6e6e6 ;
     z-index: 1001;
     height: 100vh;

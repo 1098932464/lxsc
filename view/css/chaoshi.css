@@ -91,6 +91,10 @@ textarea {
   *zoom: 1;
 }
 
+.routeWrapper, .menu, .list-nav, .layout {
+  -webkit-overflow-scrolling: touch;
+}
+
 .cs-bg {
   position: fixed;
   left: 0;
@@ -352,7 +356,7 @@ textarea {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding-top: 14.66667vw;
+  padding-top: 22.66667vw;
   margin-bottom: 2.66667vw;
 }
 
@@ -444,7 +448,6 @@ textarea {
 
 .pay-bottom .psf-zj img {
   width: 16vw;
-  height: 18.66667vw;
   margin-top: -5.33333vw;
 }
 
@@ -602,7 +605,12 @@ textarea {
           clip-path: polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%);
 }
 
+.list-nav .list .item-wrapper .item .name-discount {
+  height: 14.93333vw;
+}
+
 .list-nav .list .item-wrapper .item .name {
+  line-height: 1.2;
   font-size: 3.46667vw;
   font-weight: 600;
 }
@@ -625,7 +633,6 @@ textarea {
 
 .list-nav .list .item-wrapper .item .add {
   position: relative;
-  padding-top: 2.66667vw;
   white-space: nowrap;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -714,8 +721,12 @@ textarea {
   line-height: 1.5;
 }
 
-.sp-header.search {
+.chaoshi-header.search {
   width: 100%;
+  height: 13.33333vw;
+  display: -ms-grid;
+  display: grid;
+  background-color: #fff;
   position: fixed;
   top: 0;
   left: 0;
@@ -729,34 +740,43 @@ textarea {
   z-index: 1000;
 }
 
-.sp-header.search .content {
+.chaoshi-header.search .content {
+  padding: 2.13333vw;
   background-color: #fff;
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 1;
-  grid-column: 2/span 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  font-weight: normal;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 8vw;
+  border: 1px solid orangered;
 }
 
-.sp-header.search .content i {
+.chaoshi-header.search .content i {
+  font-size: 3.73333vw;
+  margin-right: 2.66667vw;
+}
+
+.chaoshi-header.search .content div {
+  color: #777;
   font-size: 3.73333vw;
 }
 
-.sp-header.search .content input {
-  font-size: 3.73333vw;
-  width: 53.86667vw;
-}
-
-.sp-header.search .back,
-.sp-header.search .cart {
+.chaoshi-header.search .back,
+.chaoshi-header.search .cart {
   text-align: center;
 }
 
-.sp-header.search .back a,
-.sp-header.search .cart a {
+.chaoshi-header.search .back a,
+.chaoshi-header.search .cart a {
   display: block;
 }
 
-.sp-header.search .back a i,
-.sp-header.search .cart a i {
+.chaoshi-header.search .back a i,
+.chaoshi-header.search .cart a i {
   font-size: 4.26667vw;
 }
 
@@ -777,7 +797,8 @@ a {
   display: none !important;
 }
 
-.chaoshixiangqing {
+.routeWrapper {
+  width: 100vw;
   background-color: #e6e6e6;
   z-index: 1001;
   height: 100vh;

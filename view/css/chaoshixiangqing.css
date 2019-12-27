@@ -377,7 +377,12 @@ textarea {
           clip-path: polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%);
 }
 
+.csxq-goods .item-wrapper .item .name-discount {
+  height: 14.93333vw;
+}
+
 .csxq-goods .item-wrapper .item .name {
+  line-height: 1.2;
   font-size: 3.46667vw;
   font-weight: 600;
 }
@@ -400,7 +405,6 @@ textarea {
 
 .csxq-goods .item-wrapper .item .add {
   position: relative;
-  padding-top: 2.66667vw;
   white-space: nowrap;
   display: -webkit-box;
   display: -ms-flexbox;

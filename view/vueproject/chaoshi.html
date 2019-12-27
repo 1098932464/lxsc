@@ -15,20 +15,21 @@
     <link rel="stylesheet" href="../font/iconfont.css">
     <link rel="stylesheet" href="../css/chaoshi.css">
     <link rel="stylesheet" href="../css/chaoshixiangqing.css">
+    <link rel="stylesheet" href="../css/sousuo.css">
+    <link rel="stylesheet" href="../css/animate.min.css">
 </head>
 
 <body>
     <div id="app">
         <div class="cs-bg"
             style="background-image: url(http://img0.imgtn.bdimg.com/it/u=1099603176,1913748234&fm=26&gp=0.jpg);"></div>
-        <header class="sp-header search">
+        <header class="chaoshi-header search">
             <div class="back">
-                <a href="history.back()"> <i class="iconfont icon-icon-arrow-left4"></i></a>
+                <a @click="$router.go(-1)"> <i class="iconfont icon-icon-arrow-left4"></i></a>
             </div>
-            <div class="content">
+            <div class="content" @click="toSearch">
                 <i class="iconfont icon-secondsearch_accurate"></i>
-                <input type="text" placeholder="请输入商铺名称">
-                <div class="btn">搜索</div>
+                <div>搜索店内商品</div>
             </div>
             <div class="cart">
                 <a href=""><i class="iconfont icon-gouwuche1"></i></a>
@@ -87,14 +88,16 @@
                                         </div>
                                         <img :src="v.img" alt="">
                                     </div>
-
-                                    <div class="name">{{v.name+'/'+v.unit}}</div>
-                                    <div class="sold-discount">
-                                        <div class="sold">
-                                            月售{{v.sold}}
+                                    <div class="name-discount">
+                                        <div class="name two-line">{{v.name+'/'+v.unit}}</div>
+                                        <div class="sold-discount">
+                                            <div class="sold">
+                                                月售{{v.sold}}
+                                            </div>
+                                            <div class="discount">优惠仅剩{{v.residue}}件</div>
                                         </div>
-                                        <div class="discount">优惠仅剩{{v.residue}}件</div>
                                     </div>
+
                                     <div class="add">
                                         <div class="p-u-o">
                                             <div class="price">
@@ -131,14 +134,16 @@
 
                                     <img :src="v.img" alt="">
                                 </div>
+                                <div class="name-discount">
+                                    <div class="name two-line">{{v.name}}</div>
+                                    <div class="sold-discount">
+                                        <div class="sold">
+                                            月售{{v.sold}}
+                                        </div>
 
-                                <div class="name">{{v.name}}</div>
-                                <div class="sold-discount">
-                                    <div class="sold">
-                                        月售{{v.sold}}
                                     </div>
-
                                 </div>
+
                                 <div class="add">
                                     <div class="p-u-o">
                                         <div class="price">
@@ -231,7 +236,7 @@
                     <div>联系商家</div>
                 </a>
                 <div class="psf-zj" @click="handleCart">
-                    <img src="./img/kd.png" alt="">
+                    <img src="http://manage.yihuoshidai.com/files/006c4539-0fe1-42ac-aadb-c2019738cbdf.png" alt="">
                     <div class="zj-wrapper">
                         <div class="zj" v-if="totalPrice">
                             <div class="yg">
@@ -256,14 +261,171 @@
 
 
         </div>
-        <router-view :key="$route.fullPath"></router-view>
+        <!-- 使用动态的 transition name -->
+        <!-- <transition :name="routeTransition"> -->
+        <transition enter-active-class="animated slideInRight" leave-active-class="animated slideOutLeft">
+            <router-view :key="$route.fullPath"></router-view>
+        </transition>
+
     </div>
+    <template id="sousuo">
+        <div class="routeWrapper">
+            <header class="sousuo-header">
+                <a class="back" @click="$router.go(-1)"><i class="iconfont icon-icon-arrow-left4"></i></a>
+                <div class="content"><i class="iconfont icon-secondsearch_accurate"></i>
+                    <input type="text" v-model.trim="search_text" placeholder="搜索店内商品">
+                    <i v-show="search_text" class="iconfont icon-guanbi" @click="clearSearchText"></i>
+                </div>
+                <div class="btn" :class="{'active':search_text}" @click="search">搜索</div>
+            </header>
+            <section v-show="!isSearched" class="sousuo-container">
+                <!-- 搜索历史 -->
+                <div v-if="history.length>0" class="sousuo-title">
+                    搜索历史
+                    <i @click="clearSearchHistory" class="iconfont icon-shanchu"></i>
+                </div>
+                <ul class="sousuo-list">
+                    <li v-for="v of history" class="item">
+                        <div>{{v}}</div>
+                    </li>
+                </ul>
+                <div v-if="true" class="sousuo-title">
+                    热门搜索
+                </div>
+                <ul class="sousuo-list">
+                    <li v-for="v of history" class="item">
+                        <div>精品水果酸奶</div>
+                    </li>
+                    <li  class="item">
+                        <div>精品水果酸奶</div>
+                    </li>
+                </ul>
+            </section>
+            <section v-show="isSearched">
+                <div class="sousuo-sort">
+                    <div class="zb" :class="{'active':search_sort==1}" @click="search_sort=1;">
+                        综合排序
+                    </div>
+                    <div class="yb">
+                        <div :class="{'active':search_sort==2}" @click="search_sort=2;">销量优先</div>
+                        <div :class="{'active':search_sort==3}" @click="search_sort=3;">优惠优先</div>
+                        <div :class="{'active':search_sort==4}" @click="search_sort=4;">价格<i
+                                class="iconfont icon-paixu"></i></div>
+                    </div>
+                </div>
+                <div>
+                    <ul class="sousuo-goods">
+                        <li v-for="(v,idx) in goods" class="item-wrapper" :key="v.id">
+                            <div class="item">
+                                <div class="img-wrapper" @click="toDetail(v.id)">
+                                    <div class="xianliang" v-if="v.discount">
+                                        超级免单
+
+                                    </div>
+                                    <img :src="v.img" alt="">
+                                </div>
+                                <div class="name-discount">
+                                    <div class="name two-line">{{v.name+'/'+v.unit}}</div>
+                                    <div class="sold-discount">
+                                        <div class="sold">
+                                            月售{{v.sold}}
+                                        </div>
+                                        <div class="discount">优惠仅剩{{v.residue}}件</div>
+                                    </div>
+                                </div>
+
+                                <div class="add">
+                                    <div class="p-u-o">
+                                        <div class="price">
+                                            ￥<span>{{v.price|price}}&nbsp;</span>
+                                        </div>
+                                        <div class="unit">
+
+                                        </div>
+                                        <div class="originPrice">
+                                            ￥{{v.originPrice|price}}
+                                        </div>
+                                    </div>
+                                    <i @click="shareStore.addAction(v,$event)" class="iconfont icon-tianjia"></i>
+                                </div>
+                            </div>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+    </template>
     <script src="../static/js/jquery.min.js"></script>
     <script src="../js/vue.js"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
     <script src="../js/parabola.js"></script>
 
     <script>
+        var action = {
+            async getShopInfo() {
+                return await axios.get('/shopmoney/shoplist?sid=31')
+            },
+            getSearchHistory(){
+                var history=localStorage.getItem("shareshop_chaoshi_history")
+                if(history){
+                    history= JSON.parse(history)
+                    }else{
+                        history=[]
+                    }
+                 return history
+                    
+            },
+            addSearchHistory(text){
+                var history=localStorage.getItem("shareshop_chaoshi_history")
+                if(history){
+                    history= JSON.parse(history)
+                    history.push(text)
+                    history=JSON.stringify(history)
+                }else{
+                    history=JSON.stringify([text])
+                }
+                localStorage.setItem("shareshop_chaoshi_history",history)
+            },
+            clearSearchHistory(){
+                localStorage.removeItem("shareshop_chaoshi_history")
+            }
+        }
+        var throwBall = function (ev) {
+            var ps = $(".psf-zj img")
+            var psf = ps.offset()
+            var psfL = psf.left
+            var psfT = psf.top
+            var tof = $(ev.target).offset()
+
+            var div = document.createElement("div")
+            div.className = "ball"
+            // Parabola
+            $(div).css({
+                top: tof.top,
+                left: tof.left
+            })
+            $("body").append(div)
+            var offsetY = psfT - tof.top + ps.height() / 2
+            var pb = new Parabola({
+                curvature: 0.015,
+                duration: offsetY * 1.5,
+                el: div,
+                offset: [psfL - tof.left + ps.width() / 2, offsetY],
+                callback: function () {
+                    $(div).remove()
+                }
+            })
+            pb.start()
+        }
+        var ShopAlert = function (msg) {
+            var msg = $("<div class='shop-msg'>" + msg + "</div>").appendTo("body")
+            setTimeout(() => {
+                msg.remove()
+            }, 2000);
+        }
         var store = {
             debug: true,
             cartLength: 0,
@@ -298,88 +460,72 @@
                     i++
                     if (g && g.id == v.id) {
                         g.count--
-                       
+
                         if (g.count == 0) {
                             console.log(g.count);
-                            
-                    Vue.delete(this.cart_goods, i-1)
-                    if (this.cart_goods.length == 0) {
-                        this.cart.show = false
+
+                            Vue.delete(this.cart_goods, i - 1)
+                            if (this.cart_goods.length == 0) {
+                                this.cart.show = false
+                            }
+
+                            return
+                        } else {
+                            Vue.set(this.cart_goods, i - 1, g)
+                            break
+                        }
+
                     }
-                   
-                    return
-                }else{
-                    Vue.set(this.cart_goods, i - 1, g)
-                break
-                }
-              
-                    }
-                   
+
                 }
 
             },
             clearAction() {
-              this.cart_goods.length=0
-              this.cart_goods.reverse()
-                this.cart.show=false
-                this.cart.weight=0.2
+                this.cart_goods.length = 0
+                this.cart_goods.reverse()
+                this.cart.show = false
+                this.cart.weight = 0.2
             },
             addAction(v, ev) {
                 if (this.debug) console.log('addAction triggered')
 
-                var ps = $(".psf-zj img")
-                var psf = ps.offset()
-                var psfL = psf.left
-                var psfT = psf.top
-                var tof = $(ev.target).offset()
 
-                var div = document.createElement("div")
-                div.className = "ball"
-                // Parabola
-                $(div).css({
-                    top: tof.top,
-                    left: tof.left
-                })
-                $("body").append(div)
-                var offsetY = psfT - tof.top + ps.height() / 2
-                var pb = new Parabola({
-                    curvature: 0.015,
-                    duration: offsetY * 1.5,
-                    el: div,
-                    offset: [psfL - tof.left + ps.width() / 2, offsetY],
-                    callback: function () {
-                        $(div).remove()
-                    }
-                })
-                pb.start()
+
                 var i = 0
                 for (g of this.cart_goods) {
                     i++
                     if (g && g.id == v.id) {
-                        g.count++
-                        Vue.set(this.cart_goods, i - 1, g)
+                        if (g.count < v.residue) {
+                            g.count++
+                            Vue.set(this.cart_goods, i - 1, g)
+                            throwBall(ev)
+                        } else {
+                            ShopAlert("商品已达库存上限")
+                        }
+
                         return
                     }
                 }
+                throwBall(ev)
                 v.count = 1
                 this.cart_goods.push(v)
 
 
             }
         }
-        // 1. 定义 (路由) 组件。
+
         const Detail = {
-            methods:{
+            methods: {
                 toDetail: function (id) {
-                    
-this.$router.push('detail').catch(err => {
-    console.log('输出报错',err)
-})
+
+                    this.$router.push('detail').catch(err => {
+                        console.log('输出报错', err)
+                    })
                     // this.$router.push({ path: 'detail', query: { id: 2 } })
                 },
             },
-            computed:{
-                shareGoodCount:function(){
+            computed: {
+                shareGoodCount: function () {
                     // for(var g in this.shareStore.cart_goods){
                     //     if(g.id==this.good.id){
                     //         return g.count
@@ -451,7 +597,7 @@ this.$router.push('detail').catch(err => {
                 }
 
             },
-            template: `<div class="chaoshixiangqing">
+            template: `<div class="routeWrapper">
 
 <div class="csxq-img">
     <img :src="good.img" alt="">
@@ -547,20 +693,78 @@ this.$router.push('detail').catch(err => {
 <section class="tdtj">
     <div class="title">同店推荐</div>
     <ul v-for="(v,idx) in goods" :key="v.id" class="csxq-goods">
-        <li class="item-wrapper"><div class="item"><div class="img-wrapper" @click="toDetail(v.id)"><img :src="v.img" alt=""></div> <div class="name">{{v.name}}</div> <div class="sold-discount"><div class="sold">
+        <li class="item-wrapper"><div class="item"><div class="img-wrapper" @click="toDetail(v.id)"><img :src="v.img" alt=""></div>
+            <div class="name-discount">
+                <div class="name two-line">{{v.name}}</div> <div class="sold-discount"><div class="sold">
             月售{{v.sold}}
-        </div></div> <div class="add"><div class="p-u-o"><div class="price">
+        </div></div> 
+            </div>
+        
+        <div class="add"><div class="p-u-o"><div class="price">
                 ￥<span>{{v.price|price}}</span></div> <div class="unit">
                 /{{v.unit}}
             </div> <div class="originPrice">
                 ￥{{v.originPrice|price}}
-            </div></div> <i class="iconfont icon-tianjia"></i></div></div></li>
+            </div></div> <i @click="shareStore.addAction(good,$event)" class="iconfont icon-tianjia"></i></div></div></li>
     </ul>
 </section>
 </div>` }
+        const Sousuo = {
+            created:function(){
+                    this.history=action.getSearchHistory()
+                },
+            data: function () {
+               
+                return {
+                    history:[],
+                    isSearched:false,
+                    search_sort: 1,
+                    shareStore: store,
+                    search_text: "",
+                    goods: [{
+                        residue: 53,
+                        id: 1,
+                        name: "五角辣条",
+                        sold: 162,
+                        price: 9,
+                        unit: "袋",
+                        originPrice: 2.20,
+                        img: "http://img0.imgtn.bdimg.com/it/u=1650195230,4072566368&fm=26&gp=0.jpg",
+                        discount: "超级免单"
 
+                    }],
+                }
+            },
+            template: "#sousuo",
+            methods: {
+                search:function(){
+                   
+                    if(this.search_text){
+                        this.isSearched=true
+                        this.history.push(this.search_text)
+                    action.addSearchHistory(this.search_text)
+                    }
+                },
+                clearSearchText: function () {
+                    this.search_text = ""
+                    this.isSearched=false
+                },
+                clearSearchHistory:function(){
+                    this.history=[]
+                    action.clearSearchHistory()
+                },
+                toDetail: function (id) {
+
+                    this.$router.push('detail').catch(err => {
+                        console.log('输出报错', err)
+                    })
+                    // this.$router.push({ path: 'detail', query: { id: 2 } })
+                },
+            }
+        }
         const routes = [
             { path: '/detail', component: Detail },
+            { path: '/search', component: Sousuo },
         ]
 
         const router = new VueRouter({
@@ -592,6 +796,7 @@ this.$router.push('detail').catch(err => {
             data: {
                 shareStore: store,
                 active_menu_idx: 0,
+                routeTransition: "",
                 menu: [
                     {
                         name: "糖果巧克力",
@@ -743,6 +948,9 @@ this.$router.push('detail').catch(err => {
                 cart_goods: store.cart_goods,
             },
             methods: {
+                toSearch: function () {
+                    this.$router.push({ path: 'search' })
+                },
                 toDetail: function (id) {
                     this.$router.push({ path: 'detail', query: { id: id } })
                 },
@@ -817,6 +1025,11 @@ this.$router.push('detail').catch(err => {
                 // }
             },
             watch: {
+                //                 '$route' (to, from) {
+                //     const toDepth = to.path.split('/').length
+                //     const fromDepth = from.path.split('/').length
+                //     this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+                //   },
                 cart_goods: function (val, oldVal) {
                     this.cartLength = val.length
                 },

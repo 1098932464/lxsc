@@ -1,0 +1,96 @@
+@mixin chaoshi_item {
+    .item {
+        >div {
+            margin-bottom: vw(2);
+            line-height: 1.5;
+        }
+
+        .img-wrapper {
+            position: relative;
+            height: vw(120);
+            max-width: 100%;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+
+            .xianliang {
+                display: inline-block;
+                line-height: 1.5;
+                vertical-align: middle;
+                font-size: vw(12);
+                padding-right: vw(10);
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                color: #fff;
+                background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+                clip-path: polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%);
+            }
+        }
+        .name-discount{
+            height: vw(56);
+        }
+
+        .name {
+            line-height: 1.2;
+            font-size: vw(13);
+            font-weight: 600;
+        }
+
+        .sold-discount {
+            display: flex;
+            font-size: vw(12);
+
+            .sold {
+                color: $color1;
+                margin-right: vw(5);
+            }
+
+            .discount {
+                color: #ff9d76;
+            }
+        }
+
+        .add {
+            position: relative;
+            white-space: nowrap;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+
+            .p-u-o {
+                display: flex;
+                align-items: baseline;
+            }
+
+            .price {
+                font-size: vw(12);
+
+                span {
+                    color: #da2d2d;
+                    font-weight: bold;
+                    font-size: vw(20);
+                }
+            }
+
+            .unit,
+            .originPrice {
+                font-size: vw(12);
+                color: $color1;
+            }
+
+            .originPrice {
+                text-decoration: line-through;
+            }
+
+            i {
+                justify-self: flex-end;
+                color: #64e291;
+                font-size: vw(20);
+            }
+        }
+
+    }
+}
