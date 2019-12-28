@@ -92,6 +92,17 @@ textarea {
   *zoom: 1;
 }
 
+.asd-kf {
+  position: fixed;
+  left: 2.66667vw;
+  top: 80%;
+  z-index: 100;
+}
+
+.asd-kf img {
+  width: 13.33333vw;
+}
+
 .product-detail {
   background-color: #fff;
   padding: 2.66667vw;

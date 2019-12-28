@@ -56,6 +56,9 @@ $fontsize30:my-px2vw(30);
     flex-wrap: wrap;
     padding: vw(8);
     justify-content: space-between;
+    height: vw(500);
+    align-items: flex-start;
+    overflow-y: auto;
     .item-wrapper {
         background-color: #fff;
         width: vw(175);

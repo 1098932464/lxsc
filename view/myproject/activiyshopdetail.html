@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../static/css/shopPhotoSlide.css?shareshopversion=1.1.1.191114" type="text/css">
     <link rel="stylesheet" href="../css/dySlider.css">
     <link rel="stylesheet" href="../static/css/swiper.min.css">
+    <link rel="stylesheet" href="../css/animate.min.css">
     <style>
     #card-wrapper,#item-wrapper{
         display: none;
@@ -54,6 +55,7 @@
 </head>
 
 <body>
+    <a href="tel:165416446" class="asd-kf sp-drag"><img class="animated shake" src="http://manage.yihuoshidai.com/files/a1d34b7f-dabe-40cc-a7b1-0867c5c97637.png" alt=""></a>
     <header class="sp-header">
         <a href="javascript:history.back();" class="lf"><i class="iconfont icon-zuo1"></i></a>
         <div class="title">商铺活动</div>
@@ -436,7 +438,29 @@
     <script src="../js/selector.js"></script>
     <script src="../js/activiyshopdetail.js"></script>
     <script>
-    
+    // 拖动图片
+    $(function(){
+        $(".sp-drag").on('touchstart',function(ev){
+          
+           var touch=ev.touches[0]
+            var left=touch.pageX
+            var top=touch.pageY
+            var p= $(this).position()
+            this.drag_offset={
+                left:left-p.left,
+                top:top-p.top
+            }
+            ev.stopPropagation()
+        }).on('touchmove',function(ev){
+            ev.preventDefault()
+            var touch=ev.touches[0]
+            var left=touch.pageX
+            var top=touch.pageY
+            $(this).css({
+                left:left-this.drag_offset.left,top:top-this.drag_offset.top
+            })
+        })
+    })
 </script>
 </body>
 

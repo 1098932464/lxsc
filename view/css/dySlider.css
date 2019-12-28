@@ -107,6 +107,7 @@ ul, li {
 .slider-wrapper {
   width: 100%;
   position: relative;
+  overflow: hidden;
   -webkit-clip-path: polygon(0% 0, 100% 0%, 100% 100%, 52% 100%, 50% 93%, 48% 100%, 0 100%);
           clip-path: polygon(0% 0, 100% 0%, 100% 100%, 52% 100%, 50% 93%, 48% 100%, 0 100%);
 }

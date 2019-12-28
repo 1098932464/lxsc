@@ -244,8 +244,8 @@ textarea {
   bottom: 40vw;
   right: 2.66667vw;
   z-index: 10;
-  width: 22.13333vw;
-  height: 18.66667vw;
+  width: 18.66667vw;
+  height: 16vw;
 }
 
 .fxz img {
@@ -254,7 +254,7 @@ textarea {
 }
 
 .fxz > div {
-  font-size: 3.73333vw;
+  font-size: 3.2vw;
   color: #fff;
   position: absolute;
   white-space: nowrap;

@@ -22,7 +22,7 @@
 <body>
     <div id="app">
         <div class="cs-bg"
-            style="background-image: url(http://img0.imgtn.bdimg.com/it/u=1099603176,1913748234&fm=26&gp=0.jpg);"></div>
+        :style="'background-image: url('+shop.logo+');'"></div>
         <header class="chaoshi-header search">
             <div class="back">
                 <a @click="$router.go(-1)"> <i class="iconfont icon-icon-arrow-left4"></i></a>
@@ -276,7 +276,7 @@
                     <input type="text" v-model.trim="search_text" placeholder="搜索店内商品">
                     <i v-show="search_text" class="iconfont icon-guanbi" @click="clearSearchText"></i>
                 </div>
-                <div class="btn" :class="{'active':search_text}" @click="search">搜索</div>
+                <div class="btn" :class="{'active':search_text}" @click="search(search_text)">搜索</div>
             </header>
             <section v-show="!isSearched" class="sousuo-container">
                 <!-- 搜索历史 -->
@@ -285,7 +285,7 @@
                     <i @click="clearSearchHistory" class="iconfont icon-shanchu"></i>
                 </div>
                 <ul class="sousuo-list">
-                    <li v-for="v of history" class="item">
+                    <li v-for="v of history" @click="search(v)" class="item">
                         <div>{{v}}</div>
                     </li>
                 </ul>
@@ -365,32 +365,35 @@
 
     <script>
         var action = {
+            sid:31,
             async getShopInfo() {
                 return await axios.get('/shopmoney/shoplist?sid=31')
             },
             getSearchHistory(){
-                var history=localStorage.getItem("shareshop_chaoshi_history")
+                var history=localStorage.getItem("shareshop_chaoshi_history_"+this.sid)
                 if(history){
                     history= JSON.parse(history)
                     }else{
-                        history=[]
+                        history={}
                     }
-                 return history
+                 return Object.keys(history)
                     
             },
             addSearchHistory(text){
-                var history=localStorage.getItem("shareshop_chaoshi_history")
+                var history=localStorage.getItem("shareshop_chaoshi_history_"+this.sid)
                 if(history){
                     history= JSON.parse(history)
-                    history.push(text)
+                    history[text]=text
                     history=JSON.stringify(history)
                 }else{
-                    history=JSON.stringify([text])
+                    history={}
+                    history[text]=text
+                    history=JSON.stringify(history)
                 }
-                localStorage.setItem("shareshop_chaoshi_history",history)
+                localStorage.setItem("shareshop_chaoshi_history_"+this.sid,history)
             },
             clearSearchHistory(){
-                localStorage.removeItem("shareshop_chaoshi_history")
+                localStorage.removeItem("shareshop_chaoshi_history_"+this.sid)
             }
         }
         var throwBall = function (ev) {
@@ -737,12 +740,12 @@
             },
             template: "#sousuo",
             methods: {
-                search:function(){
-                   
-                    if(this.search_text){
+                search:function(text){
+                    if(text){
+                        this.search_text=text
                         this.isSearched=true
-                        this.history.push(this.search_text)
                     action.addSearchHistory(this.search_text)
+                        this.history=action.getSearchHistory()
                     }
                 },
                 clearSearchText: function () {
