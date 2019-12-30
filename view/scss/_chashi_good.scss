@@ -28,6 +28,19 @@
                 background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
                 clip-path: polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%);
             }
+            .zslxb{
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 6.4vw;
+                font-size: 3.2vw;
+                line-height: 6.4vw;
+                color: #fff;
+                background: linear-gradient(132deg, #f34848, #ff5000);
+                border-bottom-right-radius: vw(20);
+                padding: 0 2.66667vw 0 2vw;
+                z-index: 2;
+            }
         }
         .name-discount{
             height: vw(56);

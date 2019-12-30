@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>超级免单</title>
+    <link rel="stylesheet" href="../css/screen.css">
+    <link rel="stylesheet" href="../css/spcommon.css">
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <link rel="stylesheet" href="../css/cjmd.css">
+</head>
+<body>
+    <div id="app">
+        <header class="sp-header">
+            <a href="javascript:history.back();" class="lf"><i class="iconfont icon-zuo1"></i></a>
+            <div class="title">超级免单</div>
+        </header>
+        <div class="h-45"></div>
+        <div v-show="mask_show" @click="handleMask" class="sp-mask"></div>
+        <!-- 免单进度 -->
+        <div v-show="md_show" class="mdjd-wrapper">
+            <div class="title">分享{{md.condition}}人就可以免单</div>
+            <div v-show="md.condition==md.persons.length" class="tips">
+                <img src="http://manage.yihuoshidai.com/files/7d81abf8-9d34-442f-b8ec-48712b7ac8e0.jpg" alt="">
+                <div>免单达成！！！</div>
+            </div>
+            <div>
+
+            </div>
+            <ul class="md-list">
+                <li v-for="p of md.persons" class="item">
+                    <img :src="p.img" alt="">
+                    <div>{{p.name}}</div>
+                </li>
+                <li v-for="count of md.condition-md.persons.length<0?0:md.condition-md.persons.length" class="item">
+                    <img src="http://manage.yihuoshidai.com/files/fade5c01-0c42-40ec-afa1-727be3beb6f8.png" alt="">
+                    <div>-</div>
+                </li>
+               
+               
+             
+            </ul>
+        </div>
+        <div v-for="order of orders" class="cjmd-card">
+            <div class="md-wrapper">
+                <div class="dm-jd">
+                    <div class="dm two-line"> <img src="http://img4.imgtn.bdimg.com/it/u=2546373920,3788319606&fm=26&gp=0.jpg" alt=""> {{order.shop_name}}</div>
+                    <div class="jd" @click="showMianDan(order.id)">查看免单进度</div>
+                </div>
+                <ul class="item-list">
+
+                    <li v-for="good of order.goods" class="item">
+                        <img :src="good.img" alt="">
+                        <div class="content">
+                            <div class="zb">
+                                <div class="spmz two-line">{{good.name}}</div>
+                                <div class="guige">{{good.guige}}</div>
+                            </div>
+                            <div class="yb">
+                                <div class="jg">￥{{good.price}}</div>
+                                <div class="num">x {{good.num}}</div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="hj-wrapper">
+                    <div class="hj">
+                        共{{order.total_num}}件商品 合计:￥{{order.total_price}}
+                    </div>
+                </div>
+                <div class="btn-wrapper">
+                    <div v-if="order.state==1" class="btn">以免单</div>
+                    <div v-else-if="order.state==2" class="btn active">条件达成</div>
+                    <div v-else-if="order.state==3" class="btn wdc">条件未达成</div>
+                </div>
+            </div>
+          
+        </div>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+    var app=new Vue({
+        el:"#app",
+        data:{
+            md_show:false,
+            mask_show:false,
+            md:{
+                condition:-10,
+                persons:[
+                    {
+                        img:"https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=a9e671b9a551f3dedcb2bf64a4eff0ec/4610b912c8fcc3cef70d70409845d688d53f20f7.jpg",
+                        name:"麻花藤"
+                    }
+                ]
+            },
+            orders:[{
+                id:1,
+                total_num:2,
+                total_price:100,
+                shop_name:" 店名店名店名店名店名店名店名店名店名店名店名店名店名店名店名店名",
+                state:3,//1以免单 2条件达成 3条件未达成
+                goods:[{
+                    img:"http://img2.imgtn.bdimg.com/it/u=2594606066,1233403812&fm=26&gp=0.jpg",
+                    name:"品胜充电器头2A安插头插头插头插头插头充iPhone6s/7P/iPad通用插头插头插头插头插头",
+                    guige:"品胜平板手机2A双USB充电器插头通用快速充电头3C认证 快速充电 安全通用 放心售后",
+                    price:268.00,
+                    num:2,
+           
+                   
+                },{
+                    img:"http://img2.imgtn.bdimg.com/it/u=2594606066,1233403812&fm=26&gp=0.jpg",
+                    name:"品胜充电器头2A安插头插头插头插头插头充iPhone6s/7P/iPad通用插头插头插头插头插头",
+                    guige:"品胜平板手机2A双USB充电器插头通用快速充电头3C认证 快速充电 安全通用 放心售后",
+                    price:268.00,
+                    num:2,
+               
+                },{
+                    img:"http://img2.imgtn.bdimg.com/it/u=2594606066,1233403812&fm=26&gp=0.jpg",
+                    name:"品胜充电器头2A安插头插头插头插头插头充iPhone6s/7P/iPad通用插头插头插头插头插头",
+                    guige:"品胜平板手机2A双USB充电器插头通用快速充电头3C认证 快速充电 安全通用 放心售后",
+                    price:268.00,
+                    num:2,
+         
+                },{
+                    img:"http://img2.imgtn.bdimg.com/it/u=2594606066,1233403812&fm=26&gp=0.jpg",
+                    name:"品胜充电器头2A安插头插头插头插头插头充iPhone6s/7P/iPad通用插头插头插头插头插头",
+                    guige:"品胜平板手机2A双USB充电器插头通用快速充电头3C认证 快速充电 安全通用 放心售后",
+                    price:268.00,
+                    num:2,
+                
+                }
+                ]
+            }]
+        },
+        methods:{
+            showMianDan(oid){
+                this.mask_show=true
+                this.md_show=true
+                // 获取免单信息
+            },
+            handleMask(){
+                this.mask_show=false
+                this.md_show=false
+            }
+        }
+    })
+    </script>
+</body>
+</html>

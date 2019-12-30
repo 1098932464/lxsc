@@ -108,8 +108,22 @@ ul, li {
   width: 100%;
   position: relative;
   overflow: hidden;
-  -webkit-clip-path: polygon(0% 0, 100% 0%, 100% 100%, 52% 100%, 50% 93%, 48% 100%, 0 100%);
-          clip-path: polygon(0% 0, 100% 0%, 100% 100%, 52% 100%, 50% 93%, 48% 100%, 0 100%);
+}
+
+.slider-wrapper::after {
+  content: "";
+  display: block;
+  width: 2.66667vw;
+  height: 2.66667vw;
+  background-color: #fff;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  bottom: 0;
+  -webkit-clip-path: polygon(0% 100%, 50% 0, 100% 100%);
+          clip-path: polygon(0% 100%, 50% 0, 100% 100%);
+  z-index: 1;
 }
 
 .slider-wrapper .slider-bg {

@@ -1,0 +1,262 @@
+html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input, textarea, th, td, select {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  font-family: "Microsoft YaHei";
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  border: none;
+  vertical-align: middle;
+}
+
+a {
+  text-decoration: none;
+  color: #232323;
+}
+
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+input, textarea {
+  outline: none;
+  border: none;
+}
+
+textarea {
+  resize: none;
+  overflow: auto;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+.clearfix:after {
+  content: ".";
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
+  overflow: hidden;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.tl {
+  text-align: left;
+}
+
+.tc {
+  text-align: center;
+}
+
+.tr {
+  text-align: right;
+}
+
+.ellipse {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.inline {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.mescroll-totop {
+  bottom: 16vw !important;
+}
+
+.index-rank-wrapper {
+  padding: 0 2.66667vw;
+}
+
+.index-rank {
+  background-color: #fff;
+}
+
+.index-rank .item-wrapper {
+  font-size: 3.2vw;
+  margin-bottom: 2.66667vw;
+  height: 13.33333vw;
+  overflow: hidden;
+}
+
+.index-rank .item-wrapper:last-child {
+  margin-bottom: 0;
+}
+
+.index-rank .item-wrapper .item {
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 9.33333vw 13.33333vw 18.66667vw 14.66667vw 13.33333vw 1fr;
+      grid-template-columns: 9.33333vw 13.33333vw 18.66667vw 14.66667vw 13.33333vw 1fr;
+  -webkit-column-gap: 1.33333vw;
+          column-gap: 1.33333vw;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.index-rank .item-wrapper .item > div {
+  max-height: 13.33333vw;
+}
+
+.index-rank .item-wrapper .item .ph {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.index-rank .item-wrapper .item .ph .num {
+  font-size: 3.2vw;
+  margin-bottom: 1.33333vw;
+}
+
+.index-rank .item-wrapper .item .ph .num.top {
+  text-align: center;
+  line-height: 5.33333vw;
+  color: #fff;
+  font-weight: bold;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 5.33333vw;
+  height: 5.33333vw;
+}
+
+.index-rank .item-wrapper .item .ph .num.top-1 {
+  background-image: url(http://manage.yihuoshidai.com/files/552e9b35-2fe4-49a1-b434-c2ff66595732.png);
+}
+
+.index-rank .item-wrapper .item .ph .num.top-2 {
+  background-image: url(http://manage.yihuoshidai.com/files/fae30e5d-de35-4c62-a0d5-13911f1df21c.png);
+}
+
+.index-rank .item-wrapper .item .ph .num.top-3 {
+  background-image: url(http://manage.yihuoshidai.com/files/3b851f69-26bd-4f4a-a70d-1a0246377986.png);
+}
+
+.index-rank .item-wrapper .item .ph .img-wrapper {
+  width: 3.2vw;
+}
+
+.index-rank .item-wrapper .item .ph .img-wrapper.new {
+  display: inline-block;
+  width: unset;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, orange), to(red));
+  background-image: linear-gradient(orange 0, red 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.index-rank .item-wrapper .item img {
+  width: 100%;
+  height: 100%;
+}
+
+.index-rank .item-wrapper .item .spmz {
+  -webkit-line-clamp: 3;
+  line-height: 1.4;
+}
+
+.index-rank .item-wrapper .item .guige {
+  text-align: center;
+  overflow: hidden;
+  color: #777;
+}
+
+.index-rank .item-wrapper .item .guige > div:first-child {
+  margin-bottom: 1.33333vw;
+}
+
+.index-rank .item-wrapper .item .jg {
+  height: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.index-rank .item-wrapper .item .jg img {
+  width: 3.2vw;
+  height: 3.2vw;
+}
+
+.index-rank .item-wrapper .item .jg span {
+  color: #b55a19;
+  font-size: 3.2vw;
+  word-break: break-all;
+}
+
+.index-rank .item-wrapper .item .gxq {
+  white-space: nowrap;
+}
+
+.index-rank .item-wrapper .item .gxq .tx-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 5.33333vw;
+}
+
+.index-rank .item-wrapper .item .gxq .tx-list .tx {
+  width: 6.93333vw;
+  height: 6.93333vw;
+  border-radius: 50%;
+  border: 0.53333vw solid #fff;
+  overflow: hidden;
+  margin-left: -5.33333vw;
+}
+
+.index-rank .item-wrapper .item .gxq .tx-list .tx img {
+  width: 100%;
+  height: 100%;
+}
+/*# sourceMappingURL=indexRank.css.map */

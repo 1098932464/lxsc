@@ -1,0 +1,171 @@
+@import "spvarious";
+$color1: #777;
+$pricecolor1:rgb(181, 90, 25);
+.h-45{
+    height: vw(45);
+}
+.sp-header{
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.mdjd-wrapper{
+    position: fixed;
+    z-index: 1001;
+    top:15%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    width: vw(300);
+    padding: vw(15);
+    border-radius: vw(10) vw(10) 0 0;
+    min-height: vw(200);
+    max-height: vw(400);
+    overflow-y: scroll;
+    .md-list{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        row-gap: vw(8);
+
+        .item{
+            justify-self: center;
+            box-sizing: border-box;
+            width: vw(60);
+            text-align: center;
+            font-size: vw(13);
+            white-space: nowrap;
+            img{
+                border:1px solid #f7beff;
+                width: 100%;
+                height: vw(60);
+                border-radius: 50%;
+                margin-bottom: vw(5);
+            }
+        }
+    }
+    .title{
+        text-align: center;
+        font-size: vw(15);
+        font-weight: 600;
+        color: #fa163f;
+        margin-bottom: vw(15);
+    }
+    .tips{
+        text-align: center;
+        img{
+            border-radius: vw(6);
+            width: 50%;
+            margin-bottom: vw(10);
+        }
+        div{
+            font-weight: 600;
+            font-size: vw(20);
+           color:#fa163f ;
+        }
+        margin-bottom: vw(15);
+    }
+}
+.cjmd-card{
+
+    margin: vw(10);
+}
+.md-wrapper{
+    padding: vw(10);
+    border-radius: vw(10);
+    background-color: #fff;
+    .btn-wrapper{
+        display: flex;
+        justify-content: flex-end;
+        font-size: vw(13);
+        .btn{
+            box-shadow:1px 3px 3px #916dd5;
+            color: #f0e3ff;
+            border-radius: vw(5);
+            padding: vw(5) vw(10);
+            background-image: linear-gradient(#e1ccec 0,#be9fe1 100%);
+            &.active{
+                box-shadow:1px 3px 3px #c10000;
+                background-image: linear-gradient(90deg,#ff4949 0,#c10000 100%);
+            }
+            &.wdc{
+                color: #113f67;
+                box-shadow:1px 3px 3px #e2ebf0;
+                background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+            }
+        }
+    }
+    .hj-wrapper{
+        display: flex;
+        justify-content: flex-end;
+        font-size: vw(13);
+        margin-bottom: vw(10);
+    }
+    .dm-jd{
+        display: flex;
+        .dm{
+            width: 60%;
+            font-size: vw(15);
+            font-weight: 600;
+            overflow: hidden;
+            img{
+                width: vw(15);
+                height: vw(15);
+               
+            }
+            margin-bottom: vw(5);
+        }
+        .jd{
+            text-align: right;
+            width: 40%;
+            font-size: vw(14);
+            color: #12cad6;
+        }
+    }
+    .item-list{
+        .item{
+            display: flex;
+            .content{
+                display: flex;
+                line-height: 1.5;
+                margin-bottom: vw(10);
+                .zb{
+                    width: vw(180);
+                    box-sizing: border-box;
+                    padding-right: vw(5);
+                    .spmz{
+                        font-size: vw(14);
+                        font-weight: 500;
+                        word-break: break-all;
+                    }
+                    .guige{
+                        line-height: 1.2;
+                        font-size: vw(12);
+                        color: #aaa;
+                    }
+                }
+                .yb{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
+                    width: vw(85);
+                    .jg{
+                        font-size: vw(16);
+                        font-weight: 500;
+                    }
+                    .num{
+                        color: #aaa;
+                        font-size: vw(12);
+                    }
+                }
+            }
+          
+            img{
+                margin-right: vw(5);
+                width: vw(60);
+                height: vw(60);
+            }
+           
+        }
+    }
+}

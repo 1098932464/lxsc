@@ -191,6 +191,20 @@ textarea {
           clip-path: polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%);
 }
 
+.sousuo-goods .item-wrapper .item .img-wrapper .zslxb {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 6.4vw;
+  font-size: 3.2vw;
+  line-height: 6.4vw;
+  color: #fff;
+  background: linear-gradient(132deg, #f34848, #ff5000);
+  border-bottom-right-radius: 5.33333vw;
+  padding: 0 2.66667vw 0 2vw;
+  z-index: 2;
+}
+
 .sousuo-goods .item-wrapper .item .name-discount {
   height: 14.93333vw;
 }

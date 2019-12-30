@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="full-screen" content="yes">
+<meta name="x5-fullscreen" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/screen.css">
+    <link rel="stylesheet" href="../css/spcommon.css">
+    <link rel="stylesheet" href="../static/css/font/iconfont.css">
+    <link rel="stylesheet" href="../css/indexRank.css">
+    <link rel="stylesheet" href="https://unpkg.com/mescroll.js@1.4.1/mescroll.min.css">
+    <script src="https://unpkg.com/mescroll.js@1.4.1/mescroll.min.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="mescroll" class="mescroll index-rank-wrapper">
+        <ul class="index-rank"> 
+         
+        </ul>
+     </div>
+
+   <script src="../static/js/jquery.min.js"></script>
+    <script>
+        var paihang_num=0
+        var mescroll = new MeScroll("mescroll", { 
+				down: {
+				use:false
+				},
+				up: {
+					callback: upCallback, //上拉加载的回调
+					//以下是一些常用的配置,当然不写也可以的.
+					page: {
+						num: 0, //当前页 默认0,回调之前会加1; 即callback(page)会从1开始
+						size: 10 //每页数据条数,默认10
+					},
+					htmlNodata: '<p class="upwarp-nodata"> 我是有底线的~~~ </p>',
+					noMoreSize: 5, //如果列表已无数据,可设置列表的总数量要大于5才显示无更多数据;
+					
+					toTop: {
+						//回到顶部按钮
+						src: "http://manage.yihuoshidai.com/files/c2adeeaa-0e45-4286-9ab8-1e375b631eb5.png", //图片路径,默认null,支持网络图
+						offset: 1000 //列表滚动1000px才显示回到顶部按钮	
+					},
+					// empty: {
+					// 	//列表第一页无任何数据时,显示的空提示布局; 需配置warpId才显示
+					// 	warpId:	"xxid", //父布局的id (1.3.5版本支持传入dom元素)
+					// 	icon: "../img/mescroll-empty.png", //图标,默认null,支持网络图
+					// 	tip: "暂无相关数据~" //提示
+					// },
+					lazyLoad: {
+		        			use: true ,// 是否开启懒加载,默认false
+		        			attr: 'imgurl' // 标签中网络图的属性名 : <img imgurl='网络图  src='占位图''/>
+		        		}
+				}
+            });
+            
+            function upCallback(page) {
+			var pageNum = page.num; // 页码, 默认从1开始 如何修改从0开始 ?
+            var pageSize = page.size; // 页长, 默认每页10条
+                var start=(pageNum-1)*pageSize
+                var str=""
+                
+                $.get("/api/product/productlist?first="+start+"&count="+pageSize,function(data){
+                    for(let item of data.data){
+                        paihang_num++
+                        let num_str="<div class=\"num\">"+paihang_num+"</div>\n"
+                        if(paihang_num==1){
+                            num_str="<div class=\"num top top-1\">1</div>\n"
+                        }else if(paihang_num==2){
+                            num_str="<div class=\"num top top-2\">2</div>\n"
+                        }else if(paihang_num==3){
+                            num_str="<div class=\"num top top-3\">3</div>\n"
+                        }
+                        let guige=""
+                        for(let s of item.discountList){
+                            guige+=s.title
+                        }
+                        str+="<li class=\"item-wrapper\">\n" +
+"            <a class=\"item\">\n" +
+"                <div class=\"ph\">\n" +
+ num_str +
+"                    <div class=\"img-wrapper\"><img\n" +
+"                            src=\"http://manage.yihuoshidai.com/files/37252e1d-d6a9-4e27-beeb-f9aa7d3c6d5d.png\" alt=\"\">\n" +
+"                    </div>\n" +
+"                    <!-- <div><img src=\"http://manage.yihuoshidai.com/files/5dd5d407-9764-4afb-ab43-29d8d4fc86d5.png\" alt=\"\"></div> -->\n" +
+"                </div>\n" +
+"                <!-- 商品图片 -->\n" +
+"     \n" +
+"                    <img src=\""+item.img+
+"\" alt=\"\">\n" +
+"   \n" +
+"                <!-- 名字 -->\n" +
+"                <div class=\"spmz two-line\">\n" +
+    item.name +
+"                </div>\n" +
+"                <div class=\"guige\">\n" +
+"                    <div>\n" +guige+
+"                    </div>\n" +
+"                </div>\n" +
+"                <div class=\"jg\">\n" +
+"                    <img src=\"http://manage.yihuoshidai.com/files/2d3794f0-3e73-4592-a868-c55a99b6ef81.png\" alt=\"\">\n" +
+"                    <span>"+item.price+"</span>\n" +
+"                </div>\n" +
+"                <div class=\"gxq\">\n" +
+"                    <ul class=\"tx-list\">\n" +
+"                        <li class=\"tx\">\n" +
+"                            <img src=\"https://wx.qlogo.cn/mmhead/CKibrMLPibsL09FnhxLHLzEK0Z0BSWibibAYqPzw0Zh4dUo/132\"\n" +
+"                                alt=\"\">\n" +
+"                        </li>\n" +
+"                        <li class=\"tx\">\n" +
+"                            <img src=\"https://wx.qlogo.cn/mmhead/CKibrMLPibsL09FnhxLHLzEK0Z0BSWibibAYqPzw0Zh4dUo/132\"\n" +
+"                                alt=\"\">\n" +
+"                        </li>\n" +
+"                        <li class=\"tx\">\n" +
+"                            <img src=\"https://wx.qlogo.cn/mmhead/CKibrMLPibsL09FnhxLHLzEK0Z0BSWibibAYqPzw0Zh4dUo/132\"\n" +
+"                                alt=\"\">\n" +
+"                        </li>\n" +
+"                        <li class=\"tx\">\n" +
+"                            <img src=\"https://wx.qlogo.cn/mmhead/CKibrMLPibsL09FnhxLHLzEK0Z0BSWibibAYqPzw0Zh4dUo/132\"\n" +
+"                                alt=\"\">\n" +
+"                        </li>\n" +
+"                        <li class=\"tx\">\n" +
+"                            <img src=\"https://wx.qlogo.cn/mmhead/CKibrMLPibsL09FnhxLHLzEK0Z0BSWibibAYqPzw0Zh4dUo/132\"\n" +
+"                                alt=\"\">\n" +
+"                        </li>\n" +
+"                        <li class=\"tx\">\n" +
+"                            <img src=\"http://manage.yihuoshidai.com/files/0c6dd24e-06a3-4863-aa3a-1a84c4f89562.png\"\n" +
+"                                alt=\"\">\n" +
+"                        </li>\n" +
+"                    </ul>\n" +item.hitnumber+
+"                    人感兴趣\n" +
+"                </div>\n" +
+"            </a>\n" +
+"        </li>"
+                        
+                    }
+                    $('.index-rank').append(str);
+                        mescroll.endBySize(data.length, data.num);
+                })
+            
+                     
+                        
+            }
+			
+		
+
+       
+    </script>
+</body>
+
+</html>

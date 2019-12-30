@@ -81,6 +81,7 @@
                             <li v-for="(v,idx) in activity_goods" class="item-wrapper" :key="v.id">
                                 <div class="item">
                                     <div class="img-wrapper" @click="toDetail(v.id)">
+                                        <div class="zslxb">赠500利享币</div>
                                         <div class="xianliang" v-if="v.discount">
                                             超级免单
                                             <!-- {{v.discount.value}}折
@@ -318,9 +319,9 @@
                         <li v-for="(v,idx) in goods" class="item-wrapper" :key="v.id">
                             <div class="item">
                                 <div class="img-wrapper" @click="toDetail(v.id)">
+                                   
                                     <div class="xianliang" v-if="v.discount">
                                         超级免单
-
                                     </div>
                                     <img :src="v.img" alt="">
                                 </div>

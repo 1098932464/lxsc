@@ -507,6 +507,9 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 
 .as-nav-wrapper .as-nav:nth-child(2n) {
@@ -530,10 +533,30 @@ body {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .as-nav-wrapper .as-nav .nav-list .nav-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 20%;
   padding: 0 1.33333vw;
+}
+
+.as-nav-wrapper .as-nav .nav-list .nav-item img {
+  width: 10.66667vw;
+  height: 10.66667vw;
+  margin-right: 0.53333vw;
 }
 
 .as-nav-wrapper .as-nav .nav-list .nav-item.active {
@@ -545,26 +568,26 @@ body {
   font-size: 3.73333vw;
   padding: 0 2.66667vw 0 15%;
   display: none;
-  -ms-grid-columns: (20%)[5];
-      grid-template-columns: repeat(5, 20%);
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   overflow: hidden;
   -webkit-transition: height 1s linear;
   transition: height 1s linear;
 }
 
 .as-nav-wrapper .nav-collapse.active {
-  display: -ms-grid;
-  display: grid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .as-nav-wrapper .nav-collapse > div {
+  padding: 0 2.13333vw;
   color: #777;
   margin: 1.33333vw;
   background-color: #ece8e8;
   border-radius: 5.33333vw;
   text-align: center;
-  height: 6.66667vw;
-  line-height: 6.66667vw;
 }
 
 .as-nav-wrapper .nav-collapse > div.active {
