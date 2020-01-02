@@ -103,6 +103,7 @@ $fontsize30:my-px2vw(30);
         padding: 0 vw(12) vw(20);
         line-height: 1;
         .title {
+            height: vw(46);
             padding-top: vw(10);
             white-space: normal;
             margin-bottom: vw(10);
@@ -361,7 +362,7 @@ body{
         box-sizing: border-box;
         padding-left: vw(5);
         border-left: 3px solid  rgba(135,224,253,1);
-        width: 15%;
+        width: 12%;
         font-weight: bold;
     }
     .nav-list{
@@ -374,10 +375,15 @@ body{
             flex-direction: column;
             align-items: center;
             width: 20%;
+            &:first-child{
+                margin-left: vw(-5);
+                padding-left: 0;
+            }
             img{
              width: vw(40);
              height: vw(40);
              margin-right: vw(2);
+             margin-bottom: vw(5);
             }
             padding: 0 $innerPadding;
             &.active{

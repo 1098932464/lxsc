@@ -155,9 +155,24 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   color: #777;
+  white-space: nowrap;
+}
+
+.mflq-good2 a .top .content .pf-dz .zb {
+  overflow: hidden;
+}
+
+.mflq-good2 a .top .content .pf-dz .yb {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .mflq-good2 a .top .content .pf-dz .pf {
+  width: 60%;
   color: #ff6201;
 }
 
@@ -167,6 +182,12 @@ body {
 
 .mflq-good2 a .top .content .pf-dz .pf, .mflq-good2 a .top .content .pf-dz .fj {
   margin-right: 1.33333vw;
+}
+
+.mflq-good2 a .top .content .pf-dz .fj {
+  width: 40vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .mflq-good2 a .top .content .bt .dm {
@@ -184,10 +205,6 @@ body {
   font-size: 3.73333vw;
   color: #777;
   vertical-align: text-bottom;
-}
-
-.mflq-good2 a .bottom {
-  height: 33vw;
 }
 
 .mflq-good2 a .bottom .zp-list {

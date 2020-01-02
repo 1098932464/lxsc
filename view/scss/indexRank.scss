@@ -1,7 +1,14 @@
 @import "spvarious";
 $color1: #777;
 $pricecolor1:rgb(181, 90, 25);
-
+.ph_tou{
+    display: grid;
+    grid-template-columns: vw(25) vw(75) vw(110) vw(50) 1fr;
+    font-size: vw(14);
+    text-align: center;
+    padding: vw(10) 0;
+    color: $color1;
+}
 .mescroll-totop {
     bottom: vw(60) !important;
 }
@@ -16,11 +23,25 @@ $pricecolor1:rgb(181, 90, 25);
 
 
     .item-wrapper {
+        position: relative;
         font-size: vw(12);
         margin-bottom: vw(10);
-        height: vw(50);
+ 
         overflow: hidden;
-
+        .sold-out2{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            background-color: rgba(0,0,0,.2);
+            top: 0;
+            left: 0;
+            color: #fff;
+            font-size: vw(15);
+            font-weight: 600;
+        }
         &:last-child {
             margin-bottom: 0;
         }
@@ -28,13 +49,15 @@ $pricecolor1:rgb(181, 90, 25);
         .item {
             height: 100%;
             display: grid;
-            grid-template-columns: vw(35) vw(50) vw(70) vw(55) vw(50) 1fr;
+            grid-template-columns: vw(25) vw(75) vw(110) vw(50) 1fr;
             column-gap: vw(5);
             align-items: center;
             justify-content: center;
-
+            .ph-tp{
+                height: vw(75);
+            }
             >div {
-                max-height: vw(50);
+                max-height: vw(75);
             }
 
             .ph {
@@ -88,7 +111,7 @@ $pricecolor1:rgb(181, 90, 25);
             }
 
             .spmz {
-                
+                word-break: break-all;
                 -webkit-line-clamp: 3;
                 line-height: 1.4;
             }

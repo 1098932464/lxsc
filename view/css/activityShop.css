@@ -188,6 +188,7 @@ textarea {
 }
 
 .item .info .title {
+  height: 12.26667vw;
   padding-top: 2.66667vw;
   white-space: normal;
   margin-bottom: 2.66667vw;
@@ -521,7 +522,7 @@ body {
           box-sizing: border-box;
   padding-left: 1.33333vw;
   border-left: 3px solid #87e0fd;
-  width: 15%;
+  width: 12%;
   font-weight: bold;
 }
 
@@ -553,10 +554,16 @@ body {
   padding: 0 1.33333vw;
 }
 
+.as-nav-wrapper .as-nav .nav-list .nav-item:first-child {
+  margin-left: -1.33333vw;
+  padding-left: 0;
+}
+
 .as-nav-wrapper .as-nav .nav-list .nav-item img {
   width: 10.66667vw;
   height: 10.66667vw;
   margin-right: 0.53333vw;
+  margin-bottom: 1.33333vw;
 }
 
 .as-nav-wrapper .as-nav .nav-list .nav-item.active {

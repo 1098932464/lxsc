@@ -318,21 +318,28 @@ function initGoodItem(data,onlyItem) {
     mySlider = new dySlider("dys2", {
         data: data,
         tap: function (el) {
-            if(!onlyItem){
-                $("#itemName.as-name .vipjg").html("会员卡价格￥<span>"+el.dataset.vipprice+"</span>")
-                $("#itemName.as-name .jg span").addClass("del") 
-            }else{
+            var sq=parseFloat(el.dataset.marketprice)-parseFloat(el.dataset.price)
+            var sq2=""
+            if(el.dataset.vipprice){
+                sq2=` <div class="hyksq">
+               <img src='http://manage.yihuoshidai.com/files/b67dda14-b368-457a-8418-4bc0ef27bf3f.png'> <span>使用本店会员卡再省${parseFloat(el.dataset.price)-parseFloat(el.dataset.vipprice)}元</span>
+            </div>`
+            }
+            $("#itemName").html(`   <div class="name">${el.dataset.name}</div>
+            <div class="jg-wrapper">
+                <div class="msj">门市价<span>￥${el.dataset.marketprice}</span>
+                </div>
+                <div class="lxj">利享价<span>${el.dataset.price}</span></div>
+                <div class="sq">省${sq}元</div>
+            </div>${sq2}
+           `)
+      
                 $("#itemMansong").html(" <li class=\"item\">\n" +
                 "                        <div class=\"text animated swing\">\n" +
                 "                            消费 <span>领</span> 2000利享币\n" +
                 "                        </div>\n" +
                 "                        <div class=\"btn animated shake\">参与活动</div>\n" +
                 "                    </li>")
-            }
-            $("#itemName.as-name .msj span").html(el.dataset.marketprice)
-            $("#itemName.as-name .mz").html(el.dataset.name)
-            $("#itemName.as-name .jg span").html(el.dataset.price)
-          
             $("#pic-text").html(' <p><img src="http://manage.yihuoshidai.com/files/b76c0fd1-924a-43bf-8fc9-4d3e2836f222.jpg" style="width: 831px;"><img src="http://manage.yihuoshidai.com/files/0ce50e22-23b4-47e3-9df5-18720a56f1f4.jpg" style="width: 790px;"><img src="http://manage.yihuoshidai.com/files/3e323331-57e8-419b-8bbf-92186222a745.jpg" style="width: 831px;"><img src="http://manage.yihuoshidai.com/files/f896128b-d36d-420c-849b-bd9caedc344a.jpg" style="width: 831px;"><img src="http://manage.yihuoshidai.com/files/11b58282-2dbd-4f36-b4d2-0b259cf28baa.jpg" style="width: 790px;"><img src="http://manage.yihuoshidai.com/files/8ee1ce15-50f6-4fed-bb45-75d9ca29bb67.jpg" style="width: 831px;"><img src="http://manage.yihuoshidai.com/files/2123e925-ed0c-474b-a0da-d1d830fd2e48.jpg" style="width: 831px;"><br></p>')
         }
     })
@@ -347,12 +354,19 @@ function initMySlider(data, onlyItem) {
         data:data,
         isVipcard: true,
         tap: function (el) {
-            $("#cardName.as-name .msj span").html(el.dataset.marketprice)
-            $("#cardName.as-name .mz").html(el.dataset.name)
-            $("#cardName.as-name .jg span").html(el.dataset.price)
+            var sq=parseFloat(el.dataset.marketprice)-parseFloat(el.dataset.price)
+            $("#cardName").html(` <div class="name">${el.dataset.name}</div>
+            <div class="jg-wrapper">
+                <div class="msj">门市价<span>￥${el.dataset.marketprice}</span>
+                </div>
+                <div class="lxj">￥<span>${el.dataset.price}</span></div>
+                <div class="sq">省${sq.toFixed(2)}元</div>
+            </div>`)
+          
+          
             $("#cardMansong").html(" <li class=\"item popup-btn\" data-target='#mypanel'>\n" +
                 "                        <div class=\"text animated swing\">\n" +
-                "                            满1000 <span class='b'>送</span> 2000利享币 \n" +
+                "                            下单即 <span class='b'>送</span> 2000利享币 \n" +
                 "                        </div>\n" +
                 "                        <div class=\"btn animated shake\">立即兑换</div>\n" +
                 "                    </li>")

@@ -8,7 +8,7 @@
     <title>商铺活动</title>
     <link rel="stylesheet" href="../css/screen.css">
     <link rel="stylesheet" href="../css/spcommon.css">
-    <link rel="stylesheet" href="../static/css/font/iconfont.css">
+    <link rel="stylesheet" href="../font/iconfont.css">
     <link rel="stylesheet" href="../css/activiyshopdetail.css">
     <link rel="stylesheet" href="../static/css/shopPhotoSlide.css?shareshopversion=1.1.1.191114" type="text/css">
     <link rel="stylesheet" href="../css/dySlider.css">
@@ -102,7 +102,19 @@
                 </ul>
     
             </div>
-            <div id="cardName" class="as-name"> 
+            <div id="cardName" class="asd-name">
+                <!-- <div class="name">私人订制会员卡</div>
+                <div class="jg-wrapper">
+                    <div class="msj">门市价<span>￥500</span>
+                    </div>
+                    <div class="lxj">利享价<span>450</span></div>
+                    <div class="sq">省50元</div>
+                </div>
+                <div class="hyksq">
+                    使用会员卡再省50元
+                </div> -->
+            </div>
+            <!-- <div id="cardName" class="as-name"> 
                 <div class="msj">
                     门市价￥<span></span> 
                 </div>
@@ -113,7 +125,7 @@
                     <div class="jg">
                             ￥<span></span> 
                         </div>
-                </div></div>
+                </div></div> -->
             <ul id="cardMansong" class="mansong">
     
             </ul>
@@ -126,22 +138,10 @@
             </ul>
 
         </div>
-        <div id="itemName" class="as-name">
-            <div class="msj">
-                门市价￥<span>100</span> 
-            </div>
-            <div class="mz-wrapper">
-                <div class="mz">
-
-                </div>
-                <div class="jg">
-                        ￥<span>100</span> 
-                    </div>
-                    <div class="vipjg">
-                    </div>
-            </div>
-            
+        <div id="itemName" class="asd-name">
+         
         </div>
+      
         <ul id="itemMansong" class="mansong">
 
         </ul>
@@ -174,8 +174,8 @@
         
                 </div>
         
-        
-                <div data-target="#pic-text" onclick="spMore(this)" class="sp-more">查看更多&nbsp;<i class="fas fa-angle-down"></i></div>
+                <div class="blur"></div>
+                <div data-target="#pic-text" onclick="spMore(this)" class="sp-more ">查看更多&nbsp;<i class="iconfont icon-xiala"></i></div>
             </section>
         
             <section id="info" class="sp-pi">
@@ -361,6 +361,22 @@
         </div>
 
     </section>
+    <footer class="asd-footer">
+        <div class="tb">
+            <i class="iconfont icon-shangpin1"></i>
+            <div>首页</div>
+        </div>
+        <div class="tb">
+            <i class="iconfont icon-lianxi"></i>
+            <div>客服</div>
+        </div>
+        <div class="btn"> 
+            <div class="ljgm" >
+                立即购买
+            </div>
+            <div class="sq">省￥50</div>
+        </div>
+    </footer>
     <!-- 相册全屏的轮播 -->
     <div>
         <div class="shop-slide-container">

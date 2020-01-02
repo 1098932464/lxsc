@@ -1,6 +1,67 @@
 @import "spvarious";
 $color1: #777;
 $pricecolor1:rgb(181, 90, 25);
+.mdgz{
+    position: relative;
+    margin: vw(10);
+    padding: vw(20);
+    background-color: #fffbef;
+    border-radius: vw(8);
+    border: vw(3) solid #f4921a;
+    box-shadow: 1px 1px 3px #f4921a;
+    font-size: vw(14);
+    color: #b5a38f;
+    line-height: 1.5;
+    .item{
+        display: flex;
+        img{
+            width: vw(20);
+            border-radius: 50%;
+            margin-right: vw(2);
+        }
+    }
+    .hdgz{
+        font-weight: 600;
+        font-size: vw(14);
+        color: #592e09;
+    }
+    .hdsm{
+        width: vw(80);
+        text-align: center;
+        padding: vw(5) vw(30);
+       margin: 0 auto;
+       margin-top: vw(-40);
+       height: vw(40);
+       font-size: vw(20);
+       background-color: #feda81;
+       border-radius: 0px 0px 30px 30px;
+       color: #592e09;
+       font-weight: 700;
+    }
+}
+.cjmd-card-list{
+    // background-color: #fff;
+    // margin: 0 vw(10);
+    // width: vw(355);
+    // border-radius: vw(8) vw(8) 0 0;
+}
+.tupian{
+    img{
+        width: 100%;
+    }
+}
+.bg{
+    width: 100vw;
+    position: fixed;
+    left: 0;
+    top: vw(45);
+    height: 100vh;
+    z-index: -1;
+    // background-image: url(http://img5.imgtn.bdimg.com/it/u=3225433739,3653486980&fm=26&gp=0.jpg);
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 .h-45{
     height: vw(45);
 }

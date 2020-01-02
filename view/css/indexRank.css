@@ -91,6 +91,17 @@ textarea {
   *zoom: 1;
 }
 
+.ph_tou {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 6.66667vw 20vw 29.33333vw 13.33333vw 1fr;
+      grid-template-columns: 6.66667vw 20vw 29.33333vw 13.33333vw 1fr;
+  font-size: 3.73333vw;
+  text-align: center;
+  padding: 2.66667vw 0;
+  color: #777;
+}
+
 .mescroll-totop {
   bottom: 16vw !important;
 }
@@ -104,10 +115,31 @@ textarea {
 }
 
 .index-rank .item-wrapper {
+  position: relative;
   font-size: 3.2vw;
   margin-bottom: 2.66667vw;
-  height: 13.33333vw;
   overflow: hidden;
+}
+
+.index-rank .item-wrapper .sold-out2 {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.2);
+  top: 0;
+  left: 0;
+  color: #fff;
+  font-size: 4vw;
+  font-weight: 600;
 }
 
 .index-rank .item-wrapper:last-child {
@@ -118,8 +150,8 @@ textarea {
   height: 100%;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 9.33333vw 13.33333vw 18.66667vw 14.66667vw 13.33333vw 1fr;
-      grid-template-columns: 9.33333vw 13.33333vw 18.66667vw 14.66667vw 13.33333vw 1fr;
+  -ms-grid-columns: 6.66667vw 20vw 29.33333vw 13.33333vw 1fr;
+      grid-template-columns: 6.66667vw 20vw 29.33333vw 13.33333vw 1fr;
   -webkit-column-gap: 1.33333vw;
           column-gap: 1.33333vw;
   -webkit-box-align: center;
@@ -130,8 +162,12 @@ textarea {
           justify-content: center;
 }
 
+.index-rank .item-wrapper .item .ph-tp {
+  height: 20vw;
+}
+
 .index-rank .item-wrapper .item > div {
-  max-height: 13.33333vw;
+  max-height: 20vw;
 }
 
 .index-rank .item-wrapper .item .ph {
@@ -199,6 +235,7 @@ textarea {
 }
 
 .index-rank .item-wrapper .item .spmz {
+  word-break: break-all;
   -webkit-line-clamp: 3;
   line-height: 1.4;
 }

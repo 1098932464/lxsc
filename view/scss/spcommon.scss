@@ -21,6 +21,9 @@ $fontsize14:my-px2vw(14);
 $fontsize12:my-px2vw(12);
 $fontsize20:my-px2vw(20);
 $fontsize30:my-px2vw(30);
+[v-cloak] {
+    display: none !important;
+  }
 .shop-msg{
     display: inline-block;
     position: fixed;
@@ -38,6 +41,12 @@ $fontsize30:my-px2vw(30);
     -webkit-line-clamp: 2;
     display: -webkit-box;
     -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.one-line{
+    text-overflow: ellipsis;
+    white-space: nowrap;
     overflow: hidden;
 }
 .del{

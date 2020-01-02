@@ -1,0 +1,171 @@
+html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input, textarea, th, td, select {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  font-family: "Microsoft YaHei";
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  border: none;
+  vertical-align: middle;
+}
+
+a {
+  text-decoration: none;
+  color: #232323;
+}
+
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+input, textarea {
+  outline: none;
+  border: none;
+}
+
+textarea {
+  resize: none;
+  overflow: auto;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+.clearfix:after {
+  content: ".";
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
+  overflow: hidden;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.tl {
+  text-align: left;
+}
+
+.tc {
+  text-align: center;
+}
+
+.tr {
+  text-align: right;
+}
+
+.ellipse {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.inline {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.lxbbzu-lq {
+  position: relative;
+  overflow: hidden;
+}
+
+.lxbbzu-lq .zt {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.lxbbzu-lq img {
+  width: 100%;
+}
+
+.lxbtj-list-wrapper {
+  background-color: #fff;
+  width: 100%;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 2.66667vw;
+  white-space: nowrap;
+}
+
+.lxbtj-list-wrapper .lxbtj-list {
+  display: inline-block;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  min-width: 100vw;
+}
+
+.lxbtj-list-wrapper .lxbtj-list .item {
+  display: inline-block;
+  margin-right: 1.33333vw;
+  line-height: 1;
+  background-color: #fffdf9;
+  padding: 2.66667vw;
+  text-align: center;
+}
+
+.lxbtj-list-wrapper .lxbtj-list .item img {
+  width: 29.33333vw;
+  border-radius: 0.8vw;
+  height: 18.66667vw;
+  margin-bottom: 1.33333vw;
+}
+
+.lxbtj-list-wrapper .lxbtj-list .item .name {
+  text-align: left;
+  white-space: normal;
+  height: 6.4vw;
+  max-width: 29.33333vw;
+  font-size: 3.2vw;
+  color: #777;
+  line-height: 1;
+  margin-bottom: 1.33333vw;
+}
+
+.lxbtj-list-wrapper .lxbtj-list .item .lxb {
+  text-align: left;
+}
+
+.lxbtj-list-wrapper .lxbtj-list .item .lxb .zs {
+  font-size: 3.2vw;
+  line-height: 1.2;
+  color: #b55a19;
+  font-weight: 700;
+}
+
+.lxbdhtj {
+  padding: 2.66667vw;
+  background-color: #fff;
+  font-size: 4vw;
+  font-weight: 700;
+}
+/*# sourceMappingURL=lxbdhtj.css.map */

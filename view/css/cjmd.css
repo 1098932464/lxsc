@@ -91,6 +91,68 @@ textarea {
   *zoom: 1;
 }
 
+.mdgz {
+  position: relative;
+  margin: 2.66667vw;
+  padding: 5.33333vw;
+  background-color: #fffbef;
+  border-radius: 2.13333vw;
+  border: 0.8vw solid #f4921a;
+  -webkit-box-shadow: 1px 1px 3px #f4921a;
+          box-shadow: 1px 1px 3px #f4921a;
+  font-size: 3.73333vw;
+  color: #b5a38f;
+  line-height: 1.5;
+}
+
+.mdgz .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.mdgz .item img {
+  width: 5.33333vw;
+  border-radius: 50%;
+  margin-right: 0.53333vw;
+}
+
+.mdgz .hdgz {
+  font-weight: 600;
+  font-size: 3.73333vw;
+  color: #592e09;
+}
+
+.mdgz .hdsm {
+  width: 21.33333vw;
+  text-align: center;
+  padding: 1.33333vw 8vw;
+  margin: 0 auto;
+  margin-top: -10.66667vw;
+  height: 10.66667vw;
+  font-size: 5.33333vw;
+  background-color: #feda81;
+  border-radius: 0px 0px 30px 30px;
+  color: #592e09;
+  font-weight: 700;
+}
+
+.tupian img {
+  width: 100%;
+}
+
+.bg {
+  width: 100vw;
+  position: fixed;
+  left: 0;
+  top: 12vw;
+  height: 100vh;
+  z-index: -1;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .h-45 {
   height: 12vw;
 }

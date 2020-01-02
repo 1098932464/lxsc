@@ -197,13 +197,16 @@ $fontsize30:my-px2vw(30);
        justify-self: center;
     }
 }
+.lxbtj-list-wrapper{
+    margin-bottom:vw(70);
+}
 
 .sp-more-good{
     box-sizing: border-box;
     padding: $outterPadding;
     width: 100vw;
     overflow: hidden;
-    margin-bottom: my-px2vw(70);
+ 
     .mg-1{
         margin-bottom: $outterMargin;
         color: $color1;

@@ -483,3 +483,114 @@ body{
     font-weight: bold;
     background-color: #fff;
 }
+.asd-name{
+    background-color: #fff;
+    font-size: vw(13);
+    text-align: right;
+    .name{
+        height: vw(25);
+        line-height: vw(25);
+        font-size: vw(15);
+        font-weight: 600;
+        text-align: center;
+    }
+    .jg-wrapper{
+        display: flex;
+        align-items: baseline;
+        padding-bottom: vw(5);
+        .msj{
+            min-width: vw(85);
+            margin-left: vw(10);
+            margin-right: vw(5);
+            color: $color1;
+            span{
+                text-decoration: line-through;
+            }
+        }
+        .lxj{
+            min-width: vw(100);
+            text-align: right;
+            // margin-right: vw(5);
+            span{
+                color: $pricecolor1;
+            }
+        }
+        .sq{
+            color: #fff;
+            background-color: #50d890;
+            padding: vw(2) vw(5);
+            border-radius: vw(3);
+            font-size: vw(12);
+            font-weight: 500;
+            transform: scale(.8);
+        }
+    }
+    .hyksq{
+        display: inline-block;
+        background-color: #ffdbc5;
+        padding: vw(2) vw(5);
+        margin-right: vw(10);
+        font-size: vw(12);
+        padding-bottom: vw(5);
+        text-align: right;
+        padding-right: vw(10);
+        color: #ff0000;
+        span{
+            vertical-align: sub;
+        }
+    
+        img{
+            width: vw(20);
+            height: vw(20);
+        }
+    }
+}
+.asd-footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: vw(50);
+    width: 100vw;
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: vw(50) vw(50) 1fr;
+  
+    .tb{
+        font-size: vw(12);
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+        i{
+            font-size: vw(18);
+            margin-bottom: vw(5);
+        }
+    }
+    .btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+       background-color: #52de97;
+        font-size: vw(15);
+        text-align: center;
+        .ljgm{
+            color: #fff;
+            margin-bottom: vw(2);
+        }
+        .sq{
+            color: #fff;
+            font-size: vw(12);
+        }
+    }
+}
+.blur{
+    display: block;
+    width: 100%;
+    height: vw(20);
+    background-color: rgba(0,0,0,.5);
+    filter: blur(50px);
+}
+.sp-collapse-wrapper{
+    height: vw(170);
+}

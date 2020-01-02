@@ -91,7 +91,7 @@ textarea {
   *zoom: 1;
 }
 
-.routeWrapper, .menu, .list-nav, .layout {
+.routeWrapper, .menu, .list-nav {
   -webkit-overflow-scrolling: touch;
 }
 
@@ -820,6 +820,7 @@ a {
           box-sizing: border-box;
   overflow: auto;
   position: fixed;
+  padding-bottom: 21.33333vw;
   top: 0;
   left: 0;
 }

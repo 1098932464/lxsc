@@ -22,7 +22,7 @@ $fontsize14:my-px2vw(14);
 $fontsize12:my-px2vw(12);
 $fontsize20:my-px2vw(20);
 $fontsize30:my-px2vw(30);
-.routeWrapper,.menu,.list-nav,.layout{
+.routeWrapper,.menu,.list-nav{
     -webkit-overflow-scrolling: touch;
 }
 
@@ -580,6 +580,7 @@ a{
     box-sizing: border-box;
     overflow: auto;
     position: fixed;
+    padding-bottom: vw(80);
     top: 0;
     left: 0;
 }

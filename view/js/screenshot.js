@@ -9,7 +9,7 @@
 </div>
     <div class="fxz" onclick="jietu()">
 <img src="http://manage.yihuoshidai.com/files/e9b50b43-a34e-4395-8a97-0f53ded2ffbf.gif" alt="">
-<div>￥5.00</div>
+<div><img class="lxb" src="http://manage.yihuoshidai.com/files/2d3794f0-3e73-4592-a868-c55a99b6ef81.png">5.00</div>
 </div>
 
 <div class="screenshot-bottom">
@@ -47,7 +47,7 @@
     var screenshot = {
         init: function (data) {
             var defalutData = {
-                img: "./img/ironman.jpg",
+                img: "http://manage.yihuoshidai.com//files/59527c24-6946-4ea8-b010-aac993f9ef29.jpg",
                 url: "./img/lxsc_logo.jpg",
                 portraitUrl: "./img/lxsc_logo.jpg",
                 name: "郭庄芳香皮肤管理中心",

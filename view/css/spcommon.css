@@ -92,6 +92,10 @@ textarea {
   *zoom: 1;
 }
 
+[v-cloak] {
+  display: none !important;
+}
+
 .shop-msg {
   display: inline-block;
   position: fixed;
@@ -111,6 +115,12 @@ textarea {
   -webkit-line-clamp: 2;
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.one-line {
+  text-overflow: ellipsis;
+  white-space: nowrap;
   overflow: hidden;
 }
 
