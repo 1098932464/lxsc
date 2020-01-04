@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="../css/chaoshixiangqing.css">
     <link rel="stylesheet" href="../css/sousuo.css">
     <link rel="stylesheet" href="../css/animate.min.css">
+    <link rel="stylesheet" href="../css/screenshot.css">
+    <link rel=stylesheet href="../css/weui.min.css">
 </head>
 
 <body>
@@ -360,11 +362,15 @@
         </div>
     </template>
     <script src="../static/js/jquery.min.js"></script>
+    <script src="../js/html2canvas.js"></script>
+    <script src="../js/qrcode.min.js"></script>
+    <script src="../js/screenshot_chaoshi.js"></script>
     <script src="../js/vue.js"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
     <script src="../js/parabola.js"></script>
 
     <script>
+         
         var action = {
             sid:31,
             async getShopInfo() {
@@ -520,6 +526,9 @@
 
         const Detail = {
             methods: {
+                 jietu() {
+            screenshot.init()
+        },
                 toDetail: function (id) {
 
                     this.$router.push('detail').catch(err => {
@@ -602,7 +611,10 @@
 
             },
             template: `<div class="routeWrapper">
-
+                <div class="fxz" @click="jietu()">
+<img src="http://manage.yihuoshidai.com/files/e9b50b43-a34e-4395-8a97-0f53ded2ffbf.gif" alt="">
+<div><img class="lxb" src="http://manage.yihuoshidai.com/files/2d3794f0-3e73-4592-a868-c55a99b6ef81.png">5.00</div>
+</div>
 <div class="csxq-img">
     <img :src="good.img" alt="">
 </div>

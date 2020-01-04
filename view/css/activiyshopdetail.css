@@ -651,10 +651,11 @@ body {
 .asd-name .jg-wrapper .lxj {
   min-width: 26.66667vw;
   text-align: right;
+  color: red;
 }
 
 .asd-name .jg-wrapper .lxj span {
-  color: #b55a19;
+  font-size: 5.33333vw;
 }
 
 .asd-name .jg-wrapper .sq {

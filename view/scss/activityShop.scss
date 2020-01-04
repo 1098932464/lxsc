@@ -103,25 +103,21 @@ $fontsize30:my-px2vw(30);
         padding: 0 vw(12) vw(20);
         line-height: 1;
         .title {
-            height: vw(46);
             padding-top: vw(10);
-            white-space: normal;
+            white-space: nowrap;
             margin-bottom: vw(10);
             vertical-align: baseline;
             font-size: vw(14);
             font-weight: 500;
             color: #3a3a3a;
             line-height: 1.3;
-            min-height: vw(36);
             overflow: hidden;
             text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 2;
             img{
                 width: vw(28);
                 height: vw(14);
                 display: inline-block;
+                vertical-align: middle;
             }
         }
       .reference {
@@ -130,6 +126,9 @@ $fontsize30:my-px2vw(30);
             display: flex;
     -webkit-box-pack: justify;
     justify-content: space-between;
+    .origin-price{
+        text-decoration: line-through;
+    }
     .hot{
         img{
             width: vw(8);

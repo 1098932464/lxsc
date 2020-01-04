@@ -5,19 +5,153 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>利享商城</title>
+    <link rel="stylesheet" href="../css/screen.css">
+    <link rel="stylesheet" href="../css/spcommon.css">
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <link rel="stylesheet" href="../css/qrdd.css">
 </head>
 <body>
     <div id="app">
-        <div>添加配送地址</div>
+        <div v-cloak class="qrdd">
+            <div v-if="address.name" class="xgdz">
+                <div class="zb">
+                    <div class="xm-tel">
+                        <span class="xm">{{address.name}}</span>
+                        <span class="tel">{{address.tel}}</span>
+                    </div>
+                    <div class="dz">
+                        {{address.detail_address}}
+                    </div>
+                </div>
+                <div class="yb">
+                    修改地址<i class="iconfont icon-jiantouyou"></i>
+                </div>
+            </div>
+            <!-- <div class="wz"><img class="wz-icon" src="./img/位置.png" alt=""> <div class="tj">添加配送地址 <i class="iconfont icon-jiantouyou"></i></div></div> -->
+            <div class="tiaowen"></div>
+            <div class="top">
+                <img class="tupian" :src="good.img" alt="">
+                <div class="mz">
+                   {{good.name}}
+                </div>
+            </div>
+
+            <ul class="taocan">
+                <li class="title">套餐选择</li>
+                <li v-for="v of good.combo" class="item">
+                    <div class="zb">
+                        <div class="mz">{{v.name}}</div>
+                        <div class="jg-ku">
+                            <div class="jg">￥{{v.price|price}}</div>
+                            <div class="kc">
+                                (库存{{v.inventory}})
+                            </div>
+                        </div>
+                    </div>
+                    <div class="yb">
+                        <div class="reduce" @click="reduce(v)">-</div>
+                        <div class="num">{{v.num}}</div>
+                        <div class="add" @click="add(v)">+</div>
+                    </div>
+                </li>
+            </ul>
+            <footer>
+                <div class="hj-jg">
+                    <div class="hj">合计:</div>
+                    <div class="jg">
+                        ￥{{totalPrice|price}}
+                    </div>
+                </div>
+                <div class="btn">立即购买</div>
+            </footer>
+        </div>
+       
     </div>
+    <script src="../js/vue.js"></script>
     <script>
+         Vue.filter('price', function (value) {
+            // 返回处理后的值
+            return value.toFixed(2)
+        })
    var app= new Vue({
         el:"#app",
         data:{
-
+            address:{
+                name:"刘老根",
+                tel:'1563541646464',
+                detail_address:"火星火星火星火星火星火星火星火星火星火星火星火星火星火星火星"
+            },
+            good:{
+                name:"9.9元抢298元美肤小气泡体验美肤小气泡体验美肤小气泡体验美肤小气泡体验美肤小气泡体验",
+                img:"http://manage.yihuoshidai.com//files/e2de3610-7e1b-477d-9fe7-5093f301ab43.jpg",
+                combo:[{
+                    name:"步步高升综合礼盒共5kg【五花肉2kg/里脊肉1kg/精肋排1kg/腿精肉1kg】",
+                    id:1,
+                    num:0,
+                    price:359,
+                    inventory:20
+                },{
+                    name:"步步高升综合礼盒共5kg【五花肉2kg/里脊肉1kg/精肋排1kg/腿精肉1kg】",
+                    id:1,
+                    num:0,
+                    price:359,
+                    inventory:20
+                },{
+                    name:"步步高升综合礼盒共5kg【五花肉2kg/里脊肉1kg/精肋排1kg/腿精肉1kg】",
+                    id:1,
+                    num:0,
+                    price:359,
+                    inventory:20
+                },{
+                    name:"步步高升综合礼盒共5kg【五花肉2kg/里脊肉1kg/精肋排1kg/腿精肉1kg】",
+                    id:1,
+                    num:0,
+                    price:359,
+                    inventory:20
+                },{
+                    name:"步步高升综合礼盒共5kg【五花肉2kg/里脊肉1kg/精肋排1kg/腿精肉1kg】",
+                    id:1,
+                    num:0,
+                    price:359,
+                    inventory:20
+                },{
+                    name:"步步高升综合礼盒共5kg【五花肉2kg/里脊肉1kg/精肋排1kg/腿精肉1kg】",
+                    id:1,
+                    num:0,
+                    price:359,
+                    inventory:20
+                },{
+                    name:"步步高升综合礼盒共5kg【五花肉2kg/里脊肉1kg/精肋排1kg/腿精肉1kg】",
+                    id:1,
+                    num:0,
+                    price:359,
+                    inventory:20
+                },{
+                    name:"步步高升综合礼盒共5kg【五花肉2kg/里脊肉1kg/精肋排1kg/腿精肉1kg】",
+                    id:1,
+                    num:0,
+                    price:359,
+                    inventory:20
+                }]
+            }
         },
         methods:{
-
+            add(v){
+                v.num++
+            },
+            reduce(v){
+                if(v.num>0)
+                v.num--
+            }
+        },
+        computed:{
+            totalPrice(){
+               let p=0
+               for(let v of this.good.combo){
+                   p+=v.num*v.price
+               }
+              return p  
+            }
         }
     })
     </script>

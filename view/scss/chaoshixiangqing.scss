@@ -22,6 +22,9 @@ $fontsize14:my-px2vw(14);
 $fontsize12:my-px2vw(12);
 $fontsize20:my-px2vw(20);
 $fontsize30:my-px2vw(30);
+.sp-mask{
+    z-index: 1002!important;
+}
 .chaoshixiangqing{
     padding-bottom: vw(80);
 }

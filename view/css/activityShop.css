@@ -188,27 +188,23 @@ textarea {
 }
 
 .item .info .title {
-  height: 12.26667vw;
   padding-top: 2.66667vw;
-  white-space: normal;
+  white-space: nowrap;
   margin-bottom: 2.66667vw;
   vertical-align: baseline;
   font-size: 3.73333vw;
   font-weight: 500;
   color: #3a3a3a;
   line-height: 1.3;
-  min-height: 9.6vw;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
 }
 
 .item .info .title img {
   width: 7.46667vw;
   height: 3.73333vw;
   display: inline-block;
+  vertical-align: middle;
 }
 
 .item .info .reference {
@@ -220,6 +216,10 @@ textarea {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
       justify-content: space-between;
+}
+
+.item .info .reference .origin-price {
+  text-decoration: line-through;
 }
 
 .item .info .reference .hot img {

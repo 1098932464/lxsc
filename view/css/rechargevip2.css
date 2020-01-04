@@ -155,8 +155,8 @@ ul li {
 }
 
 .wd .tx {
-  width: 58.66667vw;
-  height: 58.66667vw;
+  width: 40vw;
+  height: 40vw;
   margin: 0 auto;
   border-radius: 50%;
   overflow: hidden;
@@ -167,6 +167,7 @@ ul li {
 }
 
 .wd .nc {
+  padding-top: 2.66667vw;
   text-align: center;
 }
 

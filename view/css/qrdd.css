@@ -1,0 +1,324 @@
+html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input, textarea, th, td, select {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  font-family: "Microsoft YaHei";
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  border: none;
+  vertical-align: middle;
+}
+
+a {
+  text-decoration: none;
+  color: #232323;
+}
+
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+input, textarea {
+  outline: none;
+  border: none;
+}
+
+textarea {
+  resize: none;
+  overflow: auto;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+.clearfix:after {
+  content: ".";
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
+  overflow: hidden;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.tl {
+  text-align: left;
+}
+
+.tc {
+  text-align: center;
+}
+
+.tr {
+  text-align: right;
+}
+
+.ellipse {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.inline {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.qrdd {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-top: 2.66667vw;
+  background-color: #fff;
+  min-height: 100vh;
+  letter-spacing: 0.13333vw;
+}
+
+.qrdd::after {
+  display: block;
+  content: "";
+  height: 18.66667vw;
+}
+
+.qrdd .xgdz {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2.66667vw;
+}
+
+.qrdd .xgdz .zb .dz {
+  line-height: 1.3;
+  font-size: 3.46667vw;
+}
+
+.qrdd .xgdz .zb .xm-tel {
+  padding: 2.66667vw 0;
+  font-size: 4.26667vw;
+}
+
+.qrdd .xgdz .zb .xm-tel .xm {
+  margin-right: 2.13333vw;
+}
+
+.qrdd .xgdz .zb .xm-tel .tel {
+  font-weight: 600;
+}
+
+.qrdd .xgdz .yb {
+  font-size: 4vw;
+  color: #777;
+  width: 48vw;
+  padding: 2.66667vw 0;
+  text-align: right;
+}
+
+.qrdd .xgdz .yb i {
+  font-size: 3.2vw;
+}
+
+.qrdd footer {
+  padding: 2.66667vw;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100vw;
+  background-color: #fff;
+}
+
+.qrdd footer .hj-jg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 4vw;
+  font-weight: 600;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  max-width: 45.33333vw;
+}
+
+.qrdd footer .hj-jg .jg {
+  color: #b55a19;
+  font-size: 4.8vw;
+  word-break: break-all;
+}
+
+.qrdd footer .btn {
+  font-size: 4.26667vw;
+  padding: 0 16vw;
+  height: 12.26667vw;
+  line-height: 12.26667vw;
+  background-color: #ff0000;
+  color: #eeeeee;
+  border-radius: 6.13333vw;
+}
+
+.qrdd .taocan {
+  padding: 2.66667vw;
+}
+
+.qrdd .taocan .title {
+  font-size: 3.73333vw;
+  font-weight: 600;
+  margin-bottom: 2.66667vw;
+}
+
+.qrdd .taocan .item {
+  min-height: 13.33333vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 2.66667vw;
+}
+
+.qrdd .taocan .item .zb {
+  font-size: 3.46667vw;
+  color: #777;
+  line-height: 1.5;
+}
+
+.qrdd .taocan .item .zb .mz {
+  min-height: 10.13333vw;
+}
+
+.qrdd .taocan .item .zb .jg-ku {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.qrdd .taocan .item .zb .jg-ku .jg {
+  color: #b55a19;
+  font-weight: 600;
+  margin-right: 2.66667vw;
+}
+
+.qrdd .taocan .item .yb {
+  width: 32vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.qrdd .taocan .item .yb .reduce, .qrdd .taocan .item .yb .add, .qrdd .taocan .item .yb .num {
+  width: 10.66667vw;
+  height: 8vw;
+  line-height: 8vw;
+  text-align: center;
+  border: 1px solid #cccccc;
+  font-weight: bold;
+}
+
+.qrdd .taocan .item .yb .num {
+  border-left: 0;
+  border-right: 0;
+  font-weight: normal;
+  font-size: 3.73333vw;
+}
+
+.qrdd .taocan .item .yb .reduce {
+  border-radius: 4vw 0 0 4vw;
+  font-size: 5.33333vw;
+}
+
+.qrdd .taocan .item .yb .add {
+  border-radius: 0 4vw 4vw 0;
+  font-size: 5.33333vw;
+}
+
+.qrdd .top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5.33333vw 2.66667vw;
+}
+
+.qrdd .top .tupian {
+  width: 18.66667vw;
+  height: 18.66667vw;
+  border-radius: 1.33333vw;
+  margin-right: 2.66667vw;
+}
+
+.qrdd .top .mz {
+  font-size: 3.73333vw;
+  font-weight: 500;
+}
+
+.qrdd .tiaowen {
+  background-image: repeating-linear-gradient(130deg, transparent, transparent 5px, #12cad6 5px, #12cad6 25px, transparent 25px, transparent 30px, #fa163f 30px, #fa163f 50px);
+  background-size: 100% 100%;
+  width: 100vw;
+  height: 1.06667vw;
+}
+
+.qrdd .wz {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 2.66667vw;
+  background-color: #fff;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 2.66667vw;
+}
+
+.qrdd .wz .wz-icon {
+  width: 5.33333vw;
+  height: 5.33333vw;
+  margin-right: 2.66667vw;
+}
+
+.qrdd .wz .tj {
+  padding: 2.66667vw;
+  font-size: 3.73333vw;
+}
+
+.qrdd .wz .tj i {
+  color: #777;
+  font-size: 3.73333vw;
+}
+/*# sourceMappingURL=qrdd.css.map */

@@ -71,8 +71,8 @@ ul li{
     background-color: #fff;
     border-bottom: 1px solid #ddd;
 .tx {
-    width: vw(220);
-    height: vw(220);
+    width: vw(150);
+    height: vw(150);
     margin: 0 auto;
    border-radius: 50%;
    overflow: hidden;
@@ -81,6 +81,7 @@ ul li{
    }
 }
 .nc{
+    padding-top: vw(10);
     text-align: center;
    span{
     font-size: $fontsize30;

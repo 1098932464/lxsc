@@ -91,6 +91,10 @@ textarea {
   *zoom: 1;
 }
 
+.sp-mask {
+  z-index: 1002 !important;
+}
+
 .chaoshixiangqing {
   padding-bottom: 21.33333vw;
 }

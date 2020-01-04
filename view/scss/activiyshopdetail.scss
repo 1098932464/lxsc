@@ -510,9 +510,11 @@ body{
         .lxj{
             min-width: vw(100);
             text-align: right;
+            color: red;
             // margin-right: vw(5);
             span{
-                color: $pricecolor1;
+                font-size: vw(20);
+             
             }
         }
         .sq{
